@@ -1,0 +1,31 @@
+/* Import Poppins if not already in styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+
+.navbar {
+  background-color: #FFF8E7 !important;
+}
+/* Brand styling */
+.navbar-brand {
+  margin-left: 184px;       /* distance from left */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;         /* bold */
+  color: #2C1E1A !important;
+  font-size: 1.5rem;        /* optional size */
+}
+
+/* Nav links styling */
+.navbar-nav {
+  margin-right: 184px;      /* push links from right */
+}
+
+.navbar-nav .nav-link {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;         /* semi-bold */
+  color: #2C1E1A !important;
+  margin-left: 1rem;        /* space between links */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ff7f50 !important; /* optional hover color */
+}
