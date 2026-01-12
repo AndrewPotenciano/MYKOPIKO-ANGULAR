@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { BaseLayout } from './shared/modules/layout/base-layout/base-layout';
 import { Home } from './features/home/home';
-import { Menu } from './features/menu/menu';
-import { AboutUs } from './features/about-us/about-us';
-import { ContactUs } from './features/contact-us/contact-us';
+import { Menu } from './features/home/menu/menu';
+import { AboutUs } from './features/home/about-us/about-us';
+import { ContactUs } from './features/home/contact-us/contact-us';
 
 export const routes: Routes = [
   {

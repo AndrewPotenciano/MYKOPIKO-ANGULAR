@@ -211,6 +211,20 @@
     display: none;
   }
 
+  .carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
+
+
   /* Hide prev/next buttons on mobile */
   .carousel-prev,
   .carousel-next {
