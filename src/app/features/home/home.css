@@ -2,7 +2,8 @@
    HERO SECTION BACKGROUND
 ========================= */
 
-.hero-section { /* section-wide background */
+.hero-section {
+  /* section-wide background */
   width: 100vw;
   min-height: 100vh;
   background-color: #fff8e7;
@@ -108,126 +109,5 @@
   .main-paragraph {
     margin-left: auto;
     margin-right: auto;
-  }
-}
-
-/* =========================
-   MENU SECTION
-========================= */
-#productsCarousel {
-  position: relative;
-}
-
-/* TITLE */
-#productsCarousel h1 {
-  text-align: center;
-  font-size: 36px;
-  color: #3D1C02;
-  margin: 60px 0;
-}
-
-/* INDICATORS */
-.carousel-indicators {
-  bottom: -50px;
-}
-
-.carousel-indicators button {
-  background-color: #6f4e37;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-/* FIXED BUTTONS OUTSIDE CARDS */
-.carousel-control-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  background-color: #3D1C02 !important;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20; /* above cards */
-}
-
-.carousel-prev {
-  left: -55px; /* outside carousel content */
-}
-
-.carousel-next {
-  right: -55px; /* outside carousel content */
-}
-
-.carousel-control-btn:hover {
-  background-color: #2a1401 !important;
-}
-
-/* CARD STYLES */
-.custom-card {
-  border: 2px solid #3D1C02;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.card-title {
-  font-weight: bold;
-  color: #3D1C02;
-}
-
-.card-text {
-  color: #3D1C02;
-}
-
-.btn-cart {
-  background-color: #3D1C02;
-  border-color: #3D1C02;
-  color: white;
-}
-
-.btn-cart:hover {
-  background-color: #2a1401;
-  border-color: #2a1401;
-}
-
-/* MOBILE: ONE ROW SCROLL */
-@media (max-width: 767px) {
-  .carousel-row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-  }
-
-  .carousel-row > div {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-  }
-
-  .carousel-row::-webkit-scrollbar {
-    display: none;
-  }
-
-  .carousel-item {
-  position: relative;
-  display: none;
-  float: left;
-  width: 100%;
-}
-
-.carousel-item.active,
-.carousel-item-next,
-.carousel-item-prev {
-  display: block;
-}
-
-
-  /* Hide prev/next buttons on mobile */
-  .carousel-prev,
-  .carousel-next {
-    display: none;
   }
 }

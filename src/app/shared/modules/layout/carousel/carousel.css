@@ -1,0 +1,194 @@
+/* ========================= MENU SECTION ========================= */
+[id^="productsCarousel"] {
+  position: relative;
+  width: 100%;
+}
+
+/* =========================
+   TITLE
+========================= */
+[id^="productsCarousel"] h1 {
+  text-align: center;
+  font-size: 36px;
+  color: #3D1C02;
+  margin: 60px 0;
+}
+
+/* =========================
+   INDICATORS
+========================= */
+.carousel-indicators {
+  bottom: -50px;
+}
+
+.carousel-indicators button {
+  background-color: #6f4e37;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* =========================
+   FIXED BUTTONS OUTSIDE CARDS
+========================= */
+.carousel-control-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: #3D1C02 !important;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.carousel-prev {
+  left: -55px;
+}
+
+.carousel-next {
+  right: -55px;
+}
+
+.carousel-control-btn:hover {
+  background-color: #2a1401 !important;
+}
+
+/* =========================
+   CARD STYLES
+========================= */
+.custom-card {
+  border: 2px solid #3D1C02;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-card .card-img-top {
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
+}
+
+.card-body {
+  padding: 12px 0 0 0;
+}
+
+.card-title {
+  font-weight: bold;
+  color: #3D1C02;
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-text {
+  color: #3D1C02;
+  min-height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cart {
+  background-color: #3D1C02;
+  border-color: #3D1C02;
+  color: white;
+}
+
+.btn-cart:hover {
+  background-color: #2a1401;
+  border-color: #2a1401;
+}
+
+/* =========================
+   SWIPE HINT
+========================= */
+.swipe-hint {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.swipe-text {
+  color: #3D1C02;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.swipe-arrow {
+  color: #3D1C02;
+  animation: slideArrow 1.5s ease-in-out infinite;
+}
+
+@keyframes slideArrow {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+}
+
+/* =========================
+   MOBILE FIX
+========================= */
+@media (max-width: 767px) {
+
+  /* Disable carousel sliding behavior */
+  [id^="productsCarousel"] .carousel-inner {
+    display: block;
+  }
+
+  [id^="productsCarousel"] .carousel-item {
+    display: block !important;
+    float: none;
+    transform: none !important;
+    transition: none !important;
+    margin-bottom: 24px;
+  }
+
+  /* Horizontal scroll rows */
+  .carousel-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .carousel-row > div {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .carousel-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide arrows */
+  .carousel-prev,
+  .carousel-next {
+    display: none;
+  }
+
+  /* Hide indicators */
+  .carousel-indicators {
+    display: none;
+  }
+
+  /* Show swipe hint on mobile */
+  .swipe-hint {
+    display: flex;
+  }
+}

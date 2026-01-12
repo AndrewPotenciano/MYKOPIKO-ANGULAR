@@ -5,27 +5,40 @@
 .navbar {
   background-color: #FFF8E7 !important;
 }
-/* Brand styling */
-.navbar-brand {
-  margin-left: 184px;       /* distance from left */
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;         /* bold */
-  color: #2C1E1A !important;
-  font-size: 1.5rem;        /* optional size */
-}
 
-/* Nav links styling */
-.navbar-nav {
-  margin-right: 184px;      /* push links from right */
+.navbar-brand {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #2C1E1A !important;
+  font-size: 1.5rem;
 }
 
 .navbar-nav .nav-link {
   font-family: 'Poppins', sans-serif;
-  font-weight: 600;         /* semi-bold */
+  font-weight: 600;
   color: #2C1E1A !important;
-  margin-left: 1rem;        /* space between links */
+  margin-left: 1rem;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ff7f50 !important; /* optional hover color */
+  color: #ff7f50 !important;
+}
+
+.nav-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  padding: 0.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.nav-icon-link:hover {
+  opacity: 0.7;
+}
+
+.nav-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }

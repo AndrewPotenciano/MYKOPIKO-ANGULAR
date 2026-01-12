@@ -1,18 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">MYKOPIKO</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarNav" aria-controls="navbarNav"
-            aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/" (click)="closeNav()">MYKOPIKO</a>
+    <button class="navbar-toggler" type="button" (click)="toggleNav()"
+            [attr.aria-expanded]="isNavOpen" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" [class.show]="isNavOpen">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/">Home</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/menu">Menu</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/about-us">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/contact-us">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/" (click)="closeNav()">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/menu" (click)="closeNav()">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/about-us" (click)="closeNav()">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/contact-us" (click)="closeNav()">Contact Us</a></li>
+         <li class="nav-item"><a class="nav-icon-link" href="#"><img src="/images-2/shopping-cart.png" alt="Shopping Cart" class="nav-icon"></a></li>
+        <li class="nav-item"><a class="nav-icon-link" href="#"><img src="/images-2/track.png" alt="Track Order" class="nav-icon"></a></li>
+       
       </ul>
     </div>
   </div>
