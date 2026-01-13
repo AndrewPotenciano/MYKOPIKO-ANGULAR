@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="menu-page.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <title>MYKOPIKO</title>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="home">
+    <div class="navdiv">
+      <div class="shopName">
+        <h3>MYKOPIKO</h3>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="Main_page.html#home" class="nav-link">HOME</a></li>
+        <li><a href="Main_page.html#menu" class="nav-link">MENU</a></li>
+        <li>
+          <a href="Main_page.html#about-us" class="nav-link">ABOUT US</a>
+        </li>
+        <li>
+          <a href="Main_page.html#contact-us" class="nav-link">CONTACT US</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="menu">
+    <div class="menu-header">
+      <h1>Order Your Favorite Coffee</h1>
+      <div class="cart">
+        <button class="add-cart">View Cart</button>
+      </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="modal">
+  <div class="modal-inner">
+    <h2>Your Orders</h2>
+    <div id="cart-items">
+      <p>Your Cart is empty</p>
+    </div>
+    <div class="modal-buttons">
+      <button id="close-modal">Close</button>
+      <button id="checkout">Checkout</button>
+    </div>
+  </div>
+</div>
+
+    <h2>Try Our Best Selling Coffee</h2>
+    <!-- Carousel Navigation Arrows -->
+    <div id="cCarousel">
+      <div class="arrow-button arrow-left" id="prev"></div>
+      <div class="arrow-button arrow-right" id="next"></div>
+
+      <!-- Carousel Viewport -->
+      <div id="carousel-vp">
+        <div id="cCarousel-inner">
+          <!-- Individual Carousel Item -->
+          <article class="cCarousel-item">
+            <img src="Website Design/—Pngtree—realistic iced coffee in a_23452557.png" />
+            <div class="infos">
+              <h3>Iced Coffee</h3>
+              <h4>100PHP</h4>
+              <button type="button">Add To Cart</button>
+            </div>
+            <div class="overlay">
+              <p>
+                Iced coffee is a refreshing, cold coffee drink made by
+                chilling hot-brewed coffee or by brewing coffee cold, served
+                over ice, and often customized with milk.
+              </p>
+            </div>
+          </article>
+
+          <article class="cCarousel-item">
+            <img src="Website Design/—Pngtree—a tall glass of iced_23188794.png" />
+            <div class="infos">
+              <h3>Caramel Latte</h3>
+              <h4>100PHP</h4>
+              <button type="button">Add To Cart</button>
+            </div>
+            <div class="overlay">
+              <p>
+                A caramel latte is a sweet, creamy coffee drink made with rich
+                espresso, steamed milk, and caramel syrup, offering a buttery,
+                dessert-like flavor with a swirl of caramel taste.
+              </p>
+            </div>
+          </article>
+
+          <article class="cCarousel-item">
+            <img src="Website Design/—Pngtree—iced coffee with milk on_20406157.png" />
+            <div class="infos">
+              <h3>Cold Brew Coffee</h3>
+              <h4>100PHP</h4>
+              <button type="button">Add To Cart</button>
+            </div>
+            <div class="overlay">
+              <p>
+                Cold brew coffee is a smooth, less acidic coffee made by
+                steeping coarsely ground coffee beans in cold water for an
+                extended period resulting in a rich,
+                mellow flavor that is served chilled.
+              </p>
+            </div>
+          </article>
+
+          <article class="cCarousel-item">
+            <img src="Website Design/Caramel Frappe.webp" />
+            <div class="infos">
+              <h3>Caramel Frappe</h3>
+              <h4>150PHP</h4>
+              <button type="button">Add To Cart</button>
+            </div>
+            <div class="overlay">
+              <p>
+                A caramel frappe is a blended iced coffee drink made with
+                espresso, milk, ice, and caramel syrup, resulting in a creamy,
+                sweet.
+              </p>
+            </div>
+          </article>
+
+          <article class="cCarousel-item">
+            <img src="Website Design/Strawberry Frappe.webp" />
+            <div class="infos">
+              <h3>Strawberry Frappe</h3>
+              <h4>150PHP</h4>
+              <button type="button">Add To Cart</button>
+            </div>
+            <div class="overlay">
+              <p>
+                A strawberry frappe is a blended iced beverage made with fresh
+                strawberries, milk or cream, ice, and sweeteners, resulting in
+                a creamy, fruity.
+              </p>
+            </div>
+          </article>
+
+          <article class="cCarousel-item">
+            <img src="Website Design/Affogato Frappe.webp" />
+            <div class="infos">
+              <h3>Affogato Frappe</h3>
+              <h4>150PHP</h4>
+              <button type="button">Add To Cart</button>
+            </div>
+            <div class="overlay">
+              <p>
+                An affogato frappe is a delightful dessert drink that combines
+                a shot of hot espresso poured over a scoop of creamy vanilla
+                ice cream, blended with ice to create a refreshing.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="carousel-indicators" id="carouselIndicators"></div>
+    </div>
+  </section>
+
+  <section class="menu-filter">
+    <h1>_____________</h1>
+    <h2>Select Category</h2>
+    <div class="drop-down">
+      <select id="categoryDropdown">
+        <option value="select">Select</option>
+        <option value="frappe">Frappe</option>
+        <option value="espresso">Espresso</option>
+        <option value="dessert">Desserts</option>
+        <option value="sandwich">Sandwich</option>
+      </select>
+    </div>
+    <section class="menu-select-menu" id="selectMenu">
+
+      <div id="menuCarousel">
+        <!-- Arrows -->
+        <div class="arrow-button arrow-left" id="mPrev"></div>
+        <div class="arrow-button arrow-right" id="mNext"></div>
+
+        <!-- Viewport -->
+        <div id="menu-vp">
+          <div id="menu-inner">
+            <!-- ITEM 1 -->
+            <article class="menu-item">
+              <div class="infos">
+                <h3>Sample Item</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 2 -->
+            <article class="menu-item">
+              
+              <div class="infos">
+                <h3>Sample Item</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 3 -->
+            <article class="menu-item">
+              
+              <div class="infos">
+                <h3>Sample Item</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 4 -->
+            <article class="menu-item">
+              
+              <div class="infos">
+                <h3>Sample Item</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 5 -->
+            <article class="menu-item">
+             
+              <div class="infos">
+                <h3>Sample Item</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 6 -->
+            <article class="menu-item">
+              
+              <div class="infos">
+                <h3>Sample Item</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- DOTS -->
+        <div class="carousel-indicators" id="mCarouselIndicators"></div>
+      </div>
+    </section>
+
+    <!-- FRAPPE MENU (HIDDEN BY DEFAULT) -->
+    <section class="menu frappe-menu" id="frappeMenu" style="display: none">
+      <h2>Our Frappe Menu</h2>
+
+      <div id="frappeCarousel">
+        <!-- Arrows -->
+        <div class="arrow-button arrow-left" id="fPrev"></div>
+        <div class="arrow-button arrow-right" id="fNext"></div>
+
+        <!-- Viewport -->
+        <div id="frappe-vp">
+          <div id="frappe-inner">
+            <!-- ITEM 1 -->
+            <article class="frappe-item">
+              <img src="Website Design/PNG MENU/Caramel Frappe.png" />
+              <div class="infos">
+                <h3>Caramel Frappe</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 2 -->
+            <article class="frappe-item">
+              <img src="Website Design/PNG MENU/Strawberry Frappe.png" />
+              <div class="infos">
+                <h3>Strawberry Frappe</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 3 -->
+            <article class="frappe-item">
+              <img src="Website Design/PNG MENU/Affogato Frappe.png" />
+              <div class="infos">
+                <h3>Affogato Frappe</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 4 -->
+            <article class="frappe-item">
+              <img src="Website Design/PNG MENU/Java Frappe.png" />
+              <div class="infos">
+                <h3>Java Frappe</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 5 -->
+            <article class="frappe-item">
+              <img src="Website Design/PNG MENU/Creme Frappe.png" />
+              <div class="infos">
+                <h3>Creme Frappe</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 6 -->
+            <article class="frappe-item">
+              <img src="Website Design/PNG MENU/White Frappe.png" />
+              <div class="infos">
+                <h3>White Frappe</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- DOTS -->
+        <div class="carousel-indicators" id="fCarouselIndicators"></div>
+      </div>
+    </section>
+
+    <!-- ESPRESSO MENU (HIDDEN BY DEFAULT) -->
+    <section class="menu espresso-menu" id="espressoMenu" style="display: none">
+      <h2>Our Espresso Menu</h2>
+
+      <div id="espressoCarousel">
+        <!-- Arrows -->
+        <div class="arrow-button arrow-left" id="ePrev"></div>
+        <div class="arrow-button arrow-right" id="eNext"></div>
+
+        <!-- Viewport -->
+        <div id="espresso-vp">
+          <div id="espresso-inner">
+            <!-- ITEM 1 -->
+            <article class="espresso-item">
+              <img src="Website Design/Espresso PNG/Mocha.png" />
+              <div class="infos">
+                <h3>Mocha</h3>
+                <h4>100 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 2 -->
+            <article class="espresso-item">
+              <img src="Website Design/Espresso PNG/Macchiato.png" />
+              <div class="infos">
+                <h3>Macchiato</h3>
+                <h4>160 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 3 -->
+            <article class="espresso-item">
+              <img src="Website Design/Espresso PNG/Latte (2).png" />
+              <div class="infos">
+                <h3>Latte</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 4 -->
+            <article class="espresso-item">
+              <img src="Website Design/Espresso PNG/Cortado.png" />
+              <div class="infos">
+                <h3>Cortado</h3>
+                <h4>160 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 5 -->
+            <article class="espresso-item">
+              <img src="Website Design/Espresso PNG/Cappuccino.png" />
+              <div class="infos">
+                <h3>Cappuccino</h3>
+                <h4>130 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 6 -->
+            <article class="espresso-item">
+              <img src="Website Design/Espresso PNG/Cafe Americano.png" />
+              <div class="infos">
+                <h3>Cafe Americano</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="carousel-indicators" id="eCarouselIndicators"></div>
+      </div>
+    </section>
+
+    <!-- DESSERT MENU (HIDDEN BY DEFAULT) -->
+    <section class="menu dessert-menu" id="dessertMenu" style="display: none">
+      <h2>Our Dessert Menu</h2>
+
+      <div id="dessertCarousel">
+        <!-- Arrows -->
+        <div class="arrow-button arrow-left" id="dPrev"></div>
+        <div class="arrow-button arrow-right" id="dNext"></div>
+
+        <!-- Viewport -->
+        <div id="dessert-vp">
+          <div id="dessert-inner">
+            <!-- ITEM 1 -->
+            <article class="dessert-item">
+              <img src="Website Design/Pastries PNG/strawberry cake.png" />
+              <div class="infos">
+                <h3>Strawberry Cake</h3>
+                <h4>150 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 2 -->
+            <article class="dessert-item">
+              <img src="Website Design/Pastries PNG/muffins.png" />
+              <div class="infos">
+                <h3>Muffins</h3>
+                <h4>80 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 3 -->
+            <article class="dessert-item">
+              <img src="Website Design/Pastries PNG/Croissant.png" />
+              <div class="infos">
+                <h3>Croissant</h3>
+                <h4>90 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 4 -->
+            <article class="dessert-item">
+              <img src="Website Design/Pastries PNG/cookies.png" class="cookies" />
+              <div class="infos">
+                <h3>Cookies</h3>
+                <h4>60 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 5 -->
+            <article class="dessert-item">
+              <img src="Website Design/Pastries PNG/cheescake.png" />
+              <div class="infos">
+                <h3>Cheese cake</h3>
+                <h4>130 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 6 -->
+            <article class="dessert-item">
+              <img src="Website Design/Pastries PNG/brownies.png" />
+              <div class="infos">
+                <h3>Brownies</h3>
+                <h4>70 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="carousel-indicators" id="dCarouselIndicators"></div>
+      </div>
+    </section>
+
+    <!-- SANDWICH MENU (HIDDEN BY DEFAULT) -->
+    <section class="menu sandwich-menu" id="sandwichMenu" style="display: none">
+      <h2>Our Sandwich Menu</h2>
+
+      <div id="sandwichCarousel">
+        <!-- Arrows -->
+        <div class="arrow-button arrow-left" id="sPrev"></div>
+        <div class="arrow-button arrow-right" id="sNext"></div>
+
+        <!-- Viewport -->
+        <div id="sandwich-vp">
+          <div id="sandwich-inner">
+            <!-- ITEM 1 -->
+            <article class="sandwich-item">
+              <img src="Website Design/Sandwiches/Breakfast Sandwich.png" class="breakfast" />
+              <div class="infos">
+                <h3>Breakfast Sandwich</h3>
+                <h4>130 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 2 -->
+            <article class="sandwich-item">
+              <img src="Website Design/Sandwiches/Chicken Sandwich.png" />
+              <div class="infos">
+                <h3>Chicken Sandwich</h3>
+                <h4>180 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 3 -->
+            <article class="sandwich-item">
+              <img src="Website Design/Sandwiches/Egg Sandwich.png" class="egg" />
+              <div class="infos">
+                <h3>Egg Sandwich</h3>
+                <h4>110 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 4 -->
+            <article class="sandwich-item">
+              <img src="Website Design/Sandwiches/Grilled Sandwich.png" class="cookies" />
+              <div class="infos">
+                <h3>Grilled Sandwich</h3>
+                <h4>120 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 5 -->
+            <article class="sandwich-item">
+              <img src="Website Design/Sandwiches/omelette sandwich.png" />
+              <div class="infos">
+                <h3>Omelette Sandwich</h3>
+                <h4>130 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+
+            <!-- ITEM 6 -->
+            <article class="sandwich-item">
+              <img src="Website Design/Sandwiches/Tuna Sandwich.png" />
+              <div class="infos">
+                <h3>Tuna Sandwich</h3>
+                <h4>110 PHP</h4>
+                <button>Add To Cart</button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="carousel-indicators" id="sCarouselIndicators"></div>
+      </div>
+    </section>
+
+    <script src="menu-page.js"></script>
+    <script src="menu-page2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

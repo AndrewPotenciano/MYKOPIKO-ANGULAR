@@ -1,5 +1,5 @@
 <!-- HERO SECTION -->
-<section class="hero-section">
+<section id="home" class="hero-section">
   <div class="hero-container">
     <div class="hero-text">
       <h1 class="main-h1">Start your Day with</h1>
@@ -12,17 +12,153 @@
     </div>
 
     <div class="hero-image">
-      <img
-        src="/images/coffee-main-page.png"
-        class="main_image"
-        alt="Coffee"
-      />
+      <img src="/images/coffee-main-page.png" class="main_image" alt="Coffee" />
     </div>
   </div>
 </section>
 
-<app-carousel [title]="'Popular Menu'" [items]="popularMenuItems"></app-carousel>
-<app-carousel [title]="'Frappe Menu'" [items]="frappMenuItems"></app-carousel>
-<app-carousel [title]="'Espresso Menu'" [items]="espressoMenuItems"></app-carousel>
-<app-carousel [title]="'Pastries Menu'" [items]="pastriesMenuItems"></app-carousel>
+<!-- Menu section (full-bleed) -->
+<section id="menu" class="menu-section">
+  <app-carousel [title]="'Popular Menu'" [items]="popularMenuItems"></app-carousel>
+  <app-carousel [title]="'Frappe Menu'" [items]="frappMenuItems"></app-carousel>
+  <app-carousel [title]="'Espresso Menu'" [items]="espressoMenuItems"></app-carousel>
+  <app-carousel [title]="'Pastries Menu'" [items]="pastriesMenuItems"></app-carousel>
+</section>
 
+<section class="about-us" id="about-us">
+  <div class="content-wrapper">
+    <div class="about-text-container">
+      <h1>About Us</h1>
+      <h2>
+        Mykopiko serves rich, comforting coffee made with quality beans and
+        brewed to perfection for every coffee lover.
+      </h2>
+    </div>
+    <div class="about-image-container">
+      <img src="images/about us image.jpeg" alt="About Us" class="responsive-img" />
+    </div>
+  </div>
+
+  <div class="content-wrapper reverse">
+    <div class="about-text-container">
+      <h1>Why Choose Us</h1>
+      <h2>
+        We use only the finest coffee beans, carefully selected from trusted
+        farms to ensure every cup delivers a rich, balanced, and
+        unforgettable flavor.
+      </h2>
+    </div>
+    <div class="about-image-container">
+      <img src="images-2/Espresso PNGs/kape.png" alt="Why Choose Us" class="responsive-img" />
+    </div>
+  </div>
+
+  <div class="reviews-section">
+    <h1>What Our Customers Say</h1>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <img src="images/PNG MENU/andrew.jpg" class="review-pfp" />
+        <h2 class="name">Andrew</h2>
+        <h3 class="review-title">Rich espresso taste</h3>
+        <p class="comment">
+          Masarap sobra yung espresso, hindi mapait at sakto yung timpla.
+        </p>
+        <img src="images/5 star.PNG" class="stars" />
+      </div>
+
+      <div class="review-card">
+        <img src="images/PNG MENU/dexter.jpg" class="review-pfp" />
+        <h2 class="name">Dexter</h2>
+        <h3 class="review-title">Good value for money</h3>
+        <p class="comment">
+          Okay yung presyo at mabilis yung service kahit peak hours.
+        </p>
+        <img src="images/4 star.PNG" class="stars" />
+      </div>
+
+      <div class="review-card">
+        <img src="images/PNG MENU/kylle.jpg" class="review-pfp" />
+        <h2 class="name">Kylle</h2>
+        <h3 class="review-title">Refreshing drinks</h3>
+        <p class="comment">
+          Hindi sobrang tamis yung frappes, perfect pang-chill.
+        </p>
+        <img src="images/3 star.PNG" class="stars" />
+      </div>
+
+      <div class="review-card">
+        <img src="images/PNG MENU/jason.webp" class="review-pfp" />
+        <h2 class="name">Jason</h2>
+        <h3 class="review-title">Relaxing atmosphere</h3>
+        <p class="comment">
+          Tahimik yung place at sarap tambayan habang nagkakape.
+        </p>
+        <img src="images/4 star.PNG" class="stars" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-us" id="contact-us">
+  <div class="contact-header">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you.</p>
+  </div>
+
+  <div class="contact-container">
+    <div class="message-us">
+      <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+
+        <h2 class="box-title">Send Us a Message</h2>
+
+        <div class="input-fields">
+
+          <!-- FULL NAME -->
+          <div class="field-wrapper">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" ngModel required #name="ngModel" placeholder="Juan Dela Cruz"
+              [class.invalid]="name.invalid && name.touched" [(ngModel)]="form.name" />
+
+            <span class="field-error" *ngIf="name.invalid && name.touched">
+              Full name is required
+            </span>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="field-wrapper">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" ngModel required #email="ngModel"
+              placeholder="example@email.com" [class.invalid]="email.invalid && email.touched"
+              [(ngModel)]="form.email" />
+            <span class="field-error" *ngIf="email.invalid && email.touched">
+              Email is required
+            </span>
+          </div>
+
+          <!-- MESSAGE -->
+          <div class="field-wrapper">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" ngModel required #message="ngModel" placeholder="Kumusta!"
+              [class.invalid]="message.invalid && message.touched" [(ngModel)]="form.message"></textarea>
+
+            <span class="field-error" *ngIf="message.invalid && message.touched">
+              Message is required
+            </span>
+          </div>
+
+          <button class="btn-submit" type="submit" [disabled]="contactForm.invalid">
+            Send Message
+          </button>
+
+        </div>
+      </form>
+    </div>
+
+    <div class="message-us-image">
+      <img src="images/PNG MENU/message-us-image.jpg" alt="Contact Us Image" class="contactus-image" />
+    </div>
+  </div>
+
+</section>
+
+<app-footer></app-footer>

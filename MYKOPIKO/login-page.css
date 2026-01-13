@@ -1,0 +1,325 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fff8e7;
+  font-family: Poppins, sans-serif;
+}
+
+/* =========================
+       NAVBAR
+    ========================= */
+.navbar {
+  padding: 15px 0;
+  position: relative;
+}
+
+.navdiv {
+  max-width: 1320px;
+  margin: auto;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shopName h3 {
+  color: #2c1e1a;
+  font-weight: bold;
+  font-size: 28px; /* make both pages consistent */
+  letter-spacing: 1px; /* optional for nicer spacing */
+}
+
+@media screen and (max-width: 768px) {
+  .shopName h3 {
+    font-size: 22px; /* scale for mobile */
+  }
+}
+
+.nav-menu {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #3d1c02;
+  font-weight: bold;
+}
+
+
+.navorder {
+  display: flex;
+  gap: 20px;
+}
+
+.cart,
+.order {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #3d1c02;
+  display: block;
+}
+
+
+
+.login-box {
+    background-color: #5D4848;
+    width: 90%;
+    max-width: 1300px;
+    min-height: 600px;
+    margin: 100px auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* This is key to stretch children to full height */
+}
+
+.login-image {
+    width: 50%;
+    /* Ensure this container also stretches to match parent's height */
+    display: flex; 
+}
+
+.login-image img {
+    width: 100%;
+    height: 100%; /* Fill the entire height of its container */
+    object-fit: cover; /* Maintain aspect ratio and cover the area */
+    display: block;
+}
+
+.login-form-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* vertically center the form */
+    padding: 40px;
+}
+
+.login-form-container h1 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 40px; /* space between title and buttons */
+    text-align: center;
+}
+
+/* Button Container Styles */
+.facebookbtn, .googlebtn {
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+
+.facebookbtn a, .googlebtn a {
+   text-decoration: none;
+}
+
+.fb-btn, .google-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.fb-btn {
+    background-color: #1877F2;
+    color: white;
+}
+
+.google-btn {
+    background-color: white;
+    color: #444;
+    border: 1px solid #ddd;
+}
+
+.btn-logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.fb-btn h2, .google-btn h2 {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.fb-btn:hover { background-color: #145dbf; }
+.google-btn:hover { background-color: #f1f1f1; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .login-image, .login-form-container {
+    width: 100%;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 32px;
+    background: #fff8e7;
+    flex-direction: column;
+    gap: 0;
+    width: 180px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    z-index: 100;
+    padding: 16px 0;
+    align-items: flex-start;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    padding: 10px 24px;
+  }
+
+  .nav-menu li a {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* Footer Base Styling */
+.footer {
+  background-color: #3d1c02;
+  color: #fdfcf0;
+  font-family: "Poppins", sans-serif;
+  width: 100vw;
+}
+
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 5%;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 40px;
+}
+
+.footer-col h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+  color: #fdfcf0;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  font-size: 13px;
+  margin-bottom: 10px;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #fdfcf0;
+}
+
+
+.footer-col ul li:hover {
+  opacity: 1;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.social-icons i {
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.social-icons i:hover {
+  transform: translateY(-3px);
+  opacity: 0.8;
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablet View (iPad/Small Laptops) */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+    gap: 50px 20px;
+  }
+}
+
+/* Mobile View (Phones) */
+@media (max-width: 600px) {
+  .footer {
+    padding: 60px 30px;
+    text-align: center; /* Optional: Centers text for a cleaner mobile look */
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr; /* 1 column per row */
+    gap: 40px;
+  }
+
+  .social-icons {
+    justify-content: center; /* Centers icons if text is centered */
+    margin-left: 0;
+  }
+
+  .footer-col h3 {
+    margin-bottom: 10px;
+  }
+}

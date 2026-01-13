@@ -1,15 +1,22 @@
 /* =========================
    HERO SECTION BACKGROUND
 ========================= */
-
 .hero-section {
-  /* section-wide background */
   width: 100vw;
   min-height: 100vh;
   background-color: #fff8e7;
   margin-left: calc(-50vw + 50%);
   margin-top: 0;
   padding-top: 0;
+}
+
+/* Full-bleed menu section that contains the carousels */
+.menu-section {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-sizing: border-box;
+  background-color: #fdfcf0;
+  padding: 40px 0;
 }
 
 /* =========================
@@ -111,3 +118,357 @@
     margin-right: auto;
   }
 }
+.about-us {
+  background-color: #ffffff;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-sizing: border-box;
+  padding: 60px 0;
+  overflow-x: hidden;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto 100px auto;
+  padding: 0 5%;
+}
+
+
+.content-wrapper.reverse {
+  flex-direction: row-reverse;
+}
+
+.about-text-container {
+  flex: 1;
+  padding: 20px;
+}
+
+.about-text-container h1 {
+  font-family: "Poppins", sans-serif;
+  color: #3d1c02;
+  font-size: 50px;
+  margin-bottom: 20px;
+}
+
+.about-text-container h2 {
+  font-family: "Playfair Display", serif;
+  color: #4a4a4a;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 1.4;
+  max-width: 500px;
+}
+
+/* Image Side */
+.about-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.responsive-img {
+  width: 100%;
+  max-width: 700px; 
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Reviews Section */
+.reviews-section {
+  text-align: center;
+  padding: 50px 5%;
+}
+
+.reviews-section h1 {
+  font-family: "Playfair Display", serif;
+  color: #3d1c02;
+  font-size: 50px;
+  margin-bottom: 60px;
+}
+
+.reviews-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.review-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review-pfp {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.name {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  color: #3d1c02;
+}
+
+.review-title {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  color: #3d1c02;
+  margin: 10px 0;
+}
+
+.comment {
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  color: #3d1c02;
+  margin-bottom: 15px;
+}
+
+.stars {
+  width: 100px;
+  height: auto;
+}
+
+/* --- RESPONSIVE MOBILE FIXES --- */
+@media (max-width: 992px) {
+  .content-wrapper,
+  .content-wrapper.reverse {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .about-text-container h1 {
+    font-size: 36px;
+  }
+
+  .about-text-container h2 {
+    font-size: 22px;
+    margin: 0 auto;
+  }
+
+  .about-text-container {
+    margin-bottom: 30px;
+  }
+}
+
+/* Section Base */
+.contact-us {
+  background-color: #fdfcf0;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  box-sizing: border-box;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.contact-header h1 {
+  font-family: "Playfair Display", serif;
+  color: #2e1f1b;
+  font-size: clamp(40px, 8vw, 60px); 
+  margin-bottom: 10px;
+}
+
+.contact-header p {
+  font-family: "Poppins", sans-serif;
+  color: #2e1f1b;
+  margin-bottom: 50px;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Form Styling */
+.message-us {
+  flex: 1;
+  background-color: #fdfcf0;
+  border: 1px solid #2e1f1b;
+  padding: 40px 20px;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.box-title {
+  font-family: "Playfair Display", serif;
+  color: #2e1f1b;
+  margin-bottom: 25px;
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.input-fields label {
+  width: 85%;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #3d1c02;
+}
+
+.input-fields input,
+.input-fields textarea {
+  width: 85%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #2e1f1b;
+  font-family: "Poppins", sans-serif;
+}
+
+.input-fields textarea {
+  height: 120px;
+  resize: none;
+}
+
+.btn-submit {
+  margin-top: 20px;
+  padding: 12px 40px;
+  background-color: #3d1c02;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #2e1301;
+}
+
+/* Image Styling */
+.message-us-image {
+  flex: 1;
+  max-width: 550px;
+}
+
+.message-us-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* For Tablets and Mobile Phones */
+@media (max-width: 992px) {
+  .contact-container {
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  .message-us,
+  .message-us-image {
+    width: 100%;
+    max-width: 100%; 
+  }
+
+  .message-us-image img {
+    height: 400px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-header h1 {
+    font-size: 35px;
+  }
+
+  .input-fields label,
+  .input-fields input,
+  .input-fields textarea {
+    width: 100%;
+  }
+}
+
+/* Invalid field */
+.input-fields input.invalid,
+.input-fields textarea.invalid {
+  border: 2px solid red;
+}
+
+/* Error text inside placeholder */
+.input-fields input.invalid::placeholder,
+.input-fields textarea.invalid::placeholder {
+  color: red;
+}
+
+/* ================================
+   FORM FIELD STRUCTURE
+================================ */
+.field-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+/* ================================
+   ERROR MESSAGE (NO LAYOUT SHIFT)
+================================ */
+.field-error {
+  position: absolute;
+  bottom: -16px;
+  left: 7.5%;
+  font-size: 12px;
+  color: red;
+  font-family: "Poppins", sans-serif;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ================================
+   INVALID INPUT STYLE
+================================ */
+.input-fields input.invalid,
+.input-fields textarea.invalid {
+  border: 2px solid red;
+  outline: none;
+}
+
+/* Optional: subtle shake animation */
+.input-fields input.invalid,
+.input-fields textarea.invalid {
+  animation: shake 0.15s linear 2;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  50% { transform: translateX(2px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+

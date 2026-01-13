@@ -1,0 +1,151 @@
+.footer {
+  background-color: #3d1c02;
+  color: #fdfcf0;
+
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 5%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 40px;
+}
+
+
+.footer-col h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+  color: #fdfcf0;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  font-size: 13px;
+  margin-bottom: 10px;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #fdfcf0;
+}
+
+
+.footer-col ul li:hover {
+  opacity: 1;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.social-icons i {
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.social-icons i:hover {
+  transform: translateY(-3px);
+  opacity: 0.8;
+}
+
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablet View (iPad/Small Laptops) */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
+    gap: 50px 20px;
+  }
+}
+
+/* Mobile View (Phones) */
+@media (max-width: 600px) {
+  .footer {
+    padding: 60px 30px;
+    text-align: center; /* Centers text for a cleaner mobile look */
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr; /* 1 column per row */
+    gap: 40px;
+  }
+
+  .social-icons {
+    justify-content: center; /* Centers icons if text is centered */
+    margin-left: 0;
+  }
+
+  .footer-col h3 {
+    margin-bottom: 10px;
+  }
+
+  /* Make quick links horizontally scrollable on small screens */
+  .footer-quick-links ul {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    margin: 0;
+  }
+
+  .footer-quick-links ul li {
+    flex: 0 0 auto;
+  }
+
+  .footer-quick-links ul li a {
+    white-space: nowrap;
+  }
+}
+
+/* Carousel responsive tweaks */
+@media (max-width: 770px) {
+  #carousel-vp,
+  #carousel-vp2,
+  #carousel-vp3 {
+    width: 100%;
+    padding: 0 8px;
+  }
+
+  .cCarousel-item,
+  .Carousel-item {
+    width: 220px;
+  }
+}
+
+@media (max-width: 510px) {
+  .cCarousel-item,
+  .Carousel-item {
+    width: 200px;
+  }
+}
