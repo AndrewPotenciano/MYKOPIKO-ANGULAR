@@ -33,7 +33,7 @@
               <div class="card-body d-flex flex-column">
                 <h5 class="card-title">{{ item.name }}</h5>
                 <p class="card-text flex-grow-1">{{ item.price }} PHP</p>
-                <button class="btn btn-cart">Add to Cart</button>
+                <button class="btn btn-cart" (click)="addToCart(item)">Add to Cart</button>
               </div>
             </div>
           </div>

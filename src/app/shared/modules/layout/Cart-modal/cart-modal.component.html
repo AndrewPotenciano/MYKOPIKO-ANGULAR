@@ -1,0 +1,41 @@
+<div class="cart-modal-backdrop" *ngIf="(modalOpen$ | async)">
+	<div class="cart-modal">
+		<div class="cart-modal-header">
+			<h5>Your Cart</h5>
+			<button class="btn-close" aria-label="Close" (click)="close()"></button>
+		</div>
+
+		<div class="cart-modal-body">
+			<ng-container *ngIf="(items$ | async) as items">
+				<p *ngIf="items.length === 0">Your cart is empty.</p>
+
+				<div *ngFor="let it of items; let i = index" class="cart-item">
+					<button class="remove-btn btn btn-sm btn-outline-danger" (click)="remove(i)">Remove</button>
+
+					<img *ngIf="it.img" [src]="it.img" alt="" class="item-img" />
+
+					<div class="item-info">
+						<div class="item-name">{{ it.name }}</div>
+						<div class="item-price">{{ it.price | number:'1.2-2' }}</div>
+					</div>
+
+					<div class="qty-controls">
+						<button (click)="decrement(i)" class="btn btn-sm">-</button>
+						<span class="qty">{{ it.quantity }}</span>
+						<button (click)="increment(i)" class="btn btn-sm">+</button>
+					</div>
+				</div>
+
+				<div *ngIf="items.length > 0" class="cart-total">
+					<hr />
+					<strong>Total: {{ total(items) | number:'1.2-2' }}</strong>
+				</div>
+			</ng-container>
+		</div>
+
+		<div class="cart-modal-footer">
+			<button class="btn btn-secondary" (click)="close()">Close</button>
+			<button class="btn btn-primary" [disabled]="!(items$ | async)?.length">Checkout</button>
+		</div>
+	</div>
+</div>

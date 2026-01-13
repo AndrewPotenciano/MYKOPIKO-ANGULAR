@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../cart.service';
 
 export interface CarouselItem {
   name: string;
@@ -21,6 +22,13 @@ export class Carousel {
   @Input() title: string = 'Popular Menu';
   @Input() items: CarouselItem[] = [];
   carouselId: string = `productsCarousel${++carouselCounter}`;
+
+  constructor(private cart: CartService) {}
+
+  addToCart(item: CarouselItem) {
+    this.cart.add({ name: item.name, price: item.price, quantity: 1, img: item.image });
+    this.cart.open();
+  }
 
   // Split items into chunks for carousel slides
   get slides(): CarouselItem[][] {
