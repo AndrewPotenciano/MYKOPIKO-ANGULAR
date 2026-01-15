@@ -1,26 +1,21 @@
-import { Component } from '@angular/core';
-import { Carousel, CarouselItem } from '../../shared/modules/layout/carousel/carousel';
-import { Footer } from '../../shared/modules/layout/footer/footer';
-import { FormsModule, NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
-import { RouterLink } from "@angular/router";
-
-interface ContactForm {
-  name: string;
-  email: string;
-  message: string;
-}
+import { Router } from '@angular/router';
+import { GoogleApi, UserInfo } from '../google-api';
+import { Carousel, CarouselItem } from '../shared/modules/layout/carousel/carousel';
+import { CartService } from '../shared/modules/layout/cart.service';
+import { Footer } from '../shared/modules/layout/footer/footer';
 
 @Component({
-  selector: 'app-home',
-  imports: [Carousel, Footer, FormsModule, CommonModule, RouterLink],
-  templateUrl: './home.html',
-  styleUrl: './home.css',
+  selector: 'app-menu',
+  standalone: true,
+  imports: [CommonModule, Carousel, Footer],
+  templateUrl: './menu.html',
+  styleUrls: ['./menu.css'],
 })
-export class Home {
+export class Menu implements OnInit {
+  userInfo?: UserInfo;
   
-
   popularMenuItems: CarouselItem[] = [
     {
       name: 'Caramel Latte',
@@ -85,14 +80,12 @@ export class Home {
       image: '/images/Affogato Frappe.webp',
       alt: 'Affogato Frappe'
     },
-
     {
       name: 'Creme Frappe',
       price: 130,
       image: '/images/Creme Frappe.png',
       alt: 'Creme Frappe'
     },
-
     {
       name: 'Java Frappe',
       price: 150,
@@ -126,14 +119,12 @@ export class Home {
       image: '/images/Espresso PNG/Latte.png',
       alt: 'Latte'
     },
-
     {
       name: 'Macchiato',
       price: 160,
       image: '/images/Espresso PNG/Macchiato.png',
       alt: 'Macchiato'
     },
-
     {
       name: 'Mocha',
       price: 100,
@@ -167,14 +158,12 @@ export class Home {
       image: '/images/Pastries PNG/Croissant.png',
       alt: 'Croissant'
     },
-
     {
       name: 'Muffins',
       price: 80,
       image: '/images/Pastries PNG/muffins.png',
       alt: 'Muffins'
     },
-
     {
       name: 'Strawberry Cake',
       price: 150,
@@ -183,38 +172,24 @@ export class Home {
     },
   ];
 
-  scrollTo(event: Event, id: string) {
-    event.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  constructor(private google: GoogleApi, private router: Router, private cartService: CartService) {
+    this.google.userProfileSubject.subscribe(info => this.userInfo = info);
   }
 
-onSubmit(form: NgForm) {
-  if (form.invalid) {
-    Object.values(form.controls).forEach(control => {
-      control.markAsTouched();
+  ngOnInit() {
+    this.cartService.checkoutSubject.subscribe(shouldCheckout => {
+      if (shouldCheckout) {
+        this.router.navigate(['/menu/checkout']).catch(() => {});
+      }
     });
-    return;
   }
 
-  this.send(); 
-}
-  form: ContactForm = {
-    name: '',
-    email: '',
-    message: ''
-  };
-  
-
-  send(){
-   emailjs.send('service_u35oe9x', 'template_iejhg7f', {...this.form}, 
-    'VjtiOX-nmb9M7CHQ0').then(() => {
-      alert('Message sent successfully!');
-      this.form = { name: '', email: '', message: '' };
-    })
+  isLoggedIn(): boolean {
+    return this.google.isLoggedIn();
   }
 
+  logout() {
+    this.google.SignOut();
+    this.router.navigate(['/']).catch(() => {});
+  }
 }
-

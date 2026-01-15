@@ -1,0 +1,83 @@
+<!-- ================= PAYMENT BOX ================= -->
+<div class="checkout-box">
+  <!-- HEADER -->
+  <div class="header-nav">
+    <div class="back-section">
+      <a (click)="goBack()" class="back-link">❮ Back</a>
+      <p class="step-text">Step 2 of 3 : Payment</p>
+    </div>
+
+    <!-- CENTERED STEPS -->
+    <div class="steps-wrapper">
+      <div class="checkout-step">
+        <div class="step-item completed">
+          <img src="images-2/info.png" alt="Info">
+        </div>
+        <span class="line active"></span>
+        <div class="step-item active">
+          <img src="images-2/credit-card.png" alt="Payment">
+        </div>
+        <span class="line"></span>
+        <div class="step-item">
+          <img src="images-2/express-delivery.png" alt="Confirm">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYMENT CONTENT -->
+  <div class="payment-content">
+
+    <!-- LEFT -->
+    <div class="gcash-card">
+      <div class="qr-box">
+        <div class="gcash-header">
+          <h2>Gcash Payment</h2>
+          <p class="subtitle">Fast • Secure • Instant</p>
+        </div>
+        <h3>Scan To Pay</h3>
+
+        <div class="qr-inner">
+          <img src="images-2/GCash_logo.svg.png" class="gcash-logo" alt="GCash Logo">
+          <br>
+          <img src="images/QRPH.png" class="qr-code" id="qrCode" (click)="onQrCodeClick()" 
+               [ngClass]="{'clicked': qrCodeClicked}" alt="QR Code">
+
+          <p class="amount">Amount: <strong id="gcash-amount">₱{{ total }}</strong></p>
+          <p class="ref">Ref: <span id="ref-number">{{ refNumber }}</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RIGHT -->
+    <div class="how-to-pay">
+      <h3>How to Pay with Gcash</h3>
+
+      <!-- STEP GUIDE WITH IMAGES -->
+      <div class="step-guide">
+        <span class="step-number">Step 1</span>
+        <img src="images-2/clip-board.png" alt="Clipboard">
+        <p>Open your GCash Account</p>
+      </div>
+
+      <div class="step-guide">
+        <span class="step-number">Step 2</span>
+        <img src="images-2/scan.png" alt="Scan">
+        <p>Scan The QR Code</p>
+      </div>
+
+      <div class="step-guide">
+        <span class="step-number">Step 3</span>
+        <img src="images-2/confirm.png" alt="Confirm">
+        <p>Confirm Payment</p>
+      </div>
+      <!-- CONFIRM PAYMENT BUTTON -->
+      <button id="confirm-payment" [disabled]="!qrCodeClicked" (click)="confirmPayment()">Confirm Payment</button>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>

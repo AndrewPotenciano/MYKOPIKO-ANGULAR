@@ -1,0 +1,197 @@
+/* ========================= LOGIN SECTION ========================= */
+section.vh-100 {
+    background-color: #FFF8E7;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+/* ========================= LOGO ========================= */
+.login-logo {
+    max-width: 520px;
+    height: auto;
+    margin-left: -90px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+@media (max-width: 768px) {
+    .login-logo {
+        max-width: 160px;
+        margin-left: 0;
+    }
+}
+
+/* ========================= CARD STYLES ========================= */
+.signin-card {
+    max-width: 880px;
+    margin: 0 auto;
+    border-radius: 1.5rem;
+    border: none;
+    background-color: #FFF8E7;
+    box-shadow: 0 20px 60px rgba(37, 36, 34, 0.15);
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 80px rgba(37, 36, 34, 0.2);
+}
+
+.signin-card .card-body {
+    padding: 3rem 2.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #faf9f7 100%);
+    border: 1px solid rgba(44, 30, 26, 0.08);
+}
+
+/* ========================= HEADING ========================= */
+.signin-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3D1C02;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.signin-card p.text-muted {
+    font-size: 1rem;
+    color: #8B7355 !important;
+    margin-bottom: 2.5rem;
+}
+
+/* ========================= BUTTONS ========================= */
+.signin-card .btn {
+    font-size: 1.04rem;
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.signin-card .btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.signin-card .btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-facebook {
+    background: linear-gradient(135deg, #3b5998 0%, #2d4373 100%) !important;
+    color: #fff !important;
+    margin-bottom: 1rem;
+}
+
+.btn-facebook:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(59, 89, 152, 0.3);
+}
+
+.btn-google {
+    background: linear-gradient(135deg, #db4437 0%, #b73e2d 100%) !important;
+    color: #fff !important;
+}
+
+.btn-google:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(219, 68, 55, 0.3);
+}
+
+.signin-card .btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.signin-card .btn span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================= DISCLAIMER ========================= */
+.signin-card .disclaimer {
+    font-size: 0.85rem;
+    color: #8B7355;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(44, 30, 26, 0.1);
+}
+
+/* ========================= ANIMATIONS ========================= */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================= RESPONSIVE ========================= */
+@media (max-width: 576px) {
+    .signin-card {
+        max-width: 100%;
+        margin: 1rem;
+        border-radius: 1.2rem;
+    }
+
+    .signin-card .card-body {
+        padding: 2rem 1.5rem;
+    }
+
+    .signin-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .signin-card .btn {
+        font-size: 0.95rem;
+        padding: 0.9rem 1.2rem;
+    }
+}

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-  <a class="navbar-brand" href="#home" (click)="scrollTo($event,'home')">MYKOPIKO</a>
+  <a class="navbar-brand" routerLink="/" (click)="closeNav()">MYKOPIKO</a>
     <button class="navbar-toggler" type="button" (click)="toggleNav()"
             [attr.aria-expanded]="isNavOpen" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -12,8 +12,8 @@
         <li class="nav-item"><a class="nav-link" href="#menu" (click)="scrollTo($event,'menu')">Menu</a></li>
         <li class="nav-item"><a class="nav-link" href="#about-us" (click)="scrollTo($event,'about-us')">About Us</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact-us" (click)="scrollTo($event,'contact-us')">Contact Us</a></li>
-         <li class="nav-item"><a class="nav-icon-link" href="#" (click)="openCart($event)"><img src="/images-2/shopping-cart.png" alt="Shopping Cart" class="nav-icon"></a></li>
-        <li class="nav-item"><a class="nav-icon-link" href="#"><img src="/images-2/track.png" alt="Track Order" class="nav-icon"></a></li>
+        <li [hidden]="isLoginRoute" class="nav-item"><a class="nav-icon-link" href="#" (click)="openCart($event)"><img src="/images-2/shopping-cart.png" alt="Shopping Cart" class="nav-icon"></a></li>
+        <li [hidden]="isLoginRoute" class="nav-item"><a class="nav-icon-link" routerLink="/menu/track" (click)="closeNav()"><img src="/images-2/track.png" alt="Track Order" class="nav-icon"></a></li>
        
       </ul>
     </div>

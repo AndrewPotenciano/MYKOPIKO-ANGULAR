@@ -50,12 +50,20 @@ section.carousel.slide {
   z-index: 100; 
 }
 
+.menu-carousel [id^="productsCarousel"] .carousel-prev {
+  left: -50px;
+}
+
+.menu-carousel [id^="productsCarousel"] .carousel-next {
+  right: -50px;
+}
+
 .carousel-prev {
-  left: 30px; 
+  left: 50px; 
 }
 
 .carousel-next {
-  right: 30px; 
+  right: 50px; 
 }
 
 .carousel-control-btn:hover {

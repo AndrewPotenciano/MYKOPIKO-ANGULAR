@@ -1,0 +1,64 @@
+<!-- ================= TRACK BOX ================= -->
+<div class="checkout-box track-box">
+
+  <!-- HEADER -->
+  <div class="header-nav">
+    <div class="back-section">
+      <a (click)="goBack()" class="back-link">❮ Back</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="track-content">
+
+    <h2>Track Your Order</h2>
+    <p class="track-sub">You can now track the status of your delivery here</p>
+
+    <!-- STATUS STEPS -->
+    <div class="track-steps">
+      <ng-container *ngFor="let step of trackSteps; let last = last">
+        <div [ngClass]="{'track-step': true, 'active': step.completed}">
+          <div class="step-icon">
+            <i *ngIf="step.icon === 'coffee'" class="fas fa-mug-hot"></i>
+            <i *ngIf="step.icon === 'truck'" class="fas fa-truck"></i>
+            <i *ngIf="step.icon === 'box'" class="fas fa-box"></i>
+          </div>
+          <span>{{ step.label }}</span>
+        </div>
+        <span *ngIf="!last" class="track-line" [ngClass]="{'active': step.completed}"></span>
+      </ng-container>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-box">
+      <iframe
+  [src]="mapUrl"
+  width="100%"
+  height="350"
+  style="border:0;"
+  allowfullscreen
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+    </div>
+
+    <!-- RIDER INFO -->
+    <div class="rider-box">
+      <div class="rider-info">
+        <img [src]="riderInfo.image" class="rider-img" alt="Rider">
+        <div>
+          <p class="rider-name">{{ riderInfo.name }}</p>
+          <p class="rider-phone">{{ riderInfo.phone }}</p>
+        </div>
+      </div>
+
+      <button class="call-btn" (click)="callRider()">
+        Call Rider
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>

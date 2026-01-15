@@ -68,6 +68,7 @@
 
 .social-icons i {
   font-size: 18px;
+  margin-left: 5px;
   cursor: pointer;
   transition: transform 0.3s;
 }

@@ -30,7 +30,7 @@ export class Carousel {
     this.cart.open();
   }
 
-  // Split items into chunks for carousel slides
+ 
   get slides(): CarouselItem[][] {
     const chunkSize = 3;
     const slides = [];

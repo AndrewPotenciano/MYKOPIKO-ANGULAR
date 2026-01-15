@@ -8,11 +8,12 @@
         Experience the perfect blend of rich, aromatic coffee and cozy,
         inviting moments that brighten your day, one cup at a time.
       </p>
-      <a href="login-page.html" class="btn-primary">Order Now</a>
+      <a routerLink="/login" href="/login" class="btn-primary">Order Now</a>
     </div>
 
     <div class="hero-image">
-      <img src="/images/coffee-main-page.png" class="main_image" alt="Coffee" />
+      <img src="/images/coffee-main-page.png" class="main_image" alt="Coffee"
+        width="450" height="330" loading="lazy" decoding="async" />
     </div>
   </div>
 </section>
@@ -20,9 +21,7 @@
 <!-- Menu section (full-bleed) -->
 <section id="menu" class="menu-section">
   <app-carousel [title]="'Popular Menu'" [items]="popularMenuItems"></app-carousel>
-  <app-carousel [title]="'Frappe Menu'" [items]="frappMenuItems"></app-carousel>
-  <app-carousel [title]="'Espresso Menu'" [items]="espressoMenuItems"></app-carousel>
-  <app-carousel [title]="'Pastries Menu'" [items]="pastriesMenuItems"></app-carousel>
+  
 </section>
 
 <section class="about-us" id="about-us">
@@ -118,21 +117,23 @@
             <label for="name">Full name</label>
             <input type="text" id="name" name="name" ngModel required #name="ngModel" placeholder="Juan Dela Cruz"
               [class.invalid]="name.invalid && name.touched" [(ngModel)]="form.name" />
-
-            <span class="field-error" *ngIf="name.invalid && name.touched">
+            @if(name.invalid && name.touched){
+                <span class="field-error">
               Full name is required
             </span>
+            }
           </div>
-
           <!-- EMAIL -->
           <div class="field-wrapper">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" ngModel required #email="ngModel"
               placeholder="example@email.com" [class.invalid]="email.invalid && email.touched"
               [(ngModel)]="form.email" />
-            <span class="field-error" *ngIf="email.invalid && email.touched">
+              @if(email.invalid && email.touched){
+                <span class="field-error">
               Email is required
             </span>
+              }
           </div>
 
           <!-- MESSAGE -->
@@ -140,10 +141,12 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" ngModel required #message="ngModel" placeholder="Kumusta!"
               [class.invalid]="message.invalid && message.touched" [(ngModel)]="form.message"></textarea>
-
-            <span class="field-error" *ngIf="message.invalid && message.touched">
+              @if(message.invalid && message.touched){
+            <span class="field-error">
               Message is required
             </span>
+              }
+            
           </div>
 
           <button class="btn-submit" type="submit" [disabled]="contactForm.invalid">

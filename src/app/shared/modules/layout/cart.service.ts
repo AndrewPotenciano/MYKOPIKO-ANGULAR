@@ -12,9 +12,13 @@ export interface CartItem {
 export class CartService {
   private itemsSub = new BehaviorSubject<CartItem[]>([]);
   items$ = this.itemsSub.asObservable();
+  cartSubject = this.itemsSub.asObservable();
 
   private modalOpenSub = new BehaviorSubject<boolean>(false);
   modalOpen$ = this.modalOpenSub.asObservable();
+
+  private checkoutSub = new BehaviorSubject<boolean>(false);
+  checkoutSubject = this.checkoutSub.asObservable();
 
   get items() {
     return this.itemsSub.getValue();
@@ -30,6 +34,11 @@ export class CartService {
 
   toggle() {
     this.modalOpenSub.next(!this.modalOpenSub.getValue());
+  }
+
+  checkout() {
+    this.checkoutSub.next(true);
+    this.modalOpenSub.next(false);
   }
 
   add(item: CartItem) {
@@ -61,5 +70,6 @@ export class CartService {
 
   clear() {
     this.itemsSub.next([]);
+    this.checkoutSub.next(false);
   }
 }

@@ -38,6 +38,10 @@ export class CartModal {
 		this.cart.close();
 	}
 
+	checkout() {
+		this.cart.checkout();
+	}
+
 	total(items: CartItem[]) {
 		return items.reduce((s, it) => s + it.price * it.quantity, 0);
 	}

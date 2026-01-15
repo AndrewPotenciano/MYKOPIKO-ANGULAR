@@ -1,0 +1,48 @@
+<!-- ================= FINISH BOX ================= -->
+<div class="checkout-box finish-box">
+
+  <!-- STEPS -->
+  <div class="steps-wrapper">
+    <div class="checkout-step">
+      <div class="step-item completed">
+        <img src="/images-2/info.png" alt="Info">
+      </div>
+      <span class="line active"></span>
+      <div class="step-item completed">
+        <img src="/images-2/credit-card.png" alt="Payment">
+      </div>
+      <span class="line active"></span>
+      <div class="step-item active">
+        <img src="/images-2/express-delivery.png" alt="Delivery">
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="finish-content">
+
+    <div class="success-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="60" height="60">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+    </div>
+
+    <p class="order-status">Order Confirmed</p>
+
+    <h1>Thank you For Your Order</h1>
+    <p class="subtitle">Your delicious coffee will arrive soon!</p>
+
+    <p class="order-ref">
+      Order # <strong>{{ orderNumber }}</strong><br>
+      Estimated Delivery : 20–30 mins
+    </p>
+
+    <div class="finish-buttons">
+      <button class="btn primary" (click)="trackOrder()">
+        Track Order
+      </button>
+      <button class="btn outline" (click)="backHome()">Back Home</button>
+    </div>
+
+  </div>
+</div>
