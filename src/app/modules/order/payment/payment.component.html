@@ -1,0 +1,47 @@
+<!-- ================= PAYMENT BOX ================= -->
+<div class="checkout-box">
+	<!-- HEADER -->
+	<div class="header-nav">
+		<div class="back-section">
+			<a (click)="goBack()" class="back-link">❮ Back</a>
+			<p class="step-text">Step 2 of 3 : Payment</p>
+		</div>
+
+		<!-- CENTERED STEPS -->
+		<div class="steps-wrapper">
+			<div class="checkout-step">
+				<div class="step-item completed">
+					<img src="images-2/info.png" alt="Info">
+				</div>
+				<span class="line active"></span>
+				<div class="step-item active">
+					<img src="images-2/credit-card.png" alt="Payment">
+				</div>
+				<span class="line"></span>
+				<div class="step-item">
+					<img src="images-2/express-delivery.png" alt="Confirm">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- PAYMENT CONTENT -->
+	<div class="payment-content">
+
+		<!-- LEFT -->
+		<div class="gcash-card">
+			<div class="qr-box">
+				<div class="gcash-header">
+					<h2>Gcash Payment</h2>
+					<p class="subtitle">Fast • Secure • Instant</p>
+				</div>
+				<h3>Scan To Pay</h3>
+
+				<div class="qr-inner">
+					<!-- ...rest of template... -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,42 @@
+<!-- HERO SECTION -->
+<section id="home" class="hero-section">
+	<div class="hero-container">
+		<div class="hero-text">
+			<h1 class="main-h1">Start your Day with</h1>
+			<h2 class="main-h2">The Perfect Coffee</h2>
+			<p class="main-paragraph">
+				Experience the perfect blend of rich, aromatic coffee and cozy,
+				inviting moments that brighten your day, one cup at a time.
+			</p>
+			<a routerLink="/login" href="/login" class="btn-primary">Order Now</a>
+		</div>
+
+		<div class="hero-image">
+			<img src="/images/coffee-main-page.png" class="main_image" alt="Coffee"
+				width="450" height="330" loading="lazy" decoding="async" />
+		</div>
+	</div>
+</section>
+
+<!-- Menu section (full-bleed) -->
+<section id="menu" class="menu-section">
+	<app-carousel [title]="'Popular Menu'" [items]="popularMenuItems"></app-carousel>
+</section>
+
+<section class="about-us" id="about-us">
+	<div class="content-wrapper">
+		<div class="about-text-container">
+			<h1>About Us</h1>
+			<h2>
+				Mykopiko serves rich, comforting coffee made with quality beans and
+				brewed to perfection for every coffee lover.
+			</h2>
+		</div>
+		<div class="about-image-container">
+			<img src="images/about us image.jpeg" alt="About Us" class="responsive-img" />
+		</div>
+	</div>
+</section>
+
+<!-- Add Footer -->
+<app-footer></app-footer>

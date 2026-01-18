@@ -1,0 +1,1 @@
+// ...existing code from footer.spec.ts will be moved here

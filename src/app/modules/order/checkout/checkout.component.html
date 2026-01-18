@@ -1,0 +1,45 @@
+<!-- ================= CHECKOUT BOX ================= -->
+<div class="checkout-box">
+	<!-- HEADER -->
+	<div class="header-nav">
+		<div class="back-section">
+			<a (click)="goBack()" class="back-link">❮ Back</a>
+			<p class="step-text">Step 1 of 3 : Information</p>
+		</div>
+
+		<!-- CENTERED STEPS -->
+		<div class="steps-wrapper">
+			<div class="checkout-step">
+				<div class="step-item active">
+					<img src="images-2/info.png" alt="Info">
+				</div>
+				<span class="line"></span>
+				<div class="step-item">
+					<img src="images-2/credit-card.png" alt="Payment">
+				</div>
+				<span class="line"></span>
+				<div class="step-item">
+					<img src="images-2/express-delivery.png" alt="Confirm">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- CONTENT -->
+	<div class="checkout-content">
+		<div class="customer-info">
+			<h2>Customer Information</h2>
+
+			<label>Full Name</label>
+			<input type="text" placeholder="Juan Dela Cruz" [(ngModel)]="checkoutForm.name" />
+
+			<label>Email Address</label>
+			<input type="email" placeholder="exist@samplemail.com" [(ngModel)]="checkoutForm.email" />
+
+			<label>Delivery Address</label>
+			<input type="text" placeholder="Manila Bulacan City" [(ngModel)]="checkoutForm.address" />
+			<!-- ...rest of template... -->
+		</div>
+	</div>
+</div>
+<app-footer></app-footer>
