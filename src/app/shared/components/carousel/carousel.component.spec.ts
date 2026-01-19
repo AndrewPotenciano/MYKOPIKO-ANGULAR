@@ -1,1 +1,0 @@
-// ...existing code from carousel.spec.ts will be moved here (if exists)

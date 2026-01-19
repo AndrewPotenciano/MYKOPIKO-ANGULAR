@@ -1,1 +1,0 @@
-// ...existing code from checkout.spec.ts will be moved here (if exists)
