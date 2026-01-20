@@ -26,15 +26,11 @@ export interface UserInfo {
 export class GoogleApi {
   userProfileSubject = new Subject<UserInfo>();
   constructor(@Inject(OAuthService) private readonly oAuthService: OAuthService, private readonly router: Router) {
-    // Configure the OAuth service but do NOT auto-initiate login flow here.
     this.oAuthService.configure(oAuthConfig);
-    // Load discovery document and try to parse tokens on return (callback handling)
     this.oAuthService.loadDiscoveryDocumentAndTryLogin().then(() => {
       if (this.oAuthService.hasValidAccessToken()) {
         this.oAuthService.loadUserProfile().then(userprofile => {
-          // normalize and emit profile under `info` to match consumers
           this.userProfileSubject.next({ info: userprofile } as UserInfo);
-          // navigate to stored redirect (if any)
           const redirect = sessionStorage.getItem('post_login_redirect');
           if (redirect) {
             sessionStorage.removeItem('post_login_redirect');
@@ -52,9 +48,7 @@ export class GoogleApi {
     this.oAuthService.logOut();
   }
 
-  // Trigger the OAuth login flow (call from UI click)
   login(target?: string): void {
-    // store target path so we can restore after redirect
     if (target) {
       try { sessionStorage.setItem('post_login_redirect', target); } catch {}
     }

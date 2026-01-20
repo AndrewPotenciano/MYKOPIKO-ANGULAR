@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CartService } from '../../../services/cart.service';
+import { GoogleApi } from '../../../services/google-api.service';
 
 @Component({
 	selector: 'app-navbar',
@@ -14,12 +15,15 @@ import { CartService } from '../../../services/cart.service';
 export class Navbar {
 	isNavOpen = false;
 	isLoginRoute = false;
-	constructor(private cart: CartService, private router: Router) {
+	isMenuRoute = false;
+	constructor(private cart: CartService, private router: Router, private google: GoogleApi) {
 		// set initial value
 		this.isLoginRoute = this.router.url.includes('/login');
+		this.isMenuRoute = this.router.url.includes('/menu');
 		// update on navigation end
 		this.router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe(() => {
 			this.isLoginRoute = this.router.url.includes('/login');
+			this.isMenuRoute = this.router.url.includes('/menu');
 		});
 	}
 
@@ -58,5 +62,15 @@ export class Navbar {
 	openCart(event: Event) {
 		event.preventDefault();
 		this.cart.open();
+	}
+
+	isLoggedIn(): boolean {
+		return this.google.isLoggedIn();
+	}
+
+	logout() {
+		this.google.SignOut();
+		this.closeNav();
+		this.router.navigate(['/']).catch(() => {});
 	}
 }

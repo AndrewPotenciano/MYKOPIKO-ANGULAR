@@ -15,7 +15,6 @@ export class Login {
 	constructor(public google: GoogleApi, private router: Router) {}
 
 	ngOnInit(): void {
-		// when profile arrives after successful OAuth callback, navigate to /menu
 		this.google.userProfileSubject.subscribe(() => {
 			this.router.navigate(['/menu']);
 		});

@@ -1,6 +1,3 @@
-/* =========================
-   HERO SECTION BACKGROUND
-========================= */
 .hero-section {
 	width: 100vw;
 	min-height: 100vh;
@@ -9,8 +6,6 @@
 	margin-top: 0;
 	padding-top: 0;
 }
-
-/* Full-bleed menu section that contains the carousels */
 .menu-section {
 	width: 100vw;
 	margin-left: calc(-50vw + 50%);
@@ -19,9 +14,6 @@
 	padding: 40px 0;
 }
 
-/* =========================
-   HERO CONTAINER
-========================= */
 .hero-container {
 	max-width: 1320px;
 	margin: auto;
@@ -32,10 +24,6 @@
 	min-height: 80vh;
 	align-items: center;
 }
-
-/* =========================
-   HERO CONTENT
-========================= */
 .hero-text {
 	grid-column: 2 / span 5;
 }
@@ -44,9 +32,6 @@
 	grid-column: 8 / span 5;
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
 .main-h1 {
 	font-size: 48px;
 	color: #241C15;
@@ -66,9 +51,6 @@
 	font-weight: lighter;
 }
 
-/* =========================
-   BUTTON
-========================= */
 .btn-primary {
 	display: inline-block;
 	text-decoration: none;
@@ -82,20 +64,14 @@
 	text-align: center;
 }
 
-/* =========================
-   IMAGE
-========================= */
 .main_image {
 	width: 100%;
-	max-width: 450px;
+	max-width: 530px;
 	height: auto;
 	display: block;
 	margin-left: auto;
 }
 
-/* =========================
-   TABLET & MOBILE
-========================= */
 @media (max-width: 1024px) {
 	.hero-container {
 		grid-template-columns: 1fr;
@@ -123,8 +99,9 @@
 	width: 100vw;
 	margin-left: calc(-50vw + 50%);
 	box-sizing: border-box;
-	padding: 60px 0;
+	padding: 40px 0;
 	overflow-x: hidden;
+	padding-top: 10em;
 }
 
 .content-wrapper {
@@ -133,10 +110,9 @@
 	justify-content: center;
 	width: 100%;
 	max-width: 1400px;
-	margin: 0 auto 100px auto;
+	margin: 0 auto 40px auto;
 	padding: 0 5%;
 }
-
 
 .content-wrapper.reverse {
 	flex-direction: row-reverse;
@@ -163,12 +139,23 @@
 	max-width: 500px;
 }
 
-/* Image Side */
 .about-image-container {
 	flex: 1;
 	display: flex;
 	justify-content: center;
 	padding: 20px;
+}
+
+.scroll-reveal {
+	opacity: 0;
+	transform: translateY(24px) scale(0.95);
+	transition: opacity 0.6s ease, transform 0.6s ease;
+	will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+	opacity: 1;
+	transform: translateY(0) scale(1);
 }
 
 .responsive-img {
@@ -179,7 +166,6 @@
 	object-fit: cover;
 }
 
-/* Reviews Section */
 .reviews-section {
 	text-align: center;
 	padding: 50px 5%;
@@ -242,7 +228,15 @@
 	height: auto;
 }
 
-/* --- RESPONSIVE MOBILE FIXES --- */
+@media (prefers-reduced-motion: reduce) {
+	.scroll-reveal,
+	.scroll-reveal.is-visible {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
+
 @media (max-width: 992px) {
 	.content-wrapper,
 	.content-wrapper.reverse {
@@ -265,7 +259,7 @@
 	}
 }
 
-/* Section Base */
+
 .contact-us {
 	background-color: #fdfcf0;
 	width: 100vw;
@@ -297,7 +291,7 @@
 	margin: 0 auto;
 }
 
-/* Form Styling */
+
 .message-us {
 	flex: 1;
 	background-color: #fdfcf0;
@@ -362,7 +356,7 @@
 	background-color: #2e1301;
 }
 
-/* Image Styling */
+
 .message-us-image {
 	flex: 1;
 	max-width: 550px;
@@ -375,9 +369,6 @@
 	border-radius: 8px;
 }
 
-/* --- RESPONSIVE MEDIA QUERIES --- */
-
-/* For Tablets and Mobile Phones */
 @media (max-width: 992px) {
 	.contact-container {
 		flex-direction: column; 
@@ -407,21 +398,16 @@
 	}
 }
 
-/* Invalid field */
 .input-fields input.invalid,
 .input-fields textarea.invalid {
 	border: 2px solid red;
 }
 
-/* Error text inside placeholder */
 .input-fields input.invalid::placeholder,
 .input-fields textarea.invalid::placeholder {
 	color: red;
 }
 
-/* ================================
-   FORM FIELD STRUCTURE
-================================ */
 .field-wrapper {
 	position: relative;
 	width: 100%;
@@ -431,9 +417,6 @@
 	margin-bottom: 18px;
 }
 
-/* ================================
-   ERROR MESSAGE (NO LAYOUT SHIFT)
-================================ */
 .field-error {
 	position: absolute;
 	bottom: -16px;
@@ -445,16 +428,12 @@
 	pointer-events: none;
 }
 
-/* ================================
-   INVALID INPUT STYLE
-================================ */
 .input-fields input.invalid,
 .input-fields textarea.invalid {
 	border: 2px solid red;
 	outline: none;
 }
 
-/* Optional: subtle shake animation */
 .input-fields input.invalid,
 .input-fields textarea.invalid {
 	animation: shake 0.15s linear 2;
@@ -471,3 +450,36 @@
 	opacity: 0.6;
 	cursor: not-allowed;
 }
+
+.menu-section{
+	animation: text-appear both;
+	animation-timeline: view();
+}
+
+@keyframes text-appear {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 3;
+		transform: translateY(0);
+	}
+}
+
+.responsive-img{
+	animation: fadeUp both;
+	animation-timeline: view();
+}
+
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(10px) scale(0);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+

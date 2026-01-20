@@ -10,3 +10,8 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+body.menu-page .navbar,
+body.menu-page .navbar.navbar-light.bg-light {
+  background-color: #fdfcf0 !important;
+}

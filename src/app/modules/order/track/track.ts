@@ -24,7 +24,7 @@ export class Track implements OnInit {
 	riderInfo: RiderInfo = {
 		name: 'Andrew James',
 		phone: '09755957203',
-		image: '/images/PNG MENU/andrew.jpg'
+		image: '/assets/images/PNG MENU/andrew.jpg'
 	};
 
 	trackSteps = [

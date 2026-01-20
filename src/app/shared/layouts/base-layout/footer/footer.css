@@ -71,6 +71,7 @@
 	margin-left: 5px;
 	cursor: pointer;
 	transition: transform 0.3s;
+	color: white;
 }
 
 .social-icons i:hover {
@@ -78,10 +79,6 @@
 	opacity: 0.8;
 }
 
-
-/* --- RESPONSIVE MEDIA QUERIES --- */
-
-/* Tablet View (iPad/Small Laptops) */
 @media (max-width: 1024px) {
 	.footer-container {
 		grid-template-columns: repeat(3, 1fr); /* 3 columns per row */
@@ -89,20 +86,19 @@
 	}
 }
 
-/* Mobile View (Phones) */
 @media (max-width: 600px) {
 	.footer {
 		padding: 60px 30px;
-		text-align: center; /* Centers text for a cleaner mobile look */
+		text-align: center; 
 	}
 
 	.footer-container {
-		grid-template-columns: 1fr; /* 1 column per row */
+		grid-template-columns: 1fr; 
 		gap: 40px;
 	}
 
 	.social-icons {
-		justify-content: center; /* Centers icons if text is centered */
+		justify-content: center; 
 		margin-left: 0;
 	}
 
@@ -110,14 +106,12 @@
 		margin-bottom: 10px;
 	}
 
-	/* Make quick links horizontally scrollable on small screens */
 	.footer-quick-links ul {
 		display: flex;
 		gap: 16px;
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
-		padding-bottom: 8px;
-		margin: 0;
+		margin: 20px;
 	}
 
 	.footer-quick-links ul li {
@@ -129,7 +123,6 @@
 	}
 }
 
-/* Carousel responsive tweaks */
 @media (max-width: 770px) {
 	#carousel-vp,
 	#carousel-vp2,
