@@ -1,12 +1,24 @@
-<section [id]="carouselId" class="carousel slide my-5">
+<section [id]="carouselId" class="carousel slide my-5" [class.scroll-reveal]="reveal()">
 
-	<h1>{{ title }}</h1>
+	@if(showSeparator()){
+		<div class="category-separator" aria-hidden="true"></div>
+	}
+	<h1>{{ title() }}</h1>
 
 	<!-- INDICATORS -->
 	<div class="carousel-indicators">
 		<button *ngFor="let slide of slides; let i = index" type="button" [attr.data-bs-target]="'#' + carouselId" [attr.data-bs-slide-to]="i"
 			[class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : 'false'"></button>
 	</div>
+
+	@if(showDownHint()){
+		<div class="down-hint" aria-hidden="true">
+			<span class="down-hint-text">More below</span>
+			<svg class="down-hint-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+				<path d="M12 5v14M5 12l7 7 7-7" />
+			</svg>
+		</div>
+	}
 
 	<!-- FIXED BUTTONS OUTSIDE CARDS -->
 	<button class="carousel-control-btn carousel-prev" type="button"
@@ -50,4 +62,5 @@
 		</div>
 
 	</div>
+
 </section>

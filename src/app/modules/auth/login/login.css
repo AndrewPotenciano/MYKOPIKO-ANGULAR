@@ -127,6 +127,11 @@
 	box-shadow: 0 8px 16px rgba(24, 119, 242, 0.3);
 }
 
+.btn-facebook img {
+	margin-left: 15px;
+}
+
+
 .btn-google {
 	background: #DB4437 !important;
 	color: #fff !important;

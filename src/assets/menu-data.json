@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "name": "Classic Cappuccino",
+    "description": "Rich and bold cappuccino with milk foam",
+    "price": 120,
+    "image": "/assets/images/Espresso PNG/Cappuccino.png",
+    "alt": "Classic Cappuccino",
+    "category": "popular"
+  },
+  {
+    "id": 2,
+    "name": "Latte",
+    "description": "Smooth latte with steamed milk",
+    "price": 130,
+    "image": "/assets/images/Espresso PNG/Latte.png",
+    "alt": "Latte",
+    "category": "popular"
+  },
+  {
+    "id": 3,
+    "name": "Mocha",
+    "description": "Delicious mocha coffee blend",
+    "price": 140,
+    "image": "/assets/images/Espresso PNG/Mocha.png",
+    "alt": "Mocha",
+    "category": "popular"
+  },
+  {
+    "id": 3.5,
+    "name": "Cafe Americano",
+    "description": "Strong American style coffee",
+    "price": 110,
+    "image": "/assets/images/Espresso PNG/Cafe Americano.png",
+    "alt": "Cafe Americano",
+    "category": "popular"
+  },
+  {
+    "id": 3.6,
+    "name": "Macchiato",
+    "description": "Espresso with a touch of milk foam",
+    "price": 120,
+    "image": "/assets/images/Espresso PNG/Macchiato.png",
+    "alt": "Macchiato",
+    "category": "popular"
+  },
+  {
+    "id": 3.7,
+    "name": "Cortado",
+    "description": "Balanced mix of espresso and milk",
+    "price": 120,
+    "image": "/assets/images/Espresso PNG/Cortado.png",
+    "alt": "Cortado",
+    "category": "popular"
+  },
+  {
+    "id": 4,
+    "name": "Caramel Frappe",
+    "description": "Sweet caramel flavored frappe",
+    "price": 160,
+    "image": "/assets/images/PNG MENU/Caramel Frappe.png",
+    "alt": "Caramel Frappe",
+    "category": "frappe"
+  },
+  {
+    "id": 5,
+    "name": "Java Frappe",
+    "description": "Rich coffee frappe",
+    "price": 150,
+    "image": "/assets/images/PNG MENU/Java Frappe.png",
+    "alt": "Java Frappe",
+    "category": "frappe"
+  },
+  {
+    "id": 6,
+    "name": "Creme Frappe",
+    "description": "Creamy creme frappe delight",
+    "price": 150,
+    "image": "/assets/images/PNG MENU/Creme Frappe.png",
+    "alt": "Creme Frappe",
+    "category": "frappe"
+  },
+  {
+    "id": 7,
+    "name": "White Frappe",
+    "description": "Light and smooth white frappe",
+    "price": 160,
+    "image": "/assets/images/PNG MENU/White Frappe.png",
+    "alt": "White Frappe",
+    "category": "frappe"
+  },
+  {
+    "id": 8,
+    "name": "Strawberry Frappe",
+    "description": "Fresh strawberry frappe",
+    "price": 160,
+    "image": "/assets/images/PNG MENU/Strawberry Frappe.png",
+    "alt": "Strawberry Frappe",
+    "category": "frappe"
+  },
+  {
+    "id": 8.5,
+    "name": "Affogato Frappe",
+    "description": "Ice cream with hot espresso",
+    "price": 170,
+    "image": "/assets/images/PNG MENU/Affogato Frappe.png",
+    "alt": "Affogato Frappe",
+    "category": "frappe"
+  },
+  {
+    "id": 9,
+    "name": "Cafe Americano",
+    "description": "Strong American style coffee",
+    "price": 110,
+    "image": "/assets/images/Espresso PNG/Cafe Americano.png",
+    "alt": "Cafe Americano",
+    "category": "espresso"
+  },
+  {
+    "id": 10,
+    "name": "Macchiato",
+    "description": "Espresso with a touch of milk foam",
+    "price": 120,
+    "image": "/assets/images/Espresso PNG/Macchiato.png",
+    "alt": "Macchiato",
+    "category": "espresso"
+  },
+  {
+    "id": 11,
+    "name": "Cortado",
+    "description": "Balanced mix of espresso and milk",
+    "price": 120,
+    "image": "/assets/images/Espresso PNG/Cortado.png",
+    "alt": "Cortado",
+    "category": "espresso"
+  },
+  {
+    "id": 11.5,
+    "name": "Mocha",
+    "description": "Espresso with chocolate and milk",
+    "price": 140,
+    "image": "/assets/images/Espresso PNG/Mocha.png",
+    "alt": "Mocha",
+    "category": "espresso"
+  },
+  {
+    "id": 11.6,
+    "name": "Latte",
+    "description": "Smooth latte with steamed milk",
+    "price": 130,
+    "image": "/assets/images/Espresso PNG/Latte.png",
+    "alt": "Latte",
+    "category": "espresso"
+  },
+  {
+    "id": 11.7,
+    "name": "Cappuccino",
+    "description": "Rich cappuccino with milk foam",
+    "price": 120,
+    "image": "/assets/images/Espresso PNG/Cappuccino.png",
+    "alt": "Cappuccino",
+    "category": "espresso"
+  },
+  {
+    "id": 12,
+    "name": "Croissant",
+    "description": "Buttery fresh croissant",
+    "price": 80,
+    "image": "/assets/images/Pastries PNG/Croissant.png",
+    "alt": "Croissant",
+    "category": "pastries"
+  },
+  {
+    "id": 13,
+    "name": "Cookies",
+    "description": "Delicious homemade cookies",
+    "price": 90,
+    "image": "/assets/images/Pastries PNG/cookies.png",
+    "alt": "Cookies",
+    "category": "pastries"
+  },
+  {
+    "id": 14,
+    "name": "Muffins",
+    "description": "Chocolate chip muffins",
+    "price": 100,
+    "image": "/assets/images/Pastries PNG/muffins.png",
+    "alt": "Muffins",
+    "category": "pastries"
+  },
+  {
+    "id": 15,
+    "name": "Cheesecake",
+    "description": "Rich creamy cheesecake",
+    "price": 120,
+    "image": "/assets/images/Pastries PNG/cheescake.png",
+    "alt": "Cheesecake",
+    "category": "pastries"
+  },
+  {
+    "id": 16,
+    "name": "Brownies",
+    "description": "Rich chocolate brownies",
+    "price": 95,
+    "image": "/assets/images/Pastries PNG/brownies.png",
+    "alt": "Brownies",
+    "category": "pastries"
+  },
+  {
+    "id": 17,
+    "name": "Strawberry Cake",
+    "description": "Fresh strawberry cake",
+    "price": 110,
+    "image": "/assets/images/Pastries PNG/strawberry cake.png",
+    "alt": "Strawberry Cake",
+    "category": "pastries"
+  }
+]

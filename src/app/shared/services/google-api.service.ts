@@ -45,8 +45,12 @@ export class GoogleApi {
 		return this.oAuthService.hasValidAccessToken();
 	}
 
-	SignOut() {
-		this.oAuthService.logOut();
+	async SignOut(): Promise<void> {
+		try {
+			await this.oAuthService.revokeTokenAndLogout();
+		} catch {
+			this.oAuthService.logOut();
+		}
 	}
 
 	login(redirect?: string) {

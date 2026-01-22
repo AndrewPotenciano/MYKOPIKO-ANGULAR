@@ -6,12 +6,45 @@
 	margin-top: 0;
 	padding-top: 0;
 }
+
+.hero-text,
+.hero-image {
+	opacity: 0;
+	transform: translateY(16px);
+	animation: heroFadeUp 0.9s ease-out forwards;
+}
+
+.hero-image {
+	animation-delay: 0.15s;
+}
 .menu-section {
 	width: 100vw;
 	margin-left: calc(-50vw + 50%);
 	box-sizing: border-box;
 	background-color: #fdfcf0;
-	padding: 40px 0;
+	padding: 40px 0 80px;
+}
+
+.menu-section app-carousel {
+	display: block;
+	margin-bottom: 80px;
+}
+
+.menu-section app-carousel.carousel {
+	margin-bottom: 90px;
+}
+
+.menu-section app-carousel.carousel .carousel-item {
+	transition: opacity 0.8s ease;
+	opacity: 0;
+}
+
+.menu-section app-carousel.carousel .carousel-item.active {
+	opacity: 1;
+}
+
+.menu-section app-carousel:last-child {
+	margin-bottom: 0;
 }
 
 .hero-container {
@@ -70,6 +103,38 @@
 	height: auto;
 	display: block;
 	margin-left: auto;
+	opacity: 0;
+	transition: transform 0.6s ease, filter 0.6s ease;
+	animation: heroFadeIn 0.9s ease-out forwards, heroFloat 4.5s ease-in-out infinite 0.9s;
+}
+
+@keyframes heroFadeUp {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes heroFloat {
+	0%, 100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-12px);
+	}
+}
+
+@keyframes heroFadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @media (max-width: 1024px) {

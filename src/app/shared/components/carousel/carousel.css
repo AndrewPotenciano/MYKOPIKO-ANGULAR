@@ -8,6 +8,26 @@ section.carousel.slide {
 	position: relative;
 }
 
+.scroll-reveal {
+	opacity: 0;
+	transform: translateY(24px) scale(0.98);
+	transition: opacity 0.6s ease, transform 0.6s ease;
+	will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+	opacity: 1;
+	transform: translateY(0) scale(1);
+}
+
+.category-separator {
+	width: 120px;
+	height: 3px;
+	background-color: #3D1C02;
+	margin: 0 auto 4px;
+	border-radius: 999px;
+}
+
 /* =========================
    TITLE
 ========================= */
@@ -23,6 +43,36 @@ section.carousel.slide {
 ========================= */
 .carousel-indicators {
 	bottom: -50px;
+}
+
+.down-hint {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: -90px;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+	color: #3D1C02;
+	font-size: 14px;
+}
+
+.down-hint-text {
+	font-weight: 500;
+}
+
+.down-hint-arrow {
+	animation: downHintBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes downHintBounce {
+	0%, 100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(4px);
+	}
 }
 
 .carousel-indicators button {
@@ -157,19 +207,6 @@ section.carousel.slide {
    MOBILE FIX
 ========================= */
 @media (max-width: 767px) {
-
-	[id^="productsCarousel"] .carousel-inner {
-		display: block;
-	}
-
-	[id^="productsCarousel"] .carousel-item {
-		display: block !important;
-		float: none;
-		transform: none !important;
-		transition: none !important;
-		margin-bottom: 24px;
-	}
-
 	.carousel-row {
 		flex-wrap: nowrap;
 		overflow-x: auto;
@@ -192,6 +229,9 @@ section.carousel.slide {
 	}
 
 	.carousel-indicators {
+		display: none;
+	}
+	.down-hint {
 		display: none;
 	}
 	.swipe-hint {

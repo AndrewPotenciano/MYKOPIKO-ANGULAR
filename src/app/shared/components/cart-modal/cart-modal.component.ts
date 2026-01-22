@@ -39,6 +39,7 @@ export class CartModal {
 	}
 
 	checkout() {
+		this.cart.close();
 		this.cart.checkout();
 	}
 

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { CartService } from '../../../shared/services/cart.service';
 import { Footer } from '../../../shared/layouts/base-layout/footer/footer';
+import { PhoneFormatDirective } from '../../../shared/directives/phone-format.directive';
+import { TrimDirective } from '../../../shared/directives/trim.directive';
 
 interface CheckoutForm {
 	name: string;
@@ -22,14 +24,14 @@ interface CartItem {
 @Component({
 	selector: 'app-checkout',
 	standalone: true,
-	imports: [CommonModule, FormsModule, Footer],
+	imports: [CommonModule, FormsModule, PhoneFormatDirective, TrimDirective, RouterLink],
 	templateUrl: './checkout.html',
 	styleUrls: ['./checkout.css'],
 })
 export class Checkout implements OnInit {
 	cartItems: CartItem[] = [];
 	subtotal = 0;
-	
+
 	checkoutForm: CheckoutForm = {
 		name: '',
 		email: '',
@@ -37,7 +39,7 @@ export class Checkout implements OnInit {
 		phone: ''
 	};
 
-	constructor(private cartService: CartService, private router: Router) {}
+	constructor(private cartService: CartService, private router: Router) { }
 
 	ngOnInit() {
 		this.cartService.cartSubject.subscribe(items => {
@@ -51,19 +53,27 @@ export class Checkout implements OnInit {
 	}
 
 	goBack() {
-		this.router.navigate(['/menu']).catch(() => {});
+		this.router.navigate(['/menu']).catch(() => { });
 	}
 
-	confirmOrder() {
-		if (this.checkoutForm.name && this.checkoutForm.email && this.checkoutForm.address && this.checkoutForm.phone) {
-			this.router.navigate(['/menu/payment']).catch(() => {});
-		} else {
-			alert('Please fill in all fields');
+	confirmOrder(form: NgForm) {
+		if (form.invalid) {
+			Object.values(form.controls).forEach(control => control.markAsTouched());
+			return;
 		}
+		this.router.navigate(['/menu/payment']).catch(() => { });
 	}
 
 	resetCheckout() {
 		this.checkoutForm = { name: '', email: '', address: '', phone: '' };
 		this.cartService.clear();
+	}
+
+	formatFullName() {
+		if (!this.checkoutForm.name) return;
+		this.checkoutForm.name = this.checkoutForm.name
+			.trim()
+			.toLowerCase()
+			.replace(/(^|\s)\S/g, (char: string) => char.toUpperCase());
 	}
 }

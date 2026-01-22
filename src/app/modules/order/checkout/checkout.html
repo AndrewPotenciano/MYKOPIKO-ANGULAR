@@ -3,7 +3,10 @@
 	<!-- HEADER -->
 	<div class="header-nav">
 		<div class="back-section">
-			<a (click)="goBack()" class="back-link">❮ Back</a>
+			<a routerLink="/menu" class="back-link">
+				<img src="/assets/images/back.png" class="back-icon" alt="Back">
+				<span>Back</span>
+			</a>
 			<p class="step-text">Step 1 of 3 : Information</p>
 		</div>
 
@@ -26,21 +29,50 @@
 	</div>
 
 	<!-- CONTENT -->
-	<div class="checkout-content">
+	<form class="checkout-content" #checkoutFormRef="ngForm" (ngSubmit)="confirmOrder(checkoutFormRef)" novalidate>
 		<div class="customer-info">
 			<h2>Customer Information</h2>
 
-			<label>Full Name</label>
-			<input type="text" placeholder="Juan Dela Cruz" [(ngModel)]="checkoutForm.name" />
+			<div class="field-wrapper">
+				<label for="checkout-name">Full Name</label>
+				<input id="checkout-name" type="text" name="name" required #name="ngModel"
+					placeholder="Juan Dela Cruz" [(ngModel)]="checkoutForm.name"
+					(blur)="formatFullName()" [class.invalid]="name.invalid && name.touched" />
+				@if(name.invalid && name.touched){
+					<span class="field-error">Full name is required</span>
+				}
+			</div>
 
-			<label>Email Address</label>
-			<input type="email" placeholder="exist@samplemail.com" [(ngModel)]="checkoutForm.email" />
+			<div class="field-wrapper">
+				<label for="checkout-email">Email Address</label>
+				<input id="checkout-email" type="email" name="email" required #email="ngModel"
+					placeholder="exist@samplemail.com" [(ngModel)]="checkoutForm.email"
+					(blur)="checkoutForm.email = (checkoutForm.email || '').trim().toLowerCase()"
+					[class.invalid]="email.invalid && email.touched" />
+				@if(email.invalid && email.touched){
+					<span class="field-error">Email is required</span>
+				}
+			</div>
 
-			<label>Delivery Address</label>
-			<input type="text" placeholder="Manila Bulacan City" [(ngModel)]="checkoutForm.address" />
+			<div class="field-wrapper">
+				<label for="checkout-address">Delivery Address</label>
+				<input id="checkout-address" type="text" name="address" required #address="ngModel"
+					placeholder="Manila Bulacan City" [(ngModel)]="checkoutForm.address" appTrim
+					(blur)="formatFullName()" [class.invalid]="address.invalid && address.touched" />
+				@if(address.invalid && address.touched){
+					<span class="field-error">Address is required</span>
+				}
+			</div>
 
-			<label>Phone Number</label>
-			<input type="text" placeholder="09xxxxxxxxx" [(ngModel)]="checkoutForm.phone" />
+			<div class="field-wrapper">
+				<label for="checkout-phone">Phone Number</label>
+				<input id="checkout-phone" type="tel" name="phone" required #phone="ngModel"
+					placeholder="0123 457 7891" [(ngModel)]="checkoutForm.phone" phoneFormat
+					[class.invalid]="phone.invalid && phone.touched"/>
+				@if(phone.invalid && phone.touched){
+					<span class="field-error">Phone number is required</span>
+				}
+			</div>
 		</div>
 
 		<div class="order-summary">
@@ -63,9 +95,7 @@
 				<h3 class="total-amount">₱{{ subtotal + 50 }}</h3>
 			</div>
 
-			<button class="confirm-order" (click)="confirmOrder()">Confirm Order</button>
+			<button class="confirm-order" type="submit" [disabled]="checkoutFormRef.invalid">Confirm Order</button>
 		</div>
-	</div>
+	</form>
 </div>
-
-<app-footer></app-footer>

@@ -1,12 +1,12 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Carousel, CarouselItem } from '../../../shared/components/carousel/carousel';
-import { Footer } from '../../../shared/layouts/base-layout/footer/footer';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import emailjs from '@emailjs/browser';
 import { RouterLink } from '@angular/router';
 import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
-
+import { MenuService } from '../../../shared/services/menu.service';
 
 interface ContactForm {
 	name: string;
@@ -17,173 +17,46 @@ interface ContactForm {
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [FormsModule, CommonModule, Footer, Carousel, RouterLink,NgxTrimDirectiveModule],
+	imports: [FormsModule, CommonModule, Carousel, RouterLink, NgxTrimDirectiveModule, HttpClientModule],
 	templateUrl: './home.html',
 	styleUrls: ['./home.css'],
 })
-export class Home implements AfterViewInit, OnDestroy {
+export class Home implements OnInit, AfterViewInit, OnDestroy {
 	private revealObserver?: IntersectionObserver;
-	popularMenuItems: CarouselItem[] = [
-		{
-			name: 'Caramel Latte',
-			price: 200,
-			image: '/assets/images/caramel-latte.png',
-			alt: 'Caramel Latte'
-		},
-		{
-			name: 'Cold Brew Coffee',
-			price: 150,
-			image: '/assets/images/cold-brew.png',
-			alt: 'Cold Brew Coffee'
-		},
-		{
-			name: 'Iced Coffee',
-			price: 100,
-			image: '/assets/images/ice-coffee.png',
-			alt: 'Iced Coffee'
-		},
-		{
-			name: 'Strawberry Frappe',
-			price: 150,
-			image: '/assets/images/Strawberry Frappe.webp',
-			alt: 'Strawberry Frappe'
-		},
-		{
-			name: 'Caramel Macchiato',
-			price: 160,
-			image: '/assets/images/macchiato.png',
-			alt: 'Caramel Macchiato'
-		},
-		{
-			name: 'Caramel Frappe',
-			price: 150,
-			image: '/assets/images/Caramel Frappe.webp',
-			alt: 'Caramel Frappe'
-		}
-	];
-
-	frappMenuItems: CarouselItem[] = [
-		{
-			name: 'Strawberry Frappe',
-			price: 150,
-			image: '/assets/images/Strawberry Frappe.webp',
-			alt: 'Strawberry Frappe'
-		},
-		{
-			name: 'Caramel Frappe',
-			price: 150,
-			image: '/assets/images/Caramel Frappe.webp',
-			alt: 'Caramel Frappe'
-		},
-		{
-			name: 'White Frappe',
-			price: 140,
-			image: '/assets/images/White Frappe.webp',
-			alt: 'White Frappe'
-		},
-		{
-			name: 'Affogato Frappe',
-			price: 160,
-			image: '/assets/images/Affogato Frappe.webp',
-			alt: 'Affogato Frappe'
-		},
-		{
-			name: 'Creme Frappe',
-			price: 130,
-			image: '/assets/images/Creme Frappe.png',
-			alt: 'Creme Frappe'
-		},
-		{
-			name: 'Java Frappe',
-			price: 150,
-			image: '/assets/images/Java Frappe.webp',
-			alt: 'Java Frappe'
-		}
-	];
-
-	espressoMenuItems: CarouselItem[] = [
-		{
-			name: 'Cafe Americano',
-			price: 150,
-			image: '/assets/images/Espresso PNG/Cafe Americano.png',
-			alt: 'Cafe Americano'
-		},
-		{
-			name: 'Cappuccino',
-			price: 130,
-			image: '/assets/images/Espresso PNG/Cappuccino.png',
-			alt: 'Cappuccino'
-		},
-		{
-			name: 'Cortado',
-			price: 160,
-			image: '/assets/images/Espresso PNG/Cortado.png',
-			alt: 'Cortado'
-		},
-		{
-			name: 'Latte',
-			price: 150,
-			image: '/assets/images/Espresso PNG/Latte.png',
-			alt: 'Latte'
-		},
-		{
-			name: 'Macchiato',
-			price: 160,
-			image: '/assets/images/Espresso PNG/Macchiato.png',
-			alt: 'Macchiato'
-		},
-		{
-			name: 'Mocha',
-			price: 100,
-			image: '/assets/images/Espresso PNG/Mocha.png',
-			alt: 'Mocha'
-		}
-	];
-
-	pastriesMenuItems: CarouselItem[] = [
-		{
-			name: 'Brownies',
-			price: 70,
-			image: '/assets/images/Pastries PNG/brownies.png',
-			alt: 'Brownies'
-		},
-		{
-			name: 'Cheescake',
-			price: 130,
-			image: '/assets/images/Pastries PNG/cheescake.png',
-			alt: 'Cheescake'
-		},
-		{
-			name: 'Cookies',
-			price: 60,
-			image: '/assets/images/Pastries PNG/cookies.png',
-			alt: 'Cookies'
-		},
-		{
-			name: 'Croissant',
-			price: 90,
-			image: '/assets/images/Pastries PNG/Croissant.png',
-			alt: 'Croissant'
-		},
-		{
-			name: 'Muffins',
-			price: 80,
-			image: '/assets/images/Pastries PNG/muffins.png',
-			alt: 'Muffins'
-		},
-		{
-			name: 'Strawberry Cake',
-			price: 150,
-			image: '/assets/images/Pastries PNG/strawberry cake.png',
-			alt: 'Strawberry Cake'
-		}
-	];
+	popularMenuItems: CarouselItem[] = [];
+	frappeMenuItems: CarouselItem[] = [];
+	espressoMenuItems: CarouselItem[] = [];
+	pastriesMenuItems: CarouselItem[] = [];
 
 	form: ContactForm = {
 		name: '',
 		email: '',
 		message: ''
 	};
+
+	constructor(
+		private menuService: MenuService,
+		private cdr: ChangeDetectorRef
+	) {}
+
+	ngOnInit() {
+		this.menuService.getPopularMenu().subscribe((data: any) => {
+			this.popularMenuItems = data as any;
+			this.cdr.detectChanges();
+		});
+		this.menuService.getFrappeMenu().subscribe((data: any) => {
+			this.frappeMenuItems = data as any;
+			this.cdr.detectChanges();
+		});
+		this.menuService.getEspressoMenu().subscribe((data: any) => {
+			this.espressoMenuItems = data as any;
+			this.cdr.detectChanges();
+		});
+		this.menuService.getPastriesMenu().subscribe((data: any) => {
+			this.pastriesMenuItems = data as any;
+			this.cdr.detectChanges();
+		});
+	}
 
 	scrollTo(event: Event, id: string) {
 		event.preventDefault();
@@ -212,7 +85,7 @@ export class Home implements AfterViewInit, OnDestroy {
 	}
 
 	ngAfterViewInit() {
-		const targets = document.querySelectorAll('.scroll-reveal');
+		const targets = document.querySelectorAll('.scroll-reveal, #menu, .reviews-section');
 		if (!('IntersectionObserver' in window)) {
 			targets.forEach((el) => el.classList.add('is-visible'));
 			return;
@@ -239,4 +112,13 @@ export class Home implements AfterViewInit, OnDestroy {
 	ngOnDestroy() {
 		this.revealObserver?.disconnect();
 	}
+	
+formatFullName() {
+  if (!this.form.name) return;
+  this.form.name = this.form.name
+    .trim()
+    .toLowerCase()
+    .replace(/(^|\s)\S/g, (char: string) => char.toUpperCase());
 }
+}
+

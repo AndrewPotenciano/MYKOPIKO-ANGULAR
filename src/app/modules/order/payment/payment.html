@@ -3,7 +3,10 @@
 	<!-- HEADER -->
 	<div class="header-nav">
 		<div class="back-section">
-			<a (click)="goBack()" class="back-link">❮ Back</a>
+			<a (click)="goBack()" class="back-link">
+				<img src="/assets/images/back.png" class="back-icon" alt="Back">
+				<span>Back</span>
+			</a>
 			<p class="step-text">Step 2 of 3 : Payment</p>
 		</div>
 
@@ -73,6 +76,10 @@
 				<img src="/assets/images-2/confirm.png" alt="Confirm">
 				<p>Confirm Payment</p>
 			</div>
+
+			<div class="payment-tip">
+				<strong>Tip:</strong> After confirming, keep the transaction receipt for reference.
+			</div>
 			<!-- CONFIRM PAYMENT BUTTON -->
 			<button id="confirm-payment" [disabled]="!qrCodeClicked" (click)="confirmPayment()">Confirm Payment</button>
 		</div>
@@ -80,4 +87,3 @@
 	</div>
 </div>
 
-<app-footer></app-footer>

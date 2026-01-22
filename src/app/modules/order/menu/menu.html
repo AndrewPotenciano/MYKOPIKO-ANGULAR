@@ -1,14 +1,23 @@
 @if(isLoggedIn()){
 <div class="page-wrapper">
-	<button class="logout-btn" (click)="logout()">Logout</button>
+	<button class="logout-btn" (click)="openLogoutModal()">Logout</button>
 </div>
+	@if(showLogoutModal){
+	<div class="logout-modal-backdrop" (click)="closeLogoutModal()"></div>
+	<div class="logout-modal" role="dialog" aria-modal="true" aria-labelledby="logout-title">
+		<h2 id="logout-title">Log out?</h2>
+		<p>Are you sure you want to log out?</p>
+		<div class="logout-modal-actions">
+			<button class="btn-secondary" type="button" (click)="closeLogoutModal()">Cancel</button>
+			<button class="btn-danger" type="button" (click)="confirmLogout()">Log out</button>
+		</div>
+	</div>
+	}
 }
 <!-- MENU SECTION -->
 <section id="menu" class="menu-section ">
-	<app-carousel [title]="'Popular Menu'" [items]="popularMenuItems"></app-carousel>
+	<app-carousel class="carousel" [title]="'Popular Menu'" [items]="popularMenuItems" [showDownHint]="true" [showSeparator]="false" [reveal]="true"></app-carousel>
 	<app-carousel [title]="'Frappe Menu'"  [items]="frappeMenuItems"></app-carousel>
 	<app-carousel [title]="'Espresso Menu'" [items]="espressoMenuItems"></app-carousel>
 	<app-carousel [title]="'Pastries Menu'" [items]="pastriesMenuItems"></app-carousel> 
 </section>
-
-<app-footer></app-footer>
