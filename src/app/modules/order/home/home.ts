@@ -1,124 +1,160 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Carousel, CarouselItem } from '../../../shared/components/carousel/carousel';
-import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import emailjs from '@emailjs/browser';
 import { RouterLink } from '@angular/router';
-import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
 import { MenuService } from '../../../shared/services/menu.service';
-
-interface ContactForm {
-	name: string;
-	email: string;
-	message: string;
-}
+import { Review, ReviewCardComponent } from '../../../shared/components/review-card/review-card.component';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 
 @Component({
-	selector: 'app-home',
-	standalone: true,
-	imports: [FormsModule, CommonModule, Carousel, RouterLink, NgxTrimDirectiveModule, HttpClientModule],
-	templateUrl: './home.html',
-	styleUrls: ['./home.css'],
+  selector: 'app-home',
+  standalone: true,
+  imports: [
+    CommonModule,
+    Carousel,
+    RouterLink,
+    HttpClientModule,
+    ReviewCardComponent,
+    ReactiveFormsModule
+  ],
+  templateUrl: './home.html',
+  styleUrls: ['./home.css'],
 })
 export class Home implements OnInit, AfterViewInit, OnDestroy {
-	private revealObserver?: IntersectionObserver;
-	popularMenuItems: CarouselItem[] = [];
-	frappeMenuItems: CarouselItem[] = [];
-	espressoMenuItems: CarouselItem[] = [];
-	pastriesMenuItems: CarouselItem[] = [];
+  private revealObserver?: IntersectionObserver;
+  
+  popularMenuItems: CarouselItem[] = [];
+  frappeMenuItems: CarouselItem[] = [];
+  espressoMenuItems: CarouselItem[] = [];
+  pastriesMenuItems: CarouselItem[] = [];
+  contactForm!: FormGroup;
 
-	form: ContactForm = {
-		name: '',
-		email: '',
-		message: ''
-	};
+  reviews: Review[] = [
+    {
+      name: 'Andrew',
+      title: 'Rich espresso taste',
+      comment: 'Masarap sobra yung espresso, hindi mapait at sakto yung timpla.',
+      image: '/assets/images/PNG MENU/andrew.jpg',
+      starsImage: '/assets/images/5 star.PNG'
+    },
+    {
+      name: 'Dexter',
+      title: 'Good value for money',
+      comment: 'Okay yung presyo at mabilis yung service kahit peak hours.',
+      image: '/assets/images/PNG MENU/dexter.jpg',
+      starsImage: '/assets/images/4 star.PNG'
+    },
+    {
+      name: 'Kylle',
+      title: 'Refreshing drinks',
+      comment: 'Hindi sobrang tamis yung frappes, perfect pang-chill.',
+      image: '/assets/images/PNG MENU/kylle.jpg',
+      starsImage: '/assets/images/3 star.PNG'
+    },
+    {
+      name: 'Jason',
+      title: 'Relaxing atmosphere',
+      comment: 'Tahimik yung place at sarap tambayan habang nagkakape.',
+      image: '/assets/images/PNG MENU/jason.webp',
+      starsImage: '/assets/images/4 star.PNG'
+    }
+  ];
 
-	constructor(
-		private menuService: MenuService,
-		private cdr: ChangeDetectorRef
-	) {}
+  constructor(
+    private menuService: MenuService,
+    private cdr: ChangeDetectorRef,
+    private fb: FormBuilder
+  ) {}
 
-	ngOnInit() {
-		this.menuService.getPopularMenu().subscribe((data: any) => {
-			this.popularMenuItems = data as any;
-			this.cdr.detectChanges();
-		});
-		this.menuService.getFrappeMenu().subscribe((data: any) => {
-			this.frappeMenuItems = data as any;
-			this.cdr.detectChanges();
-		});
-		this.menuService.getEspressoMenu().subscribe((data: any) => {
-			this.espressoMenuItems = data as any;
-			this.cdr.detectChanges();
-		});
-		this.menuService.getPastriesMenu().subscribe((data: any) => {
-			this.pastriesMenuItems = data as any;
-			this.cdr.detectChanges();
-		});
-	}
+  ngOnInit() {
+  
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', Validators.required]
+    });
 
-	scrollTo(event: Event, id: string) {
-		event.preventDefault();
-		const el = document.getElementById(id);
-		if (el) {
-			el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-		}
-	}
+    // Fetch menu items
+    this.menuService.getPopularMenu().subscribe(data => {
+      this.popularMenuItems = data;
+      this.cdr.detectChanges();
+    });
 
-	onSubmit(form: NgForm) {
-		if (form.invalid) {
-			Object.values(form.controls).forEach(control => {
-				control.markAsTouched();
-			});
-			return;
-		}
+    this.menuService.getFrappeMenu().subscribe(data => {
+      this.frappeMenuItems = data;
+      this.cdr.detectChanges();
+    });
 
-		this.send();
-	}
+    this.menuService.getEspressoMenu().subscribe(data => {
+      this.espressoMenuItems = data;
+      this.cdr.detectChanges();
+    });
 
-	send() {
-		emailjs.send('service_u35oe9x', 'template_iejhg7f', { ...this.form }, 'VjtiOX-nmb9M7CHQ0').then(() => {
-			alert('Message sent successfully!');
-			this.form = { name: '', email: '', message: '' };
-		});
-	}
+    this.menuService.getPastriesMenu().subscribe(data => {
+      this.pastriesMenuItems = data;
+      this.cdr.detectChanges();
+    });
+  }
 
-	ngAfterViewInit() {
-		const targets = document.querySelectorAll('.scroll-reveal, #menu, .reviews-section');
-		if (!('IntersectionObserver' in window)) {
-			targets.forEach((el) => el.classList.add('is-visible'));
-			return;
-		}
+  scrollTo(event: Event, id: string) {
+    event.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
-		this.revealObserver = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						(entry.target as HTMLElement).classList.add('is-visible');
-						this.revealObserver?.unobserve(entry.target);
-					}
-				});
-			},
-			{
-				threshold: 0.15,
-				rootMargin: '0px 0px -10% 0px'
-			}
-		);
+  send() {
+    if (this.contactForm.invalid) return;
 
-		targets.forEach((el) => this.revealObserver?.observe(el));
-	}
+    emailjs
+      .send(
+        'service_u35oe9x',
+        'template_iejhg7f',
+        this.contactForm.value,
+        'VjtiOX-nmb9M7CHQ0'
+      )
+      .then(() => {
+        alert('Message sent successfully!');
+        this.contactForm.reset();
+      });
+  }
 
-	ngOnDestroy() {
-		this.revealObserver?.disconnect();
-	}
-	
-formatFullName() {
-  if (!this.form.name) return;
-  this.form.name = this.form.name
-    .trim()
-    .toLowerCase()
-    .replace(/(^|\s)\S/g, (char: string) => char.toUpperCase());
+  formatFullName() {
+    const nameControl = this.contactForm.get('name');
+    if (!nameControl?.value) return;
+
+    const formatted = nameControl.value
+      .trim()
+      .toLowerCase()
+      .replace(/(^|\s)\S/g, (char: string) => char.toUpperCase());
+
+    nameControl.setValue(formatted);
+  }
+
+  ngAfterViewInit() {
+    const targets = document.querySelectorAll('.scroll-reveal, #menu, .reviews-section');
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+
+    this.revealObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add('is-visible');
+            this.revealObserver?.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+    );
+
+    targets.forEach(el => this.revealObserver?.observe(el));
+  }
+
+  ngOnDestroy() {
+    this.revealObserver?.disconnect();
+  }
 }
-}
-

@@ -19,17 +19,25 @@
 
 		<!-- STATUS STEPS -->
 		<div class="track-steps">
-			<ng-container *ngFor="let step of trackSteps; let last = last">
+			@for (step of trackSteps; track $index; let last = $last) {
 				<div [ngClass]="{'track-step': true, 'active': step.completed}">
 					<div class="step-icon">
-						<i *ngIf="step.icon === 'coffee'" class="fas fa-mug-hot"></i>
-						<i *ngIf="step.icon === 'truck'" class="fas fa-truck"></i>
-						<i *ngIf="step.icon === 'box'" class="fas fa-box"></i>
+						@if(step.icon === 'coffee'){
+							<i class="fas fa-mug-hot"></i>
+						}
+						@if(step.icon === 'truck'){
+							<i class="fas fa-truck"></i>
+						}
+						@if(step.icon === 'box'){
+							<i class="fas fa-box"></i>
+						}
 					</div>
 					<span>{{ step.label }}</span>
 				</div>
-				<span *ngIf="!last" class="track-line" [ngClass]="{'active': step.completed}"></span>
-			</ng-container>
+				@if(!last){
+					<span class="track-line" [ngClass]="{'active': step.completed}"></span>
+				}
+			}
 		</div>
 
 		<!-- MAP -->

@@ -2,14 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map, catchError, shareReplay } from 'rxjs/operators';
+import { CarouselItem } from '../components/carousel/carousel';
 
-export interface MenuItem {
+export interface MenuItem extends CarouselItem {
   id: number;
-  name: string;
   description?: string;
-  price: number;
-  image: string;
-  alt: string;
   category?: string;
 }
 

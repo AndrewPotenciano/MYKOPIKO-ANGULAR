@@ -79,10 +79,12 @@
 			<h2>Order Summary</h2>
 
 			<div class="order-items">
-				<div *ngFor="let item of cartItems" class="order-item">
+				@for (item of cartItems; track $index) {
+				<div class="order-item">
 					<span>{{ item.name }} x {{ item.quantity }}</span>
 					<span>₱{{ item.price * item.quantity }}</span>
 				</div>
+				}
 			</div>
 
 			<div class="calc-details">

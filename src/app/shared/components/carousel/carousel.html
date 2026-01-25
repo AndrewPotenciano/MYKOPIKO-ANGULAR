@@ -7,8 +7,10 @@
 
 	<!-- INDICATORS -->
 	<div class="carousel-indicators">
-		<button *ngFor="let slide of slides; let i = index" type="button" [attr.data-bs-target]="'#' + carouselId" [attr.data-bs-slide-to]="i"
+		@for (slide of slides; track $index; let i = $index) {
+		<button type="button" [attr.data-bs-target]="'#' + carouselId" [attr.data-bs-slide-to]="i"
 			[class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : 'false'"></button>
+		}
 	</div>
 
 	@if(showDownHint()){
@@ -35,11 +37,13 @@
 	<div class="carousel-inner">
 
 		<!-- SLIDES -->
-		<div *ngFor="let slide of slides; let i = index" class="carousel-item" [class.active]="i === 0">
+		@for (slide of slides; track $index; let i = $index) {
+		<div class="carousel-item" [class.active]="i === 0">
 			<div class="container">
 				<div class="row g-4 carousel-row">
 
-					<div *ngFor="let item of slide" class="col-10 col-sm-6 col-md-4">
+					@for (item of slide; track $index) {
+					<div class="col-10 col-sm-6 col-md-4">
 						<div class="card h-100 text-center custom-card">
 							<img [src]="item.image" class="card-img-top p-3" [alt]="item.alt">
 							<div class="card-body d-flex flex-column">
@@ -49,6 +53,7 @@
 							</div>
 						</div>
 					</div>
+					}
 
 				</div>
 				<!-- SWIPE HINT FOR MOBILE -->
@@ -60,6 +65,7 @@
 				</div>
 			</div>
 		</div>
+		}
 
 	</div>
 

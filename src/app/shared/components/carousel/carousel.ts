@@ -19,6 +19,7 @@ let carouselCounter = 0;
 	styleUrls: ['./carousel.css']
 })
 export class Carousel implements OnInit {
+	
 	title = input<string>('Popular Menu');
 	items = input<CarouselItem[]>([]);
 	showDownHint = input(false);

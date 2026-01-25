@@ -36,21 +36,22 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     document.body.classList.add('menu-page');
-    // Load menus from json-server
-    this.menuService.getPopularMenu().subscribe((data: any) => {
-      this.popularMenuItems = data as any;
+
+    this.menuService.getPopularMenu().subscribe((data) => {
+      this.popularMenuItems = data;
       this.cdr.detectChanges();
     });
-    this.menuService.getFrappeMenu().subscribe((data: any) => {
-      this.frappeMenuItems = data as any;
+    
+    this.menuService.getFrappeMenu().subscribe((data) => {
+      this.frappeMenuItems = data;
       this.cdr.detectChanges();
     });
-    this.menuService.getEspressoMenu().subscribe((data: any) => {
-      this.espressoMenuItems = data as any;
+    this.menuService.getEspressoMenu().subscribe((data) => {
+      this.espressoMenuItems = data;
       this.cdr.detectChanges();
     });
-    this.menuService.getPastriesMenu().subscribe((data: any) => {
-      this.pastriesMenuItems = data as any;
+    this.menuService.getPastriesMenu().subscribe((data) => {
+      this.pastriesMenuItems = data;
       this.cdr.detectChanges();
     });
 

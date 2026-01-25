@@ -2,23 +2,24 @@
 <section id="home" class="hero-section">
 	<div class="hero-container">
 		<div class="hero-text">
-			<h1 class="main-h1">Start your Day with<span class="d-block">The perfect Coffee</span></h1>	
+			<h1 class="main-h1">Start your Day with<span class="d-block">The perfect Coffee</span></h1>
 			<p class="main-paragraph">
 				Experience the perfect blend of rich, aromatic coffee and cozy,
 				inviting moments that brighten your day, one cup at a time.
 			</p>
-			<a routerLink="/login"href="/login" class="btn-primary">Order Now</a>
+			<a routerLink="/login" href="/login" class="btn-primary">Order Now</a>
 		</div>
 
 		<div class="hero-image">
-			<img src="/assets/images/coffee-main-page.png" class="main_image" alt="Coffee"
-				width="450" height="330" decoding="async" />
+			<img src="/assets/images/coffee-main-page.png" class="main_image" alt="Coffee" width="450" height="330"
+				decoding="async" />
 		</div>
 	</div>
 </section>
 
 <section id="menu" class="menu-section">
-	<app-carousel class="carousel" [items]="popularMenuItems" [showDownHint]="false" [showSeparator]="false" [reveal]="true"></app-carousel>	
+	<app-carousel class="carousel" [items]="popularMenuItems" [showDownHint]="false" [showSeparator]="false"
+		[reveal]="true"></app-carousel>
 </section>
 
 <section class="about-us" id="about-us">
@@ -52,45 +53,9 @@
 	<div class="reviews-section">
 		<h1 class="scroll-reveal">What Our Customers Say</h1>
 		<div class="reviews-grid">
-			<div class="review-card scroll-reveal">
-				<img src="/assets/images/PNG MENU/andrew.jpg" class="review-pfp" />
-				<h2 class="name">Andrew</h2>
-				<h3 class="review-title">Rich espresso taste</h3>
-				<p class="comment">
-					Masarap sobra yung espresso, hindi mapait at sakto yung timpla.
-				</p>
-				<img src="/assets/images/5 star.PNG" class="stars" />
-			</div>
-
-			<div class="review-card scroll-reveal">
-				<img src="/assets/images/PNG MENU/dexter.jpg" class="review-pfp" />
-				<h2 class="name">Dexter</h2>
-				<h3 class="review-title">Good value for money</h3>
-				<p class="comment">
-					Okay yung presyo at mabilis yung service kahit peak hours.
-				</p>
-				<img src="/assets/images/4 star.PNG" class="stars" />
-			</div>
-
-			<div class="review-card scroll-reveal">
-				<img src="/assets/images/PNG MENU/kylle.jpg" class="review-pfp" />
-				<h2 class="name">Kylle</h2>
-				<h3 class="review-title">Refreshing drinks</h3>
-				<p class="comment">
-					Hindi sobrang tamis yung frappes, perfect pang-chill.
-				</p>
-				<img src="/assets/images/3 star.PNG" class="stars" />
-			</div>
-
-			<div class="review-card scroll-reveal">
-				<img src="/assets/images/PNG MENU/jason.webp" class="review-pfp" />
-				<h2 class="name">Jason</h2>
-				<h3 class="review-title">Relaxing atmosphere</h3>
-				<p class="comment">
-					Tahimik yung place at sarap tambayan habang nagkakape.
-				</p>
-				<img src="/assets/images/4 star.PNG" class="stars" />
-			</div>
+			@for (review of reviews; track $index) {
+			<app-review-card class="scroll-reveal" [review]="review"></app-review-card>
+			}
 		</div>
 	</div>
 </section>
@@ -100,51 +65,54 @@
 		<h1>Contact Us</h1>
 		<p>We’d love to hear from you.</p>
 	</div>
-	
+
 	<div class="contact-container">
 		<div class="message-us scroll-reveal">
-			<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+			<form [formGroup]="contactForm" (ngSubmit)="send()" novalidate>
 				<h2 class="box-title">Send Us a Message</h2>
 				<div class="input-fields">
 					<!-- FULL NAME -->
 					<div class="field-wrapper">
 						<label for="name">Full name</label>
-						<input type="text" id="name" name="name" ngModel required #name="ngModel" placeholder="Juan Dela Cruz"
-							[class.invalid]="name.invalid && name.touched" [(ngModel)]="form.name" (blur)="formatFullName()"  />
-							
-						@if(name.invalid && name.touched){
-								<span class="field-error">
-							Full name is required
-						</span>
-						}
-					</div>
-					<!-- EMAIL -->
-					<div class="field-wrapper">
-						<label for="email">Email Address</label>
-						<input type="text" id="email" name="email" ngModel required #email="ngModel"
-							placeholder="example@email.com" [class.invalid]="email.invalid && email.touched"
-							[(ngModel)]="form.email"(blur)="form.email = (form.email || '').trim().toLowerCase()" />
+						<input type="text" id="name" formControlName="name" placeholder="Juan Dela Cruz"
+							(blur)="formatFullName()"
+							[class.invalid]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" />
 
-						@if(email.invalid && email.touched){
-								<span class="field-error">
-							     Email is required
+						@if(contactForm.get('name')?.invalid && contactForm.get('name')?.touched){
+							<span class="field-error">
+								Full name is required
 							</span>
 						}
 					</div>
+
+					<!-- EMAIL -->
+					<div class="field-wrapper">
+						<label for="email">Email Address</label>
+						<input type="text" id="email" formControlName="email" placeholder="example@email.com"
+							(blur)="contactForm.get('email')?.setValue((contactForm.get('email')?.value || '').trim().toLowerCase())"
+							[class.invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" />
+
+						@if(contactForm.get('email')?.invalid && contactForm.get('email')?.touched){
+							<span class="field-error">
+								Email is required
+							</span>
+						}
+					</div>
+
 					<!-- MESSAGE -->
 					<div class="field-wrapper">
 						<label for="message">Message</label>
-						<textarea id="message" name="message" ngModel required #message="ngModel" placeholder="Kumusta!"
-							[class.invalid]="message.invalid && message.touched" [(ngModel)]="form.message"></textarea>
-						@if(message.invalid && message.touched){
-						<span class="field-error">
-							Message is required
-						</span>
+						<textarea id="message" formControlName="message" placeholder="Kumusta!"
+							[class.invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
+
+						@if(contactForm.get('message')?.invalid && contactForm.get('message')?.touched){
+							<span class="field-error">
+								Message is required
+							</span>
 						}
 					</div>
-					<button class="btn-submit" type="submit" [disabled]="contactForm.invalid">
-						Send Message
-					</button>
+
+					<button type="submit" [disabled]="contactForm.invalid" class="btn-submit">Send Message</button>
 				</div>
 			</form>
 		</div>
