@@ -1,26 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CartService } from '../../../shared/services/cart.service';
-import { Footer } from '../../../shared/layouts/base-layout/footer/footer';
 import { PhoneFormatDirective } from '../../../shared/directives/phone-format.directive';
 import { TrimDirective } from '../../../shared/directives/trim.directive';
-
-interface CheckoutForm {
-	name: string;
-	email: string;
-	address: string;
-	phone: string;
-}
-
-interface CartItem {
-	name: string;
-	price: number;
-	quantity: number;
-	img?: string;
-}
-
+import { CheckoutForm } from '../../../shared/models/checkout-form.model';
+import { CartItem } from '../../../shared/models/cart-item.model';
 @Component({
 	selector: 'app-checkout',
 	standalone: true,
@@ -32,6 +18,9 @@ export class Checkout implements OnInit {
 	cartItems: CartItem[] = [];
 	subtotal = 0;
 
+	private cartService = inject(CartService);
+	private router = inject(Router);
+
 	checkoutForm: CheckoutForm = {
 		name: '',
 		email: '',
@@ -39,24 +28,22 @@ export class Checkout implements OnInit {
 		phone: ''
 	};
 
-	constructor(private cartService: CartService, private router: Router) { }
-
-	ngOnInit() {
+	ngOnInit(): void {
 		this.cartService.cartSubject.subscribe(items => {
 			this.cartItems = items;
 			this.calculateSubtotal();
 		});
 	}
 
-	calculateSubtotal() {
+	calculateSubtotal(): void {
 		this.subtotal = this.cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 	}
 
-	goBack() {
+	goBack(): void {
 		this.router.navigate(['/menu']).catch(() => { });
 	}
 
-	confirmOrder(form: NgForm) {
+	confirmOrder(form: NgForm): void {
 		if (form.invalid) {
 			Object.values(form.controls).forEach(control => control.markAsTouched());
 			return;
@@ -64,12 +51,12 @@ export class Checkout implements OnInit {
 		this.router.navigate(['/menu/payment']).catch(() => { });
 	}
 
-	resetCheckout() {
+	resetCheckout(): void {
 		this.checkoutForm = { name: '', email: '', address: '', phone: '' };
 		this.cartService.clear();
 	}
 
-	formatFullName() {
+	formatFullName(): void {
 		if (!this.checkoutForm.name) return;
 		this.checkoutForm.name = this.checkoutForm.name
 			.trim()

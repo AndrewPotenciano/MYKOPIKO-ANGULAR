@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -25,7 +25,9 @@ export interface UserInfo {
 })
 export class GoogleApi {
 	userProfileSubject = new Subject<UserInfo>();
-	constructor(@Inject(OAuthService) private readonly oAuthService: OAuthService, private readonly router: Router) {
+	private readonly oAuthService = inject(OAuthService);
+	private readonly router = inject(Router);
+	constructor() {
 		this.oAuthService.configure(oAuthConfig);
 		this.oAuthService.loadDiscoveryDocumentAndTryLogin().then(() => {
 			if (this.oAuthService.hasValidAccessToken()) {
@@ -53,7 +55,7 @@ export class GoogleApi {
 		}
 	}
 
-	login(redirect?: string) {
+	login(redirect?: string): void {
 		if (redirect) {
 			sessionStorage.setItem('post_login_redirect', redirect);
 		}

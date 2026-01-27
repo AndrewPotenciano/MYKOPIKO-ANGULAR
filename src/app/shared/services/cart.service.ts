@@ -1,13 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
-export interface CartItem {
-  name: string;
-  price: number;
-  quantity: number;
-  img?: string;
-}
-
+import { CartItem } from '../../shared/models/cart-item.model';
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private itemsSub = new BehaviorSubject<CartItem[]>([]);
@@ -24,23 +17,23 @@ export class CartService {
     return this.itemsSub.getValue();
   }
 
-  open() {
+  open(): void {
     this.modalOpenSub.next(true);
   }
 
-  close() {
+  close(): void {
     this.modalOpenSub.next(false);
   }
 
-  toggle() {
+  toggle(): void {
     this.modalOpenSub.next(!this.modalOpenSub.getValue());
   }
 
-  checkout() {
+  checkout(): void {
     this.checkoutSub.next(true);
   }
 
-  add(item: CartItem) {
+  add(item: CartItem): void {
     const items = this.itemsSub.getValue();
     const idx = items.findIndex(i => i.name === item.name);
     if (idx > -1) {
@@ -51,7 +44,7 @@ export class CartService {
     this.itemsSub.next([...items]);
   }
 
-  updateQuantity(index: number, quantity: number) {
+  updateQuantity(index: number, quantity: number): void {
     const items = this.itemsSub.getValue();
     if (items[index]) {
       items[index].quantity = quantity;
@@ -59,13 +52,13 @@ export class CartService {
     }
   }
 
-  remove(index: number) {
+  remove(index: number): void {
     const items = this.itemsSub.getValue();
     items.splice(index, 1);
     this.itemsSub.next([...items]);
   }
 
-  clear() {
+  clear(): void {
     this.itemsSub.next([]);
   }
 }

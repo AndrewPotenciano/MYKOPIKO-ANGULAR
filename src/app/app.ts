@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GoogleApi, UserInfo } from './shared/services/google-api.service';
 
@@ -13,8 +13,9 @@ export class App {
 
   userInfo?: UserInfo;
   protected readonly title = signal('MYKOPIKO');
-  constructor(private readonly google: GoogleApi) {
-    google.userProfileSubject.subscribe( info => {
+  private readonly google = inject(GoogleApi);
+  constructor() {
+    this.google.userProfileSubject.subscribe( info => {
       this.userInfo = info;
     });
   }
@@ -24,7 +25,7 @@ export class App {
   isLoggedIn( ): boolean {
     return this.google.isLoggedIn();
 }
-  SignOut(){
+  SignOut(): void {
     this.google.SignOut();
   }
 }

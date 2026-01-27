@@ -1,4 +1,4 @@
-[
+{"menu":[
   {
     "id": 1,
     "name": "Classic Cappuccino",
@@ -215,4 +215,4 @@
     "alt": "Strawberry Cake",
     "category": "pastries"
   }
-]
+]}

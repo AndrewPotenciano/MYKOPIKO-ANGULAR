@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 	styleUrls: ['./footer.css']
 })
 export class Footer {
-	scrollTo(event: Event, id: string) {
+	scrollTo(event: Event, id: string): void {
 		event.preventDefault();
 		const el = document.getElementById(id);
 		if (el) {

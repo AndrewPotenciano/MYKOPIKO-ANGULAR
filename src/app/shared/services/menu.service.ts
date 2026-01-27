@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { map, catchError, shareReplay } from 'rxjs/operators';
-import { CarouselItem } from '../components/carousel/carousel';
+import { CarouselItem } from '../models/carousel-item.model';
 
 export interface MenuItem extends CarouselItem {
   id: number;
@@ -17,12 +17,16 @@ export class MenuService {
   private menuDataSubject = new BehaviorSubject<MenuItem[]>([]);
   private menuData$ = this.menuDataSubject.asObservable().pipe(shareReplay(1));
 
-  constructor(private http: HttpClient) {
+  private http = inject(HttpClient);
+
+  constructor() {
     this.loadMenuData();
   }
 
+      private apiUrl = "http://localhost:3000/menu";
+
   private loadMenuData(): void {
-    this.http.get<MenuItem[]>('/assets/menu-data.json')
+    this.http.get<MenuItem[]>(this.apiUrl)
       .subscribe(data => {
         this.menuDataSubject.next(data);
       });

@@ -1,24 +1,17 @@
-import { Component, HostListener, OnInit, input } from '@angular/core';
+import { Component, HostListener, OnInit, input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
-
-export interface CarouselItem {
-	name: string;
-	price: number;
-	image: string;
-	alt: string;
-}
+import { CarouselItem } from '../../models/carousel-item.model';
 
 let carouselCounter = 0;
-
 @Component({
 	selector: 'app-carousel',
 	standalone: true,
 	imports: [CommonModule],
-	templateUrl: './carousel.html',
-	styleUrls: ['./carousel.css']
+	templateUrl: './carousel.component.html',
+	styleUrls: ['./carousel.component.css']
 })
-export class Carousel implements OnInit {
+export class CarouselComponent implements OnInit {
 	
 	title = input<string>('Popular Menu');
 	items = input<CarouselItem[]>([]);
@@ -28,22 +21,22 @@ export class Carousel implements OnInit {
 	carouselId: string = `productsCarousel${++carouselCounter}`;
 	private isMobile = false;
 
-	constructor(public cart: CartService) {}
+	public cart = inject(CartService);
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.updateViewport();
 	}
 
 	@HostListener('window:resize')
-	onResize() {
+	onResize(): void {
 		this.updateViewport();
 	}
 
-	private updateViewport() {
+	private updateViewport(): void {
 		this.isMobile = typeof window !== 'undefined' && window.innerWidth <= 767;
 	}
 
-	addToCart(item: CarouselItem) {
+	addToCart(item: CarouselItem): void {
 		this.cart.add({ name: item.name, price: item.price, quantity: 1, img: item.image });
 		this.cart.open();
 	}

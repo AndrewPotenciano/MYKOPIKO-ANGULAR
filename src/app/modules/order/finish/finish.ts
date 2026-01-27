@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-
 @Component({
 	selector: 'app-finish',
 	standalone: true,
@@ -12,19 +11,19 @@ import { Router } from '@angular/router';
 export class Finish implements OnInit {
 	orderNumber = '';
 	
-	constructor(private router: Router) {}
+	private router = inject(Router);
 
-	ngOnInit() {
+	ngOnInit(): void {
 		// Generate order number
 		this.orderNumber = 'ORD' + Date.now();
 	}
 
-	trackOrder() {
+	trackOrder(): void {
 		// Navigate to track order page
 		this.router.navigate(['/menu/track']).catch(() => {});
 	}
 
-	backHome() {
+	backHome(): void {
 		this.router.navigate(['/']).catch(() => {});
 	}
 }

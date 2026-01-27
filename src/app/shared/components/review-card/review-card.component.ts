@@ -1,14 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-
-
-export interface Review {
-	name: string;
-	title: string;
-	comment: string;
-	image: string;
-	starsImage: string;
-}
-
+import { Review } from '../../models/review.model';
 @Component({
 	selector: 'app-review-card',
 	standalone: true,

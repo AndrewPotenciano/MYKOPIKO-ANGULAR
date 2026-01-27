@@ -1,18 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { GoogleApi } from '../../../shared/services/google-api.service';
-import { Footer } from '../../../shared/layouts/base-layout/footer/footer';
 
 @Component({
 	selector: 'app-login',
 	standalone: true,
-	imports: [CommonModule, Footer],
+	imports: [CommonModule],
 	templateUrl: './login.html',
 	styleUrls: ['./login.css'],
 })
 export class Login {
-	constructor(public google: GoogleApi, private router: Router) {}
+	public google = inject(GoogleApi);
+	private router = inject(Router);
 
 	ngOnInit(): void {
 		this.google.userProfileSubject.subscribe(() => {
@@ -20,7 +20,7 @@ export class Login {
 		});
 	}
 
-	loginWithGoogle(event: Event) {
+	loginWithGoogle(event: Event): void {
 		event.preventDefault();
 		this.google.login('/menu');
 	}

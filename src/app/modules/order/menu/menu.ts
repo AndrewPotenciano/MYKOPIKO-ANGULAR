@@ -1,16 +1,18 @@
-import { Component, OnDestroy, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit, ChangeDetectorRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { GoogleApi, UserInfo } from '../../../shared/services/google-api.service';
-import { Carousel, CarouselItem } from '../../../shared/components/carousel/carousel';
+import { CarouselComponent} from '../../../shared/components/';
 import { CartService } from '../../../shared/services/cart.service';
 import { MenuService } from '../../../shared/services/menu.service';
+import { CarouselItem } from  '../../../shared/models/carousel-item.model';
+
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, Carousel, HttpClientModule],
+  imports: [CommonModule, CarouselComponent, HttpClientModule],
   templateUrl: './menu.html',
   styleUrls: ['./menu.css'],
 })
@@ -19,22 +21,22 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
   showLogoutModal = false;
   private revealObserver?: IntersectionObserver;
 
+  private google = inject(GoogleApi);
+  private router = inject(Router);
+  private cartService = inject(CartService);
+  private menuService = inject(MenuService);
+  private cdr = inject(ChangeDetectorRef);
+
   popularMenuItems: CarouselItem[] = [];
   frappeMenuItems: CarouselItem[] = [];
   espressoMenuItems: CarouselItem[] = [];
   pastriesMenuItems: CarouselItem[] = [];
 
-  constructor(
-    private google: GoogleApi,
-    private router: Router,
-    private cartService: CartService,
-    private menuService: MenuService,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor() {
     this.google.userProfileSubject.subscribe(info => this.userInfo = info);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     document.body.classList.add('menu-page');
 
     this.menuService.getPopularMenu().subscribe((data) => {
@@ -62,7 +64,7 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     const targets = document.querySelectorAll('.scroll-reveal');
     if ('IntersectionObserver' in window) {
       this.revealObserver = new IntersectionObserver(
@@ -82,7 +84,7 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     document.body.classList.remove('menu-page');
     this.revealObserver?.disconnect();
   }
@@ -91,15 +93,15 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
     return this.google.isLoggedIn();
   }
 
-  openLogoutModal() {
+  openLogoutModal(): void {
     this.showLogoutModal = true;
   }
 
-  closeLogoutModal() {
+  closeLogoutModal(): void {
     this.showLogoutModal = false;
   }
 
-  confirmLogout() {
+  confirmLogout(): void {
     this.showLogoutModal = false;
     this.google.SignOut()
       .then(() => this.router.navigate(['/']))

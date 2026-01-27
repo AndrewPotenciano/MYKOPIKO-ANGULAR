@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -16,7 +16,10 @@ export class Navbar {
 	isNavOpen = false;
 	isLoginRoute = false;
 	isMenuRoute = false;
-	constructor(private cart: CartService, private router: Router, private google: GoogleApi) {
+	private cart = inject(CartService);
+	private router = inject(Router);
+	private google = inject(GoogleApi);
+	constructor() {
 		// set initial value
 		this.isLoginRoute = this.router.url.includes('/login');
 		this.isMenuRoute = this.router.url.includes('/menu');
@@ -27,15 +30,15 @@ export class Navbar {
 		});
 	}
 
-	toggleNav() {
+	toggleNav(): void {
 		this.isNavOpen = !this.isNavOpen;
 	}
 
-	closeNav() {
+	closeNav(): void {
 		this.isNavOpen = false;
 	}
 
-	scrollTo(event: Event, id: string) {
+	scrollTo(event: Event, id: string): void {
 		event.preventDefault();
 		this.closeNav();
 		
@@ -59,7 +62,7 @@ export class Navbar {
 		}
 	}
 
-	openCart(event: Event) {
+	openCart(event: Event): void {
 		event.preventDefault();
 		this.cart.open();
 	}
@@ -68,7 +71,7 @@ export class Navbar {
 		return this.google.isLoggedIn();
 	}
 
-	logout() {
+	logout(): void {
 		this.google.SignOut();
 		this.closeNav();
 		this.router.navigate(['/']).catch(() => {});

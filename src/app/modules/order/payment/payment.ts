@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService } from '../../../shared/services/cart.service';
-import { Footer } from '../../../shared/layouts/base-layout/footer/footer';
-
 @Component({
 	selector: 'app-payment',
 	standalone: true,
-	imports: [CommonModule, Footer],
+	imports: [CommonModule],
 	templateUrl: './payment.html',
 	styleUrls: ['./payment.css'],
 })
@@ -16,7 +14,8 @@ export class Payment implements OnInit {
 	refNumber = '';
 	qrCodeClicked = false;
 
-	constructor(public cartService: CartService, private router: Router) {}
+	public cartService = inject(CartService);
+	private router = inject(Router);
 
 	ngOnInit(): void {
 		this.cartService.cartSubject.subscribe((items: any[]) => {
@@ -38,7 +37,7 @@ export class Payment implements OnInit {
 		}
 	}
 
-	goBack() {
+	goBack(): void {
 		this.router.navigate(['/menu/checkout']).catch(() => {});
 	}
 }

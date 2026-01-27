@@ -34,7 +34,7 @@
 			<h2>Customer Information</h2>
 
 			<div class="field-wrapper">
-				<label for="checkout-name">Full Name</label>
+				<label for="checkout-name">Full Name<span class="required"> *</span></label>
 				<input id="checkout-name" type="text" name="name" required #name="ngModel"
 					placeholder="Juan Dela Cruz" [(ngModel)]="checkoutForm.name"
 					(blur)="formatFullName()" [class.invalid]="name.invalid && name.touched" />
@@ -44,7 +44,7 @@
 			</div>
 
 			<div class="field-wrapper">
-				<label for="checkout-email">Email Address</label>
+				<label for="checkout-email">Email Address<span class="required"> *</span></label>
 				<input id="checkout-email" type="email" name="email" required #email="ngModel"
 					placeholder="exist@samplemail.com" [(ngModel)]="checkoutForm.email"
 					(blur)="checkoutForm.email = (checkoutForm.email || '').trim().toLowerCase()"
@@ -55,7 +55,7 @@
 			</div>
 
 			<div class="field-wrapper">
-				<label for="checkout-address">Delivery Address</label>
+				<label for="checkout-address">Delivery Address<span class="required"> *</span></label>
 				<input id="checkout-address" type="text" name="address" required #address="ngModel"
 					placeholder="Manila Bulacan City" [(ngModel)]="checkoutForm.address" appTrim
 					(blur)="formatFullName()" [class.invalid]="address.invalid && address.touched" />
@@ -65,7 +65,7 @@
 			</div>
 
 			<div class="field-wrapper">
-				<label for="checkout-phone">Phone Number</label>
+				<label for="checkout-phone">Phone Number<span class="required"> *</span></label>
 				<input id="checkout-phone" type="tel" name="phone" required #phone="ngModel"
 					placeholder="0123 457 7891" [(ngModel)]="checkoutForm.phone" phoneFormat
 					[class.invalid]="phone.invalid && phone.touched"/>

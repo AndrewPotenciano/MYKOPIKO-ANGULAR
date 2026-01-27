@@ -317,3 +317,6 @@ input.invalid {
 		text-align: center;
 	}
 }
+.required{
+	color: red;
+}
