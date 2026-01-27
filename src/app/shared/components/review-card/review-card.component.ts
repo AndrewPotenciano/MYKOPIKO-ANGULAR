@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Review } from '../../models/review.model';
 @Component({
 	selector: 'app-review-card',
 	standalone: true,
-	imports: [],
+	imports: [CommonModule],
 	templateUrl: './review-card.component.html',
 	styleUrls: ['./review-card.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush

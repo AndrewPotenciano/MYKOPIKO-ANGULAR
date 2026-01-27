@@ -75,7 +75,7 @@
 					<div class="field-wrapper">
 						<label for="name">Full name<span class="required"> *</span></label>
 						<input type="text" id="name" formControlName="name" placeholder="Juan Dela Cruz"
-						(blur)="formatFullName()" [class.invalid]="name?.invalid && name?.touched" />
+						 appTitleCaseOnBlur [class.invalid]="name?.invalid && name?.touched" />
 
 						@if(contactForm.get('name')?.invalid && contactForm.get('name')?.touched){
 							<span class="field-error">
@@ -87,7 +87,7 @@
 					<div class="field-wrapper">
 						<label for="email">Email Address<span class="required"> *</span></label>
 						<input type="text" id="email" formControlName="email" placeholder="example@email.com"
-							trim="blur"  [class.invalid]="email?.invalid && email?.touched" />
+							appLowercaseOnBlur [class.invalid]="email?.invalid && email?.touched" />
 
 						@if(contactForm.get('email')?.invalid && contactForm.get('email')?.touched){
 							<span class="field-error">

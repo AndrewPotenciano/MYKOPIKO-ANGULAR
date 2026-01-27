@@ -19,7 +19,7 @@ export class TitleCaseOnBlurDirective {
       .replace(/\b\w/g, (char: string) => char.toUpperCase());
 
     if (formatted !== control.value) {
-      control.setValue(formatted, { emitEvent: false });
+      control.setValue(formatted);
     }
   }
 }

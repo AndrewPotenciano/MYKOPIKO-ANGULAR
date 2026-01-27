@@ -18,12 +18,11 @@ export class MenuService {
   private menuData$ = this.menuDataSubject.asObservable().pipe(shareReplay(1));
 
   private http = inject(HttpClient);
+  private apiUrl = "http://localhost:3000/menu";
 
   constructor() {
     this.loadMenuData();
   }
-
-      private apiUrl = "http://localhost:3000/menu";
 
   private loadMenuData(): void {
     this.http.get<MenuItem[]>(this.apiUrl)

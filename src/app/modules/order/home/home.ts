@@ -4,12 +4,16 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { MenuService } from '../../../shared/services/menu.service';
+import { ReviewService } from '../../../shared/services/review.service';
 import { ReviewCardComponent } from '../../../shared/components/review-card/review-card.component';
 import {ReactiveFormsModule,FormBuilder,FormGroup,Validators,AbstractControl,} from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
 import { Review } from '../../../shared/models/review.model';
 import { CarouselItem } from '../../../shared/models/carousel-item.model';
+import { inject } from '@angular/core';
+import{ LowercaseOnBlurDirective } from '../../../shared/directives/lowercase-on-blur.directive';
+import{ TitleCaseOnBlurDirective } from '../../../shared/directives/title-case-on-blur.directive';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -21,6 +25,8 @@ import { CarouselItem } from '../../../shared/models/carousel-item.model';
     ReviewCardComponent,
     ReactiveFormsModule,
     NgxTrimDirectiveModule,
+    LowercaseOnBlurDirective,
+    TitleCaseOnBlurDirective,
   ],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
@@ -32,47 +38,15 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   frappeMenuItems: CarouselItem[] = [];
   espressoMenuItems: CarouselItem[] = [];
   pastriesMenuItems: CarouselItem[] = [];
+  reviews: Review[] = [];
   contactForm!: FormGroup;
 
-  reviews: Review[] = [
-    {
-      name: 'Andrew',
-      title: 'Rich espresso taste',
-      comment: 'Masarap sobra yung espresso, hindi mapait at sakto yung timpla.',
-      image: '/assets/images/PNG MENU/andrew.jpg',
-      starsImage: '/assets/images/5 star.PNG',
-    },
-    {
-      name: 'Dexter',
-      title: 'Good value for money',
-      comment: 'Okay yung presyo at mabilis yung service kahit peak hours.',
-      image: '/assets/images/PNG MENU/dexter.jpg',
-      starsImage: '/assets/images/4 star.PNG',
-    },
-    {
-      name: 'Kylle',
-      title: 'Refreshing drinks',
-      comment: 'Hindi sobrang tamis yung frappes, perfect pang-chill.',
-      image: '/assets/images/PNG MENU/kylle.jpg',
-      starsImage: '/assets/images/3 star.PNG',
-    },
-    {
-      name: 'Jason',
-      title: 'Relaxing atmosphere',
-      comment: 'Tahimik yung place at sarap tambayan habang nagkakape.',
-      image: '/assets/images/PNG MENU/jason.webp',
-      starsImage: '/assets/images/4 star.PNG',
-    },
-  ];
-
-  constructor(
-    private menuService: MenuService,
-    private cdr: ChangeDetectorRef,
-    private fb: FormBuilder,
-  ) {}
+private menuService = inject(MenuService);
+private reviewService = inject(ReviewService);
+private cdr = inject(ChangeDetectorRef);
+private fb = inject(FormBuilder);
 
   ngOnInit(): void {
-    // Initialize reactive form
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -96,6 +70,12 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       this.pastriesMenuItems = data;
       this.cdr.detectChanges();
     });
+
+    // Fetch reviews
+    this.reviewService.getAllReviews().subscribe((data) => {
+      this.reviews = data;
+      this.cdr.detectChanges();
+    });
   }
 
   // Scroll helper
@@ -117,26 +97,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  formatFullName(): void {
-    const nameControl = this.contactForm.get('name');
-    if (!nameControl?.value) return;
-    const formatted = nameControl.value
-      .trim()
-      .toLowerCase()
-      .replace(/(^|\s)\S/g, (char: string) => char.toUpperCase());
-    nameControl.setValue(formatted);
-  }
-
-  formatEmail(): void {
-  const emailControl = this.contactForm.get('email');
-  if (!emailControl?.value) return;
-
-  const formatted = emailControl.value
-    .trim()
-    .toLowerCase(); // just lowercase, no title case
-
-  emailControl.setValue(formatted);
-}
   ngAfterViewInit(): void {
     const targets = document.querySelectorAll('.scroll-reveal, #menu, .reviews-section');
     if (!('IntersectionObserver' in window)) {
