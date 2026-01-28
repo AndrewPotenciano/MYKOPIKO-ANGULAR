@@ -13,7 +13,6 @@ export class LowercaseOnBlurDirective {
     const control = this.ngControl.control;
     if (!control?.value) return;
     const formatted = control.value.trim().toLowerCase();
-    
     if (formatted !== control.value) {
       control.setValue(formatted);
     }

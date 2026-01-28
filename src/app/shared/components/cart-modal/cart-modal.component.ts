@@ -11,7 +11,7 @@ import { CartItem } from '../../models/cart-item.model';
 	templateUrl: './cart-modal.component.html',
 	styleUrls: ['./cart-modal.component.scss']
 })
-export class CartModal {
+export class CartModalComponent {
 	private cart = inject(CartService);
 	items$: Observable<CartItem[]> = this.cart.items$;
 	modalOpen$: Observable<boolean> = this.cart.modalOpen$;

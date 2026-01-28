@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { CartService } from '../../../shared/services/cart.service';
+import { CartService } from '@shared/services';
 @Component({
 	selector: 'app-payment',
 	standalone: true,

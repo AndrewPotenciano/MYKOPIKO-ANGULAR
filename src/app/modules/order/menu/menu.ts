@@ -2,11 +2,9 @@ import { Component, OnDestroy, OnInit, AfterViewInit, ChangeDetectorRef, inject 
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { GoogleApi, UserInfo } from '../../../shared/services/google-api.service';
-import { CarouselComponent} from '../../../shared/components/';
-import { CartService } from '../../../shared/services/cart.service';
-import { MenuService } from '../../../shared/services/menu.service';
-import { CarouselItem } from  '../../../shared/models/carousel-item.model';
+import { GoogleApi, UserInfo, CartService, MenuService } from '@shared/services';
+import { CarouselComponent} from '@shared/components';
+import { CarouselItem } from  '@shared/models';
 
 
 @Component({

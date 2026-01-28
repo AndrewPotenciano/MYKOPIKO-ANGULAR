@@ -25,10 +25,6 @@ export class ReviewService {
   private loadReviewData(): void {
     this.http.get<Review[]>(this.apiUrl).subscribe({
       next: (data) => this.reviewDataSubject.next(data),
-      error: (err) => {
-        console.error('Failed to load reviews:', err);
-        this.reviewDataSubject.next([]);
-      }
     });
   }
   getAllReviews() {

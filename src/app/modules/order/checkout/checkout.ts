@@ -2,11 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { CartService } from '../../../shared/services/cart.service';
-import { PhoneFormatDirective } from '../../../shared/directives/phone-format.directive';
-import { TrimDirective } from '../../../shared/directives/trim.directive';
-import { CheckoutForm } from '../../../shared/models/checkout-form.model';
-import { CartItem } from '../../../shared/models/cart-item.model';
+import { CartService } from '@shared/services';
+import { PhoneFormatDirective, TrimDirective } from '@shared/directives';
+import { CheckoutForm, CartItem } from '@shared/models';
 @Component({
 	selector: 'app-checkout',
 	standalone: true,

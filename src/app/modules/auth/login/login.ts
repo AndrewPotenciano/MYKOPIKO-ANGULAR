@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { GoogleApi } from '../../../shared/services/google-api.service';
+import { GoogleApi } from '@shared/services';
 
 @Component({
 	selector: 'app-login',

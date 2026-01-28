@@ -1,19 +1,15 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
-import { CarouselComponent } from '../../../shared/components/carousel/carousel.component';
+import { CarouselComponent, ReviewCardComponent } from '@shared/components';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
-import { MenuService } from '../../../shared/services/menu.service';
-import { ReviewService } from '../../../shared/services/review.service';
-import { ReviewCardComponent } from '../../../shared/components/review-card/review-card.component';
+import { MenuService, ReviewService } from '@shared/services';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl,} from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
-import { Review } from '../../../shared/models/review.model';
-import { CarouselItem } from '../../../shared/models/carousel-item.model';
+import { Review, CarouselItem } from '@shared/models';
 import { inject } from '@angular/core';
-import { LowercaseOnBlurDirective } from '../../../shared/directives/lowercase-on-blur.directive';
-import { TitleCaseOnBlurDirective } from '../../../shared/directives/title-case-on-blur.directive';
+import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/directives';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -56,19 +52,19 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     // Fetch menu items
     this.menuService.getPopularMenu().subscribe((data) => {
       this.popularMenuItems = data;
-      this.cdr.detectChanges();
+      
     });
+    
     this.menuService.getFrappeMenu().subscribe((data) => {
       this.frappeMenuItems = data;
-      this.cdr.detectChanges();
     });
+
     this.menuService.getEspressoMenu().subscribe((data) => {
       this.espressoMenuItems = data;
-      this.cdr.detectChanges();
     });
+
     this.menuService.getPastriesMenu().subscribe((data) => {
       this.pastriesMenuItems = data;
-      this.cdr.detectChanges();
     });
 
     // Fetch reviews
@@ -92,11 +88,11 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     if (this.contactForm.invalid) return;
 
     emailjs
-      .send('service_u35oe9x', 'templateF_iejhg7f', this.contactForm.value, 'VjtiOX-nmb9M7CHQ0')
+      .send('service_u35oe9x', 'template_iejhg7f', this.contactForm.value, 'VjtiOX-nmb9M7CHQ0')
       .then(() => {
         alert('Message sent successfully!');
         this.contactForm.reset();
-      });
+      })
   }
 
   ngAfterViewInit(): void {
@@ -104,7 +100,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setupScrollReveal(): void {
-    // Disconnect existing observer if any
+
     if (this.revealObserver) {
       this.revealObserver.disconnect();
     }

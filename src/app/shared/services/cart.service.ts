@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { CartItem } from '../../shared/models/cart-item.model';
+import { CartItem } from '@shared/models';
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private itemsSub = new BehaviorSubject<CartItem[]>([]);

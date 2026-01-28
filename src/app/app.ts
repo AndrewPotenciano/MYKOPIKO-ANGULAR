@@ -1,6 +1,6 @@
 import { Component, signal, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { GoogleApi, UserInfo } from './shared/services/google-api.service';
+import { GoogleApi, UserInfo } from '@shared/services';
 
 @Component({
   selector: 'app-root',
