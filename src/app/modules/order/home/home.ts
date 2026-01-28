@@ -6,14 +6,14 @@ import { RouterLink } from '@angular/router';
 import { MenuService } from '../../../shared/services/menu.service';
 import { ReviewService } from '../../../shared/services/review.service';
 import { ReviewCardComponent } from '../../../shared/components/review-card/review-card.component';
-import {ReactiveFormsModule,FormBuilder,FormGroup,Validators,AbstractControl,} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl,} from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
 import { Review } from '../../../shared/models/review.model';
 import { CarouselItem } from '../../../shared/models/carousel-item.model';
 import { inject } from '@angular/core';
-import{ LowercaseOnBlurDirective } from '../../../shared/directives/lowercase-on-blur.directive';
-import{ TitleCaseOnBlurDirective } from '../../../shared/directives/title-case-on-blur.directive';
+import { LowercaseOnBlurDirective } from '../../../shared/directives/lowercase-on-blur.directive';
+import { TitleCaseOnBlurDirective } from '../../../shared/directives/title-case-on-blur.directive';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -41,10 +41,10 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   reviews: Review[] = [];
   contactForm!: FormGroup;
 
-private menuService = inject(MenuService);
-private reviewService = inject(ReviewService);
-private cdr = inject(ChangeDetectorRef);
-private fb = inject(FormBuilder);
+  private menuService = inject(MenuService);
+  private reviewService = inject(ReviewService);
+  private cdr = inject(ChangeDetectorRef);
+  private fb = inject(FormBuilder);
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
@@ -123,7 +123,6 @@ private fb = inject(FormBuilder);
     this.revealObserver?.disconnect();
   }
 
-  // Reactive form getters for template
   get name(): AbstractControl | null {
     return this.contactForm?.get('name');
   }

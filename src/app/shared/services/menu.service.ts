@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, BehaviorSubject } from 'rxjs';
-import { map, catchError, shareReplay } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 import { CarouselItem } from '../models/carousel-item.model';
 
 export interface MenuItem extends CarouselItem {
@@ -18,11 +18,11 @@ export class MenuService {
   private menuData$ = this.menuDataSubject.asObservable().pipe(shareReplay(1));
 
   private http = inject(HttpClient);
-  private apiUrl = "http://localhost:3000/menu";
 
   constructor() {
     this.loadMenuData();
   }
+   private apiUrl = "http://localhost:3000/menu";
 
   private loadMenuData(): void {
     this.http.get<MenuItem[]>(this.apiUrl)
