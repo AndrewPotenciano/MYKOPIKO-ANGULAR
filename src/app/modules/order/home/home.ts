@@ -75,6 +75,8 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     this.reviewService.getAllReviews().subscribe((data) => {
       this.reviews = data;
       this.cdr.detectChanges();
+      // Re-setup observers after reviews are loaded
+      setTimeout(() => this.setupScrollReveal(), 0);
     });
   }
 
@@ -98,6 +100,15 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    this.setupScrollReveal();
+  }
+
+  private setupScrollReveal(): void {
+    // Disconnect existing observer if any
+    if (this.revealObserver) {
+      this.revealObserver.disconnect();
+    }
+
     const targets = document.querySelectorAll('.scroll-reveal, #menu, .reviews-section');
     if (!('IntersectionObserver' in window)) {
       targets.forEach((el) => el.classList.add('is-visible'));
@@ -132,4 +143,4 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   get message(): AbstractControl | null {
     return this.contactForm?.get('message');
   }
-}
+} 

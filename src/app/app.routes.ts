@@ -13,7 +13,7 @@ export const routes: Routes = [
     path: '',
     component: BaseLayout,  
     children: [
-      { path: '', component: Home },
+    { path: '', component: Home },
      { path: 'login', component: Login },
      { path: 'menu', component: Menu },
      { path: 'menu/checkout', component: Checkout },
