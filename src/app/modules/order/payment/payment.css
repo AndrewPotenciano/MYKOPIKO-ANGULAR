@@ -337,10 +337,7 @@
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.step-guide:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 6px 16px rgba(61, 28, 2, 0.08);
-}
+
 
 .step-guide img {
 	width: 18px; /* Reduced from 20px */
