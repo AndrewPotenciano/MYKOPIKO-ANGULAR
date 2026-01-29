@@ -41,16 +41,18 @@
 		@for (slide of slides; track $index; let i = $index) {
 		<div class="carousel-item" [class.active]="i === 0">
 			<div class="container">
-				<div class="row g-4 carousel-row">
+				<div class="row g-4 carousel-row" #carouselRow>
 
 					@for (item of slide; track $index) {
 					<div class="col-10 col-sm-6 col-md-4">
 						<div class="card h-100 text-center custom-card">
 							<img [src]="item.image" class="card-img-top p-3" [alt]="item.alt">
 							<div class="card-body d-flex flex-column">
-								<h5 class="card-title">{{ item.name }}</h5>
-								<p class="card-text flex-grow-1">{{ item.price }} PHP</p>
-								<button class="btn btn-cart" (click)="addToCart(item)">Add to Cart</button>
+								<div class="card-info d-flex justify-content-center align-items-center gap-2">
+									<h5 class="card-title mb-0">{{ item.name }}</h5>
+									<span class="card-price">{{ item.price }} PHP</span>
+								</div>
+								<button class="btn btn-cart mt-auto">Add to Cart</button>
 							</div>
 						</div>
 					</div>
@@ -58,7 +60,7 @@
 
 				</div>
 				<!-- SWIPE HINT FOR MOBILE -->
-				<div class="swipe-hint">
+				<div class="swipe-hint" *ngIf="isMobile && showSwipeHint">
 					<span class="swipe-text">Swipe</span>
 					<svg class="swipe-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 						<path d="M5 12h14M12 5l7 7-7 7"/>

@@ -138,12 +138,22 @@ section.carousel.slide {
 }
 
 .card-title {
-	font-weight: bold;
-	color: #3D1C02;
-	min-height: 2.5em;
+  font-weight: bold;
+  color: #3D1C02;
+  min-height: unset;
+  margin-bottom: 0;
+}
+.card-info {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	gap: 0.5em;
+}
+
+.card-price {
+	font-weight: 500;
+	color: #6f4e37;
+	font-size: 1.1em;
 }
 
 .card-text {
@@ -248,7 +258,7 @@ section.carousel.slide {
 	}
 	
 	.swipe-hint {
-		display: flex;
+		display: flex !important;
 	}
 
 	/* Adjust card for mobile */
@@ -267,4 +277,32 @@ section.carousel.slide {
 	.carousel-next {
 		right: -80px;
 	}
+}
+
+/* Add this to your existing CSS */
+.card-info {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin-bottom: 12px;
+}
+
+.card-title {
+	font-weight: bold;
+	color: #3D1C02;
+	margin: 0;
+	font-size: 1.1rem;
+}
+
+.card-text {
+	color: #3D1C02;
+	margin: 0;
+	font-size: 0.95rem;
+}
+
+.btn-cart {
+	background-color: #3D1C02;
+	border-color: #3D1C02;
+	color: white;
+	margin-top: auto;
 }
