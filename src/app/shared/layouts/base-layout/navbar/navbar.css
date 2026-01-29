@@ -101,6 +101,28 @@
 	color: #dc3545 !important;
 	font-size: 1rem;
 	text-align: left;
+	transition: color 0.2s;
+}
+
+.nav-logout-link:hover,
+.nav-logout-link:focus {
+	color: #bb2d3b !important;
+}
+
+@media (max-width: 992px) {
+	.nav-logout-mobile .nav-logout-link {
+		color: #dc3545 !important;
+		font-weight: 700;
+		background: none;
+		border: none;
+		width: 100%;
+		padding: 0.5rem 0;
+		text-align: center;
+	}
+	.nav-logout-mobile .nav-logout-link:hover,
+	.nav-logout-mobile .nav-logout-link:focus {
+		color: #bb2d3b !important;
+	}
 }
 
 @media (max-width: 992px) {
