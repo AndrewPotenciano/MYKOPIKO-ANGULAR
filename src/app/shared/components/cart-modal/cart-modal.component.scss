@@ -36,13 +36,15 @@
 
 .cart-item {
 	display: grid;
-	grid-template-columns: auto 64px 1fr 140px;
+	grid-template-columns: 64px 1fr 140px auto;
 	align-items: center;
 	gap: 0.75rem;
-	padding: 0.5rem 0;
+	padding: 0.5rem 0 0.5rem 1rem;
 }
 
-.remove-btn { justify-self: start; }
+.remove-btn {
+	justify-self: end;
+}
 .item-img { width: 64px; height: 64px; object-fit: cover; border-radius: 4px; }
 .item-info { display: flex; flex-direction: column; gap: 0.25rem; }
 .item-name { font-weight: 600; }

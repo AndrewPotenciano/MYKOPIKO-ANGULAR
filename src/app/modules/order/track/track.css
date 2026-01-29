@@ -1,8 +1,8 @@
 .checkout-box {
 	background-color: white;
-	max-width: 1100px;
-	margin: 80px auto;
-	padding: 40px;
+	max-width: 900px; /* Reduced from 1100px */
+	margin: 25px auto 20px; /* Further reduced from 60px */
+	padding: 20px; /* Reduced from 30px */
 	border-radius: 12px;
 	border: black solid 1px;
 	box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
@@ -23,14 +23,15 @@
 }
 
 .track-box {
-	padding: 40px;
+	padding: 20px; /* Reduced from 30px */
 }
 
 .header-nav {
 	display: flex;
-	align-items: flex-start;   /* ✅ LEFT */
-	margin-bottom: 40px;
+	align-items: flex-start;
+	margin-bottom: 25px; /* Reduced from 40px */
 }
+
 .back-section {
 	position: static;
 	align-items: center;
@@ -42,7 +43,7 @@
 	font-weight: bold;
 	color: #3d1c02;
 	font-family: 'Playfair Display', serif;
-	font-size: 18px;
+	font-size: 16px; /* Reduced from 18px */
 	cursor: pointer;
 	display: inline-flex;
 	align-items: center;
@@ -50,8 +51,8 @@
 }
 
 .back-icon {
-	width: 18px;
-	height: 18px;
+	width: 16px; /* Reduced from 18px */
+	height: 16px;
 }
 
 .track-content {
@@ -60,14 +61,14 @@
 
 .track-content h2 {
 	font-family: "Playfair Display", serif;
-	font-size: 32px;
+	font-size: 28px; /* Reduced from 32px */
 	color: #3d1c02;
-	margin: 0 0 10px 0;
+	margin: 0 0 8px 0; /* Reduced from 10px */
 }
 
 .track-sub {
-	font-size: 14px;
-	margin-bottom: 30px;
+	font-size: 13px; /* Reduced from 14px */
+	margin-bottom: 22px; /* Reduced from 30px */
 	color: #666;
 }
 
@@ -76,21 +77,21 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 25px;
-	margin-bottom: 30px;
+	gap: 18px; /* Reduced from 25px */
+	margin-bottom: 22px; /* Reduced from 30px */
 	flex-wrap: wrap;
 }
 
 .track-step {
 	text-align: center;
-	font-size: 12px;
+	font-size: 11px; /* Reduced from 12px */
 	color: #7a7a7a;
 }
 
 .step-icon {
-	font-size: 22px;
+	font-size: 20px; /* Reduced from 22px */
 	display: block;
-	margin-bottom: 6px;
+	margin-bottom: 5px; /* Reduced from 6px */
 	color: #7a7a7a;
 }
 
@@ -103,7 +104,7 @@
 }
 
 .track-line {
-	width: 60px;
+	width: 50px; /* Reduced from 60px */
 	height: 1px;
 	background: #ccc;
 }
@@ -114,9 +115,9 @@
 
 /* MAP */
 .map-box {
-	margin: 30px auto;
+	margin: 20px auto; /* Reduced from 30px */
 	max-width: 450px;
-	height: 300px;
+	height: 250px; /* Reduced from 300px */
 }
 
 .map-box iframe {
@@ -132,8 +133,8 @@
 	justify-content: space-between;
 	align-items: center;
 	max-width: 450px;
-	margin: 0 auto;
-	padding: 20px;
+	margin: 20px auto 0; /* Reduced top margin from 0 and added explicit 0 bottom */
+	padding: 16px; /* Reduced from 20px */
 	background: #f9f9f9;
 	border-radius: 12px;
 }
@@ -141,12 +142,12 @@
 .rider-info {
 	display: flex;
 	align-items: center;
-	gap: 15px;
+	gap: 12px; /* Reduced from 15px */
 }
 
 .rider-img {
-	width: 50px;
-	height: 50px;
+	width: 45px; /* Reduced from 50px */
+	height: 45px;
 	border-radius: 50%;
 	object-fit: cover;
 }
@@ -155,23 +156,24 @@
 	font-weight: bold;
 	margin: 0;
 	color: #3d1c02;
+	font-size: 14px; /* Added explicit size */
 }
 
 .rider-phone {
-	font-size: 12px;
+	font-size: 11px; /* Reduced from 12px */
 	color: #666;
-	margin: 4px 0 0 0;
+	margin: 3px 0 0 0; /* Reduced from 4px */
 }
 
 .call-btn {
 	background: #311808;
 	color: #fff;
 	border: none;
-	padding: 10px 22px;
+	padding: 9px 20px; /* Reduced from 10px 22px */
 	border-radius: 10px;
 	cursor: pointer;
 	font-family: 'Playfair Display', serif;
-	font-size: 14px;
+	font-size: 13px; /* Reduced from 14px */
 	transition: background 0.3s;
 }
 
@@ -180,17 +182,28 @@
 }
 
 @media (max-width: 768px) {
+	.checkout-box {
+		max-width: 400px;
+		padding: 18px; /* Reduced from 20px */
+		margin: 20px auto; /* Reduced from 40px */
+	}
+
 	.track-steps {
-		gap: 15px;
+		gap: 12px; /* Reduced from 15px */
 	}
 
 	.track-line {
-		width: 40px;
+		width: 35px; /* Reduced from 40px */
+	}
+
+	.map-box {
+		height: 220px; /* Reduced height for tablet */
 	}
 
 	.rider-box {
 		flex-direction: column;
-		gap: 15px;
+		gap: 12px; /* Reduced from 15px */
+		padding: 14px;
 	}
 
 	.call-btn {
@@ -200,18 +213,27 @@
 
 @media (max-width: 480px) {
 	.checkout-box {
-		width: 88%;
-		max-width: 380px;
-		margin: 32px auto;
-		padding: 22px;
+		width: 85%;
+		max-width: 350px;
+		margin: 18px auto; /* Reduced from 28px */
+		padding: 16px; /* Reduced from 18px */
+	}
+
+	.track-box {
+		padding: 16px;
+	}
+
+	.header-nav {
+		margin-bottom: 20px;
 	}
 
 	.track-content h2 {
-		font-size: 24px;
+		font-size: 22px; /* Reduced from 24px */
 	}
 
 	.track-sub {
-		font-size: 12px;
+		font-size: 11px; /* Reduced from 12px */
+		margin-bottom: 18px;
 	}
 
 	.step-icon {
@@ -219,37 +241,43 @@
 	}
 
 	.track-step {
-		font-size: 11px;
+		font-size: 10px; /* Reduced from 11px */
 	}
-}
 
-.checkout-box {
-	background-color: white;
-	max-width: 900px; /* reduced from 1100px */
-	margin: 60px auto; /* slightly less top/bottom margin */
-	padding: 30px; /* reduced from 40px */
-	border-radius: 12px;
-	border: black solid 1px;
-	box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
-}
-
-.track-box {
-	padding: 30px; /* reduced from 40px */
-}
-
-@media (max-width: 768px) {
-	.checkout-box {
-		max-width: 400px; /* slightly smaller on tablet */
-		padding: 20px;
-		margin: 40px auto;
+	.track-steps {
+		gap: 10px;
+		margin-bottom: 18px;
 	}
-}
 
-@media (max-width: 480px) {
-	.checkout-box {
-		width: 85%; /* slightly smaller than before */
-		max-width: 350px;
-		margin: 28px auto;
-		padding: 18px;
+	.track-line {
+		width: 30px;
+	}
+
+	.map-box {
+		height: 200px; /* Reduced for mobile */
+		margin: 16px auto;
+	}
+
+	.rider-box {
+		padding: 12px;
+		margin-top: 16px;
+	}
+
+	.rider-img {
+		width: 40px;
+		height: 40px;
+	}
+
+	.rider-name {
+		font-size: 13px;
+	}
+
+	.rider-phone {
+		font-size: 10px;
+	}
+
+	.call-btn {
+		padding: 8px 18px;
+		font-size: 12px;
 	}
 }

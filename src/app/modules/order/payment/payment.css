@@ -1,8 +1,8 @@
 .checkout-box {
 	background-color: white;
 	max-width: 1100px;
-	margin: 80px auto;
-	padding: 40px;
+	margin: 25px auto 20px; /* Further reduced margins */
+	padding: 20px 16px 16px 16px; /* Reduced padding */
 	border-radius: 12px;
 	border: black solid 1px;
 	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
@@ -26,32 +26,35 @@
 	.checkout-box {
 		width: 88%;
 		max-width: 380px;
-		margin: 32px auto;
-		padding: 22px;
+		margin: 20px auto;
+		padding: 18px;
 	}
 }
 
 .header-nav {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: space-between;
-	margin-bottom: 40px;
+	margin-bottom: 20px; /* Reduced from 25px */
 	position: relative;
-	padding-bottom: 18px;
+	padding-bottom: 15px;
 	border-bottom: 1px solid #ece2d6;
+	min-height: 70px;
 }
 
 .back-section {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
+	padding-top: 5px;
 }
+
 .back-link {
 	text-decoration: none;
 	font-weight: bold;
 	color: #3d1c02;
 	font-family: 'Playfair Display', serif;
-	font-size: 18px;
+	font-size: 16px;
 	cursor: pointer;
 	display: inline-flex;
 	align-items: center;
@@ -59,33 +62,43 @@
 }
 
 .back-icon {
-	width: 18px;
-	height: 18px;
+	width: 16px;
+	height: 16px;
 }
 
 .step-text {
-	font-size: 12px;
+	font-size: 11px;
 	color: #3d1c02;
-	margin-top: 5px;
+	margin-top: 4px;
 }
 
 .steps-wrapper {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
+	top: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 .checkout-step {
 	display: flex;
+	align-items: flex-start;
+	gap: 14px; /* Reduced from 15px */
+}
+
+/* Step container for icon + label */
+.step-container {
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	gap: 20px;
+	gap: 6px;
 }
 
 .step-item {
-	width: 40px;
-	height: 40px;
+	width: 36px;
+	height: 36px;
 	border-radius: 50%;
 	background: #ddd;
 	display: flex;
@@ -94,7 +107,7 @@
 }
 
 .step-item img {
-	width: 22px;
+	width: 20px;
 	opacity: 0.4;
 }
 
@@ -112,10 +125,22 @@
 	background: #6b3a1e;
 }
 
+/* Step label styling */
+.step-label {
+	font-size: 11px;
+	font-weight: 600;
+	color: #3d1c02;
+	font-family: 'Poppins', sans-serif;
+	white-space: nowrap;
+}
+
 .line {
-	width: 80px;
+	width: 60px;
 	height: 2px;
 	background: #ccc;
+	margin: 0 6px;
+	margin-top: 18px; /* Aligns line with center of icons */
+	flex-shrink: 0;
 }
 
 .line.active {
@@ -125,35 +150,35 @@
 /* ================= PAYMENT CONTENT ================= */
 .gcash-header {
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 12px; /* Reduced from 15px */
 }
 
 .gcash-header h2 {
-	font-size: 28px;
+	font-size: 22px; /* Reduced from 24px */
 	font-family: "Playfair Display", serif;
 	color: #3d1c02;
 	margin: 0;
 }
 
 .gcash-header .subtitle {
-	font-size: 14px;
+	font-size: 12px; /* Reduced from 13px */
 	margin-top: 4px;
 	margin: 4px 0 0 0;
 }
 
 .how-to-pay h3 {
-	font-size: 28px;
+	font-size: 22px; /* Reduced from 24px */
 	font-family: "Playfair Display", serif;
 	color: #3d1c02;
-	margin-bottom: 35px;
-	margin: 0 0 35px 0;
+	margin-bottom: 16px; /* Reduced from 20px */
+	margin: 0 0 16px 0;
 }
 
 /* PAYMENT CONTENT */
 .payment-content {
 	display: flex;
-	gap: 60px;
-	margin-top: 40px;
+	gap: 35px; /* Reduced from 40px */
+	margin-top: 20px; /* Reduced from 25px */
 	align-items: flex-start;
 	position: relative;
 }
@@ -167,20 +192,20 @@
 .gcash-card h2 {
 	font-family: "Playfair Display", serif;
 	color: #3d1c02;
-	font-size: 32px;
+	font-size: 26px; /* Reduced from 28px */
 }
 
 .subtitle {
 	font-size: 13px;
-	margin-bottom: 25px;
+	margin-bottom: 18px; /* Reduced from 20px */
 }
 
 .qr-box {
 	background: #fffaf2;
 	border-radius: 16px;
 	border: 1px solid #f0e4d6;
-	padding: 26px 24px;
-	width: 380px;
+	padding: 16px 14px; /* Reduced padding */
+	width: 320px; /* Reduced from 340px */
 	box-shadow: 0 10px 24px rgba(61, 28, 2, 0.08);
 	position: relative;
 	overflow: hidden;
@@ -210,9 +235,10 @@
 
 .qr-box h3 {
 	text-align: center;
-	margin-bottom: 15px;
+	margin-bottom: 10px; /* Reduced from 12px */
 	font-family: "Playfair Display", serif;
 	color: #3d1c02;
+	font-size: 18px; /* Reduced from 20px */
 }
 
 .qr-inner {
@@ -220,19 +246,19 @@
 	background: #fff;
 	border: 1px dashed #e1d2c2;
 	border-radius: 12px;
-	padding: 14px 12px;
+	padding: 10px 8px; /* Reduced padding */
 	position: relative;
 	z-index: 1;
 }
 
 .gcash-logo {
-	width: 90px;
-	margin-bottom: 10px;
+	width: 70px; /* Reduced from 80px */
+	margin-bottom: 6px; /* Reduced from 8px */
 }
 
 .qr-code {
-	width: 170px;
-	margin: 10px 0;
+	width: 140px; /* Reduced from 150px */
+	margin: 6px 0; /* Reduced from 8px */
 	cursor: pointer;
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -244,29 +270,29 @@
 }
 
 .amount, .ref {
-	font-size: 13px;
-	margin-top: 5px;
+	font-size: 11px; /* Reduced from 12px */
+	margin-top: 3px; /* Reduced from 4px */
 	color: #5a3a22;
 }
 
 .payment-note {
-	font-size: 12px;
+	font-size: 10px; /* Reduced from 11px */
 	color: #7a5a40;
-	margin-top: 8px;
+	margin-top: 5px; /* Reduced from 6px */
 }
 
 .payment-details {
-	margin-top: 16px;
+	margin-top: 10px; /* Reduced from 12px */
 	border-top: 1px dashed #e1d2c2;
-	padding-top: 12px;
-	font-size: 13px;
+	padding-top: 8px; /* Reduced from 10px */
+	font-size: 11px; /* Reduced from 12px */
 	color: #5a3a22;
 }
 
 .detail-row {
 	display: flex;
 	justify-content: space-between;
-	padding: 6px 0;
+	padding: 4px 0; /* Reduced from 5px */
 }
 
 .status-pending {
@@ -275,7 +301,7 @@
 }
 
 .amount strong {
-	font-size: 16px;
+	font-size: 14px; /* Reduced from 15px */
 	color: #3d1c02;
 }
 
@@ -290,24 +316,24 @@
 	background: #fffaf2;
 	border: 1px solid #f0e4d6;
 	border-radius: 12px;
-	padding: 22px;
+	padding: 16px; /* Reduced from 18px */
 	box-shadow: 0 8px 20px rgba(61, 28, 2, 0.06);
 }
 
 .how-to-pay h3 {
 	font-family: "Playfair Display", serif;
-	margin-bottom: 25px;
+	margin-bottom: 16px; /* Reduced from 20px */
 }
 
 .step-guide {
 	display: flex;
 	align-items: center;
-	gap: 15px;
-	margin-bottom: 18px;
+	gap: 10px; /* Reduced from 12px */
+	margin-bottom: 10px; /* Reduced from 12px */
 	background: #fff;
 	border: 1px solid #f0e4d6;
 	border-radius: 10px;
-	padding: 10px 12px;
+	padding: 7px 9px; /* Reduced padding */
 	transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -317,7 +343,7 @@
 }
 
 .step-guide img {
-	width: 22px;
+	width: 18px; /* Reduced from 20px */
 }
 
 .step-number {
@@ -325,21 +351,22 @@
 	color: #3d1c02;
 	background: #f1e7db;
 	border-radius: 999px;
-	padding: 4px 10px;
-	font-size: 12px;
+	padding: 3px 9px; /* Reduced padding */
+	font-size: 10px; /* Reduced from 11px */
 }
 
 .step-guide p {
 	margin: 0;
+	font-size: 13px; /* Reduced from 14px */
 }
 
 .payment-tip {
-	margin-top: 14px;
-	padding: 12px;
+	margin-top: 10px; /* Reduced from 12px */
+	padding: 9px; /* Reduced from 10px */
 	background: #fff;
 	border: 1px dashed #e1d2c2;
 	border-radius: 10px;
-	font-size: 13px;
+	font-size: 11px; /* Reduced from 12px */
 	color: #5a3a22;
 }
 
@@ -348,12 +375,12 @@
 	background: #3d1c02;
 	color: white;
 	border: none;
-	padding: 12px 35px;
+	padding: 10px 28px; /* Reduced padding */
 	border-radius: 10px;
-	margin-top: 25px;
+	margin-top: 15px; /* Reduced from 18px */
 	cursor: pointer;
 	font-family: 'Playfair Display', serif;
-	font-size: 16px;
+	font-size: 14px; /* Reduced from 15px */
 	transition: background 0.3s, transform 0.15s ease;
 	width: 100%;
 }
@@ -372,18 +399,18 @@
 @media (max-width: 768px) {
 	.payment-content {
 		flex-direction: column;
-		gap: 30px;
+		gap: 18px; /* Reduced from 20px */
 	}
 
-.step-guide {
-	display: grid;
-	grid-template-columns: 70px 40px 1fr; 
-	align-items: center;
-	gap: 12px;
-	width: 100%;
-	max-width: 320px;
-	margin: 12px auto;
-}
+	.step-guide {
+		display: grid;
+		grid-template-columns: 60px 35px 1fr; /* Reduced from 70px 40px */
+		align-items: center;
+		gap: 10px;
+		width: 100%;
+		max-width: 320px;
+		margin: 8px auto; /* Reduced from 10px */
+	}
 
 	.qr-box {
 		margin-left: 0;
@@ -399,10 +426,15 @@
 	.header-nav {
 		flex-direction: column;
 		align-items: center;
-		gap: 20px;
+		gap: 12px; /* Reduced from 15px */
+		min-height: auto;
 	}
 
- .gcash-card {
+	.back-section {
+		padding-top: 0;
+	}
+
+	.gcash-card {
 		width: 100%;
 		max-width: 360px;   
 		margin: 0 auto;     
@@ -410,28 +442,27 @@
 		justify-content: center;
 	}
 
- .checkout-content {
+	.checkout-content {
 		flex-direction: column;
-		align-items: center;  /* ⭐ centers children */
+		align-items: center;
 	}
 
- .divider {
-		display: none; /* optional */
+	.divider {
+		display: none;
 	}
 
-  .how-to-pay {
+	.how-to-pay {
 		width: 100%;
 		max-width: 360px;
-		margin-top: 24px;
+		margin-top: 18px; /* Reduced from 20px */
 		text-align: center;
 		margin-left: 30px;
-
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
  
- .steps-wrapper {
+	.steps-wrapper {
 		position: static;
 		transform: none;
 		width: 100%;
@@ -439,24 +470,34 @@
 		justify-content: center;
 	}
 
- .checkout-step {
-		gap: 12px;
+	.checkout-step {
+		gap: 10px;
 	}
 
- .step-item {
-		width: 32px;
+	.step-container {
+		gap: 5px;
+	}
+
+	.step-item {
+		width: 32px; /* Reduced from 30px for consistency */
 		height: 32px;
 	}
 
- .step-item img {
-		width: 18px;
+	.step-item img {
+		width: 18px; /* Increased from 16px for better visibility */
 	}
 
- .line {
-		width: 40px;
+	.step-label {
+		font-size: 10px;
 	}
 
- .back-section {
+	.line {
+		width: 30px; /* Reduced from 35px */
+		margin: 0 4px;
+		margin-top: 16px;
+	}
+
+	.back-section {
 		align-items: center;
 		text-align: center;
 	}

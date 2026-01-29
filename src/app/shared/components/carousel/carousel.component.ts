@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit, input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 import { CarouselItem } from '../../models/carousel-item.model';
+import { ToastService } from '../toast/toast.service';
 
 let carouselCounter = 0;
 @Component({
@@ -22,6 +23,7 @@ export class CarouselComponent implements OnInit {
 	private isMobile = false;
 
 	public cart = inject(CartService);
+	public toast = inject(ToastService);
 
 	ngOnInit(): void {
 		this.updateViewport();
@@ -38,7 +40,7 @@ export class CarouselComponent implements OnInit {
 
 	addToCart(item: CarouselItem): void {
 		this.cart.add({ name: item.name, price: item.price, quantity: 1, img: item.image });
-		this.cart.open();
+		this.toast.show('Added to cart', 'success');
 	}
 
 	get slides(): CarouselItem[][] {

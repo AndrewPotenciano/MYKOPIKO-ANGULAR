@@ -1,8 +1,8 @@
 .checkout-box {
 	background-color: white;
 	max-width: 1100px;
-	margin: 80px auto;
-	padding: 40px;
+	margin: 25px auto 20px; /* Further reduced margins */
+	padding: 20px 16px 16px 16px; /* Reduced padding */
 	border-radius: 12px;
 	border: black solid 1px;
 	box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
@@ -11,8 +11,8 @@
 .finish-box {
 	background: white;
 	max-width: 1100px;
-	margin: 80px auto;
-	padding: 60px 40px;
+	margin: 25px auto 20px; /* Further reduced from 50px/30px */
+	padding: 30px 24px; /* Reduced from 40px 30px */
 	border-radius: 12px;
 	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
 	text-align: center;
@@ -36,18 +36,26 @@
 .steps-wrapper {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 45px;
+	margin-bottom: 25px; /* Reduced from 30px */
 }
 
 .checkout-step {
 	display: flex;
+	align-items: flex-start; /* Changed from center */
+	gap: 14px; /* Reduced from 20px */
+}
+
+/* Step container for icon + label */
+.step-container {
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	gap: 28px;
+	gap: 6px;
 }
 
 .step-item {
-	width: 46px;
-	height: 46px;
+	width: 36px; /* Reduced from 40px */
+	height: 36px;
 	border-radius: 50%;
 	background: #ddd;
 	display: flex;
@@ -56,7 +64,7 @@
 }
 
 .step-item img {
-	width: 24px;
+	width: 20px; /* Reduced from 22px */
 	opacity: 0.4;
 }
 
@@ -74,10 +82,22 @@
 	opacity: 1;
 }
 
+/* Step label styling */
+.step-label {
+	font-size: 11px;
+	font-weight: 600;
+	color: #3d1c02;
+	font-family: 'Poppins', sans-serif;
+	white-space: nowrap;
+}
+
 .line {
-	width: 90px;
+	width: 60px; /* Reduced from 70px */
 	height: 2px;
 	background: #ccc;
+	margin: 0 6px;
+	margin-top: 18px; /* Aligns line with center of icons */
+	flex-shrink: 0;
 }
 
 .line.active {
@@ -86,47 +106,57 @@
 
 @media (max-width: 480px) {
 	.steps-wrapper {
-		margin-bottom: 35px;
+		margin-bottom: 20px; /* Reduced from 25px */
 	}
 
 	.checkout-step {
-		gap: 18px;
+		gap: 10px; /* Reduced from 15px */
+	}
+
+	.step-container {
+		gap: 5px;
 	}
 
 	.step-item {
-		width: 40px;
-		height: 40px;
+		width: 32px; /* Reduced from 36px */
+		height: 32px;
 	}
 
 	.step-item img {
-		width: 20px;
+		width: 18px;
+	}
+
+	.step-label {
+		font-size: 10px;
 	}
 
 	.line {
-		width: 45px;
+		width: 30px; /* Reduced from 40px */
+		margin: 0 4px;
+		margin-top: 16px;
 	}
 }
 
 /* Content */
 .finish-content {
-	margin-top: 40px;
+	margin-top: 20px; /* Reduced from 30px */
 }
 
 .success-icon {
 	color: #3fae2a;
-	margin-bottom: 20px;
+	margin-bottom: 12px; /* Reduced from 15px */
 }
 
 .success-icon svg {
-	width: 60px;
-	height: 60px;
+	width: 45px; /* Reduced from 50px */
+	height: 45px;
 }
 
 .order-status {
 	font-family: "Playfair Display", serif;
-	font-size: 14px;
+	font-size: 12px; /* Reduced from 13px */
 	color: #3d1c02;
-	margin-bottom: 10px;
+	margin-bottom: 6px; /* Reduced from 8px */
 }
 
 .finish-content {
@@ -135,39 +165,41 @@
 
 .finish-content h1 {
 	font-family: "Playfair Display", serif;
-	font-size: 42px;
+	font-size: 30px; /* Reduced from 34px */
 	color: #3d1c02;
-	margin: 0 0 15px 0;
+	margin: 0 0 10px 0; /* Reduced from 12px */
 }
 
 .subtitle {
-	font-size: 16px;
-	margin: 15px 0 30px 0;
+	font-size: 14px; /* Reduced from 15px */
+	margin: 10px 0 20px 0; /* Reduced spacing */
 }
 
 .order-ref {
-	font-size: 14px;
-	margin-bottom: 35px;
+	font-size: 12px; /* Reduced from 13px */
+	margin-bottom: 22px; /* Reduced from 28px */
+	line-height: 1.5;
 }
 
 /* Buttons */
 .finish-buttons {
 	display: flex;
 	justify-content: center;
-	gap: 20px;
+	gap: 14px; /* Reduced from 16px */
 	flex-wrap: wrap;
 }
 
 .btn {
-	padding: 12px 32px;
+	padding: 10px 26px; /* Reduced from 11px 28px */
 	border-radius: 10px;
 	font-family: "Playfair Display", serif;
 	cursor: pointer;
 	text-decoration: none;
 	border: none;
-	font-size: 16px;
+	font-size: 14px; /* Reduced from 15px */
 	transition: background 0.3s;
 }
+
 .back-section {
 	display: flex;
 	flex-direction: column;
@@ -195,23 +227,34 @@
 
 @media (max-width: 480px) {
 	.finish-box {
-		margin: 32px auto;
-		padding: 40px 22px;
+		margin: 18px auto; /* Reduced from 20px */
+		padding: 24px 16px; /* Reduced from 30px 18px */
+	}
+
+	.finish-content {
+		margin-top: 16px;
+	}
+
+	.success-icon svg {
+		width: 40px;
+		height: 40px;
 	}
 
 	.finish-content h1 {
-		font-size: 28px;
+		font-size: 24px; /* Reduced from 26px */
 	}
 
 	.subtitle {
-		font-size: 14px;
+		font-size: 12px; /* Reduced from 13px */
 	}
 
 	.finish-buttons {
 		flex-direction: column;
+		gap: 10px; /* Reduced from 12px */
 	}
 
 	.btn {
 		width: 100%;
+		padding: 9px 22px; /* Reduced padding */
 	}
 }

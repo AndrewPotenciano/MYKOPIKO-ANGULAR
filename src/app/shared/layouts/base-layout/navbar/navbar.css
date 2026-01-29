@@ -31,6 +31,13 @@
 	margin-left: 1rem;
 	padding: 0.5rem;
 	transition: opacity 0.3s ease;
+		vertical-align: middle; /* Add this */
+		height: 38px; /* Add fixed height */
+
+}
+
+.navbar-nav {
+	align-items: center; /* Add this to align all nav items */
 }
 
 .nav-icon-link.has-tooltip {

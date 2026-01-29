@@ -1,11 +1,12 @@
 import { Component, signal, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GoogleApi, UserInfo } from '@shared/services';
+import { ToastComponent } from '@shared/components';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ToastComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
