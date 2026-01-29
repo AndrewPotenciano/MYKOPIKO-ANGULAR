@@ -2,6 +2,8 @@
 [id^="productsCarousel"] {
 	position: relative;
 	width: 100%;
+	max-width: 1320px; /* Add this to match hero container */
+	margin: 0 auto; /* Center the carousel */
 }
 
 section.carousel.slide {
@@ -100,20 +102,22 @@ section.carousel.slide {
 	z-index: 100; 
 }
 
-.menu-carousel [id^="productsCarousel"] .carousel-prev {
+/* Remove these old rules */
+/* .menu-carousel [id^="productsCarousel"] .carousel-prev {
 	left: -50px;
 }
 
 .menu-carousel [id^="productsCarousel"] .carousel-next {
 	right: -50px;
-}
+} */
 
+/* Update these to be fixed distance from container edge */
 .carousel-prev {
-	left: 50px; 
+	left: -60px; /* Position outside the carousel container */
 }
 
 .carousel-next {
-	right: 50px; 
+	right: -60px; /* Position outside the carousel container */
 }
 
 .carousel-control-btn:hover {
@@ -236,5 +240,16 @@ section.carousel.slide {
 	}
 	.swipe-hint {
 		display: flex;
+	}
+}
+
+/* Add media query for larger screens to adjust button position */
+@media (min-width: 1440px) {
+	.carousel-prev {
+		left: -80px;
+	}
+	
+	.carousel-next {
+		right: -80px;
 	}
 }
