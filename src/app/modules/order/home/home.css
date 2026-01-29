@@ -81,6 +81,10 @@
 	font-weight: bold;
 }
 
+.main-h1-highlight {
+	display: block;
+}
+
 .main-h2 {
 	font-size: 30px;
 	color: #241C15;
@@ -171,6 +175,17 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
+}
+
+@media (max-width: 480px) {
+  .main-h1 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+  .main-h1-highlight {
+    font-size: 32px;
+    line-height: 1.2;
+  }
 }
 
 .about-us {

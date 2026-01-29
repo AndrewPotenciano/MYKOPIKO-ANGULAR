@@ -2,13 +2,13 @@ import { Component, HostListener, OnInit, input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 import { CarouselItem } from '../../models/carousel-item.model';
-import { ToastService } from '../toast/toast.service';
+import { ToastModalComponent } from '../toast-modal/toast-modal.component';
 
 let carouselCounter = 0;
 @Component({
 	selector: 'app-carousel',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [CommonModule, ToastModalComponent],
 	templateUrl: './carousel.component.html',
 	styleUrls: ['./carousel.component.css']
 })
@@ -23,7 +23,8 @@ export class CarouselComponent implements OnInit {
 	private isMobile = false;
 
 	public cart = inject(CartService);
-	public toast = inject(ToastService);
+	toastOpen = false;
+	toastMessage = '';
 
 	ngOnInit(): void {
 		this.updateViewport();
@@ -40,7 +41,12 @@ export class CarouselComponent implements OnInit {
 
 	addToCart(item: CarouselItem): void {
 		this.cart.add({ name: item.name, price: item.price, quantity: 1, img: item.image });
-		this.toast.show('Added to cart', 'success');
+		this.toastMessage = 'Added to cart';
+		this.toastOpen = true;
+	}
+
+	onToastClose() {
+		this.toastOpen = false;
 	}
 
 	get slides(): CarouselItem[][] {

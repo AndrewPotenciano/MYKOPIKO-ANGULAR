@@ -1,4 +1,5 @@
 <section [id]="carouselId" class="carousel slide my-5" [class.scroll-reveal]="reveal()">
+	<app-toast-modal [message]="toastMessage" [open]="toastOpen" [duration]="2000" (closeToast)="onToastClose()"></app-toast-modal>
 
 	@if(showSeparator()){
 		<div class="category-separator" aria-hidden="true"></div>
