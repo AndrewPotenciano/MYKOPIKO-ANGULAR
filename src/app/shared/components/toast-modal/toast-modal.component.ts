@@ -12,8 +12,9 @@ export class ToastModalComponent {
   message = input<string>('');
   open = input<boolean>(false);
   duration = input<number>(2000);
+  contained = input<boolean>(false);
   closeToast = output<void>();
-  
+
   private timer: any;
 
   constructor() {

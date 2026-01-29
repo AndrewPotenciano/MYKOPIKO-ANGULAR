@@ -22,8 +22,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 	isMobile = false;
 
 	public cart = inject(CartService);
-	toastOpen = false;
-	toastMessage = '';
+	activeToasts = new Set<CarouselItem>();
 	showSwipeHint = true;
 
 	@ViewChild('carouselRow') carouselRow?: ElementRef<HTMLDivElement>;
@@ -57,19 +56,18 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 		const scrollLeft = element.scrollLeft;
 		const scrollWidth = element.scrollWidth;
 		const clientWidth = element.clientWidth;
-		
+
 		// Hide swipe hint when near the end (within 50px)
 		this.showSwipeHint = scrollLeft < scrollWidth - clientWidth - 50;
 	}
 
 	addToCart(item: CarouselItem): void {
 		this.cart.add({ name: item.name, price: item.price, quantity: 1, img: item.image });
-		this.toastMessage = 'Added to cart';
-		this.toastOpen = true;
+		this.activeToasts.add(item);
 	}
 
-	onToastClose() {
-		this.toastOpen = false;
+	onToastClose(item: CarouselItem) {
+		this.activeToasts.delete(item);
 	}
 
 	get slides(): CarouselItem[][] {

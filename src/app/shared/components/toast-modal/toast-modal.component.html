@@ -1,4 +1,4 @@
-<div class="toast-modal-backdrop" *ngIf="open()">
+<div class="toast-modal-backdrop" [class.contained]="contained()" *ngIf="open()">
   <div class="toast-modal-content">
     <div class="toast-modal-body">
       <p>{{ message() }}</p>
