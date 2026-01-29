@@ -2,8 +2,8 @@
 [id^="productsCarousel"] {
 	position: relative;
 	width: 100%;
-	max-width: 1320px; /* Add this to match hero container */
-	margin: 0 auto; /* Center the carousel */
+	max-width: 1320px;
+	margin: 0 auto;
 }
 
 section.carousel.slide {
@@ -102,22 +102,12 @@ section.carousel.slide {
 	z-index: 100; 
 }
 
-/* Remove these old rules */
-/* .menu-carousel [id^="productsCarousel"] .carousel-prev {
-	left: -50px;
-}
-
-.menu-carousel [id^="productsCarousel"] .carousel-next {
-	right: -50px;
-} */
-
-/* Update these to be fixed distance from container edge */
 .carousel-prev {
-	left: -60px; /* Position outside the carousel container */
+	left: -60px;
 }
 
 .carousel-next {
-	right: -60px; /* Position outside the carousel container */
+	right: -60px;
 }
 
 .carousel-control-btn:hover {
@@ -211,16 +201,33 @@ section.carousel.slide {
    MOBILE FIX
 ========================= */
 @media (max-width: 767px) {
+	/* Constrain the carousel width */
+	.carousel-item {
+		overflow: hidden;
+	}
+
+	.container {
+		max-width: 100vw;
+		padding: 0;
+		overflow: hidden;
+	}
+
 	.carousel-row {
 		flex-wrap: nowrap;
 		overflow-x: auto;
 		-webkit-overflow-scrolling: touch;
 		scroll-snap-type: x mandatory;
+		gap: 20px;
+		/* Center the first card and hide others initially */
+		padding: 0 calc(50vw - 170px);
+		margin: 0;
 	}
 
 	.carousel-row > div {
-		flex: 0 0 auto;
-		scroll-snap-align: start;
+		flex: 0 0 340px;
+		scroll-snap-align: center;
+		min-width: 340px;
+		max-width: 340px;
 	}
 
 	.carousel-row::-webkit-scrollbar {
@@ -235,11 +242,19 @@ section.carousel.slide {
 	.carousel-indicators {
 		display: none;
 	}
+	
 	.down-hint {
 		display: none;
 	}
+	
 	.swipe-hint {
 		display: flex;
+	}
+
+	/* Adjust card for mobile */
+	.custom-card {
+		width: 100%;
+		margin: 0 auto;
 	}
 }
 
