@@ -1,8 +1,10 @@
+<app-toast-modal [message]="toastMessage" [open]="toastOpen" [duration]="2000"
+	(closeToast)="onToastClose()"></app-toast-modal>
+
 <section [id]="carouselId" class="carousel slide my-5" [class.scroll-reveal]="reveal()">
-	<app-toast-modal [message]="toastMessage" [open]="toastOpen" [duration]="2000" (closeToast)="onToastClose()"></app-toast-modal>
 
 	@if(showSeparator()){
-		<div class="category-separator" aria-hidden="true"></div>
+	<div class="category-separator" aria-hidden="true"></div>
 	}
 	<h1>{{ title() }}</h1>
 
@@ -15,22 +17,23 @@
 	</div>
 
 	@if(showDownHint()){
-		<div class="down-hint" aria-hidden="true">
-			<span class="down-hint-text">More below</span>
-			<svg class="down-hint-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-				<path d="M12 5v14M5 12l7 7 7-7" />
-			</svg>
-		</div>
+	<div class="down-hint" aria-hidden="true">
+		<span class="down-hint-text">More below</span>
+		<svg class="down-hint-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+			stroke-width="2">
+			<path d="M12 5v14M5 12l7 7 7-7" />
+		</svg>
+	</div>
 	}
 
 	<!-- FIXED BUTTONS OUTSIDE CARDS -->
-	<button class="carousel-control-btn carousel-prev" type="button"
-		[attr.data-bs-target]="'#' + carouselId" data-bs-slide="prev">
+	<button class="carousel-control-btn carousel-prev" type="button" [attr.data-bs-target]="'#' + carouselId"
+		data-bs-slide="prev">
 		<span class="carousel-control-prev-icon"></span>
 	</button>
 
-	<button class="carousel-control-btn carousel-next" type="button"
-		[attr.data-bs-target]="'#' + carouselId" data-bs-slide="next">
+	<button class="carousel-control-btn carousel-next" type="button" [attr.data-bs-target]="'#' + carouselId"
+		data-bs-slide="next">
 		<span class="carousel-control-next-icon"></span>
 	</button>
 
@@ -62,8 +65,9 @@
 				<!-- SWIPE HINT FOR MOBILE -->
 				<div class="swipe-hint" *ngIf="isMobile && showSwipeHint">
 					<span class="swipe-text">Swipe</span>
-					<svg class="swipe-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-						<path d="M5 12h14M12 5l7 7-7 7"/>
+					<svg class="swipe-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
+						stroke="currentColor" stroke-width="2">
+						<path d="M5 12h14M12 5l7 7-7 7" />
 					</svg>
 				</div>
 			</div>
