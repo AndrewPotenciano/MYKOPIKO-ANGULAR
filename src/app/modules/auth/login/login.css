@@ -7,7 +7,7 @@
 	align-items: center;
 	justify-content: center;
 	padding: 24px;
-	margin: -30px;
+	margin: 0;
 }
 
 .login-card {
@@ -20,6 +20,54 @@
 	grid-template-columns: 1.05fr 0.95fr;
 	border: 1px solid rgba(61, 28, 2, 0.15);
 	transform: translateY(-32px);
+@media (max-width: 600px) {
+	.login-page {
+		padding: 0;
+		min-height: 100vh;
+		align-items: flex-start;
+	}
+	.login-card {
+		width: 100vw;
+		min-height: 100vh;
+		border-radius: 0;
+		box-shadow: none;
+		grid-template-columns: 1fr;
+		transform: none;
+		border: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: stretch;
+	}
+	.login-left {
+		padding: 24px 10px 12px 10px;
+		gap: 10px;
+	}
+	.login-brand {
+		font-size: 1.3rem;
+	}
+	.login-logo {
+		width: 70vw;
+		max-width: 220px;
+	}
+	.login-right {
+		padding: 18px 10px 32px 10px;
+		margin-top: 0;
+		gap: 10px;
+	}
+	.btn-facebook, .btn-google {
+		font-size: 13px;
+		padding: 10px 8px;
+		gap: 6px;
+	}
+	.login-title {
+		font-size: 1.3rem;
+	}
+	.login-detail, .login-subtitle, .login-note {
+		font-size: 12px;
+		max-width: 95vw;
+	}
+}
 }
 
 .login-left {

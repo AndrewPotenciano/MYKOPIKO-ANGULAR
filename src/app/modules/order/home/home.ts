@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
-import { CarouselComponent, ReviewCardComponent } from '@shared/components';
+import { CarouselComponent, ReviewCardComponent, MessageModalComponent } from '@shared/components';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
@@ -23,11 +23,13 @@ import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/dire
     NgxTrimDirectiveModule,
     LowercaseOnBlurDirective,
     TitleCaseOnBlurDirective,
+    MessageModalComponent,
   ],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
 export class Home implements OnInit, AfterViewInit, OnDestroy {
+  messageModalOpen = false;
   private revealObserver?: IntersectionObserver;
 
   popularMenuItems: CarouselItem[] = [];
@@ -90,7 +92,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     emailjs
       .send('service_u35oe9x', 'template_iejhg7f', this.contactForm.value, 'VjtiOX-nmb9M7CHQ0')
       .then(() => {
-        alert('Message sent successfully!');
+        this.messageModalOpen = true;
         this.contactForm.reset();
       })
   }

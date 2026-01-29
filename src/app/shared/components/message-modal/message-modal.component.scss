@@ -1,0 +1,45 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.modal-content {
+  background: #fdfcf0;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(61, 28, 2, 0.10);
+  border: 1.5px solid #e0e0e0;
+  padding: 18px 16px 16px 16px;
+  min-width: 180px;
+  max-width: 320px;
+  text-align: center;
+}
+
+.modal-body p {
+  font-size: 1rem;
+  color: #3d1c02;
+  margin-bottom: 12px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn.btn-primary {
+  background: #3d1c02;
+  color: #fff8e7;
+  border-radius: 8px;
+  padding: 7px 22px;
+  border: none;
+  font-size: 0.98rem;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn.btn-primary:hover {
+  background: #2a1401;
+}

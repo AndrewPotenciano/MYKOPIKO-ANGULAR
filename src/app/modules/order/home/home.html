@@ -61,6 +61,7 @@
 </section>
 
 <section class="contact-us" id="contact-us">
+		<app-message-modal [message]="'Message sent successfully!'" [open]="messageModalOpen" (closeModal)="messageModalOpen = false"></app-message-modal>
 	<div class="contact-header scroll-reveal">
 		<h1>Contact Us</h1>
 		<p>We’d love to hear from you.</p>
