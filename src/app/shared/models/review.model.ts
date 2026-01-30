@@ -3,5 +3,5 @@ export interface Review {
   title: string;
   comment: string;
   image: string;
-  starsImage: string;
+  rating: number;
 }

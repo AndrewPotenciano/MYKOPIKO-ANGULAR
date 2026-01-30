@@ -24,6 +24,7 @@
         ],
         "styles": [
           "node_modules/bootstrap/dist/css/bootstrap.min.css",
+          "node_modules/bootstrap-icons/font/bootstrap-icons.css",
           "src/styles.css"
         ],
         "outputPath": "dist/MYKOPIKO"
@@ -51,9 +52,7 @@
         }
       },
       "defaultConfiguration": "production",
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "serve": {
       "executor": "@angular/build:dev-server",

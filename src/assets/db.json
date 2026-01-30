@@ -223,28 +223,28 @@
       "title": "Rich espresso taste",
       "comment": "Masarap sobra yung espresso, hindi mapait at sakto yung timpla.",
       "image": "/assets/images/PNG MENU/andrew.jpg",
-      "starsImage": "/assets/images/5 star.PNG"
+      "rating": 5
     },
     {
       "name": "Dexter",
       "title": "Good value for money",
       "comment": "Okay yung presyo at mabilis yung service kahit peak hours.",
       "image": "/assets/images/PNG MENU/dexter.jpg",
-      "starsImage": "/assets/images/4 star.PNG"
+      "rating": 4
     },
     {
       "name": "Kylle",
       "title": "Refreshing drinks",
       "comment": "Hindi sobrang tamis yung frappes, perfect pang-chill.",
       "image": "/assets/images/PNG MENU/kylle.jpg",
-      "starsImage": "/assets/images/3 star.PNG"
+      "rating": 3
     },
     {
       "name": "Jason",
       "title": "Relaxing atmosphere",
       "comment": "Tahimik yung place at sarap tambayan habang nagkakape.",
       "image": "/assets/images/PNG MENU/jason.webp",
-      "starsImage": "/assets/images/4 star.PNG"
+      "rating": 4
     }
   ]
 }

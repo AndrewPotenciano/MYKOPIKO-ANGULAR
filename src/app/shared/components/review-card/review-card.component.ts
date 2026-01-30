@@ -11,4 +11,5 @@ import { Review } from '../../models/review.model';
 })
 export class ReviewCardComponent {
 	review = input.required<Review>();
+	protected readonly stars = [1, 2, 3, 4, 5];
 }

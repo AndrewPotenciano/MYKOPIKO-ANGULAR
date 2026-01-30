@@ -2,4 +2,8 @@
 <h2 class="name">{{ review().name }}</h2>
 <h3 class="review-title">{{ review().title }}</h3>
 <p class="comment">{{ review().comment }}</p>
-<img [src]="review().starsImage" class="stars" [alt]="review().title + ' rating'" />
+<div class="stars">
+    @for (star of stars; track $index) {
+    <i class="bi" [ngClass]="star <= review().rating ? 'bi-star-fill text-warning' : 'bi-star text-secondary'"></i>
+    }
+</div>
