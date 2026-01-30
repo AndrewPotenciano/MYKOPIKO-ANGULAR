@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { GoogleApi, UserInfo, CartService, MenuService } from '@shared/services';
-import { CarouselComponent} from '@shared/components';
-import { CarouselItem } from  '@shared/models';
+import { CarouselComponent } from '@shared/components';
+import { CarouselItem } from '@shared/models';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
 
   private google = inject(GoogleApi);
   private router = inject(Router);
-  private cartService = inject(CartService);
+
   private menuService = inject(MenuService);
   private cdr = inject(ChangeDetectorRef);
 
@@ -41,7 +41,7 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
       this.popularMenuItems = data;
       this.cdr.detectChanges();
     });
-    
+
     this.menuService.getFrappeMenu().subscribe((data) => {
       this.frappeMenuItems = data;
       this.cdr.detectChanges();
@@ -55,11 +55,7 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
       this.cdr.detectChanges();
     });
 
-    this.cartService.checkoutSubject.subscribe(shouldCheckout => {
-      if (shouldCheckout) {
-        this.router.navigate(['/menu/checkout']).catch(() => {});
-      }
-    });
+
   }
 
   ngAfterViewInit(): void {

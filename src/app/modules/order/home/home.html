@@ -12,7 +12,7 @@
 			</p>
 			<a routerLink="/login" href="/login" class="btn-primary">Order Now</a>
 		</div>
-			
+
 		<div class="hero-image">
 			<img src="/assets/images/coffee-main-page.png" class="main_image" alt="Coffee" width="450" height="330"
 				decoding="async" />
@@ -64,7 +64,8 @@
 </section>
 
 <section class="contact-us" id="contact-us">
-		<app-message-modal [message]="'Message sent successfully!'" [open]="messageModalOpen" (closeModal)="messageModalOpen = false"></app-message-modal>
+	<app-message-modal [message]="'Message sent successfully!'" [open]="messageModalOpen"
+		(closeModal)="messageModalOpen = false"></app-message-modal>
 	<div class="contact-header scroll-reveal">
 		<h1>Contact Us</h1>
 		<p>We’d love to hear from you.</p>
@@ -79,12 +80,12 @@
 					<div class="field-wrapper">
 						<label for="name">Full name<span class="required"> *</span></label>
 						<input type="text" id="name" formControlName="name" placeholder="Juan Dela Cruz"
-						 appTitleCaseOnBlur [class.invalid]="name?.invalid && name?.touched" />
+							appTitleCaseOnBlur [class.invalid]="name?.invalid && name?.touched" />
 
 						@if(contactForm.get('name')?.invalid && contactForm.get('name')?.touched){
-							<span class="field-error">
-								Full name is required
-							</span>
+						<span class="field-error">
+							Full name is required
+						</span>
 						}
 					</div>
 					<!-- EMAIL -->
@@ -94,9 +95,9 @@
 							appLowercaseOnBlur [class.invalid]="email?.invalid && email?.touched" />
 
 						@if(contactForm.get('email')?.invalid && contactForm.get('email')?.touched){
-							<span class="field-error">
-								Email is required
-							</span>
+						<span class="field-error">
+							Email is required
+						</span>
 						}
 					</div>
 					<!-- MESSAGE -->
@@ -106,9 +107,9 @@
 							[class.invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
 
 						@if(contactForm.get('message')?.invalid && contactForm.get('message')?.touched){
-							<span class="field-error">
-								Message is required
-							</span>
+						<span class="field-error">
+							Message is required
+						</span>
 						}
 					</div>
 

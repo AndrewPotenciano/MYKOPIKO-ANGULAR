@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { CartService } from '../../services/cart.service';
+import { Router } from '@angular/router';
+import { CartService, GoogleApi } from '../../services';
 import { CartItem } from '../../models/cart-item.model';
 
 @Component({
@@ -13,6 +14,8 @@ import { CartItem } from '../../models/cart-item.model';
 })
 export class CartModalComponent {
 	private cart = inject(CartService);
+	private google = inject(GoogleApi);
+	private router = inject(Router);
 	items$: Observable<CartItem[]> = this.cart.items$;
 	modalOpen$: Observable<boolean> = this.cart.modalOpen$;
 
@@ -37,7 +40,11 @@ export class CartModalComponent {
 
 	checkout(): void {
 		this.cart.close();
-		this.cart.checkout();
+		if (this.google.isLoggedIn()) {
+			this.router.navigate(['/menu/checkout']);
+		} else {
+			this.google.login('/menu/checkout');
+		}
 	}
 
 	total(items: CartItem[]) {

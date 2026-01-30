@@ -3,18 +3,25 @@ import { BehaviorSubject } from 'rxjs';
 import { CartItem } from '@shared/models';
 @Injectable({ providedIn: 'root' })
 export class CartService {
-  private itemsSub = new BehaviorSubject<CartItem[]>([]);
+  private itemsSub = new BehaviorSubject<CartItem[]>(this.load());
   items$ = this.itemsSub.asObservable();
   cartSubject = this.itemsSub.asObservable();
 
   private modalOpenSub = new BehaviorSubject<boolean>(false);
   modalOpen$ = this.modalOpenSub.asObservable();
 
-  private checkoutSub = new BehaviorSubject<boolean>(false);
-  checkoutSubject = this.checkoutSub.asObservable();
 
   get items() {
     return this.itemsSub.getValue();
+  }
+
+  private load(): CartItem[] {
+    const saved = localStorage.getItem('cart_items');
+    return saved ? JSON.parse(saved) : [];
+  }
+
+  private save(): void {
+    localStorage.setItem('cart_items', JSON.stringify(this.itemsSub.getValue()));
   }
 
   open(): void {
@@ -29,9 +36,6 @@ export class CartService {
     this.modalOpenSub.next(!this.modalOpenSub.getValue());
   }
 
-  checkout(): void {
-    this.checkoutSub.next(true);
-  }
 
   add(item: CartItem): void {
     const items = this.itemsSub.getValue();
@@ -42,6 +46,7 @@ export class CartService {
       items.push(item);
     }
     this.itemsSub.next([...items]);
+    this.save();
   }
 
   updateQuantity(index: number, quantity: number): void {
@@ -49,6 +54,7 @@ export class CartService {
     if (items[index]) {
       items[index].quantity = quantity;
       this.itemsSub.next([...items]);
+      this.save();
     }
   }
 
@@ -56,9 +62,11 @@ export class CartService {
     const items = this.itemsSub.getValue();
     items.splice(index, 1);
     this.itemsSub.next([...items]);
+    this.save();
   }
 
   clear(): void {
     this.itemsSub.next([]);
+    this.save();
   }
 }
