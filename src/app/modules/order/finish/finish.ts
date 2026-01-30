@@ -1,6 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { CartService } from '@shared/services';
+
 @Component({
 	selector: 'app-finish',
 	standalone: true,
@@ -10,20 +12,23 @@ import { Router } from '@angular/router';
 })
 export class Finish implements OnInit {
 	orderNumber = '';
-	
+
 	private router = inject(Router);
+	private cart = inject(CartService);
 
 	ngOnInit(): void {
 		// Generate order number
 		this.orderNumber = 'ORD' + Date.now();
+		// Clear cart on finish
+		this.cart.clear();
 	}
 
 	trackOrder(): void {
 		// Navigate to track order page
-		this.router.navigate(['/menu/track']).catch(() => {});
+		this.router.navigate(['/menu/track']).catch(() => { });
 	}
 
 	backHome(): void {
-		this.router.navigate(['/']).catch(() => {});
+		this.router.navigate(['/']).catch(() => { });
 	}
 }
