@@ -19,6 +19,7 @@ export class Finish implements OnInit {
 	ngOnInit(): void {
 		// Generate order number
 		this.orderNumber = 'ORD' + Date.now();
+		localStorage.setItem('latestOrder', this.orderNumber);
 		// Clear cart on finish
 		this.cart.clear();
 	}

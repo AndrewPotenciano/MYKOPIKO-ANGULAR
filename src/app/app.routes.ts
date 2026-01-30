@@ -8,18 +8,20 @@ import { Payment } from './modules/order/payment/payment';
 import { Finish } from './modules/order/finish/finish';
 import { Track } from './modules/order/track/track';
 
+import { orderGuard } from './core/guards/order.guard';
+
 export const routes: Routes = [
   {
     path: '',
-    component: BaseLayout,  
+    component: BaseLayout,
     children: [
-    { path: '', component: Home },
-     { path: 'login', component: Login },
-     { path: 'menu', component: Menu },
-     { path: 'menu/checkout', component: Checkout },
-     { path: 'menu/payment', component: Payment },
-     { path: 'menu/finish', component: Finish },
-     { path: 'menu/track', component: Track }
+      { path: '', component: Home },
+      { path: 'login', component: Login },
+      { path: 'menu', component: Menu },
+      { path: 'menu/checkout', component: Checkout },
+      { path: 'menu/payment', component: Payment },
+      { path: 'menu/finish', component: Finish },
+      { path: 'menu/track', component: Track, canActivate: [orderGuard] }
     ]
   }
 ];
