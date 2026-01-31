@@ -9,6 +9,7 @@ import { Finish } from './modules/order/finish/finish';
 import { Track } from './modules/order/track/track';
 
 import { orderGuard } from './core/guards/order.guard';
+import { postOrderGuard } from './core/guards/post-order.guard';
 
 export const routes: Routes = [
   {
@@ -18,8 +19,8 @@ export const routes: Routes = [
       { path: '', component: Home },
       { path: 'login', component: Login },
       { path: 'menu', component: Menu },
-      { path: 'menu/checkout', component: Checkout },
-      { path: 'menu/payment', component: Payment },
+      { path: 'menu/checkout', component: Checkout, canActivate: [postOrderGuard] },
+      { path: 'menu/payment', component: Payment, canActivate: [postOrderGuard] },
       { path: 'menu/finish', component: Finish },
       { path: 'menu/track', component: Track, canActivate: [orderGuard] }
     ]
