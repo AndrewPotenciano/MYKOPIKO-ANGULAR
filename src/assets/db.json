@@ -247,47 +247,5 @@
       "rating": 4
     }
   ],
-  "orders": [
-    {
-      "id": "c95d",
-      "orderNumber": "ORD-20260131-119",
-      "customerInfo": {
-        "name": "Andrew James Frago Potenciano",
-        "email": "leynandrew@gmail.com",
-        "address": "Unit 18H Avida Towers San Lazaro",
-        "phone": "0755957203"
-      },
-      "items": [
-        {
-          "name": "Latte",
-          "price": 130,
-          "quantity": 1,
-          "img": "/assets/images/Espresso PNG/Latte.png"
-        },
-        {
-          "name": "Java Frappe",
-          "price": 150,
-          "quantity": 1,
-          "img": "/assets/images/PNG MENU/Java Frappe.png"
-        },
-        {
-          "name": "Macchiato",
-          "price": 120,
-          "quantity": 1,
-          "img": "/assets/images/Espresso PNG/Macchiato.png"
-        },
-        {
-          "name": "Cookies",
-          "price": 90,
-          "quantity": 1,
-          "img": "/assets/images/Pastries PNG/cookies.png"
-        }
-      ],
-      "subtotal": 490,
-      "deliveryFee": 50,
-      "total": 540,
-      "orderDate": "2026-01-31T08:31:42.690Z",
-      "status": "pending"
-    }
-  ]
+  "orders": []
 }

@@ -43,11 +43,11 @@
 
 			<div class="field-wrapper">
 				<label for="checkout-name">Full Name<span class="required"> *</span></label>
-				<input id="checkout-name" type="text" name="name" required #name="ngModel"
-					placeholder="Juan Dela Cruz" [(ngModel)]="checkoutForm.name"
-					(blur)="formatFullName()" [class.invalid]="name.invalid && name.touched" />
+				<input id="checkout-name" type="text" name="name" required #name="ngModel" placeholder="Juan Dela Cruz"
+					[(ngModel)]="checkoutForm.name" (blur)="formatFullName()"
+					[class.invalid]="name.invalid && name.touched" />
 				@if(name.invalid && name.touched){
-					<span class="field-error">Full name is required</span>
+				<span class="field-error">Full name is required</span>
 				}
 			</div>
 
@@ -58,7 +58,7 @@
 					(blur)="checkoutForm.email = (checkoutForm.email || '').trim().toLowerCase()"
 					[class.invalid]="email.invalid && email.touched" />
 				@if(email.invalid && email.touched){
-					<span class="field-error">Email is required</span>
+				<span class="field-error">Email is required</span>
 				}
 			</div>
 
@@ -68,17 +68,16 @@
 					placeholder="Manila Bulacan City" [(ngModel)]="checkoutForm.address" appTrim
 					(blur)="formatFullName()" [class.invalid]="address.invalid && address.touched" />
 				@if(address.invalid && address.touched){
-					<span class="field-error">Address is required</span>
+				<span class="field-error">Address is required</span>
 				}
 			</div>
 
 			<div class="field-wrapper">
 				<label for="checkout-phone">Phone Number<span class="required"> *</span></label>
-				<input id="checkout-phone" type="tel" name="phone" required #phone="ngModel"
-					placeholder="0123 457 7891" [(ngModel)]="checkoutForm.phone" phoneFormat
-					[class.invalid]="phone.invalid && phone.touched"/>
+				<input id="checkout-phone" type="tel" name="phone" required #phone="ngModel" placeholder="0123 457 7891"
+					[(ngModel)]="checkoutForm.phone" phoneFormat [class.invalid]="phone.invalid && phone.touched" />
 				@if(phone.invalid && phone.touched){
-					<span class="field-error">Phone number is required</span>
+				<span class="field-error">Phone number is required</span>
 				}
 			</div>
 		</div>
@@ -105,7 +104,9 @@
 				<h3 class="total-amount">₱{{ subtotal + 50 }}</h3>
 			</div>
 
-			<button class="confirm-order" type="submit" [disabled]="checkoutFormRef.invalid">Confirm Order</button>
+			<button class="confirm-order" type="submit" [disabled]="checkoutFormRef.invalid || (loading$ | async)">
+				{{ (loading$ | async) ? 'Processing...' : 'Confirm Order' }}
+			</button>
 		</div>
 	</form>
 </div>

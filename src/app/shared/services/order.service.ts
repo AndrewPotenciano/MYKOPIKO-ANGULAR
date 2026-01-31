@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { catchError, tap, finalize, map } from 'rxjs/operators';
 import { Order } from '../models';
 
@@ -17,20 +17,29 @@ export class OrderService {
     private readonly errorSubject = new BehaviorSubject<string | null>(null);
     readonly error$ = this.errorSubject.asObservable();
 
+    private isLoading = false;
+
     /**
      * Create a new order via POST
      */
     createOrder(order: Order): Observable<Order> {
+        if (this.isLoading) return of(); // Prevent multiple simultaneous requests
+
+        this.isLoading = true;
         this.loadingSubject.next(true);
         this.errorSubject.next(null);
 
         return this.http.post<Order>(this.apiUrl, order).pipe(
+            tap(savedOrder => console.log('Order created successfully:', savedOrder)),
             catchError((error) => {
                 console.error('Failed to create order:', error);
-                this.errorSubject.next('Failed to submit order. Please try again.');
-                throw error;
+                this.errorSubject.next(error?.message || 'Failed to submit order. Please try again.');
+                return throwError(() => error);
             }),
-            finalize(() => this.loadingSubject.next(false))
+            finalize(() => {
+                this.isLoading = false;
+                this.loadingSubject.next(false);
+            })
         );
     }
 

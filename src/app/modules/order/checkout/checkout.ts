@@ -24,6 +24,8 @@ export class Checkout implements OnInit, OnDestroy {
 	private googleApi = inject(GoogleApi);
 	private userProfileSubscription?: Subscription;
 
+	loading$ = this.orderService.loading$;
+
 	checkoutForm: CheckoutForm = {
 		name: '',
 		email: '',
