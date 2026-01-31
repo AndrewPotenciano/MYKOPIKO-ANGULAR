@@ -20,38 +20,31 @@
 		<!-- STATUS STEPS -->
 		<div class="track-steps">
 			@for (step of trackSteps; track $index; let last = $last) {
-				<div [ngClass]="{'track-step': true, 'active': step.completed}">
-					<div class="step-icon">
-						@if(step.icon === 'coffee'){
-							<i class="fas fa-mug-hot"></i>
-						}
-						@if(step.icon === 'truck'){
-							<i class="fas fa-truck"></i>
-						}
-						@if(step.icon === 'box'){
-							<i class="fas fa-box"></i>
-						}
-					</div>
-					<span>{{ step.label }}</span>
+			<div [ngClass]="{'track-step': true, 'active': step.completed}">
+				<div class="step-icon">
+					@if(step.icon === 'coffee'){
+					<i class="fas fa-mug-hot"></i>
+					}
+					@if(step.icon === 'truck'){
+					<i class="fas fa-truck"></i>
+					}
+					@if(step.icon === 'box'){
+					<i class="fas fa-box"></i>
+					}
 				</div>
-				@if(!last){
-					<span class="track-line" [ngClass]="{'active': step.completed}"></span>
-				}
+				<span>{{ step.label }}</span>
+			</div>
+			@if(!last){
+			<span class="track-line" [ngClass]="{'active': step.completed}"></span>
+			}
 			}
 		</div>
 
 		<!-- MAP -->
 		<div class="map-box">
-			<iframe
-  [src]="mapUrl"
-  width="100%"
-  height="350"
-  style="border:0;"
-  allowfullscreen
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-
+			<iframe [src]="mapUrl" width="100%" height="350" style="border:0;" allowfullscreen loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade">
+			</iframe>
 		</div>
 
 		<!-- RIDER INFO -->
@@ -68,6 +61,51 @@
 				Call Rider
 			</button>
 		</div>
+
+		<!-- ORDER RECEIPT (PLACED BELOW) -->
+		@if (loading$ | async) {
+		<div class="receipt-section loading">
+			<p>Loading your receipt...</p>
+		</div>
+		} @else if (currentOrder) {
+		<div class="receipt-section">
+			<div class="receipt-header">
+				<h3>Order Receipt</h3>
+				<span class="order-num">{{ currentOrder.orderNumber }}</span>
+			</div>
+
+			<div class="receipt-items">
+				@for (item of currentOrder.items; track $index) {
+				<div class="receipt-item">
+					<div class="item-info">
+						<span class="item-name">{{ item.name }}</span>
+						<span class="item-qty">x{{ item.quantity }}</span>
+					</div>
+					<span class="item-price">₱{{ (item.price * item.quantity).toFixed(2) }}</span>
+				</div>
+				}
+			</div>
+
+			<div class="receipt-summary">
+				<div class="summary-row">
+					<span>Subtotal</span>
+					<span>₱{{ currentOrder.subtotal.toFixed(2) }}</span>
+				</div>
+				<div class="summary-row">
+					<span>Delivery Fee</span>
+					<span>₱{{ currentOrder.deliveryFee.toFixed(2) }}</span>
+				</div>
+				<div class="summary-total">
+					<span>Total</span>
+					<span>₱{{ currentOrder.total.toFixed(2) }}</span>
+				</div>
+			</div>
+		</div>
+		} @else {
+		<div class="receipt-section error">
+			<p>Order details not found.</p>
+		</div>
+		}
 
 	</div>
 </div>

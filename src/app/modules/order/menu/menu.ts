@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GoogleApi, UserInfo, MenuService } from '@shared/services';
 import { CarouselComponent } from '@shared/components';
-import { MenuItem } from '@shared/models';
+import { MenuItem, CarouselItem } from '@shared/models';
 
 
 @Component({
@@ -25,10 +25,10 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
   private menuService = inject(MenuService);
   private destroyRef = inject(DestroyRef);
 
-  popularMenuItems: MenuItem[] = [];
-  frappeMenuItems: MenuItem[] = [];
-  espressoMenuItems: MenuItem[] = [];
-  pastriesMenuItems: MenuItem[] = [];
+  popularMenuItems: CarouselItem[] = [];
+  frappeMenuItems: CarouselItem[] = [];
+  espressoMenuItems: CarouselItem[] = [];
+  pastriesMenuItems: CarouselItem[] = [];
 
   constructor() {
     this.google.userProfileSubject

@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { CartService } from '@shared/services';
+import { CartService, OrderService } from '@shared/services';
 import { PhoneFormatDirective, TrimDirective } from '@shared/directives';
-import { CheckoutForm, CartItem } from '@shared/models';
+import { CheckoutForm, CartItem, Order } from '@shared/models';
 import { GoogleApi } from '../../../google-api';
 import { Subscription } from 'rxjs';
 @Component({
@@ -19,6 +19,7 @@ export class Checkout implements OnInit, OnDestroy {
 	subtotal = 0;
 
 	private cartService = inject(CartService);
+	private orderService = inject(OrderService);
 	private router = inject(Router);
 	private googleApi = inject(GoogleApi);
 	private userProfileSubscription?: Subscription;
@@ -81,7 +82,31 @@ export class Checkout implements OnInit, OnDestroy {
 			Object.values(form.controls).forEach(control => control.markAsTouched());
 			return;
 		}
-		this.router.navigate(['/menu/payment']).catch(() => { });
+
+		const order: Order = {
+			orderNumber: this.orderService.generateOrderNumber(),
+			customerInfo: { ...this.checkoutForm },
+			items: [...this.cartItems],
+			subtotal: this.subtotal,
+			deliveryFee: 50,
+			total: this.subtotal + 50,
+			orderDate: new Date().toISOString(),
+			status: 'pending'
+		};
+
+		this.orderService.createOrder(order).subscribe({
+			next: (savedOrder) => {
+				// Store order ID for tracking
+				if (savedOrder.id) {
+					localStorage.setItem('last_order_id', savedOrder.id.toString());
+				}
+				this.router.navigate(['/menu/payment']).catch(() => { });
+			},
+			error: (err) => {
+				console.error('Checkout failed', err);
+				alert('Failed to place order. Please try again.');
+			}
+		});
 	}
 
 	resetCheckout(): void {

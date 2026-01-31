@@ -7,7 +7,7 @@ import { MenuService, ReviewService } from '@shared/services';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
-import { Review, MenuItem } from '@shared/models';
+import { Review, MenuItem, CarouselItem } from '@shared/models';
 import { inject } from '@angular/core';
 import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/directives';
 @Component({
@@ -32,10 +32,10 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   messageModalOpen = false;
   private revealObserver?: IntersectionObserver;
 
-  popularMenuItems: MenuItem[] = [];
-  frappeMenuItems: MenuItem[] = [];
-  espressoMenuItems: MenuItem[] = [];
-  pastriesMenuItems: MenuItem[] = [];
+  popularMenuItems: CarouselItem[] = [];
+  frappeMenuItems: CarouselItem[] = [];
+  espressoMenuItems: CarouselItem[] = [];
+  pastriesMenuItems: CarouselItem[] = [];
   reviews: Review[] = [];
   contactForm!: FormGroup;
 
