@@ -12,4 +12,6 @@ export interface Order {
     total: number;
     orderDate: string;
     status: OrderStatus;
+    paymentMethod?: 'gcash' | 'maya';
+    paymentReference?: string;
 }

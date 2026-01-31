@@ -39,57 +39,88 @@
 	<!-- PAYMENT CONTENT -->
 	<div class="payment-content">
 
-		<!-- LEFT -->
-		<div class="gcash-card">
-			<div class="qr-box">
-				<div class="gcash-header">
-					<h2>Gcash Payment</h2>
-					<p class="subtitle">Fast • Secure • Instant</p>
+		<!-- LEFT: PAYMENT AREA -->
+		<div class="payment-selection-area">
+			<div class="payment-methods">
+				<h3>Select Payment Method</h3>
+				<div class="method-buttons">
+					<button type="button" class="method-btn" [class.active]="selectedPayment === 'gcash'"
+						(click)="onSelectPayment('gcash')">
+						<img src="/assets/images-2/GCash_logo.svg.png" alt="GCash">
+					</button>
+					<button type="button" class="method-btn" [class.active]="selectedPayment === 'maya'"
+						(click)="onSelectPayment('maya')">
+						<img src="/assets/images/maya_logo.png" class="maya-logo" alt="Maya">
+					</button>
 				</div>
-				<h3>Scan To Pay</h3>
+			</div>
 
-				<div class="qr-inner">
-					<img src="/assets/images-2/GCash_logo.svg.png" class="gcash-logo" alt="GCash Logo">
-					<br>
-					<img src="/assets/images/QRPH.png" class="qr-code" id="qrCode" (click)="onQrCodeClick()" 
-							[ngClass]="{'clicked': qrCodeClicked}" alt="QR Code">
-
-					<p class="amount">Amount: <strong id="gcash-amount">₱{{ total }}</strong></p>
-					<p class="ref">Ref: <span id="ref-number">{{ refNumber }}</span></p>
+			<div class="qr-container">
+				<div class="qr-header">
+					<h4>Scan to Pay</h4>
+					<p>Scan the QR code below using your {{ selectedPayment | titlecase }} app</p>
 				</div>
+				<div class="qr-image-wrapper">
+					<img src="/assets/images/QRPH.png" class="qr-display" alt="QRPH Payment QR Code">
+				</div>
+				<p class="amount-due">Amount to Pay: <strong>₱{{ total }}</strong></p>
+			</div>
+
+			<div class="reference-input-box">
+				<label for="refNumber">Reference Number</label>
+				<input type="text" id="refNumber" [(ngModel)]="referenceNumber"
+					(input)="onReferenceNumberInput(referenceNumber)"
+					[placeholder]="selectedPayment === 'gcash' ? '9-13 digit number' : '12-16 characters'"
+					class="ref-input" [class.invalid]="referenceNumber && !isReferenceValid">
+
+				@if (referenceNumber && !isReferenceValid) {
+				<span class="error-msg">Invalid reference number for {{ selectedPayment | titlecase }}</span>
+				}
 			</div>
 		</div>
 
 		<div class="divider"></div>
 
-		<!-- RIGHT -->
-		<div class="how-to-pay">
-			<h3>How to Pay with Gcash</h3>
+		<!-- RIGHT: ORDER SUMMARY -->
+		<div class="order-summary-area">
+			<h3>Order Summary</h3>
+			<div class="summary-card">
+				<div class="items-list">
+					@for (item of cartItems; track $index) {
+					<div class="summary-item">
+						<div class="item-main">
+							<span class="item-name">{{ item.name }}</span>
+							<span class="item-qty">x{{ item.quantity }}</span>
+						</div>
+						<span class="item-sub">₱{{ item.price * item.quantity }}</span>
+					</div>
+					}
+				</div>
 
-			<!-- STEP GUIDE WITH IMAGES -->
-			<div class="step-guide">
-				<span class="step-number">Step 1</span>
-				<img src="/assets/images-2/clip-board.png" alt="Clipboard">
-				<p>Open your GCash Account</p>
-			</div>
-
-			<div class="step-guide">
-				<span class="step-number">Step 2</span>
-				<img src="/assets/images-2/scan.png" alt="Scan">
-				<p>Scan The QR Code</p>
-			</div>
-
-			<div class="step-guide">
-				<span class="step-number">Step 3</span>
-				<img src="/assets/images-2/confirm.png" alt="Confirm">
-				<p>Confirm Payment</p>
+				<div class="summary-footer">
+					<div class="footer-row">
+						<span>Subtotal</span>
+						<span>₱{{ total - 50 }}</span>
+					</div>
+					<div class="footer-row">
+						<span>Delivery Fee</span>
+						<span>₱50</span>
+					</div>
+					<div class="total-row">
+						<span>Total Payment</span>
+						<span>₱{{ total }}</span>
+					</div>
+				</div>
 			</div>
 
 			<div class="payment-tip">
-				<strong>Tip:</strong> After confirming, keep the transaction receipt for reference.
+				<img src="/assets/images-2/confirm.png" alt="Tip">
+				<p>Your order will be processed immediately after payment confirmation.</p>
 			</div>
-			<!-- CONFIRM PAYMENT BUTTON -->
-			<button id="confirm-payment" [disabled]="!qrCodeClicked" (click)="confirmPayment()">Confirm Payment</button>
+
+			<button id="confirm-payment" [disabled]="!isReferenceValid" (click)="confirmPayment()">
+				Confirm Payment
+			</button>
 		</div>
 
 	</div>

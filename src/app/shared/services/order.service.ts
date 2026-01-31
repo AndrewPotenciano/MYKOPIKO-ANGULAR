@@ -98,6 +98,24 @@ export class OrderService {
     }
 
     /**
+     * Update an existing order
+     */
+    updateOrder(id: string | number, data: Partial<Order>): Observable<Order> {
+        this.loadingSubject.next(true);
+        this.errorSubject.next(null);
+
+        return this.http.patch<Order>(`${this.apiUrl}/${id}`, data).pipe(
+            tap(updatedOrder => console.log('Order updated:', updatedOrder)),
+            catchError((error) => {
+                console.error('Failed to update order:', error);
+                this.errorSubject.next('Failed to update order information.');
+                return throwError(() => error);
+            }),
+            finalize(() => this.loadingSubject.next(false))
+        );
+    }
+
+    /**
      * Generate order number
      */
     generateOrderNumber(): string {
