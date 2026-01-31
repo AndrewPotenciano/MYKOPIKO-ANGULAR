@@ -88,8 +88,14 @@
 			<div class="order-items">
 				@for (item of cartItems; track $index) {
 				<div class="order-item">
-					<span>{{ item.name }} x {{ item.quantity }}</span>
-					<span>₱{{ item.price * item.quantity }}</span>
+					<div class="item-visuals">
+						<img [src]="item.img" alt="{{ item.name }}" class="checkout-item-img">
+						<div class="item-info">
+							<span class="item-name">{{ item.name }}</span>
+							<span class="item-qty">x{{ item.quantity }}</span>
+						</div>
+					</div>
+					<span class="item-price">₱{{ item.price * item.quantity }}</span>
 				</div>
 				}
 			</div>

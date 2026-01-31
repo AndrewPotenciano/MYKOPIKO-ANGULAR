@@ -357,13 +357,30 @@
 .summary-item {
 	display: flex;
 	justify-content: space-between;
-	padding: 6px 0; /* Reduced from 10px */
+	align-items: center; /* Center items vertically */
+	padding: 8px 0; /* Slightly tighter than 10px */
 	border-bottom: 1px solid #eee5da;
 }
 
-.item-main {
+.item-visuals {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.summary-item-img {
+	width: 40px; /* Slightly smaller for summary side */
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 1px solid #f0e4d6;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.item-info {
 	display: flex;
 	flex-direction: column;
+	gap: 2px;
 }
 
 .item-name {
@@ -373,7 +390,7 @@
 }
 
 .item-qty {
-	font-size: 12px;
+	font-size: 11px; /* Slightly smaller for summary */
 	color: #7a5a40;
 }
 
