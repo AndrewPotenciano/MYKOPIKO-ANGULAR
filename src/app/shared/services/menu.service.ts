@@ -2,15 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { map, catchError, finalize } from 'rxjs/operators';
-import { CarouselItem } from '../models/carousel-item.model';
+import { MenuItem, MenuCategory } from '../models';
 
-export type MenuCategory = 'popular' | 'frappe' | 'espresso' | 'pastries';
-
-export interface MenuItem extends CarouselItem {
-  id: number;
-  description?: string;
-  category: MenuCategory;
-}
 
 @Injectable({
   providedIn: 'root'

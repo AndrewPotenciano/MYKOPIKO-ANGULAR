@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { MenuService, ReviewService } from '@shared/services';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl,} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
-import { Review, CarouselItem } from '@shared/models';
+import { Review, MenuItem } from '@shared/models';
 import { inject } from '@angular/core';
 import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/directives';
 @Component({
@@ -32,10 +32,10 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   messageModalOpen = false;
   private revealObserver?: IntersectionObserver;
 
-  popularMenuItems: CarouselItem[] = [];
-  frappeMenuItems: CarouselItem[] = [];
-  espressoMenuItems: CarouselItem[] = [];
-  pastriesMenuItems: CarouselItem[] = [];
+  popularMenuItems: MenuItem[] = [];
+  frappeMenuItems: MenuItem[] = [];
+  espressoMenuItems: MenuItem[] = [];
+  pastriesMenuItems: MenuItem[] = [];
   reviews: Review[] = [];
   contactForm!: FormGroup;
 
@@ -54,9 +54,9 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     // Fetch menu items
     this.menuService.getPopularMenu().subscribe((data) => {
       this.popularMenuItems = data;
-      
+
     });
-    
+
     this.menuService.getFrappeMenu().subscribe((data) => {
       this.frappeMenuItems = data;
     });
