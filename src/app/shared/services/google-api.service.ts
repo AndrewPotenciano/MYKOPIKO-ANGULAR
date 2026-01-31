@@ -61,4 +61,12 @@ export class GoogleApi {
 		}
 		this.oAuthService.initLoginFlow();
 	}
+
+	getUserProfile(): UserInfo['info'] | null {
+		if (!this.isLoggedIn()) {
+			return null;
+		}
+		const profile = this.oAuthService.getIdentityClaims();
+		return profile ? profile as UserInfo['info'] : null;
+	}
 }

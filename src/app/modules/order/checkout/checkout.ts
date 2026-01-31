@@ -1,10 +1,12 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CartService } from '@shared/services';
 import { PhoneFormatDirective, TrimDirective } from '@shared/directives';
 import { CheckoutForm, CartItem } from '@shared/models';
+import { GoogleApi } from '../../../google-api';
+import { Subscription } from 'rxjs';
 @Component({
 	selector: 'app-checkout',
 	standalone: true,
@@ -12,12 +14,14 @@ import { CheckoutForm, CartItem } from '@shared/models';
 	templateUrl: './checkout.html',
 	styleUrls: ['./checkout.css'],
 })
-export class Checkout implements OnInit {
+export class Checkout implements OnInit, OnDestroy {
 	cartItems: CartItem[] = [];
 	subtotal = 0;
 
 	private cartService = inject(CartService);
 	private router = inject(Router);
+	private googleApi = inject(GoogleApi);
+	private userProfileSubscription?: Subscription;
 
 	checkoutForm: CheckoutForm = {
 		name: '',
@@ -31,6 +35,37 @@ export class Checkout implements OnInit {
 			this.cartItems = items;
 			this.calculateSubtotal();
 		});
+
+		// Pre-fill customer info if user is logged in with Google
+		this.loadGoogleUserInfo();
+
+		// Listen for login events (when user logs in while on this page)
+		this.userProfileSubscription = this.googleApi.userProfileSubject.subscribe(userInfo => {
+			if (userInfo?.info) {
+				this.populateFormFromGoogleAuth(userInfo.info);
+			}
+		});
+	}
+
+	ngOnDestroy(): void {
+		this.userProfileSubscription?.unsubscribe();
+	}
+
+	private loadGoogleUserInfo(): void {
+		const userProfile = this.googleApi.getUserProfile();
+		if (userProfile) {
+			this.populateFormFromGoogleAuth(userProfile);
+		}
+	}
+
+	private populateFormFromGoogleAuth(userInfo: { name?: string; email?: string }): void {
+		// Only populate if fields are empty to avoid overwriting user's manual input
+		if (!this.checkoutForm.name && userInfo.name) {
+			this.checkoutForm.name = userInfo.name;
+		}
+		if (!this.checkoutForm.email && userInfo.email) {
+			this.checkoutForm.email = userInfo.email;
+		}
 	}
 
 	calculateSubtotal(): void {

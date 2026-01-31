@@ -12,7 +12,7 @@ const oAuthConfig: AuthConfig = {
 }
 
 export interface UserInfo {
-  info:{
+  info: {
     sub: string;
     email: string;
     name: string;
@@ -36,24 +36,32 @@ export class GoogleApi {
           const redirect = sessionStorage.getItem('post_login_redirect');
           if (redirect) {
             sessionStorage.removeItem('post_login_redirect');
-            this.router.navigateByUrl(redirect).catch(() => {});
+            this.router.navigateByUrl(redirect).catch(() => { });
           }
         });
       }
     });
   }
 
-  isLoggedIn( ): boolean {
+  isLoggedIn(): boolean {
     return this.oAuthService.hasValidAccessToken();
-}
+  }
   SignOut(): void {
     this.oAuthService.logOut();
   }
 
   login(target?: string): void {
     if (target) {
-      try { sessionStorage.setItem('post_login_redirect', target); } catch {}
+      try { sessionStorage.setItem('post_login_redirect', target); } catch { }
     }
     this.oAuthService.initLoginFlow();
+  }
+
+  getUserProfile(): UserInfo['info'] | null {
+    if (!this.isLoggedIn()) {
+      return null;
+    }
+    const profile = this.oAuthService.getIdentityClaims();
+    return profile ? profile as UserInfo['info'] : null;
   }
 }
