@@ -1,37 +1,66 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { map, catchError, finalize } from 'rxjs/operators';
 import { CarouselItem } from '../models/carousel-item.model';
+
+export type MenuCategory = 'popular' | 'frappe' | 'espresso' | 'pastries';
 
 export interface MenuItem extends CarouselItem {
   id: number;
   description?: string;
-  category?: string;
+  category: MenuCategory;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-  private menuDataSubject = new BehaviorSubject<MenuItem[]>([]);
-  private menuData$ = this.menuDataSubject.asObservable().pipe(shareReplay(1));
+  private readonly apiUrl = 'http://localhost:3000/menu';
+  private readonly http = inject(HttpClient);
 
-  private http = inject(HttpClient);
+  private readonly menuDataSubject = new BehaviorSubject<MenuItem[]>([]);
+  readonly menuData$ = this.menuDataSubject.asObservable();
+
+  private readonly loadingSubject = new BehaviorSubject<boolean>(false);
+  readonly loading$ = this.loadingSubject.asObservable();
+
+  private readonly errorSubject = new BehaviorSubject<string | null>(null);
+  readonly error$ = this.errorSubject.asObservable();
+
+  private isLoading = false;
 
   constructor() {
     this.loadMenuData();
   }
-   private apiUrl = "http://localhost:3000/menu";
 
   private loadMenuData(): void {
+    if (this.isLoading) return; // Prevent multiple simultaneous requests
+
+    this.isLoading = true;
+    this.loadingSubject.next(true);
+    this.errorSubject.next(null); // Clear previous errors
     this.http.get<MenuItem[]>(this.apiUrl)
+      .pipe(
+        catchError((error) => {
+          console.error('Failed to load menu data:', error);
+          this.errorSubject.next('Failed to load menu data. Please try again later.');
+          return of(null); // Return null instead of empty array to preserve existing data
+        }),
+        finalize(() => {
+          this.isLoading = false;
+          this.loadingSubject.next(false);
+        })
+      )
       .subscribe(data => {
-        this.menuDataSubject.next(data);
+        if (data) {
+          this.menuDataSubject.next(data);
+        }
+        // If data is null (error occurred), keep existing menu items
       });
   }
 
-  private getFilteredMenu(category: string): Observable<MenuItem[]> {
+  private getFilteredMenu(category: MenuCategory): Observable<MenuItem[]> {
     return this.menuData$.pipe(
       map(data => data.filter(item => item.category === category))
     );
@@ -55,5 +84,13 @@ export class MenuService {
 
   getAllMenu(): Observable<MenuItem[]> {
     return this.menuData$;
+  }
+
+  /**
+   * Refresh menu data from the API
+   * Useful after add/edit/delete operations
+   */
+  refreshMenu(): void {
+    this.loadMenuData();
   }
 }

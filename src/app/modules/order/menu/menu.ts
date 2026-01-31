@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit, AfterViewInit, ChangeDetectorRef, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit, DestroyRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { GoogleApi, UserInfo, CartService, MenuService } from '@shared/services';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { GoogleApi, UserInfo, MenuService } from '@shared/services';
 import { CarouselComponent } from '@shared/components';
 import { CarouselItem } from '@shared/models';
 
@@ -21,9 +22,8 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
 
   private google = inject(GoogleApi);
   private router = inject(Router);
-
   private menuService = inject(MenuService);
-  private cdr = inject(ChangeDetectorRef);
+  private destroyRef = inject(DestroyRef);
 
   popularMenuItems: CarouselItem[] = [];
   frappeMenuItems: CarouselItem[] = [];
@@ -31,29 +31,37 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
   pastriesMenuItems: CarouselItem[] = [];
 
   constructor() {
-    this.google.userProfileSubject.subscribe(info => this.userInfo = info);
+    this.google.userProfileSubject
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(info => this.userInfo = info);
   }
 
   ngOnInit(): void {
     document.body.classList.add('menu-page');
 
-    this.menuService.getPopularMenu().subscribe((data) => {
-      this.popularMenuItems = data;
-      this.cdr.detectChanges();
-    });
+    this.menuService.getPopularMenu()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((data) => {
+        this.popularMenuItems = data;
+      });
 
-    this.menuService.getFrappeMenu().subscribe((data) => {
-      this.frappeMenuItems = data;
-      this.cdr.detectChanges();
-    });
-    this.menuService.getEspressoMenu().subscribe((data) => {
-      this.espressoMenuItems = data;
-      this.cdr.detectChanges();
-    });
-    this.menuService.getPastriesMenu().subscribe((data) => {
-      this.pastriesMenuItems = data;
-      this.cdr.detectChanges();
-    });
+    this.menuService.getFrappeMenu()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((data) => {
+        this.frappeMenuItems = data;
+      });
+
+    this.menuService.getEspressoMenu()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((data) => {
+        this.espressoMenuItems = data;
+      });
+
+    this.menuService.getPastriesMenu()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((data) => {
+        this.pastriesMenuItems = data;
+      });
 
 
   }
