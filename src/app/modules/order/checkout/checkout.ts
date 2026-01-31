@@ -34,6 +34,9 @@ export class Checkout implements OnInit, OnDestroy {
 	};
 
 	ngOnInit(): void {
+		// Reset tracking access for new order attempt
+		localStorage.removeItem('is_order_finished');
+
 		this.cartService.cartSubject.subscribe(items => {
 			this.cartItems = items;
 			this.calculateSubtotal();
@@ -113,6 +116,7 @@ export class Checkout implements OnInit, OnDestroy {
 
 	resetCheckout(): void {
 		this.checkoutForm = { name: '', email: '', address: '', phone: '' };
+		localStorage.removeItem('is_order_finished');
 		this.cartService.clear();
 	}
 

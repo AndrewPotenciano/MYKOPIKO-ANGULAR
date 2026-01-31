@@ -43,6 +43,9 @@ export class Finish implements OnInit {
 		// Clear cart when landing on finish page
 		this.cart.clear();
 
+		// Mark order as finished for tracking access
+		localStorage.setItem('is_order_finished', 'true');
+
 		// Cleanup old keys if they exist
 		localStorage.removeItem('latestOrder');
 	}
