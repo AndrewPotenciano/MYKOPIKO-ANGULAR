@@ -31,35 +31,27 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 		this.updateViewport();
 	}
 
-	ngAfterViewInit(): void {
-		this.attachScrollListener();
-	}
+	ngAfterViewInit(): void { }
 
 	@HostListener('window:resize')
 	onResize(): void {
 		this.updateViewport();
-		this.attachScrollListener();
 	}
 
 	private updateViewport(): void {
 		this.isMobile = typeof window !== 'undefined' && window.innerWidth <= 767;
 	}
 
-	private attachScrollListener(): void {
-		if (this.isMobile && this.carouselRow) {
-			const element = this.carouselRow.nativeElement;
-			element.addEventListener('scroll', () => this.onScroll(element));
-		}
-	}
-
-	private onScroll(element: HTMLDivElement): void {
+	onScroll(element: HTMLElement): void {
+		if (!this.isMobile) return;
 		const scrollLeft = element.scrollLeft;
 		const scrollWidth = element.scrollWidth;
 		const clientWidth = element.clientWidth;
 
-		// Hide swipe hint when near the end (within 50px)
-		this.showSwipeHint = scrollLeft < scrollWidth - clientWidth - 50;
+		// Hide swipe hint when near the end (within 30px)
+		this.showSwipeHint = scrollLeft < scrollWidth - clientWidth - 30;
 	}
+
 
 	addToCart(item: CarouselItem): void {
 		this.cart.add({ name: item.name, price: item.price, quantity: 1, img: item.image });

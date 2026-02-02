@@ -41,7 +41,7 @@
 		@for (slide of slides; track $index; let i = $index) {
 		<div class="carousel-item" [class.active]="i === 0">
 			<div class="container">
-				<div class="row g-4 carousel-row" #carouselRow>
+				<div class="row g-4 carousel-row" #carouselRow (scroll)="onScroll($any($event.target))">
 
 					@for (item of slide; track $index) {
 					<div class="col-10 col-sm-6 col-md-4">
