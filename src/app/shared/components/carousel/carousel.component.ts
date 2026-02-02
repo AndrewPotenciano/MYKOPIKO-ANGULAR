@@ -22,7 +22,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 	isMobile = false;
 
 	public cart = inject(CartService);
-	activeToasts = new Set<CarouselItem>();
+	lastAddedItem: string | null = null;
 	showSwipeHint = true;
 
 	@ViewChild('carouselRow') carouselRow?: ElementRef<HTMLDivElement>;
@@ -55,11 +55,11 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 
 	addToCart(item: CarouselItem): void {
 		this.cart.add({ name: item.name, price: item.price, quantity: 1, img: item.image });
-		this.activeToasts.add(item);
+		this.lastAddedItem = item.name;
 	}
 
-	onToastClose(item: CarouselItem) {
-		this.activeToasts.delete(item);
+	onToastClose() {
+		this.lastAddedItem = null;
 	}
 
 	get slides(): CarouselItem[][] {
