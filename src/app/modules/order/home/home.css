@@ -516,12 +516,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-bottom: 18px;
+	margin-bottom: 28px;
 }
 
 .field-error {
 	position: absolute;
-	bottom: -16px;
+	bottom: -20px;
 	left: 7.5%;
 	font-size: 12px;
 	color: red;
