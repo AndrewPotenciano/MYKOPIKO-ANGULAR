@@ -354,6 +354,31 @@
 	padding: 15px; /* Reduced from 20px */
 }
 
+.items-list {
+	max-height: 240px; /* Show exactly 3 items */
+	overflow-y: auto;
+	padding-right: 5px; /* Space for scrollbar */
+}
+
+/* Custom Scrollbar for Items List */
+.items-list::-webkit-scrollbar {
+	width: 6px;
+}
+
+.items-list::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 3px;
+}
+
+.items-list::-webkit-scrollbar-thumb {
+	background: #d6c0b0;
+	border-radius: 3px;
+}
+
+.items-list::-webkit-scrollbar-thumb:hover {
+	background: #bfa591;
+}
+
 .summary-item {
 	display: flex;
 	justify-content: space-between;
