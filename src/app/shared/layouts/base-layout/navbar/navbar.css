@@ -117,7 +117,8 @@
 		border: none;
 		width: 100%;
 		padding: 0.5rem 0;
-		text-align: center;
+		text-align: left;
+		margin-left: 1rem;
 	}
 	.nav-logout-mobile .nav-logout-link:hover,
 	.nav-logout-mobile .nav-logout-link:focus {
@@ -161,5 +162,7 @@
 	.nav-logout-link {
 		padding: 0.5rem 0;
 		width: 100%;
+		margin-left: 1rem;
+		text-align: left;
 	}
 }
