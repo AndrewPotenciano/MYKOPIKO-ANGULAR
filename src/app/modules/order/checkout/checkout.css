@@ -298,6 +298,28 @@ input.invalid {
 
 .order-items {
 	margin-bottom: 12px; /* Reduced from 15px */
+	max-height: 240px; /* Show exactly 3 items */
+	overflow-y: auto;
+	padding-right: 5px; /* Space for scrollbar */
+}
+
+/* Custom Scrollbar for Order Items */
+.order-items::-webkit-scrollbar {
+	width: 6px;
+}
+
+.order-items::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 3px;
+}
+
+.order-items::-webkit-scrollbar-thumb {
+	background: #d6c0b0;
+	border-radius: 3px;
+}
+
+.order-items::-webkit-scrollbar-thumb:hover {
+	background: #bfa591;
 }
 
 .calc-details p {
