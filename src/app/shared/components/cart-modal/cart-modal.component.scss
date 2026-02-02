@@ -45,7 +45,11 @@
 .remove-btn {
 	justify-self: end;
 }
-.item-img { width: 64px; height: 64px; object-fit: cover; border-radius: 4px; }
+.item-img { 
+	width: 64px; 
+	height: 64px; 
+	object-fit: contain; 
+}
 .item-info { display: flex; flex-direction: column; gap: 0.25rem; }
 .item-name { font-weight: 600; }
 .item-price { color: #666; font-size: 0.9rem; }
