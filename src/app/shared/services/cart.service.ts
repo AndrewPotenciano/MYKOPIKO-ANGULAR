@@ -32,10 +32,6 @@ export class CartService {
     this.modalOpenSub.next(false);
   }
 
-  toggle(): void {
-    this.modalOpenSub.next(!this.modalOpenSub.getValue());
-  }
-
 
   add(item: CartItem): void {
     const items = this.itemsSub.getValue();

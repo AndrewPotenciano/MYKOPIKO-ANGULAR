@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { map, catchError, finalize } from 'rxjs/operators';
 import { MenuItem, MenuCategory } from '../models';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -28,17 +26,17 @@ export class MenuService {
   }
 
   private loadMenuData(): void {
-    if (this.isLoading) return; // Prevent multiple simultaneous requests
+    if (this.isLoading) return;
 
     this.isLoading = true;
     this.loadingSubject.next(true);
-    this.errorSubject.next(null); // Clear previous errors
+    this.errorSubject.next(null);
     this.http.get<MenuItem[]>(this.apiUrl)
       .pipe(
         catchError((error) => {
           console.error('Failed to load menu data:', error);
           this.errorSubject.next('Failed to load menu data. Please try again later.');
-          return of(null); // Return null instead of empty array to preserve existing data
+          return of(null);
         }),
         finalize(() => {
           this.isLoading = false;
@@ -49,7 +47,6 @@ export class MenuService {
         if (data) {
           this.menuDataSubject.next(data);
         }
-        // If data is null (error occurred), keep existing menu items
       });
   }
 
@@ -75,14 +72,6 @@ export class MenuService {
     return this.getFilteredMenu('pastries');
   }
 
-  getAllMenu(): Observable<MenuItem[]> {
-    return this.menuData$;
-  }
-
-  /**
-   * Refresh menu data from the API
-   * Useful after add/edit/delete operations
-   */
   refreshMenu(): void {
     this.loadMenuData();
   }

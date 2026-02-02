@@ -1,7 +1,7 @@
 {
   "menu": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Classic Cappuccino",
       "description": "Rich and bold cappuccino with milk foam",
       "price": 120,
@@ -10,7 +10,7 @@
       "category": "popular"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Latte",
       "description": "Smooth latte with steamed milk",
       "price": 130,
@@ -19,7 +19,7 @@
       "category": "popular"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Mocha",
       "description": "Delicious mocha coffee blend",
       "price": 140,
@@ -28,7 +28,7 @@
       "category": "popular"
     },
     {
-      "id": 3.5,
+      "id": "3.5",
       "name": "Cafe Americano",
       "description": "Strong American style coffee",
       "price": 110,
@@ -37,7 +37,7 @@
       "category": "popular"
     },
     {
-      "id": 3.6,
+      "id": "3.6",
       "name": "Macchiato",
       "description": "Espresso with a touch of milk foam",
       "price": 120,
@@ -46,7 +46,7 @@
       "category": "popular"
     },
     {
-      "id": 3.7,
+      "id": "3.7",
       "name": "Cortado",
       "description": "Balanced mix of espresso and milk",
       "price": 120,
@@ -55,7 +55,7 @@
       "category": "popular"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Caramel Frappe",
       "description": "Sweet caramel flavored frappe",
       "price": 160,
@@ -64,7 +64,7 @@
       "category": "frappe"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Java Frappe",
       "description": "Rich coffee frappe",
       "price": 150,
@@ -73,7 +73,7 @@
       "category": "frappe"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Creme Frappe",
       "description": "Creamy creme frappe delight",
       "price": 150,
@@ -82,7 +82,7 @@
       "category": "frappe"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "White Frappe",
       "description": "Light and smooth white frappe",
       "price": 160,
@@ -91,7 +91,7 @@
       "category": "frappe"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Strawberry Frappe",
       "description": "Fresh strawberry frappe",
       "price": 160,
@@ -100,7 +100,7 @@
       "category": "frappe"
     },
     {
-      "id": 8.5,
+      "id": "8.5",
       "name": "Affogato Frappe",
       "description": "Ice cream with hot espresso",
       "price": 170,
@@ -109,7 +109,7 @@
       "category": "frappe"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Cafe Americano",
       "description": "Strong American style coffee",
       "price": 110,
@@ -118,7 +118,7 @@
       "category": "espresso"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Macchiato",
       "description": "Espresso with a touch of milk foam",
       "price": 120,
@@ -127,7 +127,7 @@
       "category": "espresso"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Cortado",
       "description": "Balanced mix of espresso and milk",
       "price": 120,
@@ -136,7 +136,7 @@
       "category": "espresso"
     },
     {
-      "id": 11.5,
+      "id": "11.5",
       "name": "Mocha",
       "description": "Espresso with chocolate and milk",
       "price": 140,
@@ -145,7 +145,7 @@
       "category": "espresso"
     },
     {
-      "id": 11.6,
+      "id": "11.6",
       "name": "Latte",
       "description": "Smooth latte with steamed milk",
       "price": 130,
@@ -154,7 +154,7 @@
       "category": "espresso"
     },
     {
-      "id": 11.7,
+      "id": "11.7",
       "name": "Cappuccino",
       "description": "Rich cappuccino with milk foam",
       "price": 120,
@@ -163,7 +163,7 @@
       "category": "espresso"
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Croissant",
       "description": "Buttery fresh croissant",
       "price": 80,
@@ -172,7 +172,7 @@
       "category": "pastries"
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Cookies",
       "description": "Delicious homemade cookies",
       "price": 90,
@@ -181,7 +181,7 @@
       "category": "pastries"
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Muffins",
       "description": "Chocolate chip muffins",
       "price": 100,
@@ -190,7 +190,7 @@
       "category": "pastries"
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Cheesecake",
       "description": "Rich creamy cheesecake",
       "price": 120,
@@ -199,7 +199,7 @@
       "category": "pastries"
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "Brownies",
       "description": "Rich chocolate brownies",
       "price": 95,
@@ -208,7 +208,7 @@
       "category": "pastries"
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "Strawberry Cake",
       "description": "Fresh strawberry cake",
       "price": 110,
@@ -223,28 +223,32 @@
       "title": "Rich espresso taste",
       "comment": "Masarap sobra yung espresso, hindi mapait at sakto yung timpla.",
       "image": "/assets/images/PNG MENU/andrew.jpg",
-      "rating": 5
+      "rating": 5,
+      "id": "dd09"
     },
     {
       "name": "Dexter",
       "title": "Good value for money",
       "comment": "Okay yung presyo at mabilis yung service kahit peak hours.",
       "image": "/assets/images/PNG MENU/dexter.jpg",
-      "rating": 4
+      "rating": 4,
+      "id": "dbaf"
     },
     {
       "name": "Kylle",
       "title": "Refreshing drinks",
       "comment": "Hindi sobrang tamis yung frappes, perfect pang-chill.",
       "image": "/assets/images/PNG MENU/kylle.jpg",
-      "rating": 3
+      "rating": 3,
+      "id": "9aee"
     },
     {
       "name": "Jason",
       "title": "Relaxing atmosphere",
       "comment": "Tahimik yung place at sarap tambayan habang nagkakape.",
       "image": "/assets/images/PNG MENU/jason.webp",
-      "rating": 4
+      "rating": 4,
+      "id": "d0e7"
     }
   ],
   "orders": []

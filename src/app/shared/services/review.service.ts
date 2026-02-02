@@ -18,10 +18,6 @@ export class ReviewService {
     this.loadReviewData();
   }
 
-  getReviews(): Observable<Review[]> {
-    return this.reviewData$;
-  }
-  
   private loadReviewData(): void {
     this.http.get<Review[]>(this.apiUrl).subscribe({
       next: (data) => this.reviewDataSubject.next(data),

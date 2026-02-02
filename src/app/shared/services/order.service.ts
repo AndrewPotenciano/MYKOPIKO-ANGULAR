@@ -19,11 +19,8 @@ export class OrderService {
 
     private isLoading = false;
 
-    /**
-     * Create a new order via POST
-     */
     createOrder(order: Order): Observable<Order> {
-        if (this.isLoading) return of(); // Prevent multiple simultaneous requests
+        if (this.isLoading) return of();
 
         this.isLoading = true;
         this.loadingSubject.next(true);
@@ -43,9 +40,6 @@ export class OrderService {
         );
     }
 
-    /**
-     * Get all orders for a specific customer email
-     */
     getUserOrders(email: string): Observable<Order[]> {
         this.loadingSubject.next(true);
         this.errorSubject.next(null);
@@ -60,29 +54,6 @@ export class OrderService {
         );
     }
 
-    /**
-     * Get all orders (for admin or general tracking)
-     */
-    getAllOrders(): Observable<Order[]> {
-        this.loadingSubject.next(true);
-        this.errorSubject.next(null);
-
-        return this.http.get<Order[]>(this.apiUrl).pipe(
-            map(orders => orders.sort((a, b) => {
-                return new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime();
-            })),
-            catchError((error) => {
-                console.error('Failed to fetch all orders:', error);
-                this.errorSubject.next('Failed to load orders.');
-                return of([]);
-            }),
-            finalize(() => this.loadingSubject.next(false))
-        );
-    }
-
-    /**
-     * Get a single order by ID
-     */
     getOrderById(id: string | number): Observable<Order | null> {
         this.loadingSubject.next(true);
         this.errorSubject.next(null);
@@ -97,9 +68,6 @@ export class OrderService {
         );
     }
 
-    /**
-     * Update an existing order
-     */
     updateOrder(id: string | number, data: Partial<Order>): Observable<Order> {
         this.loadingSubject.next(true);
         this.errorSubject.next(null);
@@ -114,10 +82,6 @@ export class OrderService {
             finalize(() => this.loadingSubject.next(false))
         );
     }
-
-    /**
-     * Generate order number
-     */
     generateOrderNumber(): string {
         const date = new Date();
         const year = date.getFullYear();
