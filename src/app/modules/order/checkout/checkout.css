@@ -378,7 +378,7 @@ input.invalid {
 @media (max-width: 768px) {
 	.header-nav {
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start; /* Align children to left */
 		gap: 15px; /* Reduced from 20px */
 		min-height: auto;
 	}
@@ -423,8 +423,8 @@ input.invalid {
 	}
 
 	.back-section {
-		align-items: center;
-		text-align: center;
+		align-items: flex-start; /* Align back button to left */
+		text-align: left;
 	}
 
 	.customer-info,
