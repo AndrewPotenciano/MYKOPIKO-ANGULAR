@@ -15,6 +15,11 @@ export class Login {
 	private router = inject(Router);
 
 	ngOnInit(): void {
+		if (this.google.isLoggedIn()) {
+			this.router.navigate(['/menu']);
+			return;
+		}
+
 		this.google.userProfileSubject.subscribe(() => {
 			this.router.navigate(['/menu']);
 		});
