@@ -196,7 +196,7 @@
 }
 
 .method-btn img.maya-logo {
-	height: 55px; /* Reduced from 65px for better vertical fit */
+	height: 50px; /* Increased size */
 }
 
 .method-btn.active {
@@ -496,10 +496,66 @@
 	}
 }
 
+@media (max-width: 768px) {
+	.header-nav {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
+		min-height: auto;
+	}
+
+	.back-section {
+		padding-top: 0;
+		align-items: flex-start;
+		text-align: left;
+	}
+
+	.steps-wrapper {
+		position: static;
+		transform: none;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 5px;
+	}
+	
+	.checkout-step {
+		gap: 10px;
+	}
+
+	.step-container {
+		gap: 5px;
+	}
+
+	.step-item {
+		width: 32px;
+		height: 32px;
+	}
+
+	.step-item img {
+		width: 18px;
+	}
+
+	.step-label {
+		font-size: 10px;
+	}
+
+	.line {
+		width: 30px;
+		margin: 0 4px;
+		margin-top: 16px;
+	}
+}
+
 @media (max-width: 480px) {
 	.method-buttons {
 		flex-direction: column;
 	}
+	
+	.method-btn img.maya-logo {
+		height: 45px; /* Increased per user request */
+	}
+
 	.qr-display {
 		width: 140px;
 		height: 140px;

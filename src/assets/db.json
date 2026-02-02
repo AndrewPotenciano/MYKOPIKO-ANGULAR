@@ -253,8 +253,8 @@
   ],
   "orders": [
     {
-      "id": "857b",
-      "orderNumber": "ORD-20260202-255",
+      "id": "a9ac",
+      "orderNumber": "ORD-20260202-402",
       "customerInfo": {
         "name": "Andrew Potenciano",
         "email": "leynandrew@gmail.com",
@@ -263,167 +263,31 @@
       },
       "items": [
         {
-          "name": "Mocha",
-          "price": 140,
-          "quantity": 2,
-          "img": "/assets/images/Espresso PNG/Mocha.png"
-        },
-        {
-          "name": "Java Frappe",
-          "price": 150,
+          "name": "Latte",
+          "price": 130,
           "quantity": 1,
-          "img": "/assets/images/PNG MENU/Java Frappe.png"
+          "img": "/assets/images/Espresso PNG/Latte.png"
         },
-        {
-          "name": "Cookies",
-          "price": 90,
-          "quantity": 1,
-          "img": "/assets/images/Pastries PNG/cookies.png"
-        },
-        {
-          "name": "Creme Frappe",
-          "price": 150,
-          "quantity": 1,
-          "img": "/assets/images/PNG MENU/Creme Frappe.png"
-        }
-      ],
-      "subtotal": 670,
-      "deliveryFee": 50,
-      "total": 720,
-      "orderDate": "2026-02-02T06:49:49.944Z",
-      "status": "pending"
-    },
-    {
-      "id": "cb89",
-      "orderNumber": "ORD-20260202-762",
-      "customerInfo": {
-        "name": "Andrew Potenciano",
-        "email": "leynandrew@gmail.com",
-        "address": "Unit 18H Avida Towers San Lazaro",
-        "phone": "0755957203"
-      },
-      "items": [
         {
           "name": "Mocha",
           "price": 140,
-          "quantity": 2,
+          "quantity": 1,
           "img": "/assets/images/Espresso PNG/Mocha.png"
         },
         {
-          "name": "Java Frappe",
-          "price": 150,
-          "quantity": 1,
-          "img": "/assets/images/PNG MENU/Java Frappe.png"
-        },
-        {
-          "name": "Cookies",
-          "price": 90,
-          "quantity": 2,
-          "img": "/assets/images/Pastries PNG/cookies.png"
-        },
-        {
-          "name": "Creme Frappe",
-          "price": 150,
-          "quantity": 1,
-          "img": "/assets/images/PNG MENU/Creme Frappe.png"
-        },
-        {
-          "name": "Macchiato",
+          "name": "Classic Cappuccino",
           "price": 120,
           "quantity": 1,
-          "img": "/assets/images/Espresso PNG/Macchiato.png"
-        },
-        {
-          "name": "Cortado",
-          "price": 120,
-          "quantity": 1,
-          "img": "/assets/images/Espresso PNG/Cortado.png"
-        },
-        {
-          "name": "Cafe Americano",
-          "price": 110,
-          "quantity": 1,
-          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
-        },
-        {
-          "name": "Muffins",
-          "price": 100,
-          "quantity": 1,
-          "img": "/assets/images/Pastries PNG/muffins.png"
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
         }
       ],
-      "subtotal": 1210,
+      "subtotal": 390,
       "deliveryFee": 50,
-      "total": 1260,
-      "orderDate": "2026-02-02T06:50:21.400Z",
-      "status": "pending"
-    },
-    {
-      "id": "7170",
-      "orderNumber": "ORD-20260202-384",
-      "customerInfo": {
-        "name": "Andrew Potenciano",
-        "email": "leynandrew@gmail.com",
-        "address": "Unit 18H Avida Towers San Lazaro",
-        "phone": "0755957203"
-      },
-      "items": [
-        {
-          "name": "Mocha",
-          "price": 140,
-          "quantity": 2,
-          "img": "/assets/images/Espresso PNG/Mocha.png"
-        },
-        {
-          "name": "Java Frappe",
-          "price": 150,
-          "quantity": 1,
-          "img": "/assets/images/PNG MENU/Java Frappe.png"
-        },
-        {
-          "name": "Cookies",
-          "price": 90,
-          "quantity": 2,
-          "img": "/assets/images/Pastries PNG/cookies.png"
-        },
-        {
-          "name": "Creme Frappe",
-          "price": 150,
-          "quantity": 1,
-          "img": "/assets/images/PNG MENU/Creme Frappe.png"
-        },
-        {
-          "name": "Macchiato",
-          "price": 120,
-          "quantity": 1,
-          "img": "/assets/images/Espresso PNG/Macchiato.png"
-        },
-        {
-          "name": "Cortado",
-          "price": 120,
-          "quantity": 1,
-          "img": "/assets/images/Espresso PNG/Cortado.png"
-        },
-        {
-          "name": "Cafe Americano",
-          "price": 110,
-          "quantity": 1,
-          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
-        },
-        {
-          "name": "Muffins",
-          "price": 100,
-          "quantity": 1,
-          "img": "/assets/images/Pastries PNG/muffins.png"
-        }
-      ],
-      "subtotal": 1210,
-      "deliveryFee": 50,
-      "total": 1260,
-      "orderDate": "2026-02-02T06:51:17.815Z",
+      "total": 440,
+      "orderDate": "2026-02-02T07:05:23.427Z",
       "status": "confirmed",
       "paymentMethod": "gcash",
-      "paymentReference": "4343434343"
+      "paymentReference": "21212121212"
     }
   ]
 }
