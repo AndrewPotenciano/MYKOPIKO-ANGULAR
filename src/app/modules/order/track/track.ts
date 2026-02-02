@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { OrderService } from '@shared/services';
+import { OrderService, GoogleApi } from '@shared/services';
 import { Order } from '@shared/models';
 import { Subscription } from 'rxjs';
 
@@ -40,6 +40,7 @@ export class Track implements OnInit, OnDestroy {
 	private router = inject(Router);
 	private sanitizer = inject(DomSanitizer);
 	private orderService = inject(OrderService);
+	private googleApi = inject(GoogleApi);
 	loading$ = this.orderService.loading$;
 
 	ngOnInit(): void {
@@ -78,5 +79,13 @@ export class Track implements OnInit, OnDestroy {
 
 	goBack(): void {
 		this.router.navigate(['/menu/finish']).catch(() => { });
+	}
+
+	browseMenu(): void {
+		if (this.googleApi.isLoggedIn()) {
+			this.router.navigate(['/menu']).catch(() => { });
+		} else {
+			this.router.navigate(['/login']).catch(() => { });
+		}
 	}
 }
