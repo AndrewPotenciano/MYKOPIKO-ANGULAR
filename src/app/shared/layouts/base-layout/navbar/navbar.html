@@ -28,6 +28,17 @@
 						<span class="nav-icon-text">Track order</span>
 					</a>
 				</li>
+				<li *ngIf="isLoggedIn()" class="nav-item desktop-only-logout">
+					<div class="user-dropdown-container">
+						<a class="nav-icon-link has-tooltip" href="javascript:void(0)"
+							(click)="toggleUserDropdown($event)" data-label="Profile" aria-label="Profile">
+							<i class="fas fa-user-circle nav-icon"></i>
+						</a>
+						<div class="user-dropdown-menu" [class.show]="isUserDropdownOpen">
+							<button class="dropdown-item" (click)="logout()">Logout</button>
+						</div>
+					</div>
+				</li>
 				<li *ngIf="isMenuRoute && isLoggedIn()" class="nav-item nav-logout-mobile">
 					<button type="button" class="nav-link nav-logout-link" (click)="logout()">Logout</button>
 				</li>

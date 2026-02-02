@@ -17,7 +17,6 @@ import { MenuItem, CarouselItem } from '@shared/models';
 })
 export class Menu implements OnInit, AfterViewInit, OnDestroy {
   userInfo?: UserInfo;
-  showLogoutModal = false;
   private revealObserver?: IntersectionObserver;
 
   private google = inject(GoogleApi);
@@ -93,20 +92,5 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
 
   isLoggedIn(): boolean {
     return this.google.isLoggedIn();
-  }
-
-  openLogoutModal(): void {
-    this.showLogoutModal = true;
-  }
-
-  closeLogoutModal(): void {
-    this.showLogoutModal = false;
-  }
-
-  confirmLogout(): void {
-    this.showLogoutModal = false;
-    this.google.SignOut()
-      .then(() => this.router.navigate(['/']))
-      .catch(() => this.router.navigate(['/']));
   }
 }

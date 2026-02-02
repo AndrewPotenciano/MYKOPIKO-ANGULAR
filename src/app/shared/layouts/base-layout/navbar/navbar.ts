@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, HostListener, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -16,9 +16,11 @@ export class Navbar {
 	isNavOpen = false;
 	isLoginRoute = false;
 	isMenuRoute = false;
+	isUserDropdownOpen = false;
 	private cart = inject(CartService);
 	private router = inject(Router);
 	private google = inject(GoogleApi);
+	private eRef = inject(ElementRef);
 	constructor() {
 		// set initial value
 		this.isLoginRoute = this.router.url.includes('/login');
@@ -38,10 +40,23 @@ export class Navbar {
 		this.isNavOpen = false;
 	}
 
+	toggleUserDropdown(event: Event): void {
+		event.preventDefault();
+		event.stopPropagation();
+		this.isUserDropdownOpen = !this.isUserDropdownOpen;
+	}
+
+	@HostListener('document:click', ['$event'])
+	clickout(event: any) {
+		if (!this.eRef.nativeElement.contains(event.target)) {
+			this.isUserDropdownOpen = false;
+		}
+	}
+
 	scrollTo(event: Event, id: string): void {
 		event.preventDefault();
 		this.closeNav();
-		
+
 		// If not on home page, navigate to home first
 		if (!this.router.url.includes('/') || this.router.url !== '/') {
 			this.router.navigate(['/'], { fragment: id }).then(() => {
@@ -71,9 +86,10 @@ export class Navbar {
 		return this.google.isLoggedIn();
 	}
 
-	logout(): void {
-		this.google.SignOut();
+	async logout(): Promise<void> {
+		this.isUserDropdownOpen = false;
+		await this.google.SignOut();
 		this.closeNav();
-		this.router.navigate(['/']).catch(() => {});
+		this.router.navigate(['/']).catch(() => { });
 	}
 }
