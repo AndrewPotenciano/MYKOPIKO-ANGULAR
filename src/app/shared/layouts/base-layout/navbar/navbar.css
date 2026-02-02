@@ -165,4 +165,13 @@
 		margin-left: 1rem;
 		text-align: left;
 	}
+
+	.menu-separator-mobile {
+		display: block;
+		height: 2px;
+		background: #2C1E1A;
+		opacity: 0.25;
+		margin: 10px 1rem 15px;
+		width: calc(100% - 2rem);
+	}
 }

@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container">
-	<a class="navbar-brand" routerLink="/" (click)="closeNav()">MYKOPIKO</a>
-		<button class="navbar-toggler" type="button" (click)="toggleNav()"
-						[attr.aria-expanded]="isNavOpen" aria-label="Toggle navigation">
+		<a class="navbar-brand" routerLink="/" (click)="closeNav()">MYKOPIKO</a>
+		<button class="navbar-toggler" type="button" (click)="toggleNav()" [attr.aria-expanded]="isNavOpen"
+			aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
@@ -10,16 +10,20 @@
 			<ul class="navbar-nav ms-auto">
 				<li class="nav-item"><a class="nav-link" href="#home" (click)="scrollTo($event,'home')">Home</a></li>
 				<li class="nav-item"><a class="nav-link" href="#menu" (click)="scrollTo($event,'menu')">Menu</a></li>
-				<li class="nav-item"><a class="nav-link" href="#about-us" (click)="scrollTo($event,'about-us')">About Us</a></li>
-				<li class="nav-item"><a class="nav-link" href="#contact-us" (click)="scrollTo($event,'contact-us')">Contact Us</a></li>
+				<li class="nav-item"><a class="nav-link" href="#about-us" (click)="scrollTo($event,'about-us')">About
+						Us</a></li>
+				<li class="nav-item"><a class="nav-link" href="#contact-us"
+						(click)="scrollTo($event,'contact-us')">Contact Us</a></li>
 				<li [hidden]="isLoginRoute" class="nav-item">
-					<a class="nav-icon-link has-tooltip" href="#" (click)="openCart($event)" data-label="View cart" aria-label="View cart">
+					<a class="nav-icon-link has-tooltip" href="#" (click)="openCart($event)" data-label="View cart"
+						aria-label="View cart">
 						<img src="/assets/images-2/shopping-cart.png" alt="Shopping Cart" class="nav-icon">
 						<span class="nav-icon-text">View cart</span>
 					</a>
 				</li>
 				<li [hidden]="isLoginRoute" class="nav-item">
-					<a class="nav-icon-link has-tooltip" routerLink="/menu/track" (click)="closeNav()" data-label="Track order" aria-label="Track order">
+					<a class="nav-icon-link has-tooltip" routerLink="/menu/track" (click)="closeNav()"
+						data-label="Track order" aria-label="Track order">
 						<img src="/assets/images-2/track.png" alt="Track Order" class="nav-icon">
 						<span class="nav-icon-text">Track order</span>
 					</a>
@@ -27,7 +31,8 @@
 				<li *ngIf="isMenuRoute && isLoggedIn()" class="nav-item nav-logout-mobile">
 					<button type="button" class="nav-link nav-logout-link" (click)="logout()">Logout</button>
 				</li>
-				
+				<li class="nav-item menu-separator-mobile"></li>
+
 			</ul>
 		</div>
 	</div>
