@@ -10,6 +10,7 @@ import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
 import { Review, MenuItem, CarouselItem } from '@shared/models';
 import { inject } from '@angular/core';
 import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/directives';
+import { LABELS } from '@shared/constants/label.const';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -29,6 +30,7 @@ import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/dire
   styleUrls: ['./home.css'],
 })
 export class Home implements OnInit, AfterViewInit, OnDestroy {
+  public readonly LABELS = LABELS;
   messageModalOpen = false;
   private revealObserver?: IntersectionObserver;
 

@@ -10,7 +10,7 @@
 				Experience the perfect blend of rich, aromatic coffee and cozy,
 				inviting moments that brighten your day, one cup at a time.
 			</p>
-			<a routerLink="/login" href="/login" class="btn-primary">Order Now</a>
+			<a routerLink="/login" href="/login" class="btn-primary">{{ LABELS.BUTTONS.ORDER_NOW }}</a>
 		</div>
 
 		<div class="hero-image">
@@ -113,7 +113,8 @@
 						}
 					</div>
 
-					<button type="submit" [disabled]="contactForm.invalid" class="btn-submit">Send Message</button>
+					<button type="submit" [disabled]="contactForm.invalid" class="btn-submit">{{
+						LABELS.BUTTONS.SEND_MESSAGE }}</button>
 				</div>
 			</form>
 		</div>

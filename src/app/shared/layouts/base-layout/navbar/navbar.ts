@@ -4,6 +4,7 @@ import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CartService } from '../../../services/cart.service';
 import { GoogleApi } from '../../../services/google-api.service';
+import { LABELS } from '../../../constants/label.const';
 
 @Component({
 	selector: 'app-navbar',
@@ -13,6 +14,7 @@ import { GoogleApi } from '../../../services/google-api.service';
 	styleUrls: ['./navbar.css']
 })
 export class Navbar {
+	public readonly LABELS = LABELS;
 	isNavOpen = false;
 	isLoginRoute = false;
 	isMenuRoute = false;

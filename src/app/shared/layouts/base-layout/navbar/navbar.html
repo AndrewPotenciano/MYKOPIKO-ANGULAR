@@ -8,12 +8,14 @@
 
 		<div class="collapse navbar-collapse" [class.show]="isNavOpen">
 			<ul class="navbar-nav ms-auto">
-				<li class="nav-item"><a class="nav-link" href="#home" (click)="scrollTo($event,'home')">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="#menu" (click)="scrollTo($event,'menu')">Menu</a></li>
-				<li class="nav-item"><a class="nav-link" href="#about-us" (click)="scrollTo($event,'about-us')">About
-						Us</a></li>
-				<li class="nav-item"><a class="nav-link" href="#contact-us"
-						(click)="scrollTo($event,'contact-us')">Contact Us</a></li>
+				<li class="nav-item"><a class="nav-link" href="#home" (click)="scrollTo($event,'home')">{{
+						LABELS.NAVBAR.HOME }}</a></li>
+				<li class="nav-item"><a class="nav-link" href="#menu" (click)="scrollTo($event,'menu')">{{
+						LABELS.NAVBAR.MENU }}</a></li>
+				<li class="nav-item"><a class="nav-link" href="#about-us" (click)="scrollTo($event,'about-us')">{{
+						LABELS.NAVBAR.ABOUT_US }}</a></li>
+				<li class="nav-item"><a class="nav-link" href="#contact-us" (click)="scrollTo($event,'contact-us')">{{
+						LABELS.NAVBAR.CONTACT_US }}</a></li>
 				<li [hidden]="isLoginRoute" class="nav-item">
 					<a class="nav-icon-link has-tooltip" href="#" (click)="openCart($event)" data-label="View cart"
 						aria-label="View cart">
