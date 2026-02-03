@@ -31,6 +31,7 @@ export class Navbar {
 		this.router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe(() => {
 			this.isLoginRoute = this.router.url.includes('/login');
 			this.isMenuRoute = this.router.url.includes('/menu');
+			this.isNavOpen = false;
 		});
 	}
 
