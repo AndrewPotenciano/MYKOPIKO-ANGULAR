@@ -489,7 +489,7 @@
 	}
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
 	.contact-header h1 {
 		font-size: 35px;
 	}
@@ -498,6 +498,10 @@
 	.input-fields input,
 	.input-fields textarea {
 		width: 100%;
+	}
+
+	.field-error {
+		left: 0 !important;
 	}
 }
 
