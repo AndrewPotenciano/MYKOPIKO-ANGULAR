@@ -252,6 +252,30 @@
     }
   ],
   "orders": [
-    
+    {
+      "id": "5d4d",
+      "orderNumber": "ORD-20260203-668",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18H Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        }
+      ],
+      "subtotal": 140,
+      "deliveryFee": 50,
+      "total": 190,
+      "orderDate": "2026-02-03T06:20:06.619Z",
+      "status": "confirmed",
+      "paymentMethod": "gcash",
+      "paymentReference": "65656565656"
+    }
   ]
 }

@@ -4,7 +4,7 @@ import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CartService } from '../../../services/cart.service';
 import { GoogleApi } from '../../../services/google-api.service';
-import { LABELS } from '../../../constants/label.const';
+import { LABELS } from '@shared/constants/label.const';
 
 @Component({
 	selector: 'app-navbar',
