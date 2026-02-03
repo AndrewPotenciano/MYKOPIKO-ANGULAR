@@ -3,12 +3,11 @@
 	<div class="hero-container">
 		<div class="hero-text">
 			<h1 class="main-h1">
-				Start Your Day<br>
-				<span class="main-h1-highlight">With The Perfect Coffee</span>
+				{{ MESSAGES.HOMEPAGE.HERO_TITLE }}<br>
+				<span class="main-h1-highlight">{{ MESSAGES.HOMEPAGE.HERO_SUBTITLE }}</span>
 			</h1>
 			<p class="main-paragraph">
-				Experience the perfect blend of rich, aromatic coffee and cozy,
-				inviting moments that brighten your day, one cup at a time.
+				{{ MESSAGES.HOMEPAGE.HERO_DESCRIPTION }}
 			</p>
 			<a routerLink="/login" href="/login" class="btn-primary">{{ LABELS.labels.ORDER_NOW }}</a>
 		</div>
@@ -30,8 +29,7 @@
 		<div class="about-text-container scroll-reveal">
 			<h1>{{ LABELS.labels.ABOUT_US }}</h1>
 			<h2>
-				Mykopiko serves rich, comforting coffee made with quality beans and
-				brewed to perfection for every coffee lover.
+				{{ MESSAGES.HOMEPAGE.ABOUT_US_DESC }}
 			</h2>
 		</div>
 		<div class="about-image-container scroll-reveal">
@@ -43,9 +41,7 @@
 		<div class="about-text-container scroll-reveal">
 			<h1>{{ LABELS.labels.WHY_CHOOSE_US }}</h1>
 			<h2>
-				We use only the finest coffee beans, carefully selected from trusted
-				farms to ensure every cup delivers a rich, balanced, and
-				unforgettable flavor.
+				{{ MESSAGES.HOMEPAGE.WHY_CHOOSE_US_DESC }}
 			</h2>
 		</div>
 		<div class="about-image-container scroll-reveal">
@@ -68,7 +64,7 @@
 		(closeModal)="messageModalOpen = false"></app-message-modal>
 	<div class="contact-header scroll-reveal">
 		<h1>{{ LABELS.labels.CONTACT_US }}</h1>
-		<p>We’d love to hear from you.</p>
+		<p>{{ MESSAGES.HOMEPAGE.CONTACT_US_SUB }}</p>
 	</div>
 
 	<div class="contact-container">

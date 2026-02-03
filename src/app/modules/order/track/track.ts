@@ -6,6 +6,7 @@ import { OrderService, GoogleApi } from '@shared/services';
 import { Order } from '@shared/models';
 import { Subscription } from 'rxjs';
 import { LABELS } from '@shared/constants/label.const';
+import { MESSAGES } from '@shared/constants/message.const';
 
 interface RiderInfo {
 	name: string;
@@ -22,6 +23,7 @@ interface RiderInfo {
 })
 export class Track implements OnInit, OnDestroy {
 	public readonly LABELS = LABELS;
+	public readonly MESSAGES = MESSAGES;
 
 	mapUrl!: SafeResourceUrl;
 	currentOrder: Order | null = null;

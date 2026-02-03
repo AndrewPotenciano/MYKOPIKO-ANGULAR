@@ -11,6 +11,7 @@ import { Review, MenuItem, CarouselItem } from '@shared/models';
 import { inject } from '@angular/core';
 import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/directives';
 import { LABELS } from '@shared/constants/label.const';
+import { MESSAGES } from '@shared/constants/message.const';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +33,7 @@ import { LABELS } from '@shared/constants/label.const';
 })
 export class Home implements OnInit, AfterViewInit, OnDestroy {
   public readonly LABELS = LABELS;
+  public readonly MESSAGES = MESSAGES;
   messageModalOpen = false;
   private revealObserver?: IntersectionObserver;
 

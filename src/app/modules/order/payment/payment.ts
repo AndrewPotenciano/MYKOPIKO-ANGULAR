@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CartService, OrderService } from '@shared/services';
 import { LABELS } from '@shared/constants/label.const';
+import { MESSAGES } from '@shared/constants/message.const';
 
 @Component({
 	selector: 'app-payment',
@@ -14,6 +15,7 @@ import { LABELS } from '@shared/constants/label.const';
 })
 export class Payment implements OnInit {
 	public readonly LABELS = LABELS;
+	public readonly MESSAGES = MESSAGES;
 	total = 0;
 	selectedPayment: 'gcash' | 'maya' = 'gcash';
 	referenceNumber = '';

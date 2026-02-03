@@ -42,7 +42,7 @@
 		<!-- LEFT: PAYMENT AREA -->
 		<div class="payment-selection-area">
 			<div class="payment-methods">
-				<h3>Select Payment Method</h3>
+				<h3>{{ MESSAGES.PAYMENT.SELECT_PAYMENT }}</h3>
 				<div class="method-buttons">
 					<button type="button" class="method-btn" [class.active]="selectedPayment === 'gcash'"
 						(click)="onSelectPayment('gcash')">
@@ -57,8 +57,12 @@
 
 			<div class="qr-container">
 				<div class="qr-header">
-					<h4>Scan to Pay</h4>
-					<p>Scan the QR code below using your {{ selectedPayment | titlecase }} app</p>
+					<h4>{{ MESSAGES.PAYMENT.SCAN_TO_PAY }}</h4>
+					@if (selectedPayment === 'gcash') {
+					<p>{{ MESSAGES.PAYMENT.SCAN_GCASH }}</p>
+					} @else {
+					<p>{{ MESSAGES.PAYMENT.SCAN_MAYA }}</p>
+					}
 				</div>
 				<div class="qr-image-wrapper">
 					<img src="/assets/images/QRPH.png" class="qr-display" alt="QRPH Payment QR Code">
@@ -118,7 +122,7 @@
 
 			<div class="payment-tip">
 				<img src="/assets/images-2/confirm.png" alt="Tip">
-				<p>Your order will be processed immediately after payment confirmation.</p>
+				<p>{{ MESSAGES.PAYMENT.PAYMENT_TIP }}</p>
 			</div>
 
 			<button id="confirm-payment" [disabled]="!isReferenceValid" (click)="confirmPayment()">

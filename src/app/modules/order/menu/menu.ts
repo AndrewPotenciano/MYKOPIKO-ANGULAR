@@ -7,6 +7,7 @@ import { GoogleApi, UserInfo, MenuService } from '@shared/services';
 import { CarouselComponent } from '@shared/components';
 import { MenuItem, CarouselItem } from '@shared/models';
 import { LABELS } from '@shared/constants/label.const';
+import { MESSAGES } from '@shared/constants/message.const';
 
 
 @Component({
@@ -18,6 +19,7 @@ import { LABELS } from '@shared/constants/label.const';
 })
 export class Menu implements OnInit, AfterViewInit, OnDestroy {
   public readonly LABELS = LABELS;
+  public readonly MESSAGES = MESSAGES;
   userInfo?: UserInfo;
   private revealObserver?: IntersectionObserver;
 

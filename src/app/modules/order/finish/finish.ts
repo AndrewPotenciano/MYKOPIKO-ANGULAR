@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService, OrderService } from '@shared/services';
 import { LABELS } from '@shared/constants/label.const';
+import { MESSAGES } from '@shared/constants/message.const';
 
 @Component({
 	selector: 'app-finish',
@@ -13,6 +14,7 @@ import { LABELS } from '@shared/constants/label.const';
 })
 export class Finish implements OnInit {
 	public readonly LABELS = LABELS;
+	public readonly MESSAGES = MESSAGES;
 	orderNumber = 'Loading...';
 
 	private router = inject(Router);

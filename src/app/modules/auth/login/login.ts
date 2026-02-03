@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { GoogleApi } from '@shared/services';
+import { LABELS } from '@shared/constants/label.const';
+import { MESSAGES } from '@shared/constants/message.const';
 
 @Component({
 	selector: 'app-login',
@@ -11,6 +13,8 @@ import { GoogleApi } from '@shared/services';
 	styleUrls: ['./login.css'],
 })
 export class Login {
+	public readonly LABELS = LABELS;
+	public readonly MESSAGES = MESSAGES;
 	public google = inject(GoogleApi);
 	private router = inject(Router);
 
