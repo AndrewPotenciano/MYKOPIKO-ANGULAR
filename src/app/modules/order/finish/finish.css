@@ -190,7 +190,7 @@
 }
 
 .btn {
-	padding: 10px 26px; /* Reduced from 11px 28px */
+	padding: 10px 26px; 
 	border-radius: 10px;
 	font-family: "Playfair Display", serif;
 	cursor: pointer;
@@ -198,6 +198,7 @@
 	border: none;
 	font-size: 14px; /* Reduced from 15px */
 	transition: background 0.3s;
+	box-sizing: border-box;
 }
 
 .back-section {
