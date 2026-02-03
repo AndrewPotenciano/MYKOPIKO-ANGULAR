@@ -6,7 +6,7 @@
 		<div class="back-section">
 			<a (click)="goBack()" class="back-link">
 				<img src="/assets/images/back.png" class="back-icon" alt="Back">
-				<span>Back</span>
+				<span>{{ LABELS.labels.BACK }}</span>
 			</a>
 		</div>
 	</div>
@@ -59,7 +59,7 @@
 			</div>
 
 			<button class="call-btn" (click)="callRider()">
-				Call Rider
+				{{ LABELS.labels.CALL_RIDER }}
 			</button>
 		</div>
 
@@ -71,7 +71,7 @@
 		} @else if (currentOrder) {
 		<div class="receipt-section">
 			<div class="receipt-header">
-				<h3>Order Receipt</h3>
+				<h3>{{ LABELS.labels.ORDER_RECEIPT }}</h3>
 				<span class="order-num">{{ currentOrder.orderNumber }}</span>
 			</div>
 
@@ -89,15 +89,15 @@
 
 			<div class="receipt-summary">
 				<div class="summary-row">
-					<span>Subtotal</span>
+					<span>{{ LABELS.labels.SUBTOTAL }}</span>
 					<span>₱{{ currentOrder.subtotal.toFixed(2) }}</span>
 				</div>
 				<div class="summary-row">
-					<span>Delivery Fee</span>
+					<span>{{ LABELS.labels.DELIVERY }} Fee</span>
 					<span>₱{{ currentOrder.deliveryFee.toFixed(2) }}</span>
 				</div>
 				<div class="summary-total">
-					<span>Total</span>
+					<span>{{ LABELS.labels.TOTAL | titlecase }}</span>
 					<span>₱{{ currentOrder.total.toFixed(2) }}</span>
 				</div>
 			</div>

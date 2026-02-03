@@ -10,7 +10,7 @@
 				Experience the perfect blend of rich, aromatic coffee and cozy,
 				inviting moments that brighten your day, one cup at a time.
 			</p>
-			<a routerLink="/login" href="/login" class="btn-primary">{{ LABELS.BUTTONS.ORDER_NOW }}</a>
+			<a routerLink="/login" href="/login" class="btn-primary">{{ LABELS.labels.ORDER_NOW }}</a>
 		</div>
 
 		<div class="hero-image">
@@ -28,7 +28,7 @@
 <section class="about-us" id="about-us">
 	<div class="content-wrapper">
 		<div class="about-text-container scroll-reveal">
-			<h1>About Us</h1>
+			<h1>{{ LABELS.labels.ABOUT_US }}</h1>
 			<h2>
 				Mykopiko serves rich, comforting coffee made with quality beans and
 				brewed to perfection for every coffee lover.
@@ -41,7 +41,7 @@
 
 	<div class="content-wrapper reverse">
 		<div class="about-text-container scroll-reveal">
-			<h1>Why Choose Us</h1>
+			<h1>{{ LABELS.labels.WHY_CHOOSE_US }}</h1>
 			<h2>
 				We use only the finest coffee beans, carefully selected from trusted
 				farms to ensure every cup delivers a rich, balanced, and
@@ -54,7 +54,7 @@
 	</div>
 
 	<div class="reviews-section">
-		<h1 class="scroll-reveal">What Our Customers Say</h1>
+		<h1 class="scroll-reveal">{{ LABELS.labels.CUSTOMER_REVIEWS }}</h1>
 		<div class="reviews-grid">
 			@for (review of reviews; track $index) {
 			<app-review-card class="scroll-reveal" [review]="review"></app-review-card>
@@ -67,18 +67,18 @@
 	<app-message-modal [message]="'Message sent successfully!'" [open]="messageModalOpen"
 		(closeModal)="messageModalOpen = false"></app-message-modal>
 	<div class="contact-header scroll-reveal">
-		<h1>Contact Us</h1>
+		<h1>{{ LABELS.labels.CONTACT_US }}</h1>
 		<p>We’d love to hear from you.</p>
 	</div>
 
 	<div class="contact-container">
 		<div class="message-us scroll-reveal">
 			<form [formGroup]="contactForm" (ngSubmit)="send()" novalidate>
-				<h2 class="box-title">Send us a message</h2>
+				<h2 class="box-title">{{ LABELS.labels.SEND_US_MESSAGE }}</h2>
 				<div class="input-fields">
 					<!-- FULL NAME -->
 					<div class="field-wrapper">
-						<label for="name">Full name<span class="required"> *</span></label>
+						<label for="name">{{ LABELS.labels.FULL_NAME }}<span class="required"> *</span></label>
 						<input type="text" id="name" formControlName="name" placeholder="Juan Dela Cruz"
 							appTitleCaseOnBlur [class.invalid]="name?.invalid && name?.touched" />
 
@@ -90,7 +90,7 @@
 					</div>
 					<!-- EMAIL -->
 					<div class="field-wrapper">
-						<label for="email">Email Address<span class="required"> *</span></label>
+						<label for="email">{{ LABELS.labels.EMAIL_ADDRESS }}<span class="required"> *</span></label>
 						<input type="text" id="email" formControlName="email" placeholder="example@email.com"
 							appLowercaseOnBlur [class.invalid]="email?.invalid && email?.touched" />
 
@@ -114,7 +114,7 @@
 					</div>
 
 					<button type="submit" [disabled]="contactForm.invalid" class="btn-submit">{{
-						LABELS.BUTTONS.SEND_MESSAGE }}</button>
+						LABELS.labels.SEND_MESSAGE }}</button>
 				</div>
 			</form>
 		</div>

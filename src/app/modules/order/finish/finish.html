@@ -8,21 +8,21 @@
 				<div class="step-item completed">
 					<img src="/assets/images-2/info.png" alt="Info">
 				</div>
-				<span class="step-label">Information</span>
+				<span class="step-label">{{ LABELS.labels.INFORMATION }}</span>
 			</div>
 			<span class="line active"></span>
 			<div class="step-container">
 				<div class="step-item completed">
 					<img src="/assets/images-2/credit-card.png" alt="Payment">
 				</div>
-				<span class="step-label">Payment</span>
+				<span class="step-label">{{ LABELS.labels.PAYMENT }}</span>
 			</div>
 			<span class="line active"></span>
 			<div class="step-container">
 				<div class="step-item active">
 					<img src="/assets/images-2/express-delivery.png" alt="Delivery">
 				</div>
-				<span class="step-label">Confirm</span>
+				<span class="step-label">{{ LABELS.labels.CONFIRM }}</span>
 			</div>
 		</div>
 	</div>
@@ -49,9 +49,9 @@
 
 		<div class="finish-buttons">
 			<button class="btn primary" (click)="trackOrder()">
-				Track Order
+				{{ LABELS.labels.TRACK_ORDER }}
 			</button>
-			<button class="btn outline" (click)="backHome()">Back Home</button>
+			<button class="btn outline" (click)="backHome()">{{ LABELS.labels.BACK_HOME }}</button>
 		</div>
 
 	</div>

@@ -11,6 +11,7 @@ import { Review, MenuItem, CarouselItem } from '@shared/models';
 import { inject } from '@angular/core';
 import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/directives';
 import { LABELS } from '@shared/constants/label.const';
+
 @Component({
   selector: 'app-home',
   standalone: true,

@@ -5,6 +5,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { OrderService, GoogleApi } from '@shared/services';
 import { Order } from '@shared/models';
 import { Subscription } from 'rxjs';
+import { LABELS } from '@shared/constants/label.const';
 
 interface RiderInfo {
 	name: string;
@@ -20,6 +21,7 @@ interface RiderInfo {
 	styleUrls: ['./track.css'],
 })
 export class Track implements OnInit, OnDestroy {
+	public readonly LABELS = LABELS;
 
 	mapUrl!: SafeResourceUrl;
 	currentOrder: Order | null = null;

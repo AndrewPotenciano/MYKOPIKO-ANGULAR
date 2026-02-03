@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService, GoogleApi } from '../../services';
 import { CartItem } from '../../models/cart-item.model';
+import { LABELS } from '@shared/constants/label.const';
 
 @Component({
 	selector: 'app-cart-modal',
@@ -13,6 +14,7 @@ import { CartItem } from '../../models/cart-item.model';
 	styleUrls: ['./cart-modal.component.scss']
 })
 export class CartModalComponent {
+	public readonly LABELS = LABELS;
 	private cart = inject(CartService);
 	private google = inject(GoogleApi);
 	private router = inject(Router);

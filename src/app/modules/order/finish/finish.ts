@@ -2,6 +2,7 @@ import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService, OrderService } from '@shared/services';
+import { LABELS } from '@shared/constants/label.const';
 
 @Component({
 	selector: 'app-finish',
@@ -11,6 +12,7 @@ import { CartService, OrderService } from '@shared/services';
 	styleUrls: ['./finish.css'],
 })
 export class Finish implements OnInit {
+	public readonly LABELS = LABELS;
 	orderNumber = 'Loading...';
 
 	private router = inject(Router);

@@ -5,7 +5,7 @@
 		<div class="back-section">
 			<a (click)="goBack()" class="back-link">
 				<img src="/assets/images/back.png" class="back-icon" alt="Back">
-				<span>Back</span>
+				<span>{{ LABELS.labels.BACK }}</span>
 			</a>
 		</div>
 
@@ -16,21 +16,21 @@
 					<div class="step-item completed">
 						<img src="/assets/images-2/info.png" alt="Info">
 					</div>
-					<span class="step-label">Information</span>
+					<span class="step-label">{{ LABELS.labels.INFORMATION }}</span>
 				</div>
 				<span class="line active"></span>
 				<div class="step-container">
 					<div class="step-item active">
 						<img src="/assets/images-2/credit-card.png" alt="Payment">
 					</div>
-					<span class="step-label">Payment</span>
+					<span class="step-label">{{ LABELS.labels.PAYMENT }}</span>
 				</div>
 				<span class="line"></span>
 				<div class="step-container">
 					<div class="step-item">
 						<img src="/assets/images-2/express-delivery.png" alt="Confirm">
 					</div>
-					<span class="step-label">Confirm</span>
+					<span class="step-label">{{ LABELS.labels.CONFIRM }}</span>
 				</div>
 			</div>
 		</div>
@@ -67,7 +67,7 @@
 			</div>
 
 			<div class="reference-input-box">
-				<label for="refNumber">Reference Number</label>
+				<label for="refNumber">{{ LABELS.labels.REFERENCE_NUMBER }}</label>
 				<input type="text" id="refNumber" [(ngModel)]="referenceNumber"
 					(input)="onReferenceNumberInput(referenceNumber)"
 					[placeholder]="selectedPayment === 'gcash' ? '9-13 digit number' : '12-16 characters'"
@@ -83,7 +83,7 @@
 
 		<!-- RIGHT: ORDER SUMMARY -->
 		<div class="order-summary-area">
-			<h3>Order Summary</h3>
+			<h3>{{ LABELS.labels.ORDER_SUMMARY }}</h3>
 			<div class="summary-card">
 				<div class="items-list">
 					@for (item of cartItems; track $index) {
@@ -102,15 +102,15 @@
 
 				<div class="summary-footer">
 					<div class="footer-row">
-						<span>Subtotal</span>
+						<span>{{ LABELS.labels.SUBTOTAL }}</span>
 						<span>₱{{ total - 50 }}</span>
 					</div>
 					<div class="footer-row">
-						<span>Delivery Fee</span>
+						<span>{{ LABELS.labels.DELIVERY }} Fee</span>
 						<span>₱50</span>
 					</div>
 					<div class="total-row">
-						<span>Total Payment</span>
+						<span>{{ LABELS.labels.TOTAL }} Payment</span>
 						<span>₱{{ total }}</span>
 					</div>
 				</div>
@@ -122,7 +122,7 @@
 			</div>
 
 			<button id="confirm-payment" [disabled]="!isReferenceValid" (click)="confirmPayment()">
-				Confirm Payment
+				{{ LABELS.labels.CONFIRM_PAYMENT }}
 			</button>
 		</div>
 

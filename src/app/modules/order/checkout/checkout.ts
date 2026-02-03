@@ -7,6 +7,8 @@ import { PhoneFormatDirective, TrimDirective } from '@shared/directives';
 import { CheckoutForm, CartItem, Order } from '@shared/models';
 import { GoogleApi } from '../../../google-api';
 import { Subscription } from 'rxjs';
+import { LABELS } from '@shared/constants/label.const';
+
 @Component({
 	selector: 'app-checkout',
 	standalone: true,
@@ -15,6 +17,7 @@ import { Subscription } from 'rxjs';
 	styleUrls: ['./checkout.css'],
 })
 export class Checkout implements OnInit, OnDestroy {
+	public readonly LABELS = LABELS;
 	cartItems: CartItem[] = [];
 	subtotal = 0;
 

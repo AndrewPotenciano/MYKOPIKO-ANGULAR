@@ -6,6 +6,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GoogleApi, UserInfo, MenuService } from '@shared/services';
 import { CarouselComponent } from '@shared/components';
 import { MenuItem, CarouselItem } from '@shared/models';
+import { LABELS } from '@shared/constants/label.const';
 
 
 @Component({
@@ -16,6 +17,7 @@ import { MenuItem, CarouselItem } from '@shared/models';
   styleUrls: ['./menu.css'],
 })
 export class Menu implements OnInit, AfterViewInit, OnDestroy {
+  public readonly LABELS = LABELS;
   userInfo?: UserInfo;
   private revealObserver?: IntersectionObserver;
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CartService, OrderService } from '@shared/services';
+import { LABELS } from '@shared/constants/label.const';
 
 @Component({
 	selector: 'app-payment',
@@ -12,6 +13,7 @@ import { CartService, OrderService } from '@shared/services';
 	styleUrls: ['./payment.css'],
 })
 export class Payment implements OnInit {
+	public readonly LABELS = LABELS;
 	total = 0;
 	selectedPayment: 'gcash' | 'maya' = 'gcash';
 	referenceNumber = '';
