@@ -16,16 +16,16 @@ export class App {
   protected readonly title = signal('MYKOPIKO');
   private readonly google = inject(GoogleApi);
   constructor() {
-    this.google.userProfileSubject.subscribe( info => {
+    this.google.userProfileSubject.subscribe(info => {
       this.userInfo = info;
     });
   }
 
 
 
-  isLoggedIn( ): boolean {
+  isLoggedIn(): boolean {
     return this.google.isLoggedIn();
-}
+  }
   SignOut(): void {
     this.google.SignOut();
   }
