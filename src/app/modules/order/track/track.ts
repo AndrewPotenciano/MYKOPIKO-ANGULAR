@@ -78,7 +78,11 @@ export class Track implements OnInit, OnDestroy {
 	}
 
 	goBack(): void {
-		this.router.navigate(['/menu/finish']).catch(() => { });
+		if (this.currentOrder) {
+			this.router.navigate(['/menu/finish']).catch(() => { });
+		} else {
+			this.router.navigate(['/']).catch(() => { });
+		}
 	}
 
 	browseMenu(): void {

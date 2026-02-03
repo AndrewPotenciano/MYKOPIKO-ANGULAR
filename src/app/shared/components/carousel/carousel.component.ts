@@ -48,10 +48,8 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 		const scrollWidth = element.scrollWidth;
 		const clientWidth = element.clientWidth;
 
-		// Hide swipe hint when near the end (within 30px)
 		this.showSwipeHint = scrollLeft < scrollWidth - clientWidth - 30;
 	}
-
 
 	addToCart(item: CarouselItem): void {
 		this.cart.add({ name: item.name, price: item.price, quantity: 1, img: item.image });

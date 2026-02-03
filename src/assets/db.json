@@ -252,6 +252,125 @@
     }
   ],
   "orders": [
-    
+    {
+      "id": "f251",
+      "orderNumber": "ORD-20260203-023",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18H Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Classic Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        },
+        {
+          "name": "Caramel Frappe",
+          "price": 160,
+          "quantity": 1,
+          "img": "/assets/images/PNG MENU/Caramel Frappe.png"
+        }
+      ],
+      "subtotal": 900,
+      "deliveryFee": 50,
+      "total": 950,
+      "orderDate": "2026-02-03T01:49:57.644Z",
+      "status": "pending"
+    },
+    {
+      "id": "b349",
+      "orderNumber": "ORD-20260203-602",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18H Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Classic Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        },
+        {
+          "name": "Caramel Frappe",
+          "price": 160,
+          "quantity": 1,
+          "img": "/assets/images/PNG MENU/Caramel Frappe.png"
+        }
+      ],
+      "subtotal": 900,
+      "deliveryFee": 50,
+      "total": 950,
+      "orderDate": "2026-02-03T01:50:13.447Z",
+      "status": "confirmed",
+      "paymentMethod": "gcash",
+      "paymentReference": "43434343434"
+    }
   ]
 }

@@ -11,9 +11,10 @@
 .cart-modal {
 	width: 100%;
 	max-width: 540px;
-	background: #FFF8E7; /* requested modal background */
+	background: #FFF8E7;
+	/* requested modal background */
 	border-radius: 6px;
-	box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
@@ -45,30 +46,58 @@
 .remove-btn {
 	justify-self: end;
 }
-.item-img { 
-	width: 64px; 
-	height: 64px; 
-	object-fit: contain; 
-}
-.item-info { display: flex; flex-direction: column; gap: 0.25rem; }
-.item-name { font-weight: 600; }
-.item-price { color: #666; font-size: 0.9rem; }
-.qty-controls { display: flex; align-items: center; gap: 0.5rem; justify-self: center; }
 
-.cart-total { padding: 0.5rem 0; text-align: right; }
+.item-img {
+	width: 64px;
+	height: 64px;
+	object-fit: contain;
+}
+
+.item-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.item-name {
+	font-weight: 600;
+}
+
+.item-price {
+	color: #666;
+	font-size: 0.9rem;
+}
+
+.qty-controls {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	justify-self: center;
+}
+
+.cart-total {
+	padding: 1rem;
+	text-align: right;
+	border-top: 1px solid #e0e0e0;
+	background-color: #FFF8E7;
+	/* Match modal bg */
+}
 
 /* Checkout button styles scoped to cart modal */
 .cart-modal .btn-primary {
-	background-color: #3D1C02; /* requested button color */
+	background-color: #3D1C02;
+	/* requested button color */
 	border-color: #3D1C02;
 	color: #fff;
-	box-shadow: 0 4px 0 rgba(0,0,0,0.12), 0 2px 8px rgba(61,28,2,0.15);
+	box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12), 0 2px 8px rgba(61, 28, 2, 0.15);
 }
+
 .cart-modal .btn-primary:hover {
 	background-color: #331502;
 	border-color: #331502;
 }
+
 .cart-modal .btn-primary:active {
 	transform: translateY(1px);
-	box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+	box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
 }

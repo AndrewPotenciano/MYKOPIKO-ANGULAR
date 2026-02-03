@@ -33,14 +33,17 @@
 				</div>
 				}
 
-				@if(items.length > 0){
-					<div class="cart-total">
-					<hr />
-					<strong>Total: {{ total(items) | number:'1.2-2' }}</strong>
-					</div>
-				}
+
 				}
 		</div>
+
+		@if((items$ | async); as items){
+			@if(items.length > 0){
+				<div class="cart-total">
+					<strong>Total: {{ total(items) | number:'1.2-2' }}</strong>
+				</div>
+			}
+		}
 
 		<div class="cart-modal-footer">
 			<button class="btn btn-secondary" (click)="close()">Close</button>
