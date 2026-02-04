@@ -74,7 +74,7 @@ export class Track implements OnInit, OnDestroy {
     }
   }
 
-  simulateTracking(): void {}
+  simulateTracking(): void { }
 
   callRider(): void {
     alert(`Calling ${this.riderInfo.name} at ${this.riderInfo.phone}`);
@@ -83,17 +83,17 @@ export class Track implements OnInit, OnDestroy {
 
   goBack(): void {
     if (this.currentOrder) {
-      this.router.navigate(['/menu/finish']).catch(() => {});
+      this.router.navigate(['/order/finish']).catch(() => { });
     } else {
-      this.router.navigate(['/']).catch(() => {});
+      this.router.navigate(['/']).catch(() => { });
     }
   }
 
   browseMenu(): void {
     if (this.googleApi.isLoggedIn()) {
-      this.router.navigate(['/menu']).catch(() => {});
+      this.router.navigate(['/order']).catch(() => { });
     } else {
-      this.router.navigate(['/login']).catch(() => {});
+      this.router.navigate(['/login']).catch(() => { });
     }
   }
 }

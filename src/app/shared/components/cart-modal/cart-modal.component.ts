@@ -43,9 +43,9 @@ export class CartModalComponent {
   checkout(): void {
     this.cart.close();
     if (this.google.isLoggedIn()) {
-      this.router.navigate(['/menu/checkout']);
+      this.router.navigate(['/order/checkout']);
     } else {
-      this.google.login('/menu/checkout');
+      this.google.login('/order/checkout');
     }
   }
 

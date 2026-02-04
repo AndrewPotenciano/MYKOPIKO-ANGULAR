@@ -20,17 +20,17 @@ export class Login {
 
   ngOnInit(): void {
     if (this.google.isLoggedIn()) {
-      this.router.navigate(['/menu']);
+      this.router.navigate(['/order']);
       return;
     }
 
     this.google.userProfileSubject.subscribe(() => {
-      this.router.navigate(['/menu']);
+      this.router.navigate(['/order']);
     });
   }
 
   loginWithGoogle(event: Event): void {
     event.preventDefault();
-    this.google.login('/menu');
+    this.google.login('/order');
   }
 }

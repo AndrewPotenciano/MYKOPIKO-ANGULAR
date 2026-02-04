@@ -69,7 +69,7 @@ export class Payment implements OnInit {
         })
         .subscribe({
           next: () => {
-            this.router.navigate(['/menu/finish']).catch(() => { });
+            this.router.navigate(['/order/finish']).catch(() => { });
           },
           error: (err) => {
             console.error('Payment confirmation failed', err);
@@ -78,11 +78,11 @@ export class Payment implements OnInit {
         });
     } else if (!lastOrderId) {
       alert('Order session expired. Please start again.');
-      this.router.navigate(['/menu']).catch(() => { });
+      this.router.navigate(['/order']).catch(() => { });
     }
   }
 
   goBack(): void {
-    this.router.navigate(['/menu/checkout']).catch(() => { });
+    this.router.navigate(['/order/checkout']).catch(() => { });
   }
 }

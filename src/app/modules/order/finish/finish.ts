@@ -56,10 +56,10 @@ export class Finish implements OnInit {
 
   trackOrder(): void {
     // Navigate to track order page
-    this.router.navigate(['/menu/track']).catch(() => {});
+    this.router.navigate(['/order/track']).catch(() => { });
   }
 
   backHome(): void {
-    this.router.navigate(['/']).catch(() => {});
+    this.router.navigate(['/']).catch(() => { });
   }
 }

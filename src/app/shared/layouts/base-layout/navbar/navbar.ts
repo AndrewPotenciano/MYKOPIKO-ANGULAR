@@ -26,11 +26,11 @@ export class Navbar {
   constructor() {
     // set initial value
     this.isLoginRoute = this.router.url.includes('/login');
-    this.isMenuRoute = this.router.url.includes('/menu');
+    this.isMenuRoute = this.router.url.includes('/order');
     // update on navigation end
     this.router.events.pipe(filter((e) => e instanceof NavigationEnd)).subscribe(() => {
       this.isLoginRoute = this.router.url.includes('/login');
-      this.isMenuRoute = this.router.url.includes('/menu');
+      this.isMenuRoute = this.router.url.includes('/order');
       this.isNavOpen = false;
     });
   }

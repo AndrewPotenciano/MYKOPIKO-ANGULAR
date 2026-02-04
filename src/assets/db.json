@@ -252,6 +252,42 @@
     }
   ],
   "orders": [
-    
+    {
+      "id": "52e2",
+      "orderNumber": "ORD-20260204-847",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "andrew.potenciano@exist.com",
+        "address": "Manila",
+        "phone": "0975 595 7203"
+      },
+      "items": [
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Classic Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        }
+      ],
+      "subtotal": 390,
+      "deliveryFee": 50,
+      "total": 440,
+      "orderDate": "2026-02-04T07:49:22.779Z",
+      "status": "confirmed",
+      "paymentMethod": "gcash",
+      "paymentReference": "9393939393"
+    }
   ]
 }

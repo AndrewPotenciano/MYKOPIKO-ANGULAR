@@ -13,11 +13,11 @@ export const postOrderGuard: CanActivateFn = () => {
   if (!hasItems) {
     // If they already finished an order, take them to track
     if (isFinished) {
-      router.navigate(['/menu/track']);
+      router.navigate(['/order/track']);
       return false;
     }
     // Otherwise send back to menu to add items
-    router.navigate(['/menu']);
+    router.navigate(['/order']);
     return false;
   }
 

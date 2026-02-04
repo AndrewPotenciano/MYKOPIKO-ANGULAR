@@ -83,7 +83,7 @@ export class Checkout implements OnInit, OnDestroy {
   }
 
   goBack(): void {
-    this.router.navigate(['/menu']).catch(() => { });
+    this.router.navigate(['/order']).catch(() => { });
   }
 
   confirmOrder(form: NgForm): void {
@@ -109,7 +109,7 @@ export class Checkout implements OnInit, OnDestroy {
         if (savedOrder.id) {
           localStorage.setItem('last_order_id', savedOrder.id.toString());
         }
-        this.router.navigate(['/menu/payment']).catch(() => { });
+        this.router.navigate(['/order/payment']).catch(() => { });
       },
       error: (err) => {
         console.error('Checkout failed', err);
