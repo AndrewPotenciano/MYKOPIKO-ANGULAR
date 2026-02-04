@@ -50,7 +50,7 @@ export class Navbar {
   }
 
   @HostListener('document:click', ['$event'])
-  clickout(event: any): void {
+  clickout(event: MouseEvent): void {
     if (!this.eRef.nativeElement.contains(event.target)) {
       this.isUserDropdownOpen = false;
     }
@@ -93,6 +93,6 @@ export class Navbar {
     this.isUserDropdownOpen = false;
     await this.google.signOut();
     this.closeNav();
-    this.router.navigate(['/']).catch(() => {});
+    this.router.navigate(['/']).catch(() => { });
   }
 }

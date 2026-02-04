@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToastService } from './toast.service';
+import { ToastService, ToastMessage } from './toast.service';
 import { Subscription, timer } from 'rxjs';
 
 @Component({
@@ -21,7 +21,7 @@ import { Subscription, timer } from 'rxjs';
   styleUrls: ['./toast.component.scss'],
 })
 export class ToastComponent implements OnDestroy {
-  toast: any = null;
+  toast: ToastMessage | null = null;
   private sub: Subscription;
   private timerSub?: Subscription;
 

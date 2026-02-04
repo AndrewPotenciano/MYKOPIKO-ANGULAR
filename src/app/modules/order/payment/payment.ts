@@ -6,6 +6,8 @@ import { CartService, OrderService } from '@shared/services';
 import { LABELS } from '@shared/constants/label.const';
 import { MESSAGES } from '@shared/constants/message.const';
 
+import { CartItem } from '@shared/models';
+
 @Component({
   selector: 'app-payment',
   standalone: true,
@@ -20,16 +22,16 @@ export class Payment implements OnInit {
   selectedPayment: 'gcash' | 'maya' = 'gcash';
   referenceNumber = '';
   isReferenceValid = false;
-  cartItems: any[] = [];
+  cartItems: CartItem[] = [];
 
   private cartService = inject(CartService);
   private orderService = inject(OrderService);
   private router = inject(Router);
 
   ngOnInit(): void {
-    this.cartService.cartSubject.subscribe((items: any[]) => {
+    this.cartService.cartSubject.subscribe((items: CartItem[]) => {
       this.cartItems = items;
-      const subtotal = items.reduce((sum: number, item: any) => sum + item.price * item.quantity, 0);
+      const subtotal = items.reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0);
       this.total = subtotal + 50;
     });
   }
@@ -66,7 +68,7 @@ export class Payment implements OnInit {
         })
         .subscribe({
           next: () => {
-            this.router.navigate(['/menu/finish']).catch(() => {});
+            this.router.navigate(['/menu/finish']).catch(() => { });
           },
           error: (err) => {
             console.error('Payment confirmation failed', err);
@@ -75,11 +77,11 @@ export class Payment implements OnInit {
         });
     } else if (!lastOrderId) {
       alert('Order session expired. Please start again.');
-      this.router.navigate(['/menu']).catch(() => {});
+      this.router.navigate(['/menu']).catch(() => { });
     }
   }
 
   goBack(): void {
-    this.router.navigate(['/menu/checkout']).catch(() => {});
+    this.router.navigate(['/menu/checkout']).catch(() => { });
   }
 }

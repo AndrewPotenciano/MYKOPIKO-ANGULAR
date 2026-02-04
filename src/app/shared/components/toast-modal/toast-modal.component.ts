@@ -15,7 +15,7 @@ export class ToastModalComponent {
   contained = input<boolean>(false);
   closeToast = output<void>();
 
-  private timer: any;
+  private timer?: ReturnType<typeof setTimeout>;
 
   constructor() {
     effect(() => {

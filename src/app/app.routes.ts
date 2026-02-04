@@ -5,8 +5,7 @@ import { postOrderGuard } from './core/guards/post-order.guard';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: BaseLayout,
+    path: '', component: BaseLayout,
     children: [
       {
         path: '',
