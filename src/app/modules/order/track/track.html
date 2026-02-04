@@ -104,11 +104,9 @@
     } @else {
     <!-- EMPTY STATE -->
     <div class="empty-track-state">
-      <div class="empty-icon-box">
-        <i class="fas fa-shopping-bag"></i>
-      </div>
-      <h2>No Orders Yet</h2>
-      <p>You don’t have any orders yet. Browse our menu to get started!</p>
+      <img src="/assets/images/empty-cart.png" alt="Empty Cart" class="empty-state-img" />
+      <h2>There’s no order to track.</h2>
+      <p>Kindly place an order first.</p>
       <button class="browse-btn" (click)="browseMenu()">Browse Menu</button>
     </div>
     }

@@ -392,7 +392,7 @@
 
 /* EMPTY STATE STYLES */
 .empty-track-state {
-  padding: 60px 20px;
+  padding: 20px 20px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -411,33 +411,30 @@
   }
 }
 
-.empty-icon-box {
-  width: 80px;
-  height: 80px;
-  background: #fdf8f4;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  color: #3d1c02;
-  font-size: 32px;
-  border: 1px solid #eee;
+.empty-state-img {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0;
+  opacity: 1;
 }
 
 .empty-track-state h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: inherit;
+  font-weight: 700;
   color: #3d1c02;
-  font-size: 26px;
-  margin-bottom: 12px;
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  margin-top: -10px;
 }
 
 .empty-track-state p {
+  font-family: inherit;
   color: #666;
-  font-size: 15px;
+  font-size: 0.9rem;
   max-width: 300px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
+  margin: 0 auto 20px;
+  line-height: 1.4;
 }
 
 .browse-btn {
@@ -446,7 +443,7 @@
   border: none;
   padding: 12px 35px;
   border-radius: 12px;
-  font-family: 'Playfair Display', serif;
+  font-family: inherit;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
