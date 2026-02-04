@@ -147,9 +147,8 @@
   margin-bottom: 12px; /* Reduced from 15px */
 }
 
-.success-icon svg {
-  width: 45px; /* Reduced from 50px */
-  height: 45px;
+.success-icon i {
+  font-size: 45px;
 }
 
 .order-status {
@@ -236,9 +235,8 @@
     margin-top: 16px;
   }
 
-  .success-icon svg {
-    width: 40px;
-    height: 40px;
+  .success-icon i {
+    font-size: 40px;
   }
 
   .finish-content h1 {

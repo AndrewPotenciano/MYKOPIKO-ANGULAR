@@ -196,9 +196,7 @@
   transform: translateY(-1px);
 }
 
-.btn-google svg path {
-  fill: #fff;
-}
+
 
 .login-note {
   font-family: 'Poppins', sans-serif;

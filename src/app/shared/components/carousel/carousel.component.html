@@ -15,10 +15,7 @@
   @if (showDownHint()) {
   <div class="down-hint" aria-hidden="true">
     <span class="down-hint-text">More below</span>
-    <svg class="down-hint-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2">
-      <path d="M12 5v14M5 12l7 7 7-7" />
-    </svg>
+    <i class="fas fa-chevron-down down-hint-arrow"></i>
   </div>
   }
 
@@ -60,10 +57,7 @@
         @if (isMobile && showSwipeHint) {
         <div class="swipe-hint">
           <span class="swipe-text">Swipe</span>
-          <svg class="swipe-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
+          <i class="fas fa-chevron-right swipe-arrow"></i>
         </div>
         }
       </div>
