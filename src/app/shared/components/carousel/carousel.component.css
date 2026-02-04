@@ -1,308 +1,312 @@
 /* ========================= MENU SECTION ========================= */
-[id^="productsCarousel"] {
-	position: relative;
-	width: 100%;
-	max-width: 1320px;
-	margin: 0 auto;
+[id^='productsCarousel'] {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 section.carousel.slide {
-	position: relative;
+  position: relative;
 }
 
 .scroll-reveal {
-	opacity: 0;
-	transform: translateY(24px) scale(0.98);
-	transition: opacity 0.6s ease, transform 0.6s ease;
-	will-change: opacity, transform;
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+  will-change: opacity, transform;
 }
 
 .scroll-reveal.is-visible {
-	opacity: 1;
-	transform: translateY(0) scale(1);
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .category-separator {
-	width: 200px;
-	height: 3px;
-	background-color: #3D1C02;
-	margin: 0 auto 4px;
-	border-radius: 999px;
+  width: 200px;
+  height: 3px;
+  background-color: #3d1c02;
+  margin: 0 auto 4px;
+  border-radius: 999px;
 }
 
 /* =========================
    TITLE
 ========================= */
-[id^="productsCarousel"] h1 {
-	text-align: center;
-	font-size: 36px;
-	color: #3D1C02;
-	margin: 60px 0;
+[id^='productsCarousel'] h1 {
+  text-align: center;
+  font-size: 36px;
+  color: #3d1c02;
+  margin: 60px 0;
 }
 
 /* =========================
    INDICATORS
 ========================= */
 .carousel-indicators {
-	bottom: -50px;
+  bottom: -50px;
 }
 
 .down-hint {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-	bottom: -90px;
-	display: inline-flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 4px;
-	color: #3D1C02;
-	font-size: 14px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -90px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #3d1c02;
+  font-size: 14px;
 }
 
 .down-hint-text {
-	font-weight: 500;
+  font-weight: 500;
 }
 
 .down-hint-arrow {
-	animation: downHintBounce 1.5s ease-in-out infinite;
+  animation: downHintBounce 1.5s ease-in-out infinite;
 }
 
 @keyframes downHintBounce {
-	0%, 100% {
-		transform: translateY(0);
-	}
-	50% {
-		transform: translateY(4px);
-	}
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
 }
 
 .carousel-indicators button {
-	background-color: #6f4e37;
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
+  background-color: #6f4e37;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
 }
 
 /* =========================
    FIXED BUTTONS OUTSIDE CARDS
 ========================= */
 .carousel-control-btn {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 50px;
-	height: 50px;
-	background-color: #3D1C02 !important;
-	border: none;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 100; 
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: #3d1c02 !important;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
 }
 
 .carousel-prev {
-	left: -60px;
+  left: -60px;
 }
 
 .carousel-next {
-	right: -60px;
+  right: -60px;
 }
 
 .carousel-control-btn:hover {
-	background-color: #2a1401 !important;
+  background-color: #2a1401 !important;
 }
 
 /* =========================
    CARD STYLES
 ========================= */
 .custom-card {
-	border: 2px solid #3D1C02;
-	border-radius: 12px;
-	padding: 12px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-	display: flex;
-	flex-direction: column;
+  border: 2px solid #3d1c02;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .custom-card .card-img-top {
-	height: 200px;
-	object-fit: contain;
-	object-position: center;
-	margin: 0 auto;
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 auto;
 }
 
 .card-body {
-	padding: 12px 0 0 0;
+  padding: 12px 0 0 0;
 }
 
 .card-title {
   font-weight: bold;
-  color: #3D1C02;
+  color: #3d1c02;
   min-height: unset;
   margin-bottom: 0;
 }
 .card-info {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
 }
 
 .card-price {
-	font-weight: 500;
-	color: #6f4e37;
-	font-size: 1.1em;
+  font-weight: 500;
+  color: #6f4e37;
+  font-size: 1.1em;
 }
 
 .card-text {
-	color: #3D1C02;
-	min-height: 1.5em;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  color: #3d1c02;
+  min-height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-cart {
-	background-color: #3D1C02;
-	border-color: #3D1C02;
-	color: white;
+  background-color: #3d1c02;
+  border-color: #3d1c02;
+  color: white;
 }
 
 .btn-cart:hover {
-	background-color: #2a1401;
-	border-color: #2a1401;
+  background-color: #2a1401;
+  border-color: #2a1401;
 }
 
 /* =========================
    SWIPE HINT
 ========================= */
 .swipe-hint {
-	display: none;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
-	margin-top: 16px;
-	text-align: center;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  text-align: center;
 }
 
 .swipe-text {
-	color: #3D1C02;
-	font-weight: 500;
-	font-size: 14px;
+  color: #3d1c02;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .swipe-arrow {
-	color: #3D1C02;
-	animation: slideArrow 1.5s ease-in-out infinite;
+  color: #3d1c02;
+  animation: slideArrow 1.5s ease-in-out infinite;
 }
 
 @keyframes slideArrow {
-	0%, 100% {
-		transform: translateX(0);
-	}
-	50% {
-		transform: translateX(8px);
-	}
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(8px);
+  }
 }
 
 /* =========================
    MOBILE FIX
 ========================= */
 @media (max-width: 767px) {
-	/* Constrain the carousel width */
-	.carousel-item {
-		overflow: hidden;
-	}
+  /* Constrain the carousel width */
+  .carousel-item {
+    overflow: hidden;
+  }
 
-	.container {
-		max-width: 100vw;
-		padding: 0;
-		overflow: hidden;
-	}
+  .container {
+    max-width: 100vw;
+    padding: 0;
+    overflow: hidden;
+  }
 
-	.carousel-row {
-		flex-wrap: nowrap;
-		overflow-x: auto;
-		-webkit-overflow-scrolling: touch;
-		scroll-snap-type: x mandatory;
-		gap: 20px;
-		/* Center the first card and hide others initially */
-		padding: 0 calc(50vw - 170px);
-		margin: 0;
-	}
+  .carousel-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    /* Center the first card and hide others initially */
+    padding: 0 calc(50vw - 170px);
+    margin: 0;
+  }
 
-	.carousel-row > div {
-		flex: 0 0 340px;
-		scroll-snap-align: center;
-		min-width: 340px;
-		max-width: 340px;
-	}
+  .carousel-row > div {
+    flex: 0 0 340px;
+    scroll-snap-align: center;
+    min-width: 340px;
+    max-width: 340px;
+  }
 
-	.carousel-row::-webkit-scrollbar {
-		display: none;
-	}
+  .carousel-row::-webkit-scrollbar {
+    display: none;
+  }
 
-	.carousel-prev,
-	.carousel-next {
-		display: none;
-	}
+  .carousel-prev,
+  .carousel-next {
+    display: none;
+  }
 
-	.carousel-indicators {
-		display: none;
-	}
-	
-	.down-hint {
-		display: none;
-	}
-	
-	.swipe-hint {
-		display: flex !important;
-	}
+  .carousel-indicators {
+    display: none;
+  }
 
-	/* Adjust card for mobile */
-	.custom-card {
-		width: 100%;
-		margin: 0 auto;
-	}
+  .down-hint {
+    display: none;
+  }
+
+  .swipe-hint {
+    display: flex !important;
+  }
+
+  /* Adjust card for mobile */
+  .custom-card {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 /* Add media query for larger screens to adjust button position */
 @media (min-width: 1440px) {
-	.carousel-prev {
-		left: -80px;
-	}
-	
-	.carousel-next {
-		right: -80px;
-	}
+  .carousel-prev {
+    left: -80px;
+  }
+
+  .carousel-next {
+    right: -80px;
+  }
 }
 
 /* Add this to your existing CSS */
 .card-info {
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
-	margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
 }
 
 .card-title {
-	font-weight: bold;
-	color: #3D1C02;
-	margin: 0;
-	font-size: 1.1rem;
+  font-weight: bold;
+  color: #3d1c02;
+  margin: 0;
+  font-size: 1.1rem;
 }
 
 .card-text {
-	color: #3D1C02;
-	margin: 0;
-	font-size: 0.95rem;
+  color: #3d1c02;
+  margin: 0;
+  font-size: 0.95rem;
 }
 
 .btn-cart {
-	background-color: #3D1C02;
-	border-color: #3D1C02;
-	color: white;
-	margin-top: auto;
+  background-color: #3d1c02;
+  border-color: #3d1c02;
+  color: white;
+  margin-top: auto;
 }

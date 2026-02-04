@@ -1,13 +1,12 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CarouselComponent, ReviewCardComponent, MessageModalComponent } from '@shared/components';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { MenuService, ReviewService } from '@shared/services';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
-import { Review, MenuItem, CarouselItem } from '@shared/models';
+import { Review, CarouselItem } from '@shared/models';
 import { inject } from '@angular/core';
 import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/directives';
 import { LABELS } from '@shared/constants/label.const';
@@ -20,7 +19,6 @@ import { MESSAGES } from '@shared/constants/message.const';
     CommonModule,
     CarouselComponent,
     RouterLink,
-    HttpClientModule,
     ReviewCardComponent,
     ReactiveFormsModule,
     NgxTrimDirectiveModule,
@@ -28,6 +26,7 @@ import { MESSAGES } from '@shared/constants/message.const';
     TitleCaseOnBlurDirective,
     MessageModalComponent,
   ],
+
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
@@ -59,7 +58,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     // Fetch menu items
     this.menuService.getPopularMenu().subscribe((data) => {
       this.popularMenuItems = data;
-
     });
 
     this.menuService.getFrappeMenu().subscribe((data) => {
@@ -83,23 +81,14 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  // Scroll helper
-  scrollTo(event: Event, id: string): void {
-    event.preventDefault();
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
   // Send contact form via EmailJS
   send(): void {
     if (this.contactForm.invalid) return;
 
-    emailjs
-      .send('service_u35oe9x', 'template_iejhg7f', this.contactForm.value, 'VjtiOX-nmb9M7CHQ0')
-      .then(() => {
-        this.messageModalOpen = true;
-        this.contactForm.reset();
-      })
+    emailjs.send('service_u35oe9x', 'template_iejhg7f', this.contactForm.value, 'VjtiOX-nmb9M7CHQ0').then(() => {
+      this.messageModalOpen = true;
+      this.contactForm.reset();
+    });
   }
 
   ngAfterViewInit(): void {
@@ -107,7 +96,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setupScrollReveal(): void {
-
     if (this.revealObserver) {
       this.revealObserver.disconnect();
     }
@@ -146,4 +134,4 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   get message(): AbstractControl | null {
     return this.contactForm?.get('message');
   }
-} 
+}

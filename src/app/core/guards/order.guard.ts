@@ -1,9 +1,5 @@
-import { inject } from '@angular/core';
-import { Router, CanActivateFn } from '@angular/router';
-import { OrderService } from '@shared/services';
-import { map, of } from 'rxjs';
+import { CanActivateFn } from '@angular/router';
 
 export const orderGuard: CanActivateFn = () => {
-    return true;
+  return true;
 };
-

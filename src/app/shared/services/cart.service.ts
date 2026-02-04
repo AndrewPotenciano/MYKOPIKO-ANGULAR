@@ -10,7 +10,6 @@ export class CartService {
   private modalOpenSub = new BehaviorSubject<boolean>(false);
   modalOpen$ = this.modalOpenSub.asObservable();
 
-
   get items() {
     return this.itemsSub.getValue();
   }
@@ -32,10 +31,9 @@ export class CartService {
     this.modalOpenSub.next(false);
   }
 
-
   add(item: CartItem): void {
     const items = this.itemsSub.getValue();
-    const idx = items.findIndex(i => i.name === item.name);
+    const idx = items.findIndex((i) => i.name === item.name);
     if (idx > -1) {
       items[idx].quantity += item.quantity;
     } else {

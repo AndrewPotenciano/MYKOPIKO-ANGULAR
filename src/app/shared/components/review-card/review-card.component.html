@@ -3,7 +3,7 @@
 <h3 class="review-title">{{ review().title }}</h3>
 <p class="comment">{{ review().comment }}</p>
 <div class="stars">
-    @for (star of stars; track $index) {
+  @for (star of stars; track $index) {
     <i class="bi" [ngClass]="star <= review().rating ? 'bi-star-fill text-warning' : 'bi-star text-secondary'"></i>
-    }
+  }
 </div>

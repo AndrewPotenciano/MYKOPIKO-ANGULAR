@@ -1,121 +1,123 @@
 <!-- ================= TRACK BOX ================= -->
 <div class="checkout-box track-box">
+  <!-- HEADER -->
+  <div class="header-nav">
+    <div class="back-section">
+      <a (click)="goBack()" class="back-link">
+        <img src="/assets/images/back.png" class="back-icon" alt="Back" />
+        <span>{{ LABELS.labels.BACK }}</span>
+      </a>
+    </div>
+  </div>
 
-	<!-- HEADER -->
-	<div class="header-nav">
-		<div class="back-section">
-			<a (click)="goBack()" class="back-link">
-				<img src="/assets/images/back.png" class="back-icon" alt="Back">
-				<span>{{ LABELS.labels.BACK }}</span>
-			</a>
-		</div>
-	</div>
+  <!-- CONTENT -->
+  <div class="track-content">
+    @if (currentOrder || (loading$ | async)) {
+      <h2>Track Your Order</h2>
+      <p class="track-sub">{{ MESSAGES.TRACK.TRACK_SUB }}</p>
 
-	<!-- CONTENT -->
-	<div class="track-content">
+      <!-- STATUS STEPS -->
+      <div class="track-steps">
+        @for (step of trackSteps; track $index; let last = $last) {
+          <div [ngClass]="{ 'track-step': true, active: step.completed }">
+            <div class="step-icon">
+              @if (step.icon === 'coffee') {
+                <i class="fas fa-mug-hot"></i>
+              }
+              @if (step.icon === 'truck') {
+                <i class="fas fa-truck"></i>
+              }
+              @if (step.icon === 'box') {
+                <i class="fas fa-box"></i>
+              }
+            </div>
+            <span>{{ step.label }}</span>
+          </div>
+          @if (!last) {
+            <span class="track-line" [ngClass]="{ active: step.completed }"></span>
+          }
+        }
+      </div>
 
-		@if (currentOrder || (loading$ | async)) {
-		<h2>Track Your Order</h2>
-		<p class="track-sub">{{ MESSAGES.TRACK.TRACK_SUB }}</p>
+      <!-- MAP -->
+      <div class="map-box">
+        <iframe
+          [src]="mapUrl"
+          width="100%"
+          height="350"
+          style="border: 0"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+        </iframe>
+      </div>
 
-		<!-- STATUS STEPS -->
-		<div class="track-steps">
-			@for (step of trackSteps; track $index; let last = $last) {
-			<div [ngClass]="{'track-step': true, 'active': step.completed}">
-				<div class="step-icon">
-					@if(step.icon === 'coffee'){
-					<i class="fas fa-mug-hot"></i>
-					}
-					@if(step.icon === 'truck'){
-					<i class="fas fa-truck"></i>
-					}
-					@if(step.icon === 'box'){
-					<i class="fas fa-box"></i>
-					}
-				</div>
-				<span>{{ step.label }}</span>
-			</div>
-			@if(!last){
-			<span class="track-line" [ngClass]="{'active': step.completed}"></span>
-			}
-			}
-		</div>
+      <!-- RIDER INFO -->
+      <div class="rider-box">
+        <div class="rider-info">
+          <img [src]="riderInfo.image" class="rider-img" alt="Rider" />
+          <div>
+            <p class="rider-name">{{ riderInfo.name }}</p>
+            <p class="rider-phone">{{ riderInfo.phone }}</p>
+          </div>
+        </div>
 
-		<!-- MAP -->
-		<div class="map-box">
-			<iframe [src]="mapUrl" width="100%" height="350" style="border:0;" allowfullscreen loading="lazy"
-				referrerpolicy="no-referrer-when-downgrade">
-			</iframe>
-		</div>
+        <button class="call-btn" (click)="callRider()">
+          {{ LABELS.labels.CALL_RIDER }}
+        </button>
+      </div>
 
-		<!-- RIDER INFO -->
-		<div class="rider-box">
-			<div class="rider-info">
-				<img [src]="riderInfo.image" class="rider-img" alt="Rider">
-				<div>
-					<p class="rider-name">{{ riderInfo.name }}</p>
-					<p class="rider-phone">{{ riderInfo.phone }}</p>
-				</div>
-			</div>
+      <!-- ORDER RECEIPT (PLACED BELOW) -->
+      @if (loading$ | async) {
+        <div class="receipt-section loading">
+          <p>Loading your receipt...</p>
+        </div>
+      } @else if (currentOrder) {
+        <div class="receipt-section">
+          <div class="receipt-header">
+            <h3>{{ LABELS.labels.ORDER_RECEIPT }}</h3>
+            <span class="order-num">{{ currentOrder.orderNumber }}</span>
+          </div>
 
-			<button class="call-btn" (click)="callRider()">
-				{{ LABELS.labels.CALL_RIDER }}
-			</button>
-		</div>
+          <div class="receipt-items">
+            @for (item of currentOrder.items; track $index) {
+              <div class="receipt-item">
+                <div class="item-info">
+                  <span class="item-name">{{ item.name }}</span>
+                  <span class="item-qty">x{{ item.quantity }}</span>
+                </div>
+                <span class="item-price">₱{{ (item.price * item.quantity).toFixed(2) }}</span>
+              </div>
+            }
+          </div>
 
-		<!-- ORDER RECEIPT (PLACED BELOW) -->
-		@if (loading$ | async) {
-		<div class="receipt-section loading">
-			<p>Loading your receipt...</p>
-		</div>
-		} @else if (currentOrder) {
-		<div class="receipt-section">
-			<div class="receipt-header">
-				<h3>{{ LABELS.labels.ORDER_RECEIPT }}</h3>
-				<span class="order-num">{{ currentOrder.orderNumber }}</span>
-			</div>
-
-			<div class="receipt-items">
-				@for (item of currentOrder.items; track $index) {
-				<div class="receipt-item">
-					<div class="item-info">
-						<span class="item-name">{{ item.name }}</span>
-						<span class="item-qty">x{{ item.quantity }}</span>
-					</div>
-					<span class="item-price">₱{{ (item.price * item.quantity).toFixed(2) }}</span>
-				</div>
-				}
-			</div>
-
-			<div class="receipt-summary">
-				<div class="summary-row">
-					<span>{{ LABELS.labels.SUBTOTAL }}</span>
-					<span>₱{{ currentOrder.subtotal.toFixed(2) }}</span>
-				</div>
-				<div class="summary-row">
-					<span>{{ LABELS.labels.DELIVERY }} Fee</span>
-					<span>₱{{ currentOrder.deliveryFee.toFixed(2) }}</span>
-				</div>
-				<div class="summary-total">
-					<span>{{ LABELS.labels.TOTAL | titlecase }}</span>
-					<span>₱{{ currentOrder.total.toFixed(2) }}</span>
-				</div>
-			</div>
-		</div>
-		}
-		} @else {
-		<!-- EMPTY STATE -->
-		<div class="empty-track-state">
-			<div class="empty-icon-box">
-				<i class="fas fa-shopping-bag"></i>
-			</div>
-			<h2>No Orders Yet</h2>
-			<p>You don’t have any orders yet. Browse our menu to get started!</p>
-			<button class="browse-btn" (click)="browseMenu()">
-				Browse Menu
-			</button>
-		</div>
-		}
-
-	</div>
+          <div class="receipt-summary">
+            <div class="summary-row">
+              <span>{{ LABELS.labels.SUBTOTAL }}</span>
+              <span>₱{{ currentOrder.subtotal.toFixed(2) }}</span>
+            </div>
+            <div class="summary-row">
+              <span>{{ LABELS.labels.DELIVERY }} Fee</span>
+              <span>₱{{ currentOrder.deliveryFee.toFixed(2) }}</span>
+            </div>
+            <div class="summary-total">
+              <span>{{ LABELS.labels.TOTAL | titlecase }}</span>
+              <span>₱{{ currentOrder.total.toFixed(2) }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    } @else {
+      <!-- EMPTY STATE -->
+      <div class="empty-track-state">
+        <div class="empty-icon-box">
+          <i class="fas fa-shopping-bag"></i>
+        </div>
+        <h2>No Orders Yet</h2>
+        <p>You don’t have any orders yet. Browse our menu to get started!</p>
+        <button class="browse-btn" (click)="browseMenu()">Browse Menu</button>
+      </div>
+    }
+  </div>
 </div>

@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './message-modal.component.html',
-  styleUrls: ['./message-modal.component.scss']
+  styleUrls: ['./message-modal.component.scss'],
 })
 export class MessageModalComponent {
   @Input() message = '';

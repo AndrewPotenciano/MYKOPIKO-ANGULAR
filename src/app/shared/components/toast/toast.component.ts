@@ -18,16 +18,15 @@ import { Subscription, timer } from 'rxjs';
       </div>
     </div>
   `,
-  styleUrls: ['./toast.component.scss']
+  styleUrls: ['./toast.component.scss'],
 })
-
 export class ToastComponent implements OnDestroy {
   toast: any = null;
   private sub: Subscription;
   private timerSub?: Subscription;
 
   constructor(public toastService: ToastService) {
-    this.sub = this.toastService.toast$.subscribe(toast => {
+    this.sub = this.toastService.toast$.subscribe((toast) => {
       this.toast = toast;
       if (this.timerSub) {
         this.timerSub.unsubscribe();

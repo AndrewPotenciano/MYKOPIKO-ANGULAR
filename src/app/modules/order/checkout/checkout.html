@@ -1,119 +1,157 @@
 <!-- ================= CHECKOUT BOX ================= -->
 <div class="checkout-box">
-	<!-- HEADER -->
-	<div class="header-nav">
-		<div class="back-section">
-			<a routerLink="/menu" class="back-link">
-				<img src="/assets/images/back.png" class="back-icon" alt="Back">
-				<span>{{ LABELS.labels.BACK }}</span>
-			</a>
-		</div>
+  <!-- HEADER -->
+  <div class="header-nav">
+    <div class="back-section">
+      <a routerLink="/menu" class="back-link">
+        <img src="/assets/images/back.png" class="back-icon" alt="Back" />
+        <span>{{ LABELS.labels.BACK }}</span>
+      </a>
+    </div>
 
-		<!-- CENTERED STEPS -->
-		<div class="steps-wrapper">
-			<div class="checkout-step">
-				<div class="step-container">
-					<div class="step-item active">
-						<img src="/assets/images-2/info.png" alt="Info">
-					</div>
-					<span class="step-label">{{ LABELS.labels.INFORMATION }}</span>
-				</div>
-				<span class="line"></span>
-				<div class="step-container">
-					<div class="step-item">
-						<img src="/assets/images-2/credit-card.png" alt="Payment">
-					</div>
-					<span class="step-label">{{ LABELS.labels.PAYMENT }}</span>
-				</div>
-				<span class="line"></span>
-				<div class="step-container">
-					<div class="step-item">
-						<img src="/assets/images-2/express-delivery.png" alt="Confirm">
-					</div>
-					<span class="step-label">{{ LABELS.labels.CONFIRM }}</span>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- CENTERED STEPS -->
+    <div class="steps-wrapper">
+      <div class="checkout-step">
+        <div class="step-container">
+          <div class="step-item active">
+            <img src="/assets/images-2/info.png" alt="Info" />
+          </div>
+          <span class="step-label">{{ LABELS.labels.INFORMATION }}</span>
+        </div>
+        <span class="line"></span>
+        <div class="step-container">
+          <div class="step-item">
+            <img src="/assets/images-2/credit-card.png" alt="Payment" />
+          </div>
+          <span class="step-label">{{ LABELS.labels.PAYMENT }}</span>
+        </div>
+        <span class="line"></span>
+        <div class="step-container">
+          <div class="step-item">
+            <img src="/assets/images-2/express-delivery.png" alt="Confirm" />
+          </div>
+          <span class="step-label">{{ LABELS.labels.CONFIRM }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<!-- CONTENT -->
-	<form class="checkout-content" #checkoutFormRef="ngForm" (ngSubmit)="confirmOrder(checkoutFormRef)" novalidate>
-		<div class="customer-info">
-			<h2>{{ LABELS.labels.CUSTOMER_INFORMATION }}</h2>
+  <!-- CONTENT -->
+  <form class="checkout-content" #checkoutFormRef="ngForm" (ngSubmit)="confirmOrder(checkoutFormRef)" novalidate>
+    <div class="customer-info">
+      <h2>{{ LABELS.labels.CUSTOMER_INFORMATION }}</h2>
 
-			<div class="field-wrapper">
-				<label for="checkout-name">{{ LABELS.labels.FULL_NAME }}<span class="required"> *</span></label>
-				<input id="checkout-name" type="text" name="name" required #name="ngModel" placeholder="Juan Dela Cruz"
-					[(ngModel)]="checkoutForm.name" (blur)="formatFullName()"
-					[class.invalid]="name.invalid && name.touched" />
-				@if(name.invalid && name.touched){
-				<span class="field-error">Full name is required</span>
-				}
-			</div>
+      <div class="field-wrapper">
+        <label for="checkout-name">{{ LABELS.labels.FULL_NAME }}<span class="required"> *</span></label>
+        <input
+          id="checkout-name"
+          type="text"
+          name="name"
+          required
+          #name="ngModel"
+          placeholder="Juan Dela Cruz"
+          [(ngModel)]="checkoutForm.name"
+          (blur)="formatFullName()"
+          [class.invalid]="name.invalid && name.touched"
+        />
+        @if (name.invalid && name.touched) {
+          <span class="field-error">Full name is required</span>
+        }
+      </div>
 
-			<div class="field-wrapper">
-				<label for="checkout-email">{{ LABELS.labels.EMAIL_ADDRESS }}<span class="required"> *</span></label>
-				<input id="checkout-email" type="email" name="email" required #email="ngModel"
-					placeholder="exist@samplemail.com" [(ngModel)]="checkoutForm.email"
-					(blur)="checkoutForm.email = (checkoutForm.email || '').trim().toLowerCase()"
-					[class.invalid]="email.invalid && email.touched" />
-				@if(email.invalid && email.touched){
-				<span class="field-error">Email is required</span>
-				}
-			</div>
+      <div class="field-wrapper">
+        <label for="checkout-email">{{ LABELS.labels.EMAIL_ADDRESS }}<span class="required"> *</span></label>
+        <input
+          id="checkout-email"
+          type="email"
+          name="email"
+          required
+          #email="ngModel"
+          placeholder="exist@samplemail.com"
+          [(ngModel)]="checkoutForm.email"
+          (blur)="checkoutForm.email = (checkoutForm.email || '').trim().toLowerCase()"
+          [class.invalid]="email.invalid && email.touched"
+        />
+        @if (email.invalid && email.touched) {
+          <span class="field-error">Email is required</span>
+        }
+      </div>
 
-			<div class="field-wrapper">
-				<label for="checkout-address">{{ LABELS.labels.DELIVERY_ADDRESS }}<span class="required">
-						*</span></label>
-				<input id="checkout-address" type="text" name="address" required #address="ngModel"
-					placeholder="Manila Bulacan City" [(ngModel)]="checkoutForm.address" appTrim
-					(blur)="formatFullName()" [class.invalid]="address.invalid && address.touched" />
-				@if(address.invalid && address.touched){
-				<span class="field-error">Address is required</span>
-				}
-			</div>
+      <div class="field-wrapper">
+        <label for="checkout-address">{{ LABELS.labels.DELIVERY_ADDRESS }}<span class="required"> *</span></label>
+        <input
+          id="checkout-address"
+          type="text"
+          name="address"
+          required
+          #address="ngModel"
+          placeholder="Manila Bulacan City"
+          [(ngModel)]="checkoutForm.address"
+          appTrim
+          (blur)="formatFullName()"
+          [class.invalid]="address.invalid && address.touched"
+        />
+        @if (address.invalid && address.touched) {
+          <span class="field-error">Address is required</span>
+        }
+      </div>
 
-			<div class="field-wrapper">
-				<label for="checkout-phone">{{ LABELS.labels.PHONE_NUMBER }}<span class="required"> *</span></label>
-				<input id="checkout-phone" type="tel" name="phone" required #phone="ngModel" placeholder="0123 457 7891"
-					[(ngModel)]="checkoutForm.phone" phoneFormat [class.invalid]="phone.invalid && phone.touched" />
-				@if(phone.invalid && phone.touched){
-				<span class="field-error">Phone number is required</span>
-				}
-			</div>
-		</div>
+      <div class="field-wrapper">
+        <label for="checkout-phone">{{ LABELS.labels.PHONE_NUMBER }}<span class="required"> *</span></label>
+        <input
+          id="checkout-phone"
+          type="tel"
+          name="phone"
+          required
+          #phone="ngModel"
+          placeholder="0123 457 7891"
+          [(ngModel)]="checkoutForm.phone"
+          phoneFormat
+          [class.invalid]="phone.invalid && phone.touched"
+        />
+        @if (phone.invalid && phone.touched) {
+          <span class="field-error">Phone number is required</span>
+        }
+      </div>
+    </div>
 
-		<div class="order-summary">
-			<h2>{{ LABELS.labels.ORDER_SUMMARY }}</h2>
+    <div class="order-summary">
+      <h2>{{ LABELS.labels.ORDER_SUMMARY }}</h2>
 
-			<div class="order-items">
-				@for (item of cartItems; track $index) {
-				<div class="order-item">
-					<div class="item-visuals">
-						<img [src]="item.img" alt="{{ item.name }}" class="checkout-item-img">
-						<div class="item-info">
-							<span class="item-name">{{ item.name }}</span>
-							<span class="item-qty">x{{ item.quantity }}</span>
-						</div>
-					</div>
-					<span class="item-price">₱{{ item.price * item.quantity }}</span>
-				</div>
-				}
-			</div>
+      <div class="order-items">
+        @for (item of cartItems; track $index) {
+          <div class="order-item">
+            <div class="item-visuals">
+              <img [src]="item.img" alt="{{ item.name }}" class="checkout-item-img" />
+              <div class="item-info">
+                <span class="item-name">{{ item.name }}</span>
+                <span class="item-qty">x{{ item.quantity }}</span>
+              </div>
+            </div>
+            <span class="item-price">₱{{ item.price * item.quantity }}</span>
+          </div>
+        }
+      </div>
 
-			<div class="calc-details">
-				<p><span>{{ LABELS.labels.SUBTOTAL }}</span><span>₱{{ subtotal }}</span></p>
-				<p><span>{{ LABELS.labels.DELIVERY }}</span><span>₱50</span></p>
-			</div>
+      <div class="calc-details">
+        <p>
+          <span>{{ LABELS.labels.SUBTOTAL }}</span
+          ><span>₱{{ subtotal }}</span>
+        </p>
+        <p>
+          <span>{{ LABELS.labels.DELIVERY }}</span
+          ><span>₱50</span>
+        </p>
+      </div>
 
-			<div class="total-section">
-				<h3>{{ LABELS.labels.TOTAL }}</h3>
-				<h3 class="total-amount">₱{{ subtotal + 50 }}</h3>
-			</div>
+      <div class="total-section">
+        <h3>{{ LABELS.labels.TOTAL }}</h3>
+        <h3 class="total-amount">₱{{ subtotal + 50 }}</h3>
+      </div>
 
-			<button class="confirm-order" type="submit" [disabled]="checkoutFormRef.invalid || (loading$ | async)">
-				{{ (loading$ | async) ? 'Processing...' : LABELS.labels.CONFIRM_ORDER }}
-			</button>
-		</div>
-	</form>
+      <button class="confirm-order" type="submit" [disabled]="checkoutFormRef.invalid || (loading$ | async)">
+        {{ (loading$ | async) ? 'Processing...' : LABELS.labels.CONFIRM_ORDER }}
+      </button>
+    </div>
+  </form>
 </div>

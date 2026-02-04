@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { Review } from '../models/review.model';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './toast-modal.component.html',
-  styleUrls: ['./toast-modal.component.scss']
+  styleUrls: ['./toast-modal.component.scss'],
 })
 export class ToastModalComponent {
   message = input<string>('');

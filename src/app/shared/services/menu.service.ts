@@ -4,7 +4,7 @@ import { Observable, BehaviorSubject, of } from 'rxjs';
 import { map, catchError, finalize } from 'rxjs/operators';
 import { MenuItem, MenuCategory } from '../models';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MenuService {
   private readonly apiUrl = 'http://localhost:3000/menu';
@@ -31,7 +31,8 @@ export class MenuService {
     this.isLoading = true;
     this.loadingSubject.next(true);
     this.errorSubject.next(null);
-    this.http.get<MenuItem[]>(this.apiUrl)
+    this.http
+      .get<MenuItem[]>(this.apiUrl)
       .pipe(
         catchError((error) => {
           console.error('Failed to load menu data:', error);
@@ -41,9 +42,9 @@ export class MenuService {
         finalize(() => {
           this.isLoading = false;
           this.loadingSubject.next(false);
-        })
+        }),
       )
-      .subscribe(data => {
+      .subscribe((data) => {
         if (data) {
           this.menuDataSubject.next(data);
         }
@@ -51,9 +52,7 @@ export class MenuService {
   }
 
   private getFilteredMenu(category: MenuCategory): Observable<MenuItem[]> {
-    return this.menuData$.pipe(
-      map(data => data.filter(item => item.category === category))
-    );
+    return this.menuData$.pipe(map((data) => data.filter((item) => item.category === category)));
   }
 
   getPopularMenu(): Observable<MenuItem[]> {

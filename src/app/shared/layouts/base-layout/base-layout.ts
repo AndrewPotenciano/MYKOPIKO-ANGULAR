@@ -6,10 +6,10 @@ import { CartModalComponent } from '@shared/components';
 import { Footer } from './footer/footer';
 
 @Component({
-	selector: 'app-base-layout',
-	standalone: true,
-	imports: [CommonModule, RouterOutlet, Navbar, CartModalComponent, Footer],
-	templateUrl: './base-layout.html',
-	styleUrls: ['./base-layout.css']
+  selector: 'app-base-layout',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, Navbar, CartModalComponent, Footer],
+  templateUrl: './base-layout.html',
+  styleUrls: ['./base-layout.css'],
 })
-export class BaseLayout { }
+export class BaseLayout {}

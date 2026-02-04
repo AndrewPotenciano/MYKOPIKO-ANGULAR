@@ -1,12 +1,10 @@
-import { Directive, HostListener, ElementRef, inject } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[phoneFormat]',
-  standalone: true
+  standalone: true,
 })
 export class PhoneFormatDirective {
-  private el = inject(ElementRef);
-
   @HostListener('input', ['$event'])
   onInput(event: Event): void {
     const input = event.target as HTMLInputElement;

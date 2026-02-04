@@ -11,6 +11,6 @@ bootstrapApplication(App, {
   providers: [
     provideRouter(routes),
     provideHttpClient(),
-    importProvidersFrom(OAuthModule.forRoot()) // ✅ works now
-  ]
-}).catch(err => console.error(err));
+    importProvidersFrom(OAuthModule.forRoot()), // ✅ works now
+  ],
+}).catch((err) => console.error(err));

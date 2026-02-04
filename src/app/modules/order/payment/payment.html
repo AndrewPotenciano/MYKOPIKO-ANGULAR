@@ -1,134 +1,137 @@
 <!-- ================= PAYMENT BOX ================= -->
 <div class="checkout-box">
-	<!-- HEADER -->
-	<div class="header-nav">
-		<div class="back-section">
-			<a (click)="goBack()" class="back-link">
-				<img src="/assets/images/back.png" class="back-icon" alt="Back">
-				<span>{{ LABELS.labels.BACK }}</span>
-			</a>
-		</div>
+  <!-- HEADER -->
+  <div class="header-nav">
+    <div class="back-section">
+      <a (click)="goBack()" class="back-link">
+        <img src="/assets/images/back.png" class="back-icon" alt="Back" />
+        <span>{{ LABELS.labels.BACK }}</span>
+      </a>
+    </div>
 
-		<!-- CENTERED STEPS -->
-		<div class="steps-wrapper">
-			<div class="checkout-step">
-				<div class="step-container">
-					<div class="step-item completed">
-						<img src="/assets/images-2/info.png" alt="Info">
-					</div>
-					<span class="step-label">{{ LABELS.labels.INFORMATION }}</span>
-				</div>
-				<span class="line active"></span>
-				<div class="step-container">
-					<div class="step-item active">
-						<img src="/assets/images-2/credit-card.png" alt="Payment">
-					</div>
-					<span class="step-label">{{ LABELS.labels.PAYMENT }}</span>
-				</div>
-				<span class="line"></span>
-				<div class="step-container">
-					<div class="step-item">
-						<img src="/assets/images-2/express-delivery.png" alt="Confirm">
-					</div>
-					<span class="step-label">{{ LABELS.labels.CONFIRM }}</span>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- CENTERED STEPS -->
+    <div class="steps-wrapper">
+      <div class="checkout-step">
+        <div class="step-container">
+          <div class="step-item completed">
+            <img src="/assets/images-2/info.png" alt="Info" />
+          </div>
+          <span class="step-label">{{ LABELS.labels.INFORMATION }}</span>
+        </div>
+        <span class="line active"></span>
+        <div class="step-container">
+          <div class="step-item active">
+            <img src="/assets/images-2/credit-card.png" alt="Payment" />
+          </div>
+          <span class="step-label">{{ LABELS.labels.PAYMENT }}</span>
+        </div>
+        <span class="line"></span>
+        <div class="step-container">
+          <div class="step-item">
+            <img src="/assets/images-2/express-delivery.png" alt="Confirm" />
+          </div>
+          <span class="step-label">{{ LABELS.labels.CONFIRM }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<!-- PAYMENT CONTENT -->
-	<div class="payment-content">
+  <!-- PAYMENT CONTENT -->
+  <div class="payment-content">
+    <!-- LEFT: PAYMENT AREA -->
+    <div class="payment-selection-area">
+      <div class="payment-methods">
+        <h3>{{ MESSAGES.PAYMENT.SELECT_PAYMENT }}</h3>
+        <div class="method-buttons">
+          <button type="button" class="method-btn" [class.active]="selectedPayment === 'gcash'" (click)="onSelectPayment('gcash')">
+            <img src="/assets/images-2/GCash_logo.svg.png" alt="GCash" />
+          </button>
+          <button type="button" class="method-btn" [class.active]="selectedPayment === 'maya'" (click)="onSelectPayment('maya')">
+            <img src="/assets/images/maya_logo.png" class="maya-logo" alt="Maya" />
+          </button>
+        </div>
+      </div>
 
-		<!-- LEFT: PAYMENT AREA -->
-		<div class="payment-selection-area">
-			<div class="payment-methods">
-				<h3>{{ MESSAGES.PAYMENT.SELECT_PAYMENT }}</h3>
-				<div class="method-buttons">
-					<button type="button" class="method-btn" [class.active]="selectedPayment === 'gcash'"
-						(click)="onSelectPayment('gcash')">
-						<img src="/assets/images-2/GCash_logo.svg.png" alt="GCash">
-					</button>
-					<button type="button" class="method-btn" [class.active]="selectedPayment === 'maya'"
-						(click)="onSelectPayment('maya')">
-						<img src="/assets/images/maya_logo.png" class="maya-logo" alt="Maya">
-					</button>
-				</div>
-			</div>
+      <div class="qr-container">
+        <div class="qr-header">
+          <h4>{{ MESSAGES.PAYMENT.SCAN_TO_PAY }}</h4>
+          @if (selectedPayment === 'gcash') {
+            <p>{{ MESSAGES.PAYMENT.SCAN_GCASH }}</p>
+          } @else {
+            <p>{{ MESSAGES.PAYMENT.SCAN_MAYA }}</p>
+          }
+        </div>
+        <div class="qr-image-wrapper">
+          <img src="/assets/images/QRPH.png" class="qr-display" alt="QRPH Payment QR Code" />
+        </div>
+        <p class="amount-due">
+          Amount to Pay: <strong>₱{{ total }}</strong>
+        </p>
+      </div>
 
-			<div class="qr-container">
-				<div class="qr-header">
-					<h4>{{ MESSAGES.PAYMENT.SCAN_TO_PAY }}</h4>
-					@if (selectedPayment === 'gcash') {
-					<p>{{ MESSAGES.PAYMENT.SCAN_GCASH }}</p>
-					} @else {
-					<p>{{ MESSAGES.PAYMENT.SCAN_MAYA }}</p>
-					}
-				</div>
-				<div class="qr-image-wrapper">
-					<img src="/assets/images/QRPH.png" class="qr-display" alt="QRPH Payment QR Code">
-				</div>
-				<p class="amount-due">Amount to Pay: <strong>₱{{ total }}</strong></p>
-			</div>
+      <div class="reference-input-box">
+        <label for="refNumber">{{ LABELS.labels.REFERENCE_NUMBER }}</label>
+        <input
+          type="text"
+          id="refNumber"
+          [(ngModel)]="referenceNumber"
+          (input)="onReferenceNumberInput(referenceNumber)"
+          [placeholder]="selectedPayment === 'gcash' ? '9-13 digit number' : '12-16 characters'"
+          class="ref-input"
+          [class.invalid]="referenceNumber && !isReferenceValid"
+        />
 
-			<div class="reference-input-box">
-				<label for="refNumber">{{ LABELS.labels.REFERENCE_NUMBER }}</label>
-				<input type="text" id="refNumber" [(ngModel)]="referenceNumber"
-					(input)="onReferenceNumberInput(referenceNumber)"
-					[placeholder]="selectedPayment === 'gcash' ? '9-13 digit number' : '12-16 characters'"
-					class="ref-input" [class.invalid]="referenceNumber && !isReferenceValid">
+        @if (referenceNumber && !isReferenceValid) {
+          <span class="error-msg">Invalid reference number for {{ selectedPayment | titlecase }}</span>
+        }
+      </div>
+    </div>
 
-				@if (referenceNumber && !isReferenceValid) {
-				<span class="error-msg">Invalid reference number for {{ selectedPayment | titlecase }}</span>
-				}
-			</div>
-		</div>
+    <div class="divider"></div>
 
-		<div class="divider"></div>
+    <!-- RIGHT: ORDER SUMMARY -->
+    <div class="order-summary-area">
+      <h3>{{ LABELS.labels.ORDER_SUMMARY }}</h3>
+      <div class="summary-card">
+        <div class="items-list">
+          @for (item of cartItems; track $index) {
+            <div class="summary-item">
+              <div class="item-visuals">
+                <img [src]="item.img" alt="{{ item.name }}" class="summary-item-img" />
+                <div class="item-info">
+                  <span class="item-name">{{ item.name }}</span>
+                  <span class="item-qty">x{{ item.quantity }}</span>
+                </div>
+              </div>
+              <span class="item-sub">₱{{ item.price * item.quantity }}</span>
+            </div>
+          }
+        </div>
 
-		<!-- RIGHT: ORDER SUMMARY -->
-		<div class="order-summary-area">
-			<h3>{{ LABELS.labels.ORDER_SUMMARY }}</h3>
-			<div class="summary-card">
-				<div class="items-list">
-					@for (item of cartItems; track $index) {
-					<div class="summary-item">
-						<div class="item-visuals">
-							<img [src]="item.img" alt="{{ item.name }}" class="summary-item-img">
-							<div class="item-info">
-								<span class="item-name">{{ item.name }}</span>
-								<span class="item-qty">x{{ item.quantity }}</span>
-							</div>
-						</div>
-						<span class="item-sub">₱{{ item.price * item.quantity }}</span>
-					</div>
-					}
-				</div>
+        <div class="summary-footer">
+          <div class="footer-row">
+            <span>{{ LABELS.labels.SUBTOTAL }}</span>
+            <span>₱{{ total - 50 }}</span>
+          </div>
+          <div class="footer-row">
+            <span>{{ LABELS.labels.DELIVERY }} Fee</span>
+            <span>₱50</span>
+          </div>
+          <div class="total-row">
+            <span>{{ LABELS.labels.TOTAL }} Payment</span>
+            <span>₱{{ total }}</span>
+          </div>
+        </div>
+      </div>
 
-				<div class="summary-footer">
-					<div class="footer-row">
-						<span>{{ LABELS.labels.SUBTOTAL }}</span>
-						<span>₱{{ total - 50 }}</span>
-					</div>
-					<div class="footer-row">
-						<span>{{ LABELS.labels.DELIVERY }} Fee</span>
-						<span>₱50</span>
-					</div>
-					<div class="total-row">
-						<span>{{ LABELS.labels.TOTAL }} Payment</span>
-						<span>₱{{ total }}</span>
-					</div>
-				</div>
-			</div>
+      <div class="payment-tip">
+        <img src="/assets/images-2/confirm.png" alt="Tip" />
+        <p>{{ MESSAGES.PAYMENT.PAYMENT_TIP }}</p>
+      </div>
 
-			<div class="payment-tip">
-				<img src="/assets/images-2/confirm.png" alt="Tip">
-				<p>{{ MESSAGES.PAYMENT.PAYMENT_TIP }}</p>
-			</div>
-
-			<button id="confirm-payment" [disabled]="!isReferenceValid" (click)="confirmPayment()">
-				{{ LABELS.labels.CONFIRM_PAYMENT }}
-			</button>
-		</div>
-
-	</div>
+      <button id="confirm-payment" [disabled]="!isReferenceValid" (click)="confirmPayment()">
+        {{ LABELS.labels.CONFIRM_PAYMENT }}
+      </button>
+    </div>
+  </div>
 </div>

@@ -8,25 +8,19 @@ import { ToastComponent } from '@shared/components';
   standalone: true,
   imports: [RouterOutlet, ToastComponent],
   templateUrl: './app.html',
-  styleUrls: ['./app.css']
+  styleUrls: ['./app.css'],
 })
 export class App {
-
   userInfo?: UserInfo;
   protected readonly title = signal('MYKOPIKO');
   private readonly google = inject(GoogleApi);
   constructor() {
-    this.google.userProfileSubject.subscribe(info => {
+    this.google.userProfileSubject.subscribe((info) => {
       this.userInfo = info;
     });
   }
 
-
-
   isLoggedIn(): boolean {
     return this.google.isLoggedIn();
-  }
-  SignOut(): void {
-    this.google.SignOut();
   }
 }

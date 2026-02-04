@@ -8,8 +8,8 @@ const oAuthConfig: AuthConfig = {
   strictDiscoveryDocumentValidation: false,
   redirectUri: window.location.origin,
   clientId: '875929516460-gk6acnr1bdujd4p4lna0go1ge4pftet9.apps.googleusercontent.com',
-  scope: 'openid profile email'
-}
+  scope: 'openid profile email',
+};
 
 export interface UserInfo {
   info: {
@@ -17,7 +17,7 @@ export interface UserInfo {
     email: string;
     name: string;
     picture: string;
-  }
+  };
 }
 
 @Injectable({
@@ -31,12 +31,12 @@ export class GoogleApi {
     this.oAuthService.configure(oAuthConfig);
     this.oAuthService.loadDiscoveryDocumentAndTryLogin().then(() => {
       if (this.oAuthService.hasValidAccessToken()) {
-        this.oAuthService.loadUserProfile().then(userprofile => {
+        this.oAuthService.loadUserProfile().then((userprofile) => {
           this.userProfileSubject.next({ info: userprofile } as UserInfo);
           const redirect = sessionStorage.getItem('post_login_redirect');
           if (redirect) {
             sessionStorage.removeItem('post_login_redirect');
-            this.router.navigateByUrl(redirect).catch(() => { });
+            this.router.navigateByUrl(redirect).catch(() => {});
           }
         });
       }
@@ -46,13 +46,15 @@ export class GoogleApi {
   isLoggedIn(): boolean {
     return this.oAuthService.hasValidAccessToken();
   }
-  SignOut(): void {
+  signOut(): void {
     this.oAuthService.logOut();
   }
 
   login(target?: string): void {
     if (target) {
-      try { sessionStorage.setItem('post_login_redirect', target); } catch { }
+      try {
+        sessionStorage.setItem('post_login_redirect', target);
+      } catch {}
     }
     this.oAuthService.initLoginFlow();
   }
@@ -62,6 +64,6 @@ export class GoogleApi {
       return null;
     }
     const profile = this.oAuthService.getIdentityClaims();
-    return profile ? profile as UserInfo['info'] : null;
+    return profile ? (profile as UserInfo['info']) : null;
   }
 }

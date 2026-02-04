@@ -1,81 +1,81 @@
 <section [id]="carouselId" class="carousel slide my-5" [class.scroll-reveal]="reveal()">
+  @if (showSeparator()) {
+    <div class="category-separator" aria-hidden="true"></div>
+  }
+  <h1>{{ title() }}</h1>
 
-	@if(showSeparator()){
-	<div class="category-separator" aria-hidden="true"></div>
-	}
-	<h1>{{ title() }}</h1>
+  <!-- INDICATORS -->
+  <div class="carousel-indicators">
+    @for (slide of slides; track $index; let i = $index) {
+      <button
+        type="button"
+        [attr.data-bs-target]="'#' + carouselId"
+        [attr.data-bs-slide-to]="i"
+        [class.active]="i === 0"
+        [attr.aria-current]="i === 0 ? 'true' : 'false'"
+      ></button>
+    }
+  </div>
 
-	<!-- INDICATORS -->
-	<div class="carousel-indicators">
-		@for (slide of slides; track $index; let i = $index) {
-		<button type="button" [attr.data-bs-target]="'#' + carouselId" [attr.data-bs-slide-to]="i"
-			[class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : 'false'"></button>
-		}
-	</div>
+  @if (showDownHint()) {
+    <div class="down-hint" aria-hidden="true">
+      <span class="down-hint-text">More below</span>
+      <svg class="down-hint-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7" />
+      </svg>
+    </div>
+  }
 
-	@if(showDownHint()){
-	<div class="down-hint" aria-hidden="true">
-		<span class="down-hint-text">More below</span>
-		<svg class="down-hint-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-			stroke-width="2">
-			<path d="M12 5v14M5 12l7 7 7-7" />
-		</svg>
-	</div>
-	}
+  <!-- FIXED BUTTONS OUTSIDE CARDS -->
+  <button class="carousel-control-btn carousel-prev" type="button" [attr.data-bs-target]="'#' + carouselId" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
 
-	<!-- FIXED BUTTONS OUTSIDE CARDS -->
-	<button class="carousel-control-btn carousel-prev" type="button" [attr.data-bs-target]="'#' + carouselId"
-		data-bs-slide="prev">
-		<span class="carousel-control-prev-icon"></span>
-	</button>
+  <button class="carousel-control-btn carousel-next" type="button" [attr.data-bs-target]="'#' + carouselId" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
 
-	<button class="carousel-control-btn carousel-next" type="button" [attr.data-bs-target]="'#' + carouselId"
-		data-bs-slide="next">
-		<span class="carousel-control-next-icon"></span>
-	</button>
+  <!-- CAROUSEL CONTENT -->
+  <div class="carousel-inner">
+    <!-- SLIDES -->
+    @for (slide of slides; track $index; let i = $index) {
+      <div class="carousel-item" [class.active]="i === 0">
+        <div class="container">
+          <div class="row g-4 carousel-row" #carouselRow (scroll)="onScroll($any($event.target))">
+            @for (item of slide; track $index) {
+              <div class="col-10 col-sm-6 col-md-4">
+                <div class="card h-100 text-center custom-card" style="position: relative">
+                  <img [src]="item.image" class="card-img-top p-3" [alt]="item.alt" />
+                  <div class="card-body d-flex flex-column">
+                    <div class="card-info d-flex justify-content-center align-items-center gap-2">
+                      <h5 class="card-title mb-0">{{ item.name }}</h5>
+                      <span class="card-price">{{ item.price }} PHP</span>
+                    </div>
+                    <button class="btn btn-cart mt-auto" (click)="addToCart(item)">Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
 
-	<!-- CAROUSEL CONTENT -->
-	<div class="carousel-inner">
-
-		<!-- SLIDES -->
-		@for (slide of slides; track $index; let i = $index) {
-		<div class="carousel-item" [class.active]="i === 0">
-			<div class="container">
-				<div class="row g-4 carousel-row" #carouselRow (scroll)="onScroll($any($event.target))">
-
-					@for (item of slide; track $index) {
-					<div class="col-10 col-sm-6 col-md-4">
-						<div class="card h-100 text-center custom-card" style="position: relative;">
-							<img [src]="item.image" class="card-img-top p-3" [alt]="item.alt">
-							<div class="card-body d-flex flex-column">
-								<div class="card-info d-flex justify-content-center align-items-center gap-2">
-									<h5 class="card-title mb-0">{{ item.name }}</h5>
-									<span class="card-price">{{ item.price }} PHP</span>
-								</div>
-								<button class="btn btn-cart mt-auto" (click)="addToCart(item)">Add to Cart</button>
-							</div>
-						</div>
-					</div>
-					}
-
-				</div>
-
-				<!-- SWIPE HINT FOR MOBILE -->
-				<div class="swipe-hint" *ngIf="isMobile && showSwipeHint">
-					<span class="swipe-text">Swipe</span>
-					<svg class="swipe-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none"
-						stroke="currentColor" stroke-width="2">
-						<path d="M5 12h14M12 5l7 7-7 7" />
-					</svg>
-				</div>
-			</div>
-		</div>
-		}
-
-	</div>
-
+          <!-- SWIPE HINT FOR MOBILE -->
+          <div class="swipe-hint" *ngIf="isMobile && showSwipeHint">
+            <span class="swipe-text">Swipe</span>
+            <svg class="swipe-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
 </section>
 
-<app-toast-modal [message]="lastAddedItem + ' added to cart'" [open]="!!lastAddedItem" [duration]="1500"
-	[contained]="false" (closeToast)="onToastClose()">
+<app-toast-modal
+  [message]="lastAddedItem + ' added to cart'"
+  [open]="!!lastAddedItem"
+  [duration]="1500"
+  [contained]="false"
+  (closeToast)="onToastClose()"
+>
 </app-toast-modal>

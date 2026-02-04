@@ -9,7 +9,7 @@
     "test": "nx test"
   },
   "prettier": {
-    "printWidth": 100,
+    "printWidth": 140,
     "singleQuote": true,
     "overrides": [
       {

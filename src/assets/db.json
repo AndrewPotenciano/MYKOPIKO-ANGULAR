@@ -252,30 +252,6 @@
     }
   ],
   "orders": [
-    {
-      "id": "e741",
-      "orderNumber": "ORD-20260203-028",
-      "customerInfo": {
-        "name": "Andrew Potenciano",
-        "email": "leynandrew@gmail.com",
-        "address": "Unit 18H Avida Towers San Lazaro",
-        "phone": "0755957203"
-      },
-      "items": [
-        {
-          "name": "Latte",
-          "price": 130,
-          "quantity": 1,
-          "img": "/assets/images/Espresso PNG/Latte.png"
-        }
-      ],
-      "subtotal": 130,
-      "deliveryFee": 50,
-      "total": 180,
-      "orderDate": "2026-02-03T08:45:10.829Z",
-      "status": "confirmed",
-      "paymentMethod": "gcash",
-      "paymentReference": "3232323232"
-    }
+   
   ]
 }

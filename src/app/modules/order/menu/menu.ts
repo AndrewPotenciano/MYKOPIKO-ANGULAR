@@ -1,19 +1,17 @@
 import { Component, OnDestroy, OnInit, AfterViewInit, DestroyRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { Router } from '@angular/router';
+
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GoogleApi, UserInfo, MenuService } from '@shared/services';
 import { CarouselComponent } from '@shared/components';
-import { MenuItem, CarouselItem } from '@shared/models';
+import { CarouselItem } from '@shared/models';
 import { LABELS } from '@shared/constants/label.const';
 import { MESSAGES } from '@shared/constants/message.const';
-
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, CarouselComponent, HttpClientModule],
+  imports: [CommonModule, CarouselComponent],
   templateUrl: './menu.html',
   styleUrls: ['./menu.css'],
 })
@@ -24,7 +22,7 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
   private revealObserver?: IntersectionObserver;
 
   private google = inject(GoogleApi);
-  private router = inject(Router);
+
   private menuService = inject(MenuService);
   private destroyRef = inject(DestroyRef);
 
@@ -34,39 +32,39 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
   pastriesMenuItems: CarouselItem[] = [];
 
   constructor() {
-    this.google.userProfileSubject
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(info => this.userInfo = info);
+    this.google.userProfileSubject.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((info) => (this.userInfo = info));
   }
 
   ngOnInit(): void {
     document.body.classList.add('menu-page');
 
-    this.menuService.getPopularMenu()
+    this.menuService
+      .getPopularMenu()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((data) => {
         this.popularMenuItems = data;
       });
 
-    this.menuService.getFrappeMenu()
+    this.menuService
+      .getFrappeMenu()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((data) => {
         this.frappeMenuItems = data;
       });
 
-    this.menuService.getEspressoMenu()
+    this.menuService
+      .getEspressoMenu()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((data) => {
         this.espressoMenuItems = data;
       });
 
-    this.menuService.getPastriesMenu()
+    this.menuService
+      .getPastriesMenu()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((data) => {
         this.pastriesMenuItems = data;
       });
-
-
   }
 
   ngAfterViewInit(): void {
@@ -81,7 +79,7 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
             }
           });
         },
-        { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+        { threshold: 0.15, rootMargin: '0px 0px -10% 0px' },
       );
       targets.forEach((el) => this.revealObserver?.observe(el));
     } else {

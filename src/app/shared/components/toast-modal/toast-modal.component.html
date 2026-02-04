@@ -1,10 +1,10 @@
-@if(open()){
-<div class="toast-modal-backdrop" [class.contained]="contained()" (click)="close()">
-  <div class="toast-modal-content" (click)="$event.stopPropagation()">
-    <div class="toast-modal-body">
-      <i class="fas fa-check-circle success-icon"></i>
-      <p>{{ message() }}</p>
+@if (open()) {
+  <div class="toast-modal-backdrop" [class.contained]="contained()" (click)="close()">
+    <div class="toast-modal-content" (click)="$event.stopPropagation()">
+      <div class="toast-modal-body">
+        <i class="fas fa-check-circle success-icon"></i>
+        <p>{{ message() }}</p>
+      </div>
     </div>
   </div>
-</div>
 }
