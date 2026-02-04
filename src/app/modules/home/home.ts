@@ -11,6 +11,7 @@ import { inject } from '@angular/core';
 import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/directives';
 import { LABELS } from '@shared/constants/label.const';
 import { MESSAGES } from '@shared/constants/message.const';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -56,27 +57,19 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     });
 
     // Fetch menu items
-    this.menuService.getPopularMenu().subscribe((data) => {
-      this.popularMenuItems = data;
-    });
-
-    this.menuService.getFrappeMenu().subscribe((data) => {
-      this.frappeMenuItems = data;
-    });
-
-    this.menuService.getEspressoMenu().subscribe((data) => {
-      this.espressoMenuItems = data;
-    });
-
-    this.menuService.getPastriesMenu().subscribe((data) => {
-      this.pastriesMenuItems = data;
-    });
-
-    // Fetch reviews
-    this.reviewService.getAllReviews().subscribe((data) => {
-      this.reviews = data;
+    combineLatest({
+      popular: this.menuService.getPopularMenu(),
+      frappe: this.menuService.getFrappeMenu(),
+      espresso: this.menuService.getEspressoMenu(),
+      pastries: this.menuService.getPastriesMenu(),
+      reviews: this.reviewService.getAllReviews(),
+    }).subscribe(({ popular, frappe, espresso, pastries, reviews }) => {
+      this.popularMenuItems = popular;
+      this.frappeMenuItems = frappe;
+      this.espressoMenuItems = espresso;
+      this.pastriesMenuItems = pastries;
+      this.reviews = reviews;
       this.cdr.detectChanges();
-      // Re-setup observers after reviews are loaded
       setTimeout(() => this.setupScrollReveal(), 0);
     });
   }
