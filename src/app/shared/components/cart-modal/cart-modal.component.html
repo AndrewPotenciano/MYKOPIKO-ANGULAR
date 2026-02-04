@@ -1,54 +1,58 @@
 @if (modalOpen$ | async) {
-  <div class="cart-modal-backdrop">
-    <div class="cart-modal">
-      <div class="cart-modal-header">
-        <h5>{{ LABELS.labels.YOUR_CART }}</h5>
-        <button class="btn-close" aria-label="Close" (click)="close()"></button>
-      </div>
+<div class="cart-modal-backdrop">
+  <div class="cart-modal">
+    <div class="cart-modal-header">
+      <h5>{{ LABELS.labels.YOUR_CART }}</h5>
+      <button class="btn-close" aria-label="Close" (click)="close()"></button>
+    </div>
 
-      <div class="cart-modal-body">
-        @if (items$ | async; as items) {
-          @if (items.length === 0) {
-            <p>Your cart is empty.</p>
-          }
-
-          @for (it of items; track $index; let i = $index) {
-            <div class="cart-item">
-              @if (it.img) {
-                <img [src]="it.img" alt="" class="item-img" />
-              }
-
-              <div class="item-info">
-                <div class="item-name">{{ it.name }}</div>
-                <div class="item-price">{{ it.price | number: '1.2-2' }}</div>
-              </div>
-
-              <div class="qty-controls">
-                <button (click)="decrement(i)" class="btn btn-sm">-</button>
-                <span class="qty">{{ it.quantity }}</span>
-                <button (click)="increment(i)" class="btn btn-sm">+</button>
-              </div>
-
-              <button class="remove-btn btn btn-sm btn-outline-danger" (click)="remove(i)">Remove</button>
-            </div>
-          }
-        }
-      </div>
-
+    <div class="cart-modal-body">
       @if (items$ | async; as items) {
-        @if (items.length > 0) {
-          <div class="cart-total">
-            <strong>{{ LABELS.labels.TOTAL }}: {{ total(items) | number: '1.2-2' }}</strong>
-          </div>
-        }
+      @if (items.length === 0) {
+      <div class="empty-cart-state">
+        <img src="/assets/images/sad-coffee.png" alt="Sad Coffee" class="empty-cart-img" />
+        <h3>Your cart is empty</h3>
+        <p>Looks like you haven't added anything to your cart yet</p>
+      </div>
       }
 
-      <div class="cart-modal-footer">
-        <button class="btn btn-secondary" (click)="close()">{{ LABELS.labels.CLOSE }}</button>
-        <button class="btn btn-primary" [disabled]="!(items$ | async)?.length" (click)="checkout()">
-          {{ LABELS.labels.CHECKOUT | titlecase }}
-        </button>
+      @for (it of items; track $index; let i = $index) {
+      <div class="cart-item">
+        @if (it.img) {
+        <img [src]="it.img" alt="" class="item-img" />
+        }
+
+        <div class="item-info">
+          <div class="item-name">{{ it.name }}</div>
+          <div class="item-price">{{ it.price | number: '1.2-2' }}</div>
+        </div>
+
+        <div class="qty-controls">
+          <button (click)="decrement(i)" class="btn btn-sm">-</button>
+          <span class="qty">{{ it.quantity }}</span>
+          <button (click)="increment(i)" class="btn btn-sm">+</button>
+        </div>
+
+        <button class="remove-btn btn btn-sm btn-outline-danger" (click)="remove(i)">Remove</button>
       </div>
+      }
+      }
+    </div>
+
+    @if (items$ | async; as items) {
+    @if (items.length > 0) {
+    <div class="cart-total">
+      <strong>{{ LABELS.labels.TOTAL }}: {{ total(items) | number: '1.2-2' }}</strong>
+    </div>
+    }
+    }
+
+    <div class="cart-modal-footer">
+      <button class="btn btn-secondary" (click)="close()">{{ LABELS.labels.CLOSE }}</button>
+      <button class="btn btn-primary" [disabled]="!(items$ | async)?.length" (click)="checkout()">
+        {{ LABELS.labels.CHECKOUT | titlecase }}
+      </button>
     </div>
   </div>
+</div>
 }
