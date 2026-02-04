@@ -43,10 +43,12 @@
       <div class="payment-methods">
         <h3>{{ MESSAGES.PAYMENT.SELECT_PAYMENT }}</h3>
         <div class="method-buttons">
-          <button type="button" class="method-btn" [class.active]="selectedPayment === 'gcash'" (click)="onSelectPayment('gcash')">
+          <button type="button" class="method-btn" [class.active]="selectedPayment === 'gcash'"
+            (click)="onSelectPayment('gcash')">
             <img src="/assets/images-2/GCash_logo.svg.png" alt="GCash" />
           </button>
-          <button type="button" class="method-btn" [class.active]="selectedPayment === 'maya'" (click)="onSelectPayment('maya')">
+          <button type="button" class="method-btn" [class.active]="selectedPayment === 'maya'"
+            (click)="onSelectPayment('maya')">
             <img src="/assets/images/maya_logo.png" class="maya-logo" alt="Maya" />
           </button>
         </div>
@@ -56,9 +58,9 @@
         <div class="qr-header">
           <h4>{{ MESSAGES.PAYMENT.SCAN_TO_PAY }}</h4>
           @if (selectedPayment === 'gcash') {
-            <p>{{ MESSAGES.PAYMENT.SCAN_GCASH }}</p>
+          <p>{{ MESSAGES.PAYMENT.SCAN_GCASH }}</p>
           } @else {
-            <p>{{ MESSAGES.PAYMENT.SCAN_MAYA }}</p>
+          <p>{{ MESSAGES.PAYMENT.SCAN_MAYA }}</p>
           }
         </div>
         <div class="qr-image-wrapper">
@@ -71,18 +73,13 @@
 
       <div class="reference-input-box">
         <label for="refNumber">{{ LABELS.labels.REFERENCE_NUMBER }}</label>
-        <input
-          type="text"
-          id="refNumber"
-          [(ngModel)]="referenceNumber"
+        <input type="text" id="refNumber" [(ngModel)]="referenceNumber"
           (input)="onReferenceNumberInput(referenceNumber)"
-          [placeholder]="selectedPayment === 'gcash' ? '9-13 digit number' : '12-16 characters'"
-          class="ref-input"
-          [class.invalid]="referenceNumber && !isReferenceValid"
-        />
+          [placeholder]="selectedPayment === 'gcash' ? '9-13 digit number' : '12-16 characters'" class="ref-input"
+          [class.invalid]="referenceNumber && !isReferenceValid" />
 
         @if (referenceNumber && !isReferenceValid) {
-          <span class="error-msg">Invalid reference number for {{ selectedPayment | titlecase }}</span>
+        <span class="error-msg">Invalid reference number for {{ selectedPayment | titlecase }}</span>
         }
       </div>
     </div>
@@ -95,27 +92,27 @@
       <div class="summary-card">
         <div class="items-list">
           @for (item of cartItems; track $index) {
-            <div class="summary-item">
-              <div class="item-visuals">
-                <img [src]="item.img" alt="{{ item.name }}" class="summary-item-img" />
-                <div class="item-info">
-                  <span class="item-name">{{ item.name }}</span>
-                  <span class="item-qty">x{{ item.quantity }}</span>
-                </div>
+          <div class="summary-item">
+            <div class="item-visuals">
+              <img [src]="item.img" alt="{{ item.name }}" class="summary-item-img" />
+              <div class="item-info">
+                <span class="item-name">{{ item.name }}</span>
+                <span class="item-qty">x{{ item.quantity }}</span>
               </div>
-              <span class="item-sub">₱{{ item.price * item.quantity }}</span>
             </div>
+            <span class="item-sub">₱{{ item.price * item.quantity }}</span>
+          </div>
           }
         </div>
 
         <div class="summary-footer">
           <div class="footer-row">
             <span>{{ LABELS.labels.SUBTOTAL }}</span>
-            <span>₱{{ total - 50 }}</span>
+            <span>₱{{ total - deliveryFee }}</span>
           </div>
           <div class="footer-row">
             <span>{{ LABELS.labels.DELIVERY }} Fee</span>
-            <span>₱50</span>
+            <span>₱{{ deliveryFee }}</span>
           </div>
           <div class="total-row">
             <span>{{ LABELS.labels.TOTAL }} Payment</span>

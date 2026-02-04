@@ -19,6 +19,7 @@ export class Payment implements OnInit {
   public readonly LABELS = LABELS;
   public readonly MESSAGES = MESSAGES;
   total = 0;
+  deliveryFee = 50;
   selectedPayment: 'gcash' | 'maya' = 'gcash';
   referenceNumber = '';
   isReferenceValid = false;
@@ -32,7 +33,7 @@ export class Payment implements OnInit {
     this.cartService.cartSubject.subscribe((items: CartItem[]) => {
       this.cartItems = items;
       const subtotal = items.reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0);
-      this.total = subtotal + 50;
+      this.total = subtotal + this.deliveryFee;
     });
   }
 

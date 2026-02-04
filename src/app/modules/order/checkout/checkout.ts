@@ -20,6 +20,7 @@ export class Checkout implements OnInit, OnDestroy {
   public readonly LABELS = LABELS;
   cartItems: CartItem[] = [];
   subtotal = 0;
+  deliveryFee = 50;
 
   private cartService = inject(CartService);
   private orderService = inject(OrderService);
@@ -82,7 +83,7 @@ export class Checkout implements OnInit, OnDestroy {
   }
 
   goBack(): void {
-    this.router.navigate(['/menu']).catch(() => {});
+    this.router.navigate(['/menu']).catch(() => { });
   }
 
   confirmOrder(form: NgForm): void {
@@ -96,8 +97,8 @@ export class Checkout implements OnInit, OnDestroy {
       customerInfo: { ...this.checkoutForm },
       items: [...this.cartItems],
       subtotal: this.subtotal,
-      deliveryFee: 50,
-      total: this.subtotal + 50,
+      deliveryFee: this.deliveryFee,
+      total: this.subtotal + this.deliveryFee,
       orderDate: new Date().toISOString(),
       status: 'pending',
     };
@@ -108,7 +109,7 @@ export class Checkout implements OnInit, OnDestroy {
         if (savedOrder.id) {
           localStorage.setItem('last_order_id', savedOrder.id.toString());
         }
-        this.router.navigate(['/menu/payment']).catch(() => {});
+        this.router.navigate(['/menu/payment']).catch(() => { });
       },
       error: (err) => {
         console.error('Checkout failed', err);
