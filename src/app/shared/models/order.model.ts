@@ -4,6 +4,7 @@ export type OrderStatus = 'pending' | 'confirmed' | 'delivered' | 'cancelled';
 
 export interface Order {
   id?: number;
+  riderId?: string;
   orderNumber: string;
   customerInfo: CheckoutForm;
   items: CartItem[];

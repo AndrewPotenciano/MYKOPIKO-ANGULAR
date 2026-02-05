@@ -9,6 +9,8 @@ import { Order } from '../models';
 })
 export class OrderService {
   private readonly apiUrl = 'http://localhost:3000/orders';
+  private readonly ridersUrl = 'http://localhost:3000/riders';
+
   private readonly http = inject(HttpClient);
 
   private readonly loadingSubject = new BehaviorSubject<boolean>(false);
@@ -82,6 +84,21 @@ export class OrderService {
       finalize(() => this.loadingSubject.next(false)),
     );
   }
+
+  getRider(id: string): Observable<any> {
+    this.loadingSubject.next(true);
+    this.errorSubject.next(null);
+
+    return this.http.get<any>(`${this.ridersUrl}/${id}`).pipe(
+      catchError((error) => {
+        console.error('Failed to fetch rider:', error);
+        this.errorSubject.next('Rider not found.');
+        return of(null);
+      }),
+      finalize(() => this.loadingSubject.next(false)),
+    );
+  }
+
   generateOrderNumber(): string {
     const date = new Date();
     const year = date.getFullYear();

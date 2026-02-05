@@ -47,6 +47,7 @@
     </div>
 
     <!-- RIDER INFO -->
+    @if (riderInfo) {
     <div class="rider-box">
       <div class="rider-info">
         <img [src]="riderInfo.image" class="rider-img" alt="Rider" />
@@ -60,6 +61,7 @@
         {{ LABELS.labels.CALL_RIDER }}
       </button>
     </div>
+    }
 
     <!-- ORDER RECEIPT (PLACED BELOW) -->
     @if (loading$ | async) {

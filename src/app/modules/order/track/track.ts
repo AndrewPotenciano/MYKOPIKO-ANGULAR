@@ -29,11 +29,7 @@ export class Track implements OnInit, OnDestroy {
   currentOrder: Order | null = null;
   private orderSub?: Subscription;
 
-  riderInfo: RiderInfo = {
-    name: 'Andrew James',
-    phone: '09755957203',
-    image: '/assets/images/PNG MENU/andrew.jpg',
-  };
+  riderInfo: RiderInfo | null = null;
 
   trackSteps = [
     { icon: 'coffee', label: 'Preparing Your Order', completed: true },
@@ -66,6 +62,12 @@ export class Track implements OnInit, OnDestroy {
       this.orderSub = this.orderService.getOrderById(orderId).subscribe({
         next: (order) => {
           this.currentOrder = order;
+          if (order?.riderId) {
+            this.orderService.getRider(order.riderId).subscribe((rider) => {
+              this.riderInfo = rider;
+              console.log('Rider loaded:', rider);
+            });
+          }
         },
         error: (err) => {
           console.error('Failed to load order', err);
@@ -77,8 +79,10 @@ export class Track implements OnInit, OnDestroy {
   simulateTracking(): void { }
 
   callRider(): void {
-    alert(`Calling ${this.riderInfo.name} at ${this.riderInfo.phone}`);
-    window.location.href = `tel:${this.riderInfo.phone}`;
+    if (this.riderInfo) {
+      alert(`Calling ${this.riderInfo.name} at ${this.riderInfo.phone}`);
+      window.location.href = `tel:${this.riderInfo.phone}`;
+    }
   }
 
   goBack(): void {

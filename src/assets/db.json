@@ -251,9 +251,18 @@
       "id": "d0e7"
     }
   ],
+  "riders": [
+    {
+      "id": "r1",
+      "name": "Andrew James",
+      "phone": "09755957203",
+      "image": "/assets/images/PNG MENU/andrew.jpg"
+    }
+  ],
   "orders": [
     {
       "id": "52e2",
+      "riderId": "r1",
       "orderNumber": "ORD-20260204-847",
       "customerInfo": {
         "name": "Andrew Potenciano",
