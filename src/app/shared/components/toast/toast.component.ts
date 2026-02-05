@@ -1,20 +1,19 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastService, ToastMessage } from './toast.service';
-import { Subscription, timer } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-toast',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div *ngIf="toast" class="toast show" [ngClass]="toast.type" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <strong class="me-auto">{{ toast.type === 'success' ? 'Success' : toast.type === 'error' ? 'Error' : 'Info' }}</strong>
-        <button type="button" class="btn-close" (click)="close()" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-        {{ toast.text }}
+    <div *ngIf="toast" class="toast-backdrop" (click)="close()">
+      <div class="toast-content" (click)="$event.stopPropagation()">
+        <div class="toast-body">
+          <i class="fas fa-check-circle success-icon" *ngIf="toast.type !== 'error'"></i>
+          <p>{{ toast.text }}</p>
+        </div>
       </div>
     </div>
   `,
@@ -23,30 +22,44 @@ import { Subscription, timer } from 'rxjs';
 export class ToastComponent implements OnDestroy {
   toast: ToastMessage | null = null;
   private sub: Subscription;
-  private timerSub?: Subscription;
+  private timerId: any;
+  private cdr = inject(ChangeDetectorRef);
 
   constructor(public toastService: ToastService) {
     this.sub = this.toastService.toast$.subscribe((toast) => {
       this.toast = toast;
-      if (this.timerSub) {
-        this.timerSub.unsubscribe();
-        this.timerSub = undefined;
+
+      // Clear existing timer
+      if (this.timerId) {
+        clearTimeout(this.timerId);
+        this.timerId = null;
       }
+
+      // Set new timer if toast exists
       if (toast && toast.duration) {
-        this.timerSub = timer(toast.duration).subscribe(() => {
+        this.timerId = setTimeout(() => {
           this.close();
-        });
+        }, toast.duration);
       }
+
+      this.cdr.detectChanges();
     });
   }
 
   close() {
+    if (this.timerId) {
+      clearTimeout(this.timerId);
+      this.timerId = null;
+    }
     this.toastService.clear();
     this.toast = null;
+    this.cdr.detectChanges();
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
-    this.timerSub?.unsubscribe();
+    if (this.timerId) {
+      clearTimeout(this.timerId);
+    }
   }
 }
