@@ -54,8 +54,8 @@
         </div>
 
         <!-- SWIPE HINT FOR MOBILE -->
-        @if (isMobile && showSwipeHint) {
-        <div class="swipe-hint">
+        @if (isMobile) {
+        <div class="swipe-hint" [style.visibility]="showSwipeHint ? 'visible' : 'hidden'">
           <span class="swipe-text">Swipe</span>
           <i class="fas fa-chevron-right swipe-arrow"></i>
         </div>
