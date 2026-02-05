@@ -5,7 +5,7 @@
     <div class="back-section">
       <a (click)="goBack()" class="back-link">
         <img src="/assets/images/back.png" class="back-icon" alt="Back" />
-        <span>{{ LABELS.labels.BACK }}</span>
+        <span>{{ LABELS.BACK }}</span>
       </a>
     </div>
   </div>
@@ -14,7 +14,7 @@
   <div class="track-content">
     @if (currentOrder || (loading$ | async)) {
     <h2>Track Your Order</h2>
-    <p class="track-sub">{{ MESSAGES.TRACK.TRACK_SUB }}</p>
+    <p class="track-sub">{{ MESSAGES.TRACK_TRACK_SUB }}</p>
 
     <!-- STATUS STEPS -->
     <div class="track-steps">
@@ -58,7 +58,7 @@
       </div>
 
       <button class="call-btn" (click)="callRider()">
-        {{ LABELS.labels.CALL_RIDER }}
+        {{ LABELS.CALL_RIDER }}
       </button>
     </div>
     }
@@ -71,7 +71,7 @@
     } @else if (currentOrder) {
     <div class="receipt-section">
       <div class="receipt-header">
-        <h3>{{ LABELS.labels.ORDER_RECEIPT }}</h3>
+        <h3>{{ LABELS.ORDER_RECEIPT }}</h3>
         <span class="order-num">{{ currentOrder.orderNumber }}</span>
       </div>
 
@@ -89,15 +89,15 @@
 
       <div class="receipt-summary">
         <div class="summary-row">
-          <span>{{ LABELS.labels.SUBTOTAL }}</span>
+          <span>{{ LABELS.SUBTOTAL }}</span>
           <span>₱{{ currentOrder.subtotal | number: '1.2-2' }}</span>
         </div>
         <div class="summary-row">
-          <span>{{ LABELS.labels.DELIVERY }} Fee</span>
+          <span>{{ LABELS.DELIVERY }} Fee</span>
           <span>₱{{ currentOrder.deliveryFee | number: '1.2-2' }}</span>
         </div>
         <div class="summary-total">
-          <span>{{ LABELS.labels.TOTAL | titlecase }}</span>
+          <span>{{ LABELS.TOTAL | titlecase }}</span>
           <span>₱{{ currentOrder.total | number: '1.2-2' }}</span>
         </div>
       </div>

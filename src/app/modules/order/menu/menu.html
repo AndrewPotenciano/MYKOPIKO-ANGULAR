@@ -3,20 +3,14 @@
   <div class="menu-image-header">
     <div class="overlay"></div>
     <div class="header-content px-4 py-4">
-      <h1>{{ MESSAGES.MENU.HEADER_TITLE }}</h1>
-      <p>{{ MESSAGES.MENU.HEADER_SUBTITLE }}</p>
+      <h1>{{ MESSAGES.MENU_HEADER_TITLE }}</h1>
+      <p>{{ MESSAGES.MENU_HEADER_SUBTITLE }}</p>
     </div>
     <img src="assets/images/coffee-shop3.jpg" alt="Coffee Shop Ambiance" />
   </div>
-  <app-carousel
-    class="carousel"
-    [title]="LABELS.labels.POPULAR_MENU"
-    [items]="popularMenuItems"
-    [showDownHint]="true"
-    [showSeparator]="false"
-    [reveal]="true"
-  ></app-carousel>
-  <app-carousel [title]="LABELS.labels.FRAPPE_MENU" [items]="frappeMenuItems"></app-carousel>
-  <app-carousel [title]="LABELS.labels.ESPRESSO_MENU" [items]="espressoMenuItems"></app-carousel>
-  <app-carousel [title]="LABELS.labels.PASTRIES_MENU" [items]="pastriesMenuItems"></app-carousel>
+  <app-carousel class="carousel" [title]="LABELS.POPULAR_MENU" [items]="popularMenuItems" [showDownHint]="true"
+    [showSeparator]="false" [reveal]="true"></app-carousel>
+  <app-carousel [title]="LABELS.FRAPPE_MENU" [items]="frappeMenuItems"></app-carousel>
+  <app-carousel [title]="LABELS.ESPRESSO_MENU" [items]="espressoMenuItems"></app-carousel>
+  <app-carousel [title]="LABELS.PASTRIES_MENU" [items]="pastriesMenuItems"></app-carousel>
 </section>

@@ -7,21 +7,21 @@
         <div class="step-item completed">
           <img src="/assets/images-2/info.png" alt="Info" />
         </div>
-        <span class="step-label">{{ LABELS.labels.INFORMATION }}</span>
+        <span class="step-label">{{ LABELS.INFORMATION }}</span>
       </div>
       <span class="line active"></span>
       <div class="step-container">
         <div class="step-item completed">
           <img src="/assets/images-2/credit-card.png" alt="Payment" />
         </div>
-        <span class="step-label">{{ LABELS.labels.PAYMENT }}</span>
+        <span class="step-label">{{ LABELS.PAYMENT }}</span>
       </div>
       <span class="line active"></span>
       <div class="step-container">
         <div class="step-item active">
           <img src="/assets/images-2/express-delivery.png" alt="Delivery" />
         </div>
-        <span class="step-label">{{ LABELS.labels.CONFIRM }}</span>
+        <span class="step-label">{{ LABELS.CONFIRM }}</span>
       </div>
     </div>
   </div>
@@ -34,19 +34,19 @@
 
     <p class="order-status">Order Confirmed</p>
 
-    <h1>{{ MESSAGES.FINISH.THANK_YOU }}</h1>
-    <p class="subtitle">{{ MESSAGES.FINISH.ARRIVING_SOON }}</p>
+    <h1>{{ MESSAGES.FINISH_THANK_YOU }}</h1>
+    <p class="subtitle">{{ MESSAGES.FINISH_ARRIVING_SOON }}</p>
 
     <p class="order-ref">
       <strong>{{ orderNumber }}</strong><br />
-      {{ MESSAGES.FINISH.ESTIMATED_DELIVERY }}
+      {{ MESSAGES.FINISH_ESTIMATED_DELIVERY }}
     </p>
 
     <div class="finish-buttons">
       <button class="btn primary" (click)="trackOrder()">
-        {{ LABELS.labels.TRACK_ORDER }}
+        {{ LABELS.TRACK_ORDER }}
       </button>
-      <button class="btn outline" (click)="backHome()">{{ LABELS.labels.BACK_HOME }}</button>
+      <button class="btn outline" (click)="backHome()">{{ LABELS.BACK_HOME }}</button>
     </div>
   </div>
 </div>

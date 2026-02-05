@@ -3,31 +3,33 @@
   <div class="hero-container">
     <div class="hero-text">
       <h1 class="main-h1">
-        {{ MESSAGES.HOMEPAGE.HERO_TITLE }}<br />
-        <span class="main-h1-highlight">{{ MESSAGES.HOMEPAGE.HERO_SUBTITLE }}</span>
+        {{ MESSAGES.HOMEPAGE_HERO_TITLE }}<br />
+        <span class="main-h1-highlight">{{ MESSAGES.HOMEPAGE_HERO_SUBTITLE }}</span>
       </h1>
       <p class="main-paragraph">
-        {{ MESSAGES.HOMEPAGE.HERO_DESCRIPTION }}
+        {{ MESSAGES.HOMEPAGE_HERO_DESCRIPTION }}
       </p>
-      <a routerLink="/login" href="/login" class="btn-primary">{{ LABELS.labels.ORDER_NOW }}</a>
+      <a routerLink="/login" href="/login" class="btn-primary">{{ LABELS.ORDER_NOW }}</a>
     </div>
 
     <div class="hero-image">
-      <img src="/assets/images/coffee-main-page.png" class="main_image" alt="Coffee" width="450" height="330" decoding="async" />
+      <img src="/assets/images/coffee-main-page.png" class="main_image" alt="Coffee" width="450" height="330"
+        decoding="async" />
     </div>
   </div>
 </section>
 
 <section id="menu" class="menu-section">
-  <app-carousel class="carousel" [items]="popularMenuItems" [showDownHint]="false" [showSeparator]="false" [reveal]="true"></app-carousel>
+  <app-carousel class="carousel" [items]="popularMenuItems" [showDownHint]="false" [showSeparator]="false"
+    [reveal]="true"></app-carousel>
 </section>
 
 <section class="about-us" id="about-us">
   <div class="content-wrapper">
     <div class="about-text-container scroll-reveal">
-      <h1>{{ LABELS.labels.ABOUT_US }}</h1>
+      <h1>{{ LABELS.ABOUT_US }}</h1>
       <h2>
-        {{ MESSAGES.HOMEPAGE.ABOUT_US_DESC }}
+        {{ MESSAGES.HOMEPAGE_ABOUT_US_DESC }}
       </h2>
     </div>
     <div class="about-image-container scroll-reveal">
@@ -37,9 +39,9 @@
 
   <div class="content-wrapper reverse">
     <div class="about-text-container scroll-reveal">
-      <h1>{{ LABELS.labels.WHY_CHOOSE_US }}</h1>
+      <h1>{{ LABELS.WHY_CHOOSE_US }}</h1>
       <h2>
-        {{ MESSAGES.HOMEPAGE.WHY_CHOOSE_US_DESC }}
+        {{ MESSAGES.HOMEPAGE_WHY_CHOOSE_US_DESC }}
       </h2>
     </div>
     <div class="about-image-container scroll-reveal">
@@ -48,80 +50,61 @@
   </div>
 
   <div class="reviews-section">
-    <h1 class="scroll-reveal">{{ LABELS.labels.CUSTOMER_REVIEWS }}</h1>
+    <h1 class="scroll-reveal">{{ LABELS.CUSTOMER_REVIEWS }}</h1>
     <div class="reviews-grid">
       @for (review of reviews; track $index) {
-        <app-review-card class="scroll-reveal" [review]="review"></app-review-card>
+      <app-review-card class="scroll-reveal" [review]="review"></app-review-card>
       }
     </div>
   </div>
 </section>
 
 <section class="contact-us" id="contact-us">
-  <app-message-modal
-    [message]="'Message sent successfully!'"
-    [open]="messageModalOpen"
-    (closeModal)="messageModalOpen = false"
-  ></app-message-modal>
+  <app-message-modal [message]="'Message sent successfully!'" [open]="messageModalOpen"
+    (closeModal)="messageModalOpen = false"></app-message-modal>
   <div class="contact-header scroll-reveal">
-    <h1>{{ LABELS.labels.CONTACT_US }}</h1>
-    <p>{{ MESSAGES.HOMEPAGE.CONTACT_US_SUB }}</p>
+    <h1>{{ LABELS.CONTACT_US }}</h1>
+    <p>{{ MESSAGES.HOMEPAGE_CONTACT_US_SUB }}</p>
   </div>
 
   <div class="contact-container">
     <div class="message-us scroll-reveal">
       <form [formGroup]="contactForm" (ngSubmit)="send()" novalidate>
-        <h2 class="box-title">{{ LABELS.labels.SEND_US_MESSAGE }}</h2>
+        <h2 class="box-title">{{ LABELS.SEND_US_MESSAGE }}</h2>
         <div class="input-fields">
           <!-- FULL NAME -->
           <div class="field-wrapper">
-            <label for="name">{{ LABELS.labels.FULL_NAME }}<span class="required"> *</span></label>
-            <input
-              type="text"
-              id="name"
-              formControlName="name"
-              placeholder="Juan Dela Cruz"
-              appTitleCaseOnBlur
-              [class.invalid]="name?.invalid && name?.touched"
-            />
+            <label for="name">{{ LABELS.FULL_NAME }}<span class="required"> *</span></label>
+            <input type="text" id="name" formControlName="name" placeholder="Juan Dela Cruz" appTitleCaseOnBlur
+              [class.invalid]="name?.invalid && name?.touched" />
 
             @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
-              <span class="field-error"> Full name is required </span>
+            <span class="field-error"> Full name is required </span>
             }
           </div>
           <!-- EMAIL -->
           <div class="field-wrapper">
-            <label for="email">{{ LABELS.labels.EMAIL_ADDRESS }}<span class="required"> *</span></label>
-            <input
-              type="text"
-              id="email"
-              formControlName="email"
-              placeholder="example@email.com"
-              appLowercaseOnBlur
-              [class.invalid]="email?.invalid && email?.touched"
-            />
+            <label for="email">{{ LABELS.EMAIL_ADDRESS }}<span class="required"> *</span></label>
+            <input type="text" id="email" formControlName="email" placeholder="example@email.com" appLowercaseOnBlur
+              [class.invalid]="email?.invalid && email?.touched" />
 
             @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
-              <span class="field-error"> Email is required </span>
+            <span class="field-error"> Email is required </span>
             }
           </div>
           <!-- MESSAGE -->
           <div class="field-wrapper">
             <label for="message">Message<span class="required"> *</span></label>
-            <textarea
-              id="message"
-              formControlName="message"
-              placeholder="Kumusta!"
-              [class.invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
-            ></textarea>
+            <textarea id="message" formControlName="message" placeholder="Kumusta!"
+              [class.invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
 
             @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
-              <span class="field-error"> Message is required </span>
+            <span class="field-error"> Message is required </span>
             }
           </div>
 
           <button type="submit" [disabled]="contactForm.invalid" class="btn-submit">
-            {{ LABELS.labels.SEND_MESSAGE }}
+            {{ LABELS.SEND_MESSAGE }}
           </button>
         </div>
       </form>

@@ -1,11 +1,12 @@
 <!-- ================= CHECKOUT BOX ================= -->
+<!-- ================= CHECKOUT BOX ================= -->
 <div class="checkout-box">
   <!-- HEADER -->
   <div class="header-nav">
     <div class="back-section">
       <a routerLink="/order" class="back-link">
         <img src="/assets/images/back.png" class="back-icon" alt="Back" />
-        <span>{{ LABELS.labels.BACK }}</span>
+        <span>{{ LABELS.BACK }}</span>
       </a>
     </div>
 
@@ -16,21 +17,21 @@
           <div class="step-item active">
             <img src="/assets/images-2/info.png" alt="Info" />
           </div>
-          <span class="step-label">{{ LABELS.labels.INFORMATION }}</span>
+          <span class="step-label">{{ LABELS.INFORMATION }}</span>
         </div>
         <span class="line"></span>
         <div class="step-container">
           <div class="step-item">
             <img src="/assets/images-2/credit-card.png" alt="Payment" />
           </div>
-          <span class="step-label">{{ LABELS.labels.PAYMENT }}</span>
+          <span class="step-label">{{ LABELS.PAYMENT }}</span>
         </div>
         <span class="line"></span>
         <div class="step-container">
           <div class="step-item">
             <img src="/assets/images-2/express-delivery.png" alt="Confirm" />
           </div>
-          <span class="step-label">{{ LABELS.labels.CONFIRM }}</span>
+          <span class="step-label">{{ LABELS.CONFIRM }}</span>
         </div>
       </div>
     </div>
@@ -39,10 +40,10 @@
   <!-- CONTENT -->
   <form class="checkout-content" #checkoutFormRef="ngForm" (ngSubmit)="confirmOrder(checkoutFormRef)" novalidate>
     <div class="customer-info">
-      <h2>{{ LABELS.labels.CUSTOMER_INFORMATION }}</h2>
+      <h2>{{ LABELS.CUSTOMER_INFORMATION }}</h2>
 
       <div class="field-wrapper">
-        <label for="checkout-name">{{ LABELS.labels.FULL_NAME }}<span class="required"> *</span></label>
+        <label for="checkout-name">{{ LABELS.FULL_NAME }}<span class="required"> *</span></label>
         <input id="checkout-name" type="text" name="name" required #name="ngModel" placeholder="Juan Dela Cruz"
           [(ngModel)]="checkoutForm.name" (blur)="formatFullName()" [class.invalid]="name.invalid && name.touched" />
         @if (name.invalid && name.touched) {
@@ -51,7 +52,7 @@
       </div>
 
       <div class="field-wrapper">
-        <label for="checkout-email">{{ LABELS.labels.EMAIL_ADDRESS }}<span class="required"> *</span></label>
+        <label for="checkout-email">{{ LABELS.EMAIL_ADDRESS }}<span class="required"> *</span></label>
         <input id="checkout-email" type="email" name="email" required #email="ngModel"
           placeholder="exist@samplemail.com" [(ngModel)]="checkoutForm.email"
           (blur)="checkoutForm.email = (checkoutForm.email || '').trim().toLowerCase()"
@@ -62,7 +63,7 @@
       </div>
 
       <div class="field-wrapper">
-        <label for="checkout-address">{{ LABELS.labels.DELIVERY_ADDRESS }}<span class="required"> *</span></label>
+        <label for="checkout-address">{{ LABELS.DELIVERY_ADDRESS }}<span class="required"> *</span></label>
         <input id="checkout-address" type="text" name="address" required #address="ngModel"
           placeholder="Manila Bulacan City" [(ngModel)]="checkoutForm.address" appTrim (blur)="formatFullName()"
           [class.invalid]="address.invalid && address.touched" />
@@ -72,7 +73,7 @@
       </div>
 
       <div class="field-wrapper">
-        <label for="checkout-phone">{{ LABELS.labels.PHONE_NUMBER }}<span class="required"> *</span></label>
+        <label for="checkout-phone">{{ LABELS.PHONE_NUMBER }}<span class="required"> *</span></label>
         <input id="checkout-phone" type="tel" name="phone" required #phone="ngModel" placeholder="0123 457 7891"
           [(ngModel)]="checkoutForm.phone" phoneFormat [class.invalid]="phone.invalid && phone.touched" />
         @if (phone.invalid && phone.touched) {
@@ -82,7 +83,7 @@
     </div>
 
     <div class="order-summary">
-      <h2>{{ LABELS.labels.ORDER_SUMMARY }}</h2>
+      <h2>{{ LABELS.ORDER_SUMMARY }}</h2>
 
       <div class="order-items">
         @for (item of cartItems; track $index) {
@@ -101,20 +102,20 @@
 
       <div class="calc-details">
         <p>
-          <span>{{ LABELS.labels.SUBTOTAL }}</span><span>₱{{ subtotal }}</span>
+          <span>{{ LABELS.SUBTOTAL }}</span><span>₱{{ subtotal }}</span>
         </p>
         <p>
-          <span>{{ LABELS.labels.DELIVERY }}</span><span>₱{{ deliveryFee }}</span>
+          <span>{{ LABELS.DELIVERY }}</span><span>₱{{ deliveryFee }}</span>
         </p>
       </div>
 
       <div class="total-section">
-        <h3>{{ LABELS.labels.TOTAL }}</h3>
+        <h3>{{ LABELS.TOTAL }}</h3>
         <h3 class="total-amount">₱{{ subtotal + deliveryFee }}</h3>
       </div>
 
       <button class="confirm-order" type="submit" [disabled]="checkoutFormRef.invalid || (loading$ | async)">
-        {{ (loading$ | async) ? 'Processing...' : LABELS.labels.CONFIRM_ORDER }}
+        {{ (loading$ | async) ? 'Processing...' : LABELS.CONFIRM_ORDER }}
       </button>
     </div>
   </form>

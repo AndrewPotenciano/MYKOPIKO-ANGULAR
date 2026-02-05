@@ -5,7 +5,7 @@
     <div class="back-section">
       <a (click)="goBack()" class="back-link">
         <img src="/assets/images/back.png" class="back-icon" alt="Back" />
-        <span>{{ LABELS.labels.BACK }}</span>
+        <span>{{ LABELS.BACK }}</span>
       </a>
     </div>
 
@@ -16,21 +16,21 @@
           <div class="step-item completed">
             <img src="/assets/images-2/info.png" alt="Info" />
           </div>
-          <span class="step-label">{{ LABELS.labels.INFORMATION }}</span>
+          <span class="step-label">{{ LABELS.INFORMATION }}</span>
         </div>
         <span class="line active"></span>
         <div class="step-container">
           <div class="step-item active">
             <img src="/assets/images-2/credit-card.png" alt="Payment" />
           </div>
-          <span class="step-label">{{ LABELS.labels.PAYMENT }}</span>
+          <span class="step-label">{{ LABELS.PAYMENT }}</span>
         </div>
         <span class="line"></span>
         <div class="step-container">
           <div class="step-item">
             <img src="/assets/images-2/express-delivery.png" alt="Confirm" />
           </div>
-          <span class="step-label">{{ LABELS.labels.CONFIRM }}</span>
+          <span class="step-label">{{ LABELS.CONFIRM }}</span>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
     <!-- LEFT: PAYMENT AREA -->
     <div class="payment-selection-area">
       <div class="payment-methods">
-        <h3>{{ MESSAGES.PAYMENT.SELECT_PAYMENT }}</h3>
+        <h3>{{ MESSAGES.PAYMENT_SELECT_PAYMENT }}</h3>
         <div class="method-buttons">
           <button type="button" class="method-btn" [class.active]="selectedPayment === 'gcash'"
             (click)="onSelectPayment('gcash')">
@@ -56,11 +56,11 @@
 
       <div class="qr-container">
         <div class="qr-header">
-          <h4>{{ MESSAGES.PAYMENT.SCAN_TO_PAY }}</h4>
+          <h4>{{ MESSAGES.PAYMENT_SCAN_TO_PAY }}</h4>
           @if (selectedPayment === 'gcash') {
-          <p>{{ MESSAGES.PAYMENT.SCAN_GCASH }}</p>
+          <p>{{ MESSAGES.PAYMENT_SCAN_GCASH }}</p>
           } @else {
-          <p>{{ MESSAGES.PAYMENT.SCAN_MAYA }}</p>
+          <p>{{ MESSAGES.PAYMENT_SCAN_MAYA }}</p>
           }
         </div>
         <div class="qr-image-wrapper">
@@ -72,7 +72,7 @@
       </div>
 
       <div class="reference-input-box">
-        <label for="refNumber">{{ LABELS.labels.REFERENCE_NUMBER }}</label>
+        <label for="refNumber">{{ LABELS.REFERENCE_NUMBER }}</label>
         <input type="text" id="refNumber" [(ngModel)]="referenceNumber"
           (input)="onReferenceNumberInput(referenceNumber)"
           [placeholder]="selectedPayment === 'gcash' ? '9-13 digit number' : '12-16 characters'" class="ref-input"
@@ -88,7 +88,7 @@
 
     <!-- RIGHT: ORDER SUMMARY -->
     <div class="order-summary-area">
-      <h3>{{ LABELS.labels.ORDER_SUMMARY }}</h3>
+      <h3>{{ LABELS.ORDER_SUMMARY }}</h3>
       <div class="summary-card">
         <div class="items-list">
           @for (item of cartItems; track $index) {
@@ -107,15 +107,15 @@
 
         <div class="summary-footer">
           <div class="footer-row">
-            <span>{{ LABELS.labels.SUBTOTAL }}</span>
+            <span>{{ LABELS.SUBTOTAL }}</span>
             <span>₱{{ total - deliveryFee }}</span>
           </div>
           <div class="footer-row">
-            <span>{{ LABELS.labels.DELIVERY }} Fee</span>
+            <span>{{ LABELS.DELIVERY }} Fee</span>
             <span>₱{{ deliveryFee }}</span>
           </div>
           <div class="total-row">
-            <span>{{ LABELS.labels.TOTAL }} Payment</span>
+            <span>{{ LABELS.TOTAL }} Payment</span>
             <span>₱{{ total }}</span>
           </div>
         </div>
@@ -123,11 +123,11 @@
 
       <div class="payment-tip">
         <img src="/assets/images-2/confirm.png" alt="Tip" />
-        <p>{{ MESSAGES.PAYMENT.PAYMENT_TIP }}</p>
+        <p>{{ MESSAGES.PAYMENT_PAYMENT_TIP }}</p>
       </div>
 
       <button id="confirm-payment" [disabled]="!isReferenceValid" (click)="confirmPayment()">
-        {{ LABELS.labels.CONFIRM_PAYMENT }}
+        {{ LABELS.CONFIRM_PAYMENT }}
       </button>
     </div>
   </div>
