@@ -66,6 +66,7 @@ export class Payment implements OnInit {
           paymentMethod: this.selectedPayment,
           paymentReference: this.referenceNumber,
           status: 'confirmed',
+          riderId: 'r1',
         })
         .subscribe({
           next: () => {
