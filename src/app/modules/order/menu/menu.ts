@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, AfterViewInit, DestroyRef, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit, DestroyRef, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -31,12 +31,60 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
   espressoMenuItems: CarouselItem[] = [];
   pastriesMenuItems: CarouselItem[] = [];
 
+  headerSlides = [
+    {
+      image: 'assets/images/coffee-shop3.jpg',
+      title: MESSAGES.MENU_HEADER_TITLE,
+      subtitle: MESSAGES.MENU_HEADER_SUBTITLE
+    },
+    {
+      image: 'assets/images/coffee-shop4.jpg',
+      title: 'Where every cup tells a story.',
+      subtitle: 'Crafted with care, enjoyed with soul.'
+    },
+    {
+      image: 'assets/images/baristas.jpg',
+      title: 'Serve happiness in every cup.',
+      subtitle: 'Brewed with care, shared with joy.'
+    }
+  ];
+  currentHeaderIndex = 0;
+  private autoSlideInterval?: any;
+
   constructor() {
     this.google.userProfileSubject.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((info) => (this.userInfo = info));
   }
 
+  setCurrentHeader(index: number): void {
+    this.currentHeaderIndex = index;
+    this.resetAutoSlide();
+  }
+
+  private cdr = inject(ChangeDetectorRef);
+
+  startAutoSlide(): void {
+    this.stopAutoSlide();
+    this.autoSlideInterval = setInterval(() => {
+      this.currentHeaderIndex = (this.currentHeaderIndex + 1) % this.headerSlides.length;
+      this.cdr.detectChanges(); // Force update
+    }, 3000); // Reduced to 3s for better visibility
+  }
+
+  stopAutoSlide(): void {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+      this.autoSlideInterval = undefined;
+    }
+  }
+
+  resetAutoSlide(): void {
+    this.stopAutoSlide();
+    this.startAutoSlide();
+  }
+
   ngOnInit(): void {
     document.body.classList.add('menu-page');
+    this.startAutoSlide();
 
     this.menuService
       .getPopularMenu()
@@ -90,6 +138,7 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     document.body.classList.remove('menu-page');
     this.revealObserver?.disconnect();
+    this.stopAutoSlide();
   }
 
   isLoggedIn(): boolean {

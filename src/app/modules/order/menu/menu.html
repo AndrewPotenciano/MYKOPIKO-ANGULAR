@@ -1,12 +1,21 @@
 <!-- MENU SECTION -->
 <section id="menu" class="menu-section">
-  <div class="menu-image-header">
+  <div class="menu-image-header" (mouseenter)="stopAutoSlide()" (mouseleave)="startAutoSlide()">
     <div class="overlay"></div>
     <div class="header-content px-4 py-4">
-      <h1>{{ MESSAGES.MENU_HEADER_TITLE }}</h1>
-      <p>{{ MESSAGES.MENU_HEADER_SUBTITLE }}</p>
+      <h1>{{ headerSlides[currentHeaderIndex].title }}</h1>
+      <p>{{ headerSlides[currentHeaderIndex].subtitle }}</p>
     </div>
-    <img src="assets/images/coffee-shop3.jpg" alt="Coffee Shop Ambiance" />
+    <div class="slider-track" [style.transform]="'translateX(-' + (currentHeaderIndex * 100) + '%)'">
+      @for (slide of headerSlides; track $index) {
+      <img [src]="slide.image" [class.position-top]="$index === 2" alt="Coffee Shop Ambiance" />
+      }
+    </div>
+    <div class="header-pagination">
+      @for (slide of headerSlides; track $index) {
+      <span class="dot" [class.active]="currentHeaderIndex === $index" (click)="setCurrentHeader($index)"></span>
+      }
+    </div>
   </div>
   <app-carousel class="carousel" [title]="LABELS.POPULAR_MENU" [items]="popularMenuItems" [showDownHint]="true"
     [showSeparator]="false" [reveal]="true"></app-carousel>
