@@ -29,7 +29,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     this.updateViewport();
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void { }
 
   @HostListener('window:resize')
   onResize(): void {
@@ -40,8 +40,9 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     this.isMobile = typeof window !== 'undefined' && window.innerWidth <= 767;
   }
 
-  onScroll(element: HTMLElement): void {
-    if (!this.isMobile) return;
+  onScroll(target: EventTarget | null): void {
+    if (!this.isMobile || !target) return;
+    const element = target as HTMLElement;
     const scrollLeft = element.scrollLeft;
     const scrollWidth = element.scrollWidth;
     const clientWidth = element.clientWidth;

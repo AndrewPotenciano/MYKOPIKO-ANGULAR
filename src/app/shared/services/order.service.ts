@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { catchError, tap, finalize } from 'rxjs/operators';
-import { Order } from '../models';
+import { Order, Rider } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -85,11 +85,11 @@ export class OrderService {
     );
   }
 
-  getRider(id: string): Observable<any> {
+  getRider(id: string): Observable<Rider | null> {
     this.loadingSubject.next(true);
     this.errorSubject.next(null);
 
-    return this.http.get<any>(`${this.ridersUrl}/${id}`).pipe(
+    return this.http.get<Rider>(`${this.ridersUrl}/${id}`).pipe(
       catchError((error) => {
         console.error('Failed to fetch rider:', error);
         this.errorSubject.next('Rider not found.');

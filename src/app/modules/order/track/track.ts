@@ -3,16 +3,10 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { OrderService, GoogleApi } from '@shared/services';
-import { Order } from '@shared/models';
+import { Order, Rider } from '@shared/models';
 import { Subscription } from 'rxjs';
 import { LABELS } from '@shared/constants/label.const';
 import { MESSAGES } from '@shared/constants/message.const';
-
-interface RiderInfo {
-  name: string;
-  phone: string;
-  image: string;
-}
 
 @Component({
   selector: 'app-track',
@@ -29,7 +23,7 @@ export class Track implements OnInit, OnDestroy {
   currentOrder: Order | null = null;
   private orderSub?: Subscription;
 
-  riderInfo: RiderInfo | null = null;
+  riderInfo: Rider | null = null;
 
   trackSteps = [
     { icon: 'coffee', label: 'Preparing Your Order', completed: true },
