@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,9 +9,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./message-modal.component.scss'],
 })
 export class MessageModalComponent {
-  @Input() message = '';
-  @Input() open = false;
-  @Output() closeModal = new EventEmitter<void>();
+  message = input('');
+  open = input(false);
+  closeModal = output<void>();
 
   close() {
     this.closeModal.emit();

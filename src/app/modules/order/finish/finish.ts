@@ -23,6 +23,7 @@ export class Finish implements OnInit {
   private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
+
     const lastOrderId = localStorage.getItem('last_order_id');
 
     if (lastOrderId) {
@@ -31,27 +32,24 @@ export class Finish implements OnInit {
           if (order) {
             this.orderNumber = order.orderNumber;
           } else {
-            this.orderNumber = 'ORD-' + Math.floor(Math.random() * 1000000);
+            this.orderNumber = 'Order not found';
           }
           this.cdr.detectChanges();
         },
         error: () => {
-          this.orderNumber = 'ORD-' + Math.floor(Math.random() * 1000000);
-          this.cdr.detectChanges();
+          this.orderNumber = 'Error loading order';
         },
       });
     } else {
-      this.orderNumber = 'ORD-' + Math.floor(Math.random() * 1000000);
+      this.router.navigate(['/']);
     }
-
     // Clear cart when landing on finish page
     this.cart.clear();
 
     // Mark order as finished for tracking access
     localStorage.setItem('is_order_finished', 'true');
 
-    // Cleanup old keys if they exist
-    localStorage.removeItem('latestOrder');
+
   }
 
   trackOrder(): void {

@@ -1,8 +1,8 @@
-@if (open) {
+@if (open()) {
 <div class="modal-backdrop">
   <div class="modal-content">
     <div class="modal-body">
-      <p>{{ message }}</p>
+      <p>{{ message() }}</p>
       <button class="btn btn-primary" (click)="close()">OK</button>
     </div>
   </div>

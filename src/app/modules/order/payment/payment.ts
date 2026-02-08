@@ -49,9 +49,7 @@ export class Payment implements OnInit {
   }
 
   validateReference(ref: string, method: 'gcash' | 'maya'): boolean {
-    // Updated based on user feedback:
-    // GCash: 9-13 digits (covers Send Money, Bank Transfer, QR)
-    // Maya: 12-16 characters (covers Smart Padala, QR, etc.)
+
     if (method === 'gcash') return /^\d{9,13}$/.test(ref);
     if (method === 'maya') return /^[a-zA-Z0-9]{12,16}$/.test(ref);
     return false;

@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { orderGuard } from '../../core/guards/order.guard';
 import { postOrderGuard } from '../../core/guards/post-order.guard';
 
 export const ORDER_ROUTES: Routes = [
@@ -24,6 +23,6 @@ export const ORDER_ROUTES: Routes = [
     {
         path: 'track',
         loadComponent: () => import('./track/track').then((m) => m.Track),
-        canActivate: [orderGuard],
     },
+
 ];

@@ -9,7 +9,7 @@
       <p class="main-paragraph">
         {{ MESSAGES.HOMEPAGE_HERO_DESCRIPTION }}
       </p>
-      <a routerLink="/login" href="/login" class="btn-primary">{{ LABELS.ORDER_NOW }}</a>
+      <a routerLink="/login" class="btn-primary">{{ LABELS.ORDER_NOW }}</a>
     </div>
 
     <div class="hero-image">
@@ -19,11 +19,13 @@
   </div>
 </section>
 
+<!-- POPULAR MENU SECTION -->
 <section id="menu" class="menu-section">
   <app-carousel class="carousel" [items]="popularMenuItems" [showDownHint]="false" [showSeparator]="false"
     [reveal]="true"></app-carousel>
 </section>
 
+<!-- ABOUT US SECTION -->
 <section class="about-us" id="about-us">
   <div class="content-wrapper">
     <div class="about-text-container scroll-reveal">
@@ -59,6 +61,7 @@
   </div>
 </section>
 
+<!-- CONTACT US SECTION -->
 <section class="contact-us" id="contact-us">
   <app-message-modal [message]="'Message sent successfully!'" [open]="messageModalOpen"
     (closeModal)="messageModalOpen = false"></app-message-modal>

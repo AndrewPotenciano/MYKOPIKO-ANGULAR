@@ -56,7 +56,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       message: ['', Validators.required],
     });
 
-    // Fetch menu items
+
     combineLatest({
       popular: this.menuService.getPopularMenu(),
       frappe: this.menuService.getFrappeMenu(),

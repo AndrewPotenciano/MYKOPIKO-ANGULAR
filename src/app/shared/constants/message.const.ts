@@ -4,9 +4,9 @@ export const MESSAGES = {
   HOMEPAGE_HERO_DESCRIPTION:
     'Experience the perfect blend of rich, aromatic coffee and cozy, inviting moments that brighten your day, one cup at a time.',
   HOMEPAGE_ABOUT_US_DESC:
-    'Mykopiko serves rich, comforting coffee made with quality beans and brewed to perfection for every coffee lover.',
+    'Mykopiko was created from a passion for bringing people together over great coffee. We serve rich, comforting blends made from carefully sourced beans and brewed with precision.',
   HOMEPAGE_WHY_CHOOSE_US_DESC:
-    'We use only the finest coffee beans, carefully selected from trusted farms to ensure every cup delivers a rich, balanced, and unforgettable flavor.',
+    'We use only the finest coffee beans, sourced from trusted farms and roasted to perfection. Our baristas are trained to craft every drink with care and consistency.',
   HOMEPAGE_CONTACT_US_SUB: 'We’d love to hear from you.',
 
   MENU_HEADER_TITLE: 'Experience the Art of Coffee',
@@ -17,6 +17,7 @@ export const MESSAGES = {
   PAYMENT_SCAN_GCASH: 'Scan the QR code below using your Gcash app',
   PAYMENT_SCAN_MAYA: 'Scan the QR code below using your Maya app',
   PAYMENT_PAYMENT_TIP: 'Your order will be processed immediately after payment confirmation.',
+  PAYMENT_AMOUNT_TOPAY: 'Amount to Pay',
 
   FINISH_THANK_YOU: 'Thank you For Your Order',
   FINISH_ARRIVING_SOON: 'Your delicious coffee will arrive soon!',

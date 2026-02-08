@@ -43,7 +43,7 @@ export class Track implements OnInit, OnDestroy {
     );
 
     this.loadLastOrder();
-    this.simulateTracking();
+
   }
 
   ngOnDestroy(): void {
@@ -70,7 +70,7 @@ export class Track implements OnInit, OnDestroy {
     }
   }
 
-  simulateTracking(): void { }
+
 
   callRider(): void {
     if (this.riderInfo) {

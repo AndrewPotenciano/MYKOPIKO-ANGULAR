@@ -119,7 +119,7 @@ export class Checkout implements OnInit, OnDestroy {
 
     this.orderService.createOrder(order).subscribe({
       next: (savedOrder) => {
-        // Store order ID for tracking
+
         if (savedOrder.id) {
           localStorage.setItem('last_order_id', savedOrder.id.toString());
         }

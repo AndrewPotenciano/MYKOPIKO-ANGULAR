@@ -48,6 +48,7 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Brewed with care, shared with joy.'
     }
   ];
+
   currentHeaderIndex = 0;
   private autoSlideInterval?: any;
 
@@ -66,8 +67,8 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
     this.stopAutoSlide();
     this.autoSlideInterval = setInterval(() => {
       this.currentHeaderIndex = (this.currentHeaderIndex + 1) % this.headerSlides.length;
-      this.cdr.detectChanges(); // Force update
-    }, 3000); // Reduced to 3s for better visibility
+      this.cdr.detectChanges();
+    }, 3000);
   }
 
   stopAutoSlide(): void {
