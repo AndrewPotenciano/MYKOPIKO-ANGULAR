@@ -41,7 +41,7 @@
     <!-- LEFT: PAYMENT AREA -->
     <div class="payment-selection-area">
       <div class="payment-methods">
-        <h3>{{ MESSAGES.PAYMENT_SELECT_PAYMENT }}</h3>
+        <h2>{{ MESSAGES.PAYMENT_SELECT_PAYMENT }}</h2>
         <div class="method-buttons">
           <button type="button" class="method-btn" [class.active]="selectedPayment === 'gcash'"
             (click)="onSelectPayment('gcash')">
@@ -68,7 +68,7 @@
         </div>
         <p class="amount-due">
           <span>{{ MESSAGES.PAYMENT_AMOUNT_TOPAY }}</span>
-          <strong>&nbsp; {{ total }}</strong>
+          <strong>&nbsp; {{ total | number:'1.2-2'}}</strong>
         </p>
       </div>
 
@@ -89,7 +89,7 @@
 
     <!-- RIGHT: ORDER SUMMARY -->
     <div class="order-summary-area">
-      <h3>{{ LABELS.ORDER_SUMMARY }}</h3>
+      <h2>{{ LABELS.ORDER_SUMMARY }}</h2>
       <div class="summary-card">
         <div class="items-list">
           @for (item of cartItems; track $index) {
@@ -101,7 +101,7 @@
                 <span class="item-qty">x{{ item.quantity }}</span>
               </div>
             </div>
-            <span class="item-sub">₱{{ item.price * item.quantity }}</span>
+            <span class="item-sub">₱{{ item.price * item.quantity | number:'1.2-2' }}</span>
           </div>
           }
         </div>
@@ -109,15 +109,15 @@
         <div class="summary-footer">
           <div class="footer-row">
             <span>{{ LABELS.SUBTOTAL }}</span>
-            <span>₱{{ total - deliveryFee }}</span>
+            <span>₱{{ total - deliveryFee | number:'1.2-2'}}</span>
           </div>
           <div class="footer-row">
             <span>{{ LABELS.DELIVERY }} Fee</span>
-            <span>₱{{ deliveryFee }}</span>
+            <span>₱{{ deliveryFee | number:'1.2-2'}}</span>
           </div>
           <div class="total-row">
             <span>{{ LABELS.TOTAL }}</span>
-            <span>₱{{ total }}</span>
+            <span>₱{{ total | number:'1.2-2'}}</span>
           </div>
         </div>
       </div>

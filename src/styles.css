@@ -1,3 +1,9 @@
+:root {
+  --font-primary: 'Poppins', sans-serif;
+  --font-secondary: 'Playfair Display', serif;
+  --font-tertiary: 'Inter', sans-serif;
+}
+
 html,
 body {
   height: 100%;
@@ -5,6 +11,7 @@ body {
   padding: 0;
   background-color: #fff8e7;
   overflow-x: hidden;
+  font-family: var(--font-primary);
 }
 
 html {

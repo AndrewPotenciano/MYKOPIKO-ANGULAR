@@ -63,7 +63,7 @@
 
 <!-- CONTACT US SECTION -->
 <section class="contact-us" id="contact-us">
-  <app-message-modal [message]="'Message sent successfully!'" [open]="messageModalOpen"
+  <app-message-modal [message]="modalMessage" [open]="messageModalOpen" [loading]="isSending"
     (closeModal)="messageModalOpen = false"></app-message-modal>
   <div class="contact-header scroll-reveal">
     <h1>{{ LABELS.CONTACT_US }}</h1>
@@ -81,9 +81,10 @@
             <input type="text" id="name" formControlName="name" placeholder="Juan Dela Cruz" appTitleCaseOnBlur
               [class.invalid]="name?.invalid && name?.touched" />
 
-            @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+            @if (name?.invalid && name?.touched) {
             <span class="field-error"> Full name is required </span>
             }
+
           </div>
           <!-- EMAIL -->
           <div class="field-wrapper">
@@ -91,23 +92,25 @@
             <input type="text" id="email" formControlName="email" placeholder="example@email.com" appLowercaseOnBlur
               [class.invalid]="email?.invalid && email?.touched" />
 
-            @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+            @if (email?.invalid && email?.touched) {
             <span class="field-error"> Email is required </span>
             }
+
           </div>
           <!-- MESSAGE -->
           <div class="field-wrapper">
             <label for="message">Message<span class="required"> *</span></label>
             <textarea id="message" formControlName="message" placeholder="Kumusta!"
-              [class.invalid]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
+              [class.invalid]="message?.invalid && message?.touched"></textarea>
 
-            @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+            @if (message?.invalid && message?.touched) {
             <span class="field-error"> Message is required </span>
             }
+
           </div>
 
-          <button type="submit" [disabled]="contactForm.invalid" class="btn-submit">
-            {{ LABELS.SEND_MESSAGE }}
+          <button type="submit" [disabled]="contactForm.invalid || isSending" class="btn-submit">
+            {{ isSending ? 'Sending...' : LABELS.SEND_MESSAGE }}
           </button>
         </div>
       </form>

@@ -46,7 +46,7 @@
         <input id="checkout-name" type="text" formControlName="name" placeholder="Juan Dela Cruz" appTitleCaseOnBlur
           [class.invalid]="name?.invalid && name?.touched" />
         @if (name?.invalid && name?.touched) {
-        <span class="field-error">Full name is required</span>
+        <span class="field-error">{{ LABELS.FULL_NAME }} {{ LABELS.REQUIRED_FIELD }}</span>
         }
       </div>
 
@@ -55,7 +55,7 @@
         <input id="checkout-email" type="email" formControlName="email" placeholder="exist@samplemail.com"
           appLowercaseOnBlur [class.invalid]="email?.invalid && email?.touched" />
         @if (email?.invalid && email?.touched) {
-        <span class="field-error">Email is required</span>
+        <span class="field-error">{{ LABELS.EMAIL_ADDRESS }} {{ LABELS.REQUIRED_FIELD }}</span>
         }
       </div>
 
@@ -64,7 +64,7 @@
         <input id="checkout-address" type="text" formControlName="address" placeholder="Manila Bulacan City" appTrim
           appTitleCaseOnBlur [class.invalid]="address?.invalid && address?.touched" />
         @if (address?.invalid && address?.touched) {
-        <span class="field-error">Address is required</span>
+        <span class="field-error">{{ LABELS.DELIVERY_ADDRESS }} {{ LABELS.REQUIRED_FIELD }}</span>
         }
       </div>
 
@@ -73,7 +73,7 @@
         <input id="checkout-phone" type="tel" formControlName="phone" placeholder="0123 457 7891" phoneFormat
           [class.invalid]="phone?.invalid && phone?.touched" />
         @if (phone?.invalid && phone?.touched) {
-        <span class="field-error">Phone number is required</span>
+        <span class="field-error">{{ LABELS.PHONE_NUMBER }} {{ LABELS.REQUIRED_FIELD }}</span>
         }
       </div>
     </div>
@@ -91,23 +91,23 @@
               <span class="item-qty">x{{ item.quantity }}</span>
             </div>
           </div>
-          <span class="item-price">₱{{ item.price * item.quantity }}</span>
+          <span class="item-price">₱{{ item.price * item.quantity | number:'1.2-2'}}</span>
         </div>
         }
       </div>
 
       <div class="calc-details">
         <p>
-          <span>{{ LABELS.SUBTOTAL }}</span><span>₱{{ subtotal }}</span>
+          <span>{{ LABELS.SUBTOTAL }}</span><span>₱{{ subtotal | number:'1.2-2' }}</span>
         </p>
         <p>
-          <span>{{ LABELS.DELIVERY }}</span><span>₱{{ deliveryFee }}</span>
+          <span>{{ LABELS.DELIVERY }}</span><span>₱{{ deliveryFee | number:'1.2-2' }}</span>
         </p>
       </div>
 
       <div class="total-section">
         <h3>{{ LABELS.TOTAL }}</h3>
-        <h3 class="total-amount">₱{{ subtotal + deliveryFee }}</h3>
+        <h3 class="total-amount">₱{{ subtotal + deliveryFee | number:'1.2-2' }}</h3>
       </div>
 
       <button class="confirm-order" type="submit" [disabled]="checkoutForm.invalid || (loading$ | async)">

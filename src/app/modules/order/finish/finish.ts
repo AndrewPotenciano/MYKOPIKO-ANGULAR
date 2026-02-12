@@ -49,7 +49,6 @@ export class Finish implements OnInit {
     // Mark order as finished for tracking access
     localStorage.setItem('is_order_finished', 'true');
 
-
   }
 
   trackOrder(): void {

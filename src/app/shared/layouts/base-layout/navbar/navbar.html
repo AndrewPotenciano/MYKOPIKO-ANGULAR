@@ -25,14 +25,14 @@
           <a class="nav-icon-link has-tooltip" href="#" (click)="openCart($event)" data-label="View cart"
             aria-label="View cart">
             <img src="/assets/images-2/shopping-cart.png" alt="Shopping Cart" class="nav-icon" />
-            <span class="nav-icon-text">View cart</span>
+            <span class="nav-icon-text">{{ LABELS.VIEW_CART }}</span>
           </a>
         </li>
         <li [hidden]="isLoginRoute" class="nav-item">
           <a class="nav-icon-link has-tooltip" routerLink="/order/track" (click)="closeNav()" data-label="Track order"
             aria-label="Track order">
             <img src="/assets/images-2/track.png" alt="Track Order" class="nav-icon" />
-            <span class="nav-icon-text">Track order</span>
+            <span class="nav-icon-text">{{ LABELS.TRACK_ORDER | titlecase }}</span>
           </a>
         </li>
         @if (isLoggedIn()) {
@@ -43,14 +43,14 @@
               <i class="fas fa-user-circle nav-icon"></i>
             </a>
             <div class="user-dropdown-menu" [class.show]="isUserDropdownOpen">
-              <button class="dropdown-item" (click)="logout()">Logout</button>
+              <button class="dropdown-item" (click)="logout()">{{ LABELS.LOGOUT }}</button>
             </div>
           </div>
         </li>
         }
         @if (isMenuRoute && isLoggedIn()) {
         <li class="nav-item nav-logout-mobile">
-          <button type="button" class="nav-link nav-logout-link" (click)="logout()">Logout</button>
+          <button type="button" class="nav-link nav-logout-link" (click)="logout()">{{ LABELS.LOGOUT }}</button>
         </li>
         }
         <li class="nav-item menu-separator-mobile"></li>

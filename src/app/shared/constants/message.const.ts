@@ -19,7 +19,7 @@ export const MESSAGES = {
   PAYMENT_PAYMENT_TIP: 'Your order will be processed immediately after payment confirmation.',
   PAYMENT_AMOUNT_TOPAY: 'Amount to Pay',
 
-  FINISH_THANK_YOU: 'Thank you For Your Order',
+  FINISH_THANK_YOU: 'Thank you for your order',
   FINISH_ARRIVING_SOON: 'Your delicious coffee will arrive soon!',
   FINISH_ESTIMATED_DELIVERY: 'Estimated Delivery : 20–30 mins',
 
@@ -30,4 +30,5 @@ export const MESSAGES = {
   LOGIN_TERMS: 'By continuing, you agree to our Terms & Privacy Policy.',
   LOGIN_CONTINUE_FACEBOOK: 'Continue With Facebook',
   LOGIN_CONTINUE_GOOGLE: 'Continue With Google',
+  MESSAGE_SENT_SUCCESS: 'Message sent successfully!',
 };

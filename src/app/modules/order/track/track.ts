@@ -70,8 +70,6 @@ export class Track implements OnInit, OnDestroy {
     }
   }
 
-
-
   callRider(): void {
     if (this.riderInfo) {
       alert(`Calling ${this.riderInfo.name} at ${this.riderInfo.phone}`);

@@ -94,7 +94,7 @@
 .main-paragraph {
   margin-top: 12px;
   color: #241c15;
-  max-width: 420px;
+  max-width: 550px;
   font-weight: lighter;
 }
 
@@ -222,14 +222,14 @@
 }
 
 .about-text-container h1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-primary);
   color: #3d1c02;
   font-size: 50px;
   margin-bottom: 20px;
 }
 
 .about-text-container h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-secondary);
   color: #4a4a4a;
   font-size: 28px;
   font-weight: normal;
@@ -272,7 +272,7 @@
 }
 
 .reviews-section h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-secondary);
   color: #3d1c02;
   font-size: 50px;
   margin-bottom: 60px;
@@ -304,20 +304,20 @@
 }
 
 .name {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-secondary);
   font-size: 26px;
   color: black;
 }
 
 .review-title {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-secondary);
   font-size: 18px;
   color: #3d1c02;
   margin: 10px 0;
 }
 
 .comment {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-secondary);
   font-size: 16px;
   color: #3d1c02;
   margin-bottom: 15px;
@@ -381,14 +381,14 @@
 }
 
 .contact-header h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-secondary);
   color: #2e1f1b;
   font-size: clamp(40px, 8vw, 60px);
   margin-bottom: 10px;
 }
 
 .contact-header p {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-primary);
   color: #2e1f1b;
   margin-bottom: 50px;
 }
@@ -415,7 +415,7 @@
 }
 
 .box-title {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-secondary);
   color: #2e1f1b;
   margin-bottom: 25px;
 }
@@ -430,7 +430,7 @@
 .input-fields label {
   width: 85%;
   text-align: left;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-primary);
   font-size: 14px;
   font-weight: bold;
   color: #3d1c02;
@@ -443,7 +443,7 @@
   padding: 12px 14px;
   border-radius: 10px;
   border: 1px solid #2e1f1b;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .input-fields textarea {
@@ -458,7 +458,7 @@
   color: #fff;
   border: none;
   border-radius: 10px;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-primary);
   cursor: pointer;
   transition: 0.3s;
 }
@@ -537,7 +537,7 @@
   left: 7.5%;
   font-size: 12px;
   color: red;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-primary);
   white-space: nowrap;
   pointer-events: none;
 }

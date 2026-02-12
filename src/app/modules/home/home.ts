@@ -13,6 +13,7 @@ import { LABELS } from '@shared/constants/label.const';
 import { MESSAGES } from '@shared/constants/message.const';
 import { combineLatest } from 'rxjs';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -35,6 +36,8 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   public readonly LABELS = LABELS;
   public readonly MESSAGES = MESSAGES;
   messageModalOpen = false;
+  modalMessage = '';
+  isSending = false;
   private revealObserver?: IntersectionObserver;
 
   popularMenuItems: CarouselItem[] = [];
@@ -56,7 +59,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       message: ['', Validators.required],
     });
 
-
     combineLatest({
       popular: this.menuService.getPopularMenu(),
       frappe: this.menuService.getFrappeMenu(),
@@ -76,12 +78,23 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   // Send contact form via EmailJS
   send(): void {
-    if (this.contactForm.invalid) return;
+    if (this.contactForm.invalid || this.isSending) return;
 
-    emailjs.send('service_u35oe9x', 'template_iejhg7f', this.contactForm.value, 'VjtiOX-nmb9M7CHQ0').then(() => {
-      this.messageModalOpen = true;
-      this.contactForm.reset();
-    });
+    this.isSending = true;
+    this.modalMessage = 'Sending your message...';
+    this.messageModalOpen = true;
+
+    emailjs.send('service_u35oe9x', 'template_iejhg7f', this.contactForm.value, 'VjtiOX-nmb9M7CHQ0')
+      .then(() => {
+        this.modalMessage = 'Message sent successfully!';
+        this.contactForm.reset();
+        this.isSending = false;
+      })
+      .catch((error) => {
+        console.error('EmailJS Error:', error);
+        this.modalMessage = 'Failed to send message. Please try again.';
+        this.isSending = false;
+      });
   }
 
   ngAfterViewInit(): void {

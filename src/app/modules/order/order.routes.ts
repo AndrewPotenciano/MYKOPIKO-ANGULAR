@@ -19,6 +19,7 @@ export const ORDER_ROUTES: Routes = [
     {
         path: 'finish',
         loadComponent: () => import('./finish/finish').then((m) => m.Finish),
+
     },
     {
         path: 'track',
