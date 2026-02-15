@@ -1,4 +1,4 @@
-import { Component, inject, HostListener, ElementRef } from '@angular/core';
+import { Component, inject, HostListener, HostBinding, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -19,6 +19,10 @@ export class Navbar {
   isLoginRoute = false;
   isMenuRoute = false;
   isUserDropdownOpen = false;
+  private lastScrollY = 0;
+
+  @HostBinding('class.nav-hidden')
+  isNavHidden = false;
   private cart = inject(CartService);
   private router = inject(Router);
   private google = inject(GoogleApi);
@@ -54,6 +58,19 @@ export class Navbar {
     if (!this.eRef.nativeElement.contains(event.target)) {
       this.isUserDropdownOpen = false;
     }
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > this.lastScrollY && currentScrollY > 60) {
+      // Scrolling down & past the navbar height
+      this.isNavHidden = true;
+    } else if (currentScrollY < this.lastScrollY) {
+      // Scrolling up
+      this.isNavHidden = false;
+    }
+    this.lastScrollY = currentScrollY;
   }
 
   scrollTo(event: Event, id: string): void {

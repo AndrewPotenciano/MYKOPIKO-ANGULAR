@@ -12,4 +12,4 @@ import { Footer } from './footer/footer';
   templateUrl: './base-layout.html',
   styleUrls: ['./base-layout.css'],
 })
-export class BaseLayout {}
+export class BaseLayout { }

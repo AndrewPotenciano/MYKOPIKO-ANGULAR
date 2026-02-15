@@ -1,9 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
 
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+:host.nav-hidden {
+  transform: translateY(-100%);
+}
+
 .navbar {
   background-color: #fff8e7 !important;
-  position: relative;
-  z-index: 1000;
 }
 
 .navbar-brand {

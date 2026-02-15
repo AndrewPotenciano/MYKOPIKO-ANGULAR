@@ -10,8 +10,11 @@ body {
   margin: 0;
   padding: 0;
   background-color: #fff8e7;
-  overflow-x: hidden;
   font-family: var(--font-primary);
+}
+
+body {
+  overflow-x: hidden;
 }
 
 html {
