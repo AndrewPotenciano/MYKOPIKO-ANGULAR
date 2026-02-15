@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
-import { CarouselComponent, ReviewCardComponent, MessageModalComponent } from '@shared/components';
+import { CarouselComponent, ReviewCardComponent, MessageModalComponent, ScrollToTopComponent } from '@shared/components';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MenuService, ReviewService } from '@shared/services';
@@ -27,6 +27,7 @@ import { combineLatest } from 'rxjs';
     LowercaseOnBlurDirective,
     TitleCaseOnBlurDirective,
     MessageModalComponent,
+    ScrollToTopComponent,
   ],
 
   templateUrl: './home.html',

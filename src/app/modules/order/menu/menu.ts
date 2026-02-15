@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GoogleApi, UserInfo, MenuService } from '@shared/services';
-import { CarouselComponent } from '@shared/components';
+import { CarouselComponent, ScrollToTopComponent } from '@shared/components';
 import { CarouselItem } from '@shared/models';
 import { LABELS } from '@shared/constants/label.const';
 import { MESSAGES } from '@shared/constants/message.const';
@@ -11,7 +11,7 @@ import { MESSAGES } from '@shared/constants/message.const';
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, CarouselComponent],
+  imports: [CommonModule, CarouselComponent, ScrollToTopComponent],
   templateUrl: './menu.html',
   styleUrls: ['./menu.css'],
 })
