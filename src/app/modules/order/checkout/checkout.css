@@ -304,6 +304,8 @@ input.invalid {
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid #e8ddd0;
+  width: 90px;
+  flex-shrink: 0;
 }
 
 .qty-btn {
