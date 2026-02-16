@@ -1,5 +1,7 @@
-import { Component, HostListener, OnInit, input, inject, AfterViewInit } from '@angular/core';
+import { Component, HostListener, OnInit, input, inject, AfterViewInit, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs/operators';
 import { CartService } from '../../services/cart.service';
 import { CarouselItem } from '../../models/carousel-item.model';
 import { ToastService } from '../toast/toast.service';
@@ -24,6 +26,21 @@ export class CarouselComponent implements OnInit, AfterViewInit {
   public cart = inject(CartService);
   private toastService = inject(ToastService);
   showSwipeHint = true;
+
+  private cartItems = toSignal(
+    this.cart.items$.pipe(
+      map(items => {
+        const qtyMap = new Map<string, number>();
+        items.forEach(item => qtyMap.set(item.name, item.quantity));
+        return qtyMap;
+      })
+    ),
+    { initialValue: new Map<string, number>() }
+  );
+
+  getItemQuantity(itemName: string): number {
+    return this.cartItems().get(itemName) ?? 0;
+  }
 
   ngOnInit(): void {
     this.updateViewport();

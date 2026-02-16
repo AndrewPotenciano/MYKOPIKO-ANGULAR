@@ -96,6 +96,28 @@ export class Checkout implements OnInit, OnDestroy {
     this.subtotal = this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }
 
+  increaseQuantity(index: number): void {
+    const item = this.cartItems[index];
+    if (item) {
+      this.cartService.updateQuantity(index, item.quantity + 1);
+    }
+  }
+
+  decreaseQuantity(index: number): void {
+    const item = this.cartItems[index];
+    if (item && item.quantity > 1) {
+      this.cartService.updateQuantity(index, item.quantity - 1);
+    }
+  }
+
+  removeItem(index: number): void {
+    this.cartService.remove(index);
+    // If cart is empty after removal, go back to menu
+    if (this.cartItems.length === 0) {
+      this.router.navigate(['/order']).catch(() => { });
+    }
+  }
+
   goBack(): void {
     this.router.navigate(['/order']).catch(() => { });
   }

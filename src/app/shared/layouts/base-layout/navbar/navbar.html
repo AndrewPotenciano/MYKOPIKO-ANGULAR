@@ -24,8 +24,17 @@
         <li [hidden]="isLoginRoute" class="nav-item">
           <a class="nav-icon-link has-tooltip" href="#" (click)="openCart($event)" data-label="View cart"
             aria-label="View cart">
-            <img src="/assets/images-2/shopping-cart.png" alt="Shopping Cart" class="nav-icon" />
-            <span class="nav-icon-text">{{ LABELS.VIEW_CART }}</span>
+            <span class="cart-icon-wrapper">
+              <img src="/assets/images-2/shopping-cart.png" alt="Shopping Cart" class="nav-icon" />
+              @if (cartItemCount() > 0) {
+              <span class="cart-badge">{{ cartItemCount() }}</span>
+              }
+            </span>
+            <span class="nav-icon-text">{{ LABELS.VIEW_CART }}
+              @if (cartItemCount() > 0) {
+              <span class="cart-badge-mobile">({{ cartItemCount() }})</span>
+              }
+            </span>
           </a>
         </li>
         <li [hidden]="isLoginRoute" class="nav-item">

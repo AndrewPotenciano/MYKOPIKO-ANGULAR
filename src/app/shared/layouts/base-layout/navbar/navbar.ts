@@ -1,7 +1,8 @@
-import { Component, inject, HostListener, HostBinding, ElementRef } from '@angular/core';
+import { Component, inject, HostListener, HostBinding, ElementRef, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { filter, map } from 'rxjs/operators';
 import { CartService } from '../../../services/cart.service';
 import { GoogleApi } from '../../../services/google-api.service';
 import { LABELS } from '@shared/constants/label.const';
@@ -27,6 +28,14 @@ export class Navbar {
   private router = inject(Router);
   private google = inject(GoogleApi);
   private eRef = inject(ElementRef);
+
+  private cartItemCountSignal = toSignal(
+    this.cart.items$.pipe(
+      map(items => items.reduce((total, item) => total + item.quantity, 0))
+    ),
+    { initialValue: 0 }
+  );
+  cartItemCount = computed(() => this.cartItemCountSignal());
   constructor() {
     // set initial value
     this.isLoginRoute = this.router.url.includes('/login');

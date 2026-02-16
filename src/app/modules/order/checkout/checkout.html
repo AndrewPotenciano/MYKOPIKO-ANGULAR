@@ -88,10 +88,24 @@
             <img [src]="item.img" alt="{{ item.name }}" class="checkout-item-img" />
             <div class="item-info">
               <span class="item-name">{{ item.name }}</span>
-              <span class="item-qty">x{{ item.quantity }}</span>
+              <div class="qty-controls">
+                <button type="button" class="qty-btn" (click)="decreaseQuantity($index)" [disabled]="item.quantity <= 1"
+                  aria-label="Decrease quantity">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span class="qty-value">{{ item.quantity }}</span>
+                <button type="button" class="qty-btn" (click)="increaseQuantity($index)" aria-label="Increase quantity">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
             </div>
           </div>
-          <span class="item-price">₱{{ item.price * item.quantity | number:'1.2-2'}}</span>
+          <div class="item-actions">
+            <span class="item-price">₱{{ item.price * item.quantity | number:'1.2-2'}}</span>
+            <button type="button" class="remove-btn" (click)="removeItem($index)" aria-label="Remove item">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </div>
         </div>
         }
       </div>

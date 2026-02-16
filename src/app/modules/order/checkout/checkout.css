@@ -295,14 +295,85 @@ input.invalid {
   color: #3d1c02;
 }
 
-.item-qty {
-  font-size: 12px;
-  color: #7a5a40;
-  font-family: 'Poppins', sans-serif;
+/* Quantity Controls */
+.qty-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: #f5ede4;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e8ddd0;
+}
+
+.qty-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #3d1c02;
+  cursor: pointer;
+  font-size: 10px;
+  transition: background 0.2s, color 0.2s;
+  padding: 0;
+}
+
+.qty-btn:hover:not(:disabled) {
+  background: #3d1c02;
+  color: #fff;
+}
+
+.qty-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.qty-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #3d1c02;
+  min-width: 24px;
+  text-align: center;
+  font-family: var(--font-primary);
+  user-select: none;
+}
+
+/* Item Actions (price + remove) */
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .item-price {
   color: #212529;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: #fdf0f0;
+  color: #c0392b;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.remove-btn:hover {
+  background: #e74c3c;
+  color: #fff;
+  transform: scale(1.08);
 }
 
 .order-item:last-child {
