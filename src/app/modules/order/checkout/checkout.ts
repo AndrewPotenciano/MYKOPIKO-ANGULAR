@@ -78,7 +78,7 @@ export class Checkout implements OnInit, OnDestroy {
     if (!control.value) {
       return null; // Let required validator handle empty
     }
-    const value = control.value.trim();
+    const value = control.value;
     const parts = value.split(' ').filter((part: string) => part.length > 0);
     if (parts.length < 2) {
       return { invalidFullName: true };

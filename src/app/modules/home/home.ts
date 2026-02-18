@@ -78,12 +78,11 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  // Custom validator for full name (at least two words)
   private fullNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
     if (!control.value) {
-      return null; // Let required validator handle empty
+      return null;
     }
-    const value = control.value.trim();
+    const value = control.value;
     const parts = value.split(' ').filter((part: string) => part.length > 0);
     if (parts.length < 2) {
       return { invalidFullName: true };
