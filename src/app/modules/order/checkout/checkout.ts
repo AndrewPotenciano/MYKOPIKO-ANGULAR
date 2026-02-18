@@ -40,13 +40,18 @@ export class Checkout implements OnInit, OnDestroy {
   private userProfileSubscription?: Subscription;
 
   loading$ = this.orderService.loading$;
+  submitted = false;
 
-  checkoutForm: FormGroup = this.fb.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    address: ['', Validators.required],
-    phone: ['', Validators.required],
-  });
+  checkoutForm: FormGroup;
+
+  constructor() {
+    this.checkoutForm = this.fb.group({
+      name: ['', [Validators.required, this.fullNameValidator]],
+      email: ['', [Validators.required, Validators.email]],
+      address: ['', Validators.required],
+      phone: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
     // Reset tracking access for new order attempt
@@ -66,6 +71,19 @@ export class Checkout implements OnInit, OnDestroy {
         this.populateFormFromGoogleAuth(userInfo.info);
       }
     });
+  }
+
+  // Custom validator for full name (at least two words)
+  private fullNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    if (!control.value) {
+      return null; // Let required validator handle empty
+    }
+    const value = control.value.trim();
+    const parts = value.split(' ').filter((part: string) => part.length > 0);
+    if (parts.length < 2) {
+      return { invalidFullName: true };
+    }
+    return null;
   }
 
   ngOnDestroy(): void {
@@ -123,8 +141,9 @@ export class Checkout implements OnInit, OnDestroy {
   }
 
   confirmOrder(): void {
+    this.submitted = true;
+
     if (this.checkoutForm.invalid) {
-      this.checkoutForm.markAllAsTouched();
       return;
     }
 
