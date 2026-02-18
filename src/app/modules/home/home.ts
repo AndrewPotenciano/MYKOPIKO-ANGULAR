@@ -47,6 +47,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   pastriesMenuItems: CarouselItem[] = [];
   reviews: Review[] = [];
   contactForm!: FormGroup;
+  submitted = false;
 
   private menuService = inject(MenuService);
   private reviewService = inject(ReviewService);
@@ -55,7 +56,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, this.fullNameValidator]],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
     });
@@ -77,9 +78,28 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
+  // Custom validator for full name (at least two words)
+  private fullNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    if (!control.value) {
+      return null; // Let required validator handle empty
+    }
+    const value = control.value.trim();
+    const parts = value.split(' ').filter((part: string) => part.length > 0);
+    if (parts.length < 2) {
+      return { invalidFullName: true };
+    }
+    return null;
+  }
+
   // Send contact form via EmailJS
   send(): void {
-    if (this.contactForm.invalid || this.isSending) return;
+    this.submitted = true;
+
+    if (this.contactForm.invalid) {
+      return;
+    }
+
+    if (this.isSending) return;
 
     this.isSending = true;
     this.modalMessage = 'Sending your message...';
@@ -89,6 +109,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       .then(() => {
         this.modalMessage = 'Message sent successfully!';
         this.contactForm.reset();
+        this.submitted = false;
         this.isSending = false;
       })
       .catch((error) => {

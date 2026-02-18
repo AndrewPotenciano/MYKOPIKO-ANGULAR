@@ -442,7 +442,7 @@
   width: 85%;
   padding: 12px 14px;
   border-radius: 10px;
-  border: 1px solid #2e1f1b;
+  border: 2px solid #2e1f1b;
   font-family: var(--font-primary);
 }
 
@@ -546,6 +546,24 @@
 .input-fields textarea.invalid {
   border: 2px solid red;
   outline: none;
+}
+
+/* Hide error and reset border when user is typing (focused) */
+.input-fields input:focus,
+.input-fields textarea:focus {
+  border-color: #2e1f1b !important;
+  outline: none !important;
+  animation: none !important;
+}
+
+.input-fields input:focus + .field-error,
+.input-fields textarea:focus + .field-error {
+  display: none;
+}
+
+.input-fields input:focus::placeholder,
+.input-fields textarea:focus::placeholder {
+  color: initial; /* Or whatever the default placeholder color is */
 }
 
 .input-fields input.invalid,
