@@ -75,42 +75,38 @@
       <form [formGroup]="contactForm" (ngSubmit)="send()" novalidate>
         <h2 class="box-title">{{ LABELS.SEND_US_MESSAGE }}</h2>
         <div class="input-fields">
+
           <!-- FULL NAME -->
           <div class="field-wrapper">
             <label for="name">{{ LABELS.FULL_NAME }}<span class="required"> *</span></label>
             <input type="text" id="name" formControlName="name" placeholder="Juan Dela Cruz" appTitleCaseOnBlur
-              [class.invalid]="(name?.invalid && submitted) || (name?.touched && name?.invalid && !name?.hasError('required'))" />
+              [class.invalid]="name?.invalid && (submitted || name?.touched)" />
 
-            @if (submitted && name?.hasError('required')) {
-            <span class="field-error">{{ LABELS.FIELD_REQUIRED }}</span>
-            } @else if (name?.touched && name?.hasError('invalidFullName')) {
-            <span class="field-error">{{ LABELS.FULL_NAME_INVALID }}</span>
+            @if (name?.invalid && (submitted || name?.touched)) {
+            <span class="field-error">{{ name?.errors | validationMessage }}</span>
             }
-
           </div>
+
           <!-- EMAIL -->
           <div class="field-wrapper">
             <label for="email">{{ LABELS.EMAIL_ADDRESS }}<span class="required"> *</span></label>
             <input type="text" id="email" formControlName="email" placeholder="example@email.com" appLowercaseOnBlur
-              [class.invalid]="(email?.invalid && submitted) || (email?.touched && email?.invalid && !email?.hasError('required'))" />
+              [class.invalid]="email?.invalid && (submitted || email?.touched)" />
 
-            @if (submitted && email?.hasError('required')) {
-            <span class="field-error">{{ LABELS.FIELD_REQUIRED }}</span>
-            } @else if (email?.touched && email?.hasError('email')) {
-            <span class="field-error">{{ LABELS.EMAIL_INVALID }}</span>
+            @if (email?.invalid && (submitted || email?.touched)) {
+            <span class="field-error">{{ email?.errors | validationMessage }}</span>
             }
-
           </div>
+
           <!-- MESSAGE -->
           <div class="field-wrapper">
-            <label for="message">Message<span class="required"> *</span></label>
+            <label for="message">{{ LABELS.MESSAGE }}<span class="required"> *</span></label>
             <textarea id="message" formControlName="message" placeholder="Kumusta!"
-              [class.invalid]="submitted && message?.hasError('required')"></textarea>
+              [class.invalid]="message?.invalid && (submitted || message?.touched)"></textarea>
 
-            @if (submitted && message?.hasError('required')) {
-            <span class="field-error">{{ LABELS.FIELD_REQUIRED }}</span>
+            @if (message?.invalid && (submitted || message?.touched)) {
+            <span class="field-error">{{ message?.errors | validationMessage }}</span>
             }
-
           </div>
 
           <button type="submit" [disabled]="isSending" class="btn-submit">
@@ -119,10 +115,12 @@
         </div>
       </form>
     </div>
+
     <div class="message-us-image scroll-reveal">
       <img src="/assets/images/PNG MENU/message-us-image.jpg" alt="Contact Us Image" class="contactus-image" />
     </div>
   </div>
+
 </section>
 
 <app-scroll-to-top></app-scroll-to-top>

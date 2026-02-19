@@ -60,6 +60,6 @@ export const LABELS = {
   PROFILE: 'Profile',
   SOCIAL_MEDIA: 'Social Media',
   FIELD_REQUIRED: 'This field is required.',
-  FULL_NAME_INVALID: 'Please enter your full name (first and last name).',
   EMAIL_INVALID: 'Email address is not valid.',
+  MESSAGE: 'Message',
 };

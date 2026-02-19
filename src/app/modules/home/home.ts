@@ -11,6 +11,7 @@ import { inject } from '@angular/core';
 import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/directives';
 import { LABELS } from '@shared/constants/label.const';
 import { MESSAGES } from '@shared/constants/message.const';
+import { ValidationMessagePipe } from '@shared/pipes/validation-message.pipe';
 import { combineLatest } from 'rxjs';
 
 
@@ -28,8 +29,8 @@ import { combineLatest } from 'rxjs';
     TitleCaseOnBlurDirective,
     MessageModalComponent,
     ScrollToTopComponent,
+    ValidationMessagePipe, // import pipe here
   ],
-
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
@@ -56,7 +57,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required, this.fullNameValidator]],
+      name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
     });
@@ -78,27 +79,9 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  private fullNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
-    if (!control.value) {
-      return null;
-    }
-    const value = control.value;
-    const parts = value.split(' ').filter((part: string) => part.length > 0);
-    if (parts.length < 2) {
-      return { invalidFullName: true };
-    }
-    return null;
-  }
-
-  // Send contact form via EmailJS
   send(): void {
     this.submitted = true;
-
-    if (this.contactForm.invalid) {
-      return;
-    }
-
-    if (this.isSending) return;
+    if (this.contactForm.invalid || this.isSending) return;
 
     this.isSending = true;
     this.modalMessage = 'Sending your message...';
@@ -118,47 +101,31 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  ngAfterViewInit(): void {
-    this.setupScrollReveal();
-  }
+  ngAfterViewInit(): void { this.setupScrollReveal(); }
 
   private setupScrollReveal(): void {
-    if (this.revealObserver) {
-      this.revealObserver.disconnect();
-    }
-
+    if (this.revealObserver) this.revealObserver.disconnect();
     const targets = document.querySelectorAll('.scroll-reveal, #menu, .reviews-section');
     if (!('IntersectionObserver' in window)) {
-      targets.forEach((el) => el.classList.add('is-visible'));
+      targets.forEach(el => el.classList.add('is-visible'));
       return;
     }
 
-    this.revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            (entry.target as HTMLElement).classList.add('is-visible');
-            this.revealObserver?.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -10% 0px' },
-    );
+    this.revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('is-visible');
+          this.revealObserver?.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
 
-    targets.forEach((el) => this.revealObserver?.observe(el));
+    targets.forEach(el => this.revealObserver?.observe(el));
   }
 
-  ngOnDestroy(): void {
-    this.revealObserver?.disconnect();
-  }
+  ngOnDestroy(): void { this.revealObserver?.disconnect(); }
 
-  get name(): AbstractControl | null {
-    return this.contactForm?.get('name');
-  }
-  get email(): AbstractControl | null {
-    return this.contactForm?.get('email');
-  }
-  get message(): AbstractControl | null {
-    return this.contactForm?.get('message');
-  }
+  get name(): AbstractControl | null { return this.contactForm?.get('name'); }
+  get email(): AbstractControl | null { return this.contactForm?.get('email'); }
+  get message(): AbstractControl | null { return this.contactForm?.get('message'); }
 }

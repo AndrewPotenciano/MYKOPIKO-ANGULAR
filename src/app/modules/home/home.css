@@ -522,6 +522,11 @@
   color: red;
 }
 
+.input-fields input:focus::placeholder,
+.input-fields textarea:focus::placeholder {
+  color: #999;
+}
+
 .field-wrapper {
   position: relative;
   width: 100%;
