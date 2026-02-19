@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ChangeDetectorRef, inject } from '@angular/core';
+import { Component, OnDestroy, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastService, ToastMessage } from './toast.service';
 import { Subscription } from 'rxjs';
@@ -8,11 +8,11 @@ import { Subscription } from 'rxjs';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div *ngIf="toast" class="toast-backdrop" (click)="close()">
+    <div *ngIf="toast()" class="toast-backdrop" (click)="close()">
       <div class="toast-content" (click)="$event.stopPropagation()">
         <div class="toast-body">
-          <i class="fas fa-check-circle success-icon" *ngIf="toast.type !== 'error'"></i>
-          <p>{{ toast.text }}</p>
+          <i class="fas fa-check-circle success-icon" *ngIf="toast()?.type !== 'error'"></i>
+          <p>{{ toast()?.text }}</p>
         </div>
       </div>
     </div>
@@ -20,14 +20,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./toast.component.scss'],
 })
 export class ToastComponent implements OnDestroy {
-  toast: ToastMessage | null = null;
+  toast = signal<ToastMessage | null>(null);
   private sub: Subscription;
   private timerId: any;
-  private cdr = inject(ChangeDetectorRef);
 
   constructor(public toastService: ToastService) {
     this.sub = this.toastService.toast$.subscribe((toast) => {
-      this.toast = toast;
+      this.toast.set(toast);
 
       // Clear existing timer
       if (this.timerId) {
@@ -41,7 +40,6 @@ export class ToastComponent implements OnDestroy {
           this.close();
         }, toast.duration);
       }
-
     });
   }
 
@@ -51,8 +49,7 @@ export class ToastComponent implements OnDestroy {
       this.timerId = null;
     }
     this.toastService.clear();
-    this.toast = null;
-    this.cdr.detectChanges();
+    this.toast.set(null);
   }
 
   ngOnDestroy() {
