@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 const oAuthConfig: AuthConfig = {
   issuer: 'https://accounts.google.com',
   strictDiscoveryDocumentValidation: false,
-  redirectUri: window.location.origin,
+  redirectUri: window.location.origin + '/login',
   clientId: '875929516460-gk6acnr1bdujd4p4lna0go1ge4pftet9.apps.googleusercontent.com',
   scope: 'openid profile email',
 };
