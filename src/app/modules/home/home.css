@@ -519,7 +519,7 @@
 
 .input-fields input.invalid::placeholder,
 .input-fields textarea.invalid::placeholder {
-  color: red;
+  color: transparent;
 }
 
 .input-fields input:focus::placeholder,

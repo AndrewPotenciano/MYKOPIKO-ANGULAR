@@ -9,6 +9,7 @@ import { GoogleApi } from '../../../google-api';
 import { Subscription } from 'rxjs';
 import { LABELS } from '@shared/constants/label.const';
 import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
+import { ValidationMessagePipe } from '@shared/pipes/validation-message.pipe';
 
 @Component({
   selector: 'app-checkout',
@@ -21,7 +22,8 @@ import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
     RouterLink,
     NgxTrimDirectiveModule,
     LowercaseOnBlurDirective,
-    TitleCaseOnBlurDirective
+    TitleCaseOnBlurDirective,
+    ValidationMessagePipe
   ],
   templateUrl: './checkout.html',
   styleUrls: ['./checkout.css'],
@@ -46,7 +48,7 @@ export class Checkout implements OnInit, OnDestroy {
 
   constructor() {
     this.checkoutForm = this.fb.group({
-      name: ['', [Validators.required, this.fullNameValidator]],
+      name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       address: ['', Validators.required],
       phone: ['', Validators.required],
@@ -73,18 +75,7 @@ export class Checkout implements OnInit, OnDestroy {
     });
   }
 
-  // Custom validator for full name (at least two words)
-  private fullNameValidator(control: AbstractControl): { [key: string]: boolean } | null {
-    if (!control.value) {
-      return null; // Let required validator handle empty
-    }
-    const value = control.value;
-    const parts = value.split(' ').filter((part: string) => part.length > 0);
-    if (parts.length < 2) {
-      return { invalidFullName: true };
-    }
-    return null;
-  }
+
 
   ngOnDestroy(): void {
     this.userProfileSubscription?.unsubscribe();

@@ -215,7 +215,11 @@ input.invalid {
 }
 
 input.invalid::placeholder {
-  color: red;
+  color: transparent;
+}
+
+input:focus::placeholder {
+  color: #999;
 }
 
 .field-wrapper {

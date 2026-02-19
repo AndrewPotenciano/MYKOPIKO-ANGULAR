@@ -44,41 +44,36 @@
       <div class="field-wrapper">
         <label for="checkout-name">{{ LABELS.FULL_NAME }}<span class="required"> *</span></label>
         <input id="checkout-name" type="text" formControlName="name" placeholder="Juan Dela Cruz" appTitleCaseOnBlur
-          [class.invalid]="(name?.invalid && submitted) || (name?.touched && name?.invalid && !name?.hasError('required'))" />
-        @if (submitted && name?.hasError('required')) {
-        <span class="field-error">{{ LABELS.FULL_NAME }} {{ LABELS.REQUIRED_FIELD }}</span>
-        } @else if (name?.touched && name?.hasError('invalidFullName')) {
-        <span class="field-error">{{ LABELS.FULL_NAME_INVALID }}</span>
+          [class.invalid]="name?.invalid && (submitted || name?.touched)" />
+        @if (name?.invalid && (submitted || name?.touched)) {
+        <span class="field-error">{{ name?.errors | validationMessage }}</span>
         }
       </div>
 
       <div class="field-wrapper">
         <label for="checkout-email">{{ LABELS.EMAIL_ADDRESS }}<span class="required"> *</span></label>
         <input id="checkout-email" type="email" formControlName="email" placeholder="exist@samplemail.com"
-          appLowercaseOnBlur
-          [class.invalid]="(email?.invalid && submitted) || (email?.touched && email?.invalid && !email?.hasError('required'))" />
-        @if (submitted && email?.hasError('required')) {
-        <span class="field-error">{{ LABELS.EMAIL_ADDRESS }} {{ LABELS.REQUIRED_FIELD }}</span>
-        } @else if (email?.touched && email?.hasError('email')) {
-        <span class="field-error">{{ LABELS.EMAIL_INVALID }}</span>
+          appLowercaseOnBlur [class.invalid]="email?.invalid && (submitted || email?.touched)" />
+        @if (email?.invalid && (submitted || email?.touched)) {
+        <span class="field-error">{{ email?.errors | validationMessage }}</span>
         }
       </div>
 
       <div class="field-wrapper">
         <label for="checkout-address">{{ LABELS.DELIVERY_ADDRESS }}<span class="required"> *</span></label>
         <input id="checkout-address" type="text" formControlName="address" placeholder="Manila Bulacan City" appTrim
-          appTitleCaseOnBlur [class.invalid]="submitted && address?.hasError('required')" />
-        @if (submitted && address?.hasError('required')) {
-        <span class="field-error">{{ LABELS.DELIVERY_ADDRESS }} {{ LABELS.REQUIRED_FIELD }}</span>
+          appTitleCaseOnBlur [class.invalid]="address?.invalid && (submitted || address?.touched)" />
+        @if (address?.invalid && (submitted || address?.touched)) {
+        <span class="field-error">{{ address?.errors | validationMessage }}</span>
         }
       </div>
 
       <div class="field-wrapper">
         <label for="checkout-phone">{{ LABELS.PHONE_NUMBER }}<span class="required"> *</span></label>
         <input id="checkout-phone" type="tel" formControlName="phone" placeholder="0123 457 7891" phoneFormat
-          [class.invalid]="submitted && phone?.hasError('required')" />
-        @if (submitted && phone?.hasError('required')) {
-        <span class="field-error">{{ LABELS.PHONE_NUMBER }} {{ LABELS.REQUIRED_FIELD }}</span>
+          [class.invalid]="phone?.invalid && (submitted || phone?.touched)" />
+        @if (phone?.invalid && (submitted || phone?.touched)) {
+        <span class="field-error">{{ phone?.errors | validationMessage }}</span>
         }
       </div>
     </div>
