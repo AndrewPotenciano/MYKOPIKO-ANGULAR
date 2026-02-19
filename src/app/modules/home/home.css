@@ -561,10 +561,7 @@
   display: none;
 }
 
-.input-fields input:focus::placeholder,
-.input-fields textarea:focus::placeholder {
-  color: initial; /* Or whatever the default placeholder color is */
-}
+
 
 .input-fields input.invalid,
 .input-fields textarea.invalid {
