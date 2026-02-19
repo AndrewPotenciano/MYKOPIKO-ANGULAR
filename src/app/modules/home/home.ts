@@ -40,8 +40,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   messageModalOpen = false;
   modalMessage = '';
   isSending = false;
-  private revealObserver?: IntersectionObserver;
-
   popularMenuItems: CarouselItem[] = [];
   frappeMenuItems: CarouselItem[] = [];
   espressoMenuItems: CarouselItem[] = [];
@@ -75,7 +73,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       this.pastriesMenuItems = pastries;
       this.reviews = reviews;
       this.cdr.detectChanges();
-      setTimeout(() => this.setupScrollReveal(), 0);
     });
   }
 
@@ -101,29 +98,9 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  ngAfterViewInit(): void { this.setupScrollReveal(); }
+  ngAfterViewInit(): void { }
 
-  private setupScrollReveal(): void {
-    if (this.revealObserver) this.revealObserver.disconnect();
-    const targets = document.querySelectorAll('.scroll-reveal, #menu, .reviews-section');
-    if (!('IntersectionObserver' in window)) {
-      targets.forEach(el => el.classList.add('is-visible'));
-      return;
-    }
-
-    this.revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          (entry.target as HTMLElement).classList.add('is-visible');
-          this.revealObserver?.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
-
-    targets.forEach(el => this.revealObserver?.observe(el));
-  }
-
-  ngOnDestroy(): void { this.revealObserver?.disconnect(); }
+  ngOnDestroy(): void { }
 
   get name(): AbstractControl | null { return this.contactForm?.get('name'); }
   get email(): AbstractControl | null { return this.contactForm?.get('email'); }

@@ -19,7 +19,6 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
   public readonly LABELS = LABELS;
   public readonly MESSAGES = MESSAGES;
   userInfo?: UserInfo;
-  private revealObserver?: IntersectionObserver;
 
   private google = inject(GoogleApi);
 
@@ -116,29 +115,10 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  ngAfterViewInit(): void {
-    const targets = document.querySelectorAll('.scroll-reveal');
-    if ('IntersectionObserver' in window) {
-      this.revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              (entry.target as HTMLElement).classList.add('is-visible');
-              this.revealObserver?.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.15, rootMargin: '0px 0px -10% 0px' },
-      );
-      targets.forEach((el) => this.revealObserver?.observe(el));
-    } else {
-      targets.forEach((el) => (el as HTMLElement).classList.add('is-visible'));
-    }
-  }
+  ngAfterViewInit(): void { }
 
   ngOnDestroy(): void {
     document.body.classList.remove('menu-page');
-    this.revealObserver?.disconnect();
     this.stopAutoSlide();
   }
 

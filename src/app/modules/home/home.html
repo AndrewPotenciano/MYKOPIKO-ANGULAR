@@ -21,32 +21,32 @@
 
 <!-- POPULAR MENU SECTION -->
 <section id="menu" class="menu-section">
-  <app-carousel class="carousel" [items]="popularMenuItems" [showDownHint]="false" [showSeparator]="false"
-    [reveal]="true"></app-carousel>
+  <app-carousel class="carousel" [items]="popularMenuItems" [showDownHint]="false"
+    [showSeparator]="false"></app-carousel>
 </section>
 
 <!-- ABOUT US SECTION -->
 <section class="about-us" id="about-us">
   <div class="content-wrapper">
-    <div class="about-text-container scroll-reveal">
+    <div class="about-text-container">
       <h1>{{ LABELS.ABOUT_US }}</h1>
       <h2>
         {{ MESSAGES.HOMEPAGE_ABOUT_US_DESC }}
       </h2>
     </div>
-    <div class="about-image-container scroll-reveal">
+    <div class="about-image-container">
       <img src="/assets/images/about us image.jpeg" alt="About Us" class="responsive-img" />
     </div>
   </div>
 
   <div class="content-wrapper reverse">
-    <div class="about-text-container scroll-reveal">
+    <div class="about-text-container">
       <h1>{{ LABELS.WHY_CHOOSE_US }}</h1>
       <h2>
         {{ MESSAGES.HOMEPAGE_WHY_CHOOSE_US_DESC }}
       </h2>
     </div>
-    <div class="about-image-container scroll-reveal">
+    <div class="about-image-container">
       <img src="/assets/images-2/Espresso PNGs/kape.png" alt="Why Choose Us" class="responsive-img" />
     </div>
   </div>
@@ -65,13 +65,13 @@
 <section class="contact-us" id="contact-us">
   <app-message-modal [message]="modalMessage" [open]="messageModalOpen" [loading]="isSending"
     (closeModal)="messageModalOpen = false"></app-message-modal>
-  <div class="contact-header scroll-reveal">
+  <div class="contact-header">
     <h1>{{ LABELS.CONTACT_US }}</h1>
     <p>{{ MESSAGES.HOMEPAGE_CONTACT_US_SUB }}</p>
   </div>
 
   <div class="contact-container">
-    <div class="message-us scroll-reveal">
+    <div class="message-us">
       <form [formGroup]="contactForm" (ngSubmit)="send()" novalidate>
         <h2 class="box-title">{{ LABELS.SEND_US_MESSAGE }}</h2>
         <div class="input-fields">
@@ -116,7 +116,7 @@
       </form>
     </div>
 
-    <div class="message-us-image scroll-reveal">
+    <div class="message-us-image">
       <img src="/assets/images/PNG MENU/message-us-image.jpg" alt="Contact Us Image" class="contactus-image" />
     </div>
   </div>

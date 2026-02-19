@@ -259,6 +259,327 @@
       "image": "/assets/images/PNG MENU/andrew.jpg"
     }
   ],
-  "orders": [ 
+  "orders": [
+    {
+      "id": "c114",
+      "orderNumber": "ORD-20260219-717",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18h Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        }
+      ],
+      "subtotal": 660,
+      "deliveryFee": 50,
+      "total": 710,
+      "orderDate": "2026-02-19T11:40:52.716Z",
+      "status": "pending"
+    },
+    {
+      "id": "281c",
+      "orderNumber": "ORD-20260219-395",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18h Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        }
+      ],
+      "subtotal": 660,
+      "deliveryFee": 50,
+      "total": 710,
+      "orderDate": "2026-02-19T11:46:47.397Z",
+      "status": "pending"
+    },
+    {
+      "id": "d23c",
+      "orderNumber": "ORD-20260219-316",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18h Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        }
+      ],
+      "subtotal": 660,
+      "deliveryFee": 50,
+      "total": 710,
+      "orderDate": "2026-02-19T11:53:18.774Z",
+      "status": "pending"
+    },
+    {
+      "id": "84ea",
+      "orderNumber": "ORD-20260219-621",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18h Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        }
+      ],
+      "subtotal": 660,
+      "deliveryFee": 50,
+      "total": 710,
+      "orderDate": "2026-02-19T11:53:34.694Z",
+      "status": "pending"
+    },
+    {
+      "id": "419f",
+      "orderNumber": "ORD-20260219-116",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18h Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        }
+      ],
+      "subtotal": 660,
+      "deliveryFee": 50,
+      "total": 710,
+      "orderDate": "2026-02-19T11:54:04.175Z",
+      "status": "pending"
+    },
+    {
+      "id": "53e6",
+      "orderNumber": "ORD-20260219-261",
+      "customerInfo": {
+        "name": "Andrew James F. Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18h Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        }
+      ],
+      "subtotal": 660,
+      "deliveryFee": 50,
+      "total": 710,
+      "orderDate": "2026-02-19T12:03:51.935Z",
+      "status": "pending"
+    },
+    {
+      "id": "66fa",
+      "orderNumber": "ORD-20260219-157",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18h Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        }
+      ],
+      "subtotal": 660,
+      "deliveryFee": 50,
+      "total": 710,
+      "orderDate": "2026-02-19T12:06:27.583Z",
+      "status": "pending"
+    },
+    {
+      "id": "35bb",
+      "orderNumber": "ORD-20260219-452",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18h Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        }
+      ],
+      "subtotal": 660,
+      "deliveryFee": 50,
+      "total": 710,
+      "orderDate": "2026-02-19T12:06:32.400Z",
+      "status": "confirmed",
+      "paymentMethod": "gcash",
+      "paymentReference": "6767676767",
+      "riderId": "r1"
+    },
+    {
+      "id": "7486",
+      "orderNumber": "ORD-20260219-032",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18h Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        }
+      ],
+      "subtotal": 350,
+      "deliveryFee": 50,
+      "total": 400,
+      "orderDate": "2026-02-19T12:09:15.671Z",
+      "status": "confirmed",
+      "paymentMethod": "gcash",
+      "paymentReference": "4343434343",
+      "riderId": "r1"
+    }
   ]
 }
