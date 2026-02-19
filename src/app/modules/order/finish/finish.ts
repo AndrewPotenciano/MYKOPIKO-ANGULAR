@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService, OrderService } from '@shared/services';
@@ -15,12 +15,11 @@ import { MESSAGES } from '@shared/constants/message.const';
 export class Finish implements OnInit {
   public readonly LABELS = LABELS;
   public readonly MESSAGES = MESSAGES;
-  orderNumber = 'Loading...';
+  orderNumber = signal('Loading...');
 
   private router = inject(Router);
   private cart = inject(CartService);
   private orderService = inject(OrderService);
-  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
 
@@ -30,14 +29,13 @@ export class Finish implements OnInit {
       this.orderService.getOrderById(lastOrderId).subscribe({
         next: (order) => {
           if (order) {
-            this.orderNumber = order.orderNumber;
+            this.orderNumber.set(order.orderNumber);
           } else {
-            this.orderNumber = 'Order not found';
+            this.orderNumber.set('Order not found');
           }
-          this.cdr.detectChanges();
         },
         error: () => {
-          this.orderNumber = 'Error loading order';
+          this.orderNumber.set('Error loading order');
         },
       });
     } else {

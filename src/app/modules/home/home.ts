@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { CarouselComponent, ReviewCardComponent, MessageModalComponent, ScrollToTopComponent } from '@shared/components';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -48,7 +48,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
 
   private menuService = inject(MenuService);
   private reviewService = inject(ReviewService);
-  private cdr = inject(ChangeDetectorRef);
   private fb = inject(FormBuilder);
 
   ngOnInit(): void {
@@ -70,7 +69,7 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
       this.espressoMenuItems = espresso;
       this.pastriesMenuItems = pastries;
       this.reviews = reviews;
-      this.cdr.detectChanges();
+
     });
   }
 

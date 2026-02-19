@@ -42,7 +42,6 @@ export class ToastComponent implements OnDestroy {
         }, toast.duration);
       }
 
-      this.cdr.detectChanges();
     });
   }
 
