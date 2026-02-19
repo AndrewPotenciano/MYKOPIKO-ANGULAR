@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { CarouselComponent, ReviewCardComponent, MessageModalComponent, ScrollToTopComponent } from '@shared/components';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -6,13 +7,11 @@ import { MenuService, ReviewService } from '@shared/services';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { NgxTrimDirectiveModule } from 'ngx-trim-directive';
-import { Review, CarouselItem } from '@shared/models';
-import { inject } from '@angular/core';
 import { LowercaseOnBlurDirective, TitleCaseOnBlurDirective } from '@shared/directives';
 import { LABELS } from '@shared/constants/label.const';
 import { MESSAGES } from '@shared/constants/message.const';
 import { ValidationMessagePipe } from '@shared/pipes/validation-message.pipe';
-import { combineLatest } from 'rxjs';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -27,7 +26,7 @@ import { combineLatest } from 'rxjs';
     TitleCaseOnBlurDirective,
     MessageModalComponent,
     ScrollToTopComponent,
-    ValidationMessagePipe, // import pipe here
+    ValidationMessagePipe,
   ],
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
@@ -38,11 +37,6 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   messageModalOpen = false;
   modalMessage = '';
   isSending = false;
-  popularMenuItems: CarouselItem[] = [];
-  frappeMenuItems: CarouselItem[] = [];
-  espressoMenuItems: CarouselItem[] = [];
-  pastriesMenuItems: CarouselItem[] = [];
-  reviews: Review[] = [];
   contactForm!: FormGroup;
   submitted = false;
 
@@ -50,26 +44,17 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
   private reviewService = inject(ReviewService);
   private fb = inject(FormBuilder);
 
+  popularMenuItems = toSignal(this.menuService.getPopularMenu(), { initialValue: [] });
+  frappeMenuItems = toSignal(this.menuService.getFrappeMenu(), { initialValue: [] });
+  espressoMenuItems = toSignal(this.menuService.getEspressoMenu(), { initialValue: [] });
+  pastriesMenuItems = toSignal(this.menuService.getPastriesMenu(), { initialValue: [] });
+  reviews = toSignal(this.reviewService.getAllReviews(), { initialValue: [] });
+
   ngOnInit(): void {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
-    });
-
-    combineLatest({
-      popular: this.menuService.getPopularMenu(),
-      frappe: this.menuService.getFrappeMenu(),
-      espresso: this.menuService.getEspressoMenu(),
-      pastries: this.menuService.getPastriesMenu(),
-      reviews: this.reviewService.getAllReviews(),
-    }).subscribe(({ popular, frappe, espresso, pastries, reviews }) => {
-      this.popularMenuItems = popular;
-      this.frappeMenuItems = frappe;
-      this.espressoMenuItems = espresso;
-      this.pastriesMenuItems = pastries;
-      this.reviews = reviews;
-
     });
   }
 

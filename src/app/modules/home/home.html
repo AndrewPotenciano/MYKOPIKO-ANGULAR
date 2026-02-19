@@ -21,7 +21,7 @@
 
 <!-- POPULAR MENU SECTION -->
 <section id="menu" class="menu-section">
-  <app-carousel class="carousel" [items]="popularMenuItems" [showDownHint]="false"
+  <app-carousel class="carousel" [items]="popularMenuItems()" [showDownHint]="false"
     [showSeparator]="false"></app-carousel>
 </section>
 
@@ -54,7 +54,7 @@
   <div class="reviews-section">
     <h1 class="scroll-reveal">{{ LABELS.CUSTOMER_REVIEWS }}</h1>
     <div class="reviews-grid">
-      @for (review of reviews; track $index) {
+      @for (review of reviews(); track $index) {
       <app-review-card class="scroll-reveal" [review]="review"></app-review-card>
       }
     </div>
