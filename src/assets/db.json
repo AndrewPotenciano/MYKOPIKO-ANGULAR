@@ -259,5 +259,542 @@
       "image": "/assets/images/PNG MENU/andrew.jpg"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "d8fb",
+      "orderNumber": "ORD-20260219-978",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "andrew.potenciano@exist.com",
+        "address": "Manila",
+        "phone": "0975 595 7203"
+      },
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        }
+      ],
+      "subtotal": 740,
+      "deliveryFee": 50,
+      "total": 790,
+      "orderDate": "2026-02-19T13:27:52.424Z",
+      "status": "pending"
+    },
+    {
+      "id": "0e09",
+      "orderNumber": "ORD-20260219-793",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "andrew.potenciano@exist.com",
+        "address": "Manila",
+        "phone": "0975 595 7203"
+      },
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        }
+      ],
+      "subtotal": 740,
+      "deliveryFee": 50,
+      "total": 790,
+      "orderDate": "2026-02-19T13:27:57.392Z",
+      "status": "pending"
+    },
+    {
+      "id": "93b7",
+      "orderNumber": "ORD-20260219-154",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "andrew.potenciano@exist.com",
+        "address": "Manila",
+        "phone": "0975 595 7203"
+      },
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        }
+      ],
+      "subtotal": 740,
+      "deliveryFee": 50,
+      "total": 790,
+      "orderDate": "2026-02-19T13:28:05.136Z",
+      "status": "pending"
+    },
+    {
+      "id": "9962",
+      "orderNumber": "ORD-20260219-001",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "andrew.potenciano@exist.com",
+        "address": "Manila",
+        "phone": "0975 595 7203"
+      },
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        }
+      ],
+      "subtotal": 740,
+      "deliveryFee": 50,
+      "total": 790,
+      "orderDate": "2026-02-19T13:28:10.632Z",
+      "status": "pending"
+    },
+    {
+      "id": "ba92",
+      "orderNumber": "ORD-20260219-804",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "andrew.potenciano@exist.com",
+        "address": "Manila",
+        "phone": "0975 595 7203"
+      },
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        }
+      ],
+      "subtotal": 740,
+      "deliveryFee": 50,
+      "total": 790,
+      "orderDate": "2026-02-19T13:28:16.808Z",
+      "status": "pending"
+    },
+    {
+      "id": "8ecd",
+      "orderNumber": "ORD-20260219-455",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "andrew.potenciano@exist.com",
+        "address": "Manila",
+        "phone": "0975 595 7203"
+      },
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        }
+      ],
+      "subtotal": 740,
+      "deliveryFee": 50,
+      "total": 790,
+      "orderDate": "2026-02-19T13:30:32.433Z",
+      "status": "pending"
+    },
+    {
+      "id": "71ab",
+      "orderNumber": "ORD-20260219-841",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "andrew.potenciano@exist.com",
+        "address": "Manila",
+        "phone": "0975 595 7203"
+      },
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        }
+      ],
+      "subtotal": 740,
+      "deliveryFee": 50,
+      "total": 790,
+      "orderDate": "2026-02-19T13:30:41.096Z",
+      "status": "pending"
+    },
+    {
+      "id": "a023",
+      "orderNumber": "ORD-20260219-772",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "andrew.potenciano@exist.com",
+        "address": "Manila",
+        "phone": "0975 595 7203"
+      },
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        }
+      ],
+      "subtotal": 740,
+      "deliveryFee": 50,
+      "total": 790,
+      "orderDate": "2026-02-19T13:33:05.969Z",
+      "status": "pending"
+    },
+    {
+      "id": "9bfe",
+      "orderNumber": "ORD-20260219-882",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "andrew.potenciano@exist.com",
+        "address": "Manila",
+        "phone": "0975 595 7203"
+      },
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        }
+      ],
+      "subtotal": 740,
+      "deliveryFee": 50,
+      "total": 790,
+      "orderDate": "2026-02-19T13:33:11.561Z",
+      "status": "confirmed",
+      "paymentMethod": "gcash",
+      "paymentReference": "9393939393",
+      "riderId": "r1"
+    },
+    {
+      "id": "4922",
+      "orderNumber": "ORD-20260219-267",
+      "customerInfo": {
+        "name": "Andrew Potenciano",
+        "email": "leynandrew@gmail.com",
+        "address": "Unit 18h Avida Towers San Lazaro",
+        "phone": "0755957203"
+      },
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 140,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Mocha.png"
+        },
+        {
+          "name": "Latte",
+          "price": 130,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Latte.png"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cappuccino.png"
+        },
+        {
+          "name": "Cafe Americano",
+          "price": 110,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cafe Americano.png"
+        },
+        {
+          "name": "Macchiato",
+          "price": 120,
+          "quantity": 2,
+          "img": "/assets/images/Espresso PNG/Macchiato.png"
+        },
+        {
+          "name": "Cortado",
+          "price": 120,
+          "quantity": 1,
+          "img": "/assets/images/Espresso PNG/Cortado.png"
+        }
+      ],
+      "subtotal": 860,
+      "deliveryFee": 50,
+      "total": 910,
+      "orderDate": "2026-02-19T13:33:57.313Z",
+      "status": "confirmed",
+      "paymentMethod": "gcash",
+      "paymentReference": "6767676767",
+      "riderId": "r1"
+    }
+  ]
 }

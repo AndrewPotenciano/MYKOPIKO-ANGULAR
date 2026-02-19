@@ -13,8 +13,6 @@ import { LABELS } from '@shared/constants/label.const';
 import { MESSAGES } from '@shared/constants/message.const';
 import { ValidationMessagePipe } from '@shared/pipes/validation-message.pipe';
 import { combineLatest } from 'rxjs';
-
-
 @Component({
   selector: 'app-home',
   standalone: true,

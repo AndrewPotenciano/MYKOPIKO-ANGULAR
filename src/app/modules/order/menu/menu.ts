@@ -66,6 +66,7 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
     this.autoSlideInterval = setInterval(() => {
       this.currentHeaderIndex = (this.currentHeaderIndex + 1) % this.headerSlides.length;
       this.cdr.detectChanges();
+
     }, 3000);
   }
 
