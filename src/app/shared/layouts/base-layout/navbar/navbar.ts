@@ -33,7 +33,7 @@ export class Navbar {
     this.cart.items$.pipe(
       map(items => items.reduce((total, item) => total + item.quantity, 0))
     ),
-    { initialValue: 0 }
+    { initialValue: this.cart.items.reduce((total, item) => total + item.quantity, 0) }
   );
   cartItemCount = computed(() => this.cartItemCountSignal());
   constructor() {

@@ -4,7 +4,7 @@
   <div class="header-nav">
     <div class="back-section">
       <a (click)="goBack()" class="back-link">
-        <img src="/assets/images/back.png" class="back-icon" alt="Back" />
+        <img src="/assets/images/back.png" class="back-icon" alt="Back" width="16" height="16" />
         <span>{{ LABELS.BACK }}</span>
       </a>
     </div>
@@ -14,21 +14,21 @@
       <div class="checkout-step">
         <div class="step-container">
           <div class="step-item completed">
-            <img src="/assets/images-2/info.png" alt="Info" />
+            <img src="/assets/images-2/info.png" alt="Info" width="20" height="20" />
           </div>
           <span class="step-label">{{ LABELS.INFORMATION }}</span>
         </div>
         <span class="line active"></span>
         <div class="step-container">
           <div class="step-item active">
-            <img src="/assets/images-2/credit-card.png" alt="Payment" />
+            <img src="/assets/images-2/credit-card.png" alt="Payment" width="20" height="20" />
           </div>
           <span class="step-label">{{ LABELS.PAYMENT }}</span>
         </div>
         <span class="line"></span>
         <div class="step-container">
           <div class="step-item">
-            <img src="/assets/images-2/express-delivery.png" alt="Confirm" />
+            <img src="/assets/images-2/express-delivery.png" alt="Confirm" width="20" height="20" />
           </div>
           <span class="step-label">{{ LABELS.CONFIRM }}</span>
         </div>
@@ -45,11 +45,11 @@
         <div class="method-buttons">
           <button type="button" class="method-btn" [class.active]="selectedPayment === 'gcash'"
             (click)="onSelectPayment('gcash')">
-            <img src="/assets/images-2/GCash_logo.svg.png" alt="GCash" />
+            <img src="/assets/images-2/GCash_logo.svg.png" alt="GCash" height="30" width="auto" />
           </button>
           <button type="button" class="method-btn" [class.active]="selectedPayment === 'maya'"
             (click)="onSelectPayment('maya')">
-            <img src="/assets/images/maya_logo.png" class="maya-logo" alt="Maya" />
+            <img src="/assets/images/maya_logo.png" class="maya-logo" alt="Maya" height="40" width="auto" />
           </button>
         </div>
       </div>
@@ -64,7 +64,7 @@
           }
         </div>
         <div class="qr-image-wrapper">
-          <img src="/assets/images/QRPH.png" class="qr-display" alt="QRPH Payment QR Code" />
+          <img src="/assets/images/QRPH.png" class="qr-display" alt="QRPH Payment QR Code" width="160" height="160" />
         </div>
         <p class="amount-due">
           <span>{{ MESSAGES.PAYMENT_AMOUNT_TOPAY }}</span>
@@ -95,7 +95,7 @@
           @for (item of cartItems; track $index) {
           <div class="summary-item">
             <div class="item-visuals">
-              <img [src]="item.img" alt="{{ item.name }}" class="summary-item-img" />
+              <img [src]="item.img" alt="{{ item.name }}" class="summary-item-img" width="40" height="40" />
               <div class="item-info">
                 <span class="item-name">{{ item.name }}</span>
                 <span class="item-qty">x{{ item.quantity }}</span>
@@ -123,7 +123,7 @@
       </div>
 
       <div class="payment-tip">
-        <img src="/assets/images-2/confirm.png" alt="Tip" />
+        <img src="/assets/images-2/confirm.png" alt="Tip" width="20" height="20" />
         <p>{{ MESSAGES.PAYMENT_PAYMENT_TIP }}</p>
       </div>
 
