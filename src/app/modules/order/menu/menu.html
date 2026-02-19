@@ -21,11 +21,11 @@
     </div>
   </div>
 
-  <app-carousel class="carousel" [title]="LABELS.POPULAR_MENU" [items]="popularMenuItems" [showDownHint]="true"
-    [showSeparator]="false"></app-carousel>
-  <app-carousel [title]="LABELS.FRAPPE_MENU" [items]="frappeMenuItems"></app-carousel>
-  <app-carousel [title]="LABELS.ESPRESSO_MENU" [items]="espressoMenuItems"></app-carousel>
-  <app-carousel [title]="LABELS.PASTRIES_MENU" [items]="pastriesMenuItems"></app-carousel>
+  <app-carousel class="carousel" [title]="LABELS.POPULAR_MENU" [items]="(popularMenuItems$ | async) || []"
+    [showDownHint]="true" [showSeparator]="false"></app-carousel>
+  <app-carousel [title]="LABELS.FRAPPE_MENU" [items]="(frappeMenuItems$ | async) || []"></app-carousel>
+  <app-carousel [title]="LABELS.ESPRESSO_MENU" [items]="(espressoMenuItems$ | async) || []"></app-carousel>
+  <app-carousel [title]="LABELS.PASTRIES_MENU" [items]="(pastriesMenuItems$ | async) || []"></app-carousel>
 </section>
 
 <app-scroll-to-top></app-scroll-to-top>

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, AfterViewInit, DestroyRef, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { GoogleApi, UserInfo, MenuService } from '@shared/services';
@@ -21,14 +22,14 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
   userInfo?: UserInfo;
 
   private google = inject(GoogleApi);
-
   private menuService = inject(MenuService);
   private destroyRef = inject(DestroyRef);
+  private cdr = inject(ChangeDetectorRef);
 
-  popularMenuItems: CarouselItem[] = [];
-  frappeMenuItems: CarouselItem[] = [];
-  espressoMenuItems: CarouselItem[] = [];
-  pastriesMenuItems: CarouselItem[] = [];
+  popularMenuItems$: Observable<CarouselItem[]> = this.menuService.getPopularMenu();
+  frappeMenuItems$: Observable<CarouselItem[]> = this.menuService.getFrappeMenu();
+  espressoMenuItems$: Observable<CarouselItem[]> = this.menuService.getEspressoMenu();
+  pastriesMenuItems$: Observable<CarouselItem[]> = this.menuService.getPastriesMenu();
 
   headerSlides = [
     {
@@ -60,8 +61,6 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
     this.resetAutoSlide();
   }
 
-  private cdr = inject(ChangeDetectorRef);
-
   startAutoSlide(): void {
     this.stopAutoSlide();
     this.autoSlideInterval = setInterval(() => {
@@ -85,34 +84,6 @@ export class Menu implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     document.body.classList.add('menu-page');
     this.startAutoSlide();
-
-    this.menuService
-      .getPopularMenu()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((data) => {
-        this.popularMenuItems = data;
-      });
-
-    this.menuService
-      .getFrappeMenu()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((data) => {
-        this.frappeMenuItems = data;
-      });
-
-    this.menuService
-      .getEspressoMenu()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((data) => {
-        this.espressoMenuItems = data;
-      });
-
-    this.menuService
-      .getPastriesMenu()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((data) => {
-        this.pastriesMenuItems = data;
-      });
   }
 
   ngAfterViewInit(): void { }
