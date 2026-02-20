@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { BaseLayout } from './shared/layouts/base-layout/base-layout';
+import { Home } from './modules/home/home';
 
 
 export const routes: Routes = [
@@ -8,7 +9,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./modules/home/home').then((m) => m.Home),
+        component: Home,
       },
       {
         path: 'login',
