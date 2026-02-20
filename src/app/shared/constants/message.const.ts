@@ -31,4 +31,6 @@ export const MESSAGES = {
   LOGIN_CONTINUE_FACEBOOK: 'Continue With Facebook',
   LOGIN_CONTINUE_GOOGLE: 'Continue With Google',
   MESSAGE_SENT_SUCCESS: 'Message sent successfully!',
+  SENDING_MESSAGE: 'Sending your message...',
+  MESSAGE_SEND_FAILED: 'Failed to send message. Please try again.',
 };

@@ -63,19 +63,19 @@ export class Home implements OnInit, AfterViewInit, OnDestroy {
     if (this.contactForm.invalid || this.isSending) return;
 
     this.isSending = true;
-    this.modalMessage = 'Sending your message...';
+    this.modalMessage = MESSAGES.SENDING_MESSAGE;
     this.messageModalOpen = true;
 
     emailjs.send('service_u35oe9x', 'template_iejhg7f', this.contactForm.value, 'VjtiOX-nmb9M7CHQ0')
       .then(() => {
-        this.modalMessage = 'Message sent successfully!';
+        this.modalMessage = MESSAGES.MESSAGE_SENT_SUCCESS;
         this.contactForm.reset();
         this.submitted = false;
         this.isSending = false;
       })
       .catch((error) => {
         console.error('EmailJS Error:', error);
-        this.modalMessage = 'Failed to send message. Please try again.';
+        this.modalMessage = MESSAGES.MESSAGE_SEND_FAILED;
         this.isSending = false;
       });
   }
