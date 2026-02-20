@@ -71,6 +71,11 @@ export class Navbar {
 
   @HostListener('window:scroll')
   onWindowScroll(): void {
+    if (window.innerWidth <= 992) {
+      this.isNavHidden = false;
+      return;
+    }
+
     const currentScrollY = window.scrollY;
     if (currentScrollY > this.lastScrollY && currentScrollY > 60) {
       // Scrolling down & past the navbar height

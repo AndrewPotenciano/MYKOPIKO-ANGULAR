@@ -62,4 +62,5 @@ export const LABELS = {
   FIELD_REQUIRED: 'This field is required.',
   EMAIL_INVALID: 'Email address is not valid.',
   MESSAGE: 'Message',
+  LOADING_RECEIPT: 'Loading your receipt...',
 };

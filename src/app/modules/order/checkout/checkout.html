@@ -125,7 +125,7 @@
       </div>
 
       <button class="confirm-order" type="submit" [disabled]="checkoutForm.invalid || (loading$ | async)">
-        {{ (loading$ | async) ? 'Processing...' : LABELS.CONFIRM_ORDER }}
+        {{ (loading$ | async) ? LABELS.PROCESSING : LABELS.CONFIRM_ORDER }}
       </button>
     </div>
   </form>

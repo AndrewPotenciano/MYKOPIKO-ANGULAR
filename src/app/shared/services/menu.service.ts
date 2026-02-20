@@ -35,7 +35,8 @@ export class MenuService {
       .get<MenuItem[]>(this.apiUrl)
       .pipe(
         catchError((error) => {
-          console.error('Failed to load menu data:', error);
+          console.error(
+            'Failed to load menu data:', error);
           this.errorSubject.next('Failed to load menu data. Please try again later.');
           return of(null);
         }),
