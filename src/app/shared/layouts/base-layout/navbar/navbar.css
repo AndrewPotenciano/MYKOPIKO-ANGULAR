@@ -159,6 +159,12 @@
 }
 
 @media (max-width: 992px) {
+  :host.nav-hidden {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 992px) {
   .nav-logout-mobile .nav-logout-link {
     color: #dc3545 !important;
     font-weight: 700;

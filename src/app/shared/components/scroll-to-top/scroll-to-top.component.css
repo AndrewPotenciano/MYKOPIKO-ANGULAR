@@ -39,3 +39,19 @@
 .scroll-to-top:active {
   transform: translateY(0) scale(0.92);
 }
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, 10px);
+  }
+
+  .scroll-to-top.visible {
+    transform: translate(-50%, 0);
+  }
+
+  .scroll-to-top:active {
+    transform: translate(-50%, 0) scale(0.92);
+  }
+}

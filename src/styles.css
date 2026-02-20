@@ -4,6 +4,12 @@
   --font-tertiary: 'Inter', sans-serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
