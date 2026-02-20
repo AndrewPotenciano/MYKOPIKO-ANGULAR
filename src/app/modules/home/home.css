@@ -1,10 +1,12 @@
 .hero-section {
   width: 100vw;
-  min-height: 0;
+  min-height: 100vh;
   background-color: #fff8e7;
   margin-left: calc(-50vw + 50%);
   margin-top: 0;
   padding-top: 0;
+  display: flex;
+  align-items: center;
 }
 
 
@@ -41,14 +43,14 @@
 
 .hero-container {
   max-width: 1320px;
+  width: 100%;
   margin: auto;
-  padding: 16px 8px 0 8px;
-  display: flex; /* Changed from grid to flex */
+  padding: 16px 8px;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  min-height: 0;
 }
 
 .hero-text {
@@ -340,7 +342,7 @@
   }
 
   .hero-section {
-    min-height: auto;
+    min-height: 100vh;
   }
 }
 
